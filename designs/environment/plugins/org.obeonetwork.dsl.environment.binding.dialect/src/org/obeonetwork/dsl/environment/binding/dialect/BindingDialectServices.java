@@ -124,6 +124,10 @@ public class BindingDialectServices extends AbstractRepresentationDialectService
 	 */
 	public void initRepresentations(Viewpoint viewpoint, EObject semantic) {
 	}
+	
+	protected <T extends RepresentationDescription> void initRepresentationForElement(T representationDescription, EObject semanticElement) {
+		
+	}
 
 	public IInterpretedExpressionQuery createInterpretedExpressionQuery(EObject arg0, EStructuralFeature arg1) {
 		return null;
@@ -132,4 +136,5 @@ public class BindingDialectServices extends AbstractRepresentationDialectService
 	public boolean handles(RepresentationDescription description) {
 		return isSupported(description);
 	}
+	
 }

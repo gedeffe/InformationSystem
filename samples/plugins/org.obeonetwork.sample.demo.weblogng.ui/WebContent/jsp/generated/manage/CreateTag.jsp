@@ -8,7 +8,6 @@
         uri="http://struts.apache.org/tags-logic"
         prefix="logic" %>
 
-
 <logic:messagesPresent>
    <bean:message key="errors.header"/>
    <ul>

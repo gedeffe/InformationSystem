@@ -12,11 +12,11 @@
 	</tr>
 	<tr>
 		<td>-</td>
-		<td><html:link action="/login/login">Login</html:link> Screen</td>
+		<td><html:link action="/errors/errors">Errors</html:link> Screen</td>
 	</tr>
 	<tr>
 		<td>-</td>
-		<td><html:link action="/errors/errors">Errors</html:link> Screen</td>
+		<td><html:link action="/login/login">Login</html:link> Screen</td>
 	</tr>
 
 </table>

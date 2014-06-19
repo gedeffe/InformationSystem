@@ -23,13 +23,6 @@
 
 <html:hidden property="event" value=""/>
 <h2 class="sidebar-title">Liste des logs</h2> 
-<!-- 
-<h3 class="sidebar-title">
-	<html:link action="/main/viewlogs?event=login">Se logger</html:link> 
-	<html:link action="/main/viewlogs?event=logout">Logout</html:link> 
-	<html:link action="/main/viewlogs?event=editAccount">Editer son compte</html:link> 
-</h3>
- --> 
 <dd><strong>Name: </strong><bean:write name="ViewLogsForm" property="user"/></dd>  
 <br/>&nbsp;
 

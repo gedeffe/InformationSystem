@@ -8,7 +8,6 @@
         uri="http://struts.apache.org/tags-logic"
         prefix="logic" %>
 
-
 <logic:messagesPresent>
    <bean:message key="errors.header"/>
    <ul>
@@ -31,20 +30,6 @@
 		<tr>
 			<td>
 				<html:link action="/monitoring/monitor?event=unspecified">
-					<bean:message key="Monitor.viewComments"/>
-				</html:link>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<html:link action="/monitoring/monitor?event=unspecified">
-					<bean:message key="Monitor.viewTags"/>
-				</html:link>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<html:link action="/monitoring/monitor?event=unspecified">
 					<bean:message key="Monitor.viewUsers"/>
 				</html:link>
 			</td>
@@ -52,7 +37,21 @@
 		<tr>
 			<td>
 				<html:link action="/monitoring/monitor?event=unspecified">
+					<bean:message key="Monitor.viewComments"/>
+				</html:link>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<html:link action="/monitoring/monitor?event=unspecified">
 					<bean:message key="Monitor.viewCategories"/>
+				</html:link>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<html:link action="/monitoring/monitor?event=unspecified">
+					<bean:message key="Monitor.viewTags"/>
 				</html:link>
 			</td>
 		</tr>

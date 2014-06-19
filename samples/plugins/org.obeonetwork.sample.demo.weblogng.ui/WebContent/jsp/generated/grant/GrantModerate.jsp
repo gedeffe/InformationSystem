@@ -7,10 +7,6 @@
 <%@ taglib
         uri="http://struts.apache.org/tags-logic"
         prefix="logic" %>
-<%@ taglib 
-        uri="http://displaytag.sf.net" 
-        prefix="display" %>
-
 
 <logic:messagesPresent>
    <bean:message key="errors.header"/>
@@ -32,15 +28,8 @@
 	
 	<table>
 		<tr>
-			<td><label for="hidden"><bean:message key="GrantModerate.hidden"/></label> :</td>
-			<td><html:text property="hidden" /></td>
-		</tr>
-		<tr>
-			<td>
-				<html:link action="/grant/grantmoderate?event=removeRight">
-					<bean:message key="GrantModerate.remove"/>
-				</html:link>
-			</td>
+			<td><label for="users"><bean:message key="GrantModerate.users"/></label> :</td>
+			<td><logic:iterate name="GrantModerateForm" id="users_id" property="users" /></td>
 		</tr>
 		<tr>
 			<td>
@@ -50,12 +39,19 @@
 			</td>
 		</tr>
 		<tr>
+			<td><label for="hidden"><bean:message key="GrantModerate.hidden"/></label> :</td>
+			<td><html:text property="hidden" /></td>
+		</tr>
+		<tr>
 			<td><label for="moderators"><bean:message key="GrantModerate.moderators"/></label> :</td>
 			<td><logic:iterate name="GrantModerateForm" id="moderators_id" property="moderators" /></td>
 		</tr>
 		<tr>
-			<td><label for="users"><bean:message key="GrantModerate.users"/></label> :</td>
-			<td><logic:iterate name="GrantModerateForm" id="users_id" property="users" /></td>
+			<td>
+				<html:link action="/grant/grantmoderate?event=removeRight">
+					<bean:message key="GrantModerate.remove"/>
+				</html:link>
+			</td>
 		</tr>
 	</table>
 </fieldset>

@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.cinematic.view;
 import org.eclipse.emf.common.util.EList;
 import org.obeonetwork.dsl.cinematic.NamedElement;
 import org.obeonetwork.dsl.cinematic.toolkits.Widget;
+import org.obeonetwork.dsl.environment.BoundableElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +27,6 @@ import org.obeonetwork.dsl.cinematic.toolkits.Widget;
  *   <li>{@link org.obeonetwork.dsl.cinematic.view.AbstractViewElement#getActions <em>Actions</em>}</li>
  *   <li>{@link org.obeonetwork.dsl.cinematic.view.AbstractViewElement#getEvents <em>Events</em>}</li>
  *   <li>{@link org.obeonetwork.dsl.cinematic.view.AbstractViewElement#getLabel <em>Label</em>}</li>
- *   <li>{@link org.obeonetwork.dsl.cinematic.view.AbstractViewElement#getDataBindings <em>Data Bindings</em>}</li>
  * </ul>
  * </p>
  *
@@ -34,7 +34,7 @@ import org.obeonetwork.dsl.cinematic.toolkits.Widget;
  * @model abstract="true"
  * @generated
  */
-public interface AbstractViewElement extends NamedElement {
+public interface AbstractViewElement extends NamedElement, BoundableElement {
 	/**
 	 * Returns the value of the '<em><b>Widget</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -118,21 +118,5 @@ public interface AbstractViewElement extends NamedElement {
 	 * @generated
 	 */
 	void setLabel(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Data Bindings</b></em>' containment reference list.
-	 * The list contents are of type {@link org.obeonetwork.dsl.cinematic.view.DataBinding}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Data Bindings</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Data Bindings</em>' containment reference list.
-	 * @see org.obeonetwork.dsl.cinematic.view.ViewPackage#getAbstractViewElement_DataBindings()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	EList<DataBinding> getDataBindings();
 
 } // AbstractViewElement

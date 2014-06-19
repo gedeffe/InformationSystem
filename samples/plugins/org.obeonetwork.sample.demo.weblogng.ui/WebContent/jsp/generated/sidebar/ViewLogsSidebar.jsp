@@ -12,7 +12,7 @@
 	</tr>
 	<tr>
 		<td>-</td>
-		<td><html:link action="/login/login">Login</html:link> Screen</td>
+		<td><html:link action="/createlog/createlog">CreateLog</html:link> Screen</td>
 	</tr>
 	<tr>
 		<td>-</td>
@@ -20,7 +20,7 @@
 	</tr>
 	<tr>
 		<td>-</td>
-		<td><html:link action="/createlog/createlog">CreateLog</html:link> Screen</td>
+		<td><html:link action="/login/login">Login</html:link> Screen</td>
 	</tr>
 	<tr>
 		<td>-</td>

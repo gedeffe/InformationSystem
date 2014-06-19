@@ -8,13 +8,10 @@ package org.obeonetwork.dsl.soa.impl;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.obeonetwork.dsl.environment.impl.ActionImpl;
 import org.obeonetwork.dsl.soa.Operation;
@@ -33,6 +30,7 @@ import org.obeonetwork.dsl.soa.SoaPackage;
  *   <li>{@link org.obeonetwork.dsl.soa.impl.OperationImpl#getOutput <em>Output</em>}</li>
  *   <li>{@link org.obeonetwork.dsl.soa.impl.OperationImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.obeonetwork.dsl.soa.impl.OperationImpl#isPublic <em>Public</em>}</li>
+ *   <li>{@link org.obeonetwork.dsl.soa.impl.OperationImpl#getFault <em>Fault</em>}</li>
  * </ul>
  * </p>
  *
@@ -145,6 +143,16 @@ public class OperationImpl extends ActionImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	public EList<Parameter> getFault() {
+		return (EList<Parameter>)eDynamicGet(SoaPackage.OPERATION__FAULT, SoaPackage.Literals.OPERATION__FAULT, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -152,6 +160,8 @@ public class OperationImpl extends ActionImpl implements Operation {
 				return ((InternalEList<?>)getInput()).basicRemove(otherEnd, msgs);
 			case SoaPackage.OPERATION__OUTPUT:
 				return ((InternalEList<?>)getOutput()).basicRemove(otherEnd, msgs);
+			case SoaPackage.OPERATION__FAULT:
+				return ((InternalEList<?>)getFault()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -172,6 +182,8 @@ public class OperationImpl extends ActionImpl implements Operation {
 				return getKind();
 			case SoaPackage.OPERATION__PUBLIC:
 				return isPublic();
+			case SoaPackage.OPERATION__FAULT:
+				return getFault();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -199,6 +211,10 @@ public class OperationImpl extends ActionImpl implements Operation {
 			case SoaPackage.OPERATION__PUBLIC:
 				setPublic((Boolean)newValue);
 				return;
+			case SoaPackage.OPERATION__FAULT:
+				getFault().clear();
+				getFault().addAll((Collection<? extends Parameter>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -223,6 +239,9 @@ public class OperationImpl extends ActionImpl implements Operation {
 			case SoaPackage.OPERATION__PUBLIC:
 				setPublic(PUBLIC_EDEFAULT);
 				return;
+			case SoaPackage.OPERATION__FAULT:
+				getFault().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -243,6 +262,8 @@ public class OperationImpl extends ActionImpl implements Operation {
 				return getKind() != KIND_EDEFAULT;
 			case SoaPackage.OPERATION__PUBLIC:
 				return isPublic() != PUBLIC_EDEFAULT;
+			case SoaPackage.OPERATION__FAULT:
+				return !getFault().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

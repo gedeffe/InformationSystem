@@ -295,16 +295,16 @@ public class Jdbc extends AbstractAcceleoGenerator {
      * "org.eclipse.acceleo.sample", the path that needs be added to this
      * list is "org.eclipse.acceleo.sample.messages".
      */
+	 
+	if (this.model != null && this.model.eResource() != null) {
+		propertiesFiles.addAll(AcceleoPropertiesUtils.getPropertiesFilesNearModel(this.model.eResource()));
+	}
     
     propertiesFiles.add(AcceleoPropertiesUtils.PLATFORM_PLUGIN + EnvironmentCommonPlugin.PLUGIN_ID + EnvironmentCommonPlugin.ORG_OBEONETWORK_DSL_ENVIRONMENT_GEN_JAVA_COMMON_DEFAULT_PROPERTIES);
     propertiesFiles.add(AcceleoPropertiesUtils.PLATFORM_PLUGIN + EnvironmentCommonPlugin.PLUGIN_ID + EnvironmentCommonPlugin.ORG_OBEONETWORK_DSL_ENVIRONMENT_GEN_JAVA_COMMON_DEFAULT_TYPES);
     
     propertiesFiles.add(EntityDaoPlugin.ORG_OBEONETWORK_DSL_ENTITY_GEN_JAVA_DAO_DAO_PROPERTIES);
     propertiesFiles.add(EntityDaoPlugin.ORG_OBEONETWORK_DSL_ENVIRONMENT_GEN_SQL_COMMON_SQL_PROPERTIES);
-
-	if (this.model != null && this.model.eResource() != null) {
-		propertiesFiles.addAll(AcceleoPropertiesUtils.getPropertiesFilesNearModel(this.model.eResource()));
-	}
     
     return propertiesFiles;
   }
@@ -359,6 +359,12 @@ public class Jdbc extends AbstractAcceleoGenerator {
 	@Override
 	public void registerPackages(ResourceSet resourceSet) {
         super.registerPackages(resourceSet);
+        if (!isInWorkspace(org.obeonetwork.dsl.entity.EntityPackage.class)) {
+            resourceSet.getPackageRegistry().put(org.obeonetwork.dsl.entity.EntityPackage.eINSTANCE.getNsURI(), org.obeonetwork.dsl.entity.EntityPackage.eINSTANCE);
+        }
+        if (!isInWorkspace(org.obeonetwork.dsl.entity.extensionUtilities.ExtensionUtilitiesPackage.class)) {
+            resourceSet.getPackageRegistry().put(org.obeonetwork.dsl.entity.extensionUtilities.ExtensionUtilitiesPackage.eINSTANCE.getNsURI(), org.obeonetwork.dsl.entity.extensionUtilities.ExtensionUtilitiesPackage.eINSTANCE);
+        }
         
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"

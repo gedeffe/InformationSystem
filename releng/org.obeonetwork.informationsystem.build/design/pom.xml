@@ -104,6 +104,20 @@
 		
 		<module>../../../models/interaction/features/org.obeonetwork.dsl.feature.interaction</module>
 		
+		<!-- models/ecoreBinding/ -->
+		<module>../../../models/ecorebinding/plugins/org.obeonetwork.dsl.ecorebinding</module>
+		<module>../../../models/ecorebinding/plugins/org.obeonetwork.dsl.ecorebinding.edit</module>
+		<module>../../../models/ecorebinding/plugins/org.obeonetwork.dsl.ecorebinding.editor</module>
+		
+		<module>../../../models/ecorebinding/features/org.obeonetwork.dsl.ecorebinding.feature</module>
+
+		<!-- models/application/ -->
+		<module>../../../models/application/plugins/org.obeonetwork.dsl.application</module>
+		<module>../../../models/application/plugins/org.obeonetwork.dsl.application.edit</module>
+		<module>../../../models/application/plugins/org.obeonetwork.dsl.application.editor</module>
+		
+		<module>../../../models/application/features/org.obeonetwork.dsl.application.feature</module>
+		
 		<!-- 
 		*********************************************************************************************
 		* Tools & Commons
@@ -115,6 +129,7 @@
 		
 		<!-- commons/is/ -->
 		<module>../../../commons/is/plugins/org.obeonetwork.dsl.is</module>
+		<module>../../../commons/is/features/org.obeonetwork.dsl.feature.is</module>
 				
 		<module>../../../commons/tools/plugins/org.obeonetwork.tools.doc</module>
 		<module>../../../commons/tools/plugins/org.obeonetwork.tools.doc.doc</module>
@@ -172,16 +187,7 @@
 		<!-- designs/is/ -->
 		<module>../../../designs/is/plugins/org.obeonetwork.dsl.is.design</module>
 		<module>../../../designs/is/features/org.obeonetwork.dsl.feature.is.design</module>
-				
-		<!-- 
-		*********************************************************************************************
-		* Samples
-		*********************************************************************************************
-		-->
-		<!-- Samples/weblog / -->
-		<module>../../../samples/plugins/org.obeonetwork.sample.demo.weblog.plugin</module>
-		<module>../../../samples/features/org.obeonetwork.sample.demo.weblog.feature</module>
-
+		
 		<!-- 
 		*********************************************************************************************
 		* Repository Information System Design

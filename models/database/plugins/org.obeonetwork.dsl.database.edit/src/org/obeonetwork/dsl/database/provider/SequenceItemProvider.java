@@ -74,6 +74,9 @@ public class SequenceItemProvider
 			addIncrementPropertyDescriptor(object);
 			addMinValuePropertyDescriptor(object);
 			addMaxValuePropertyDescriptor(object);
+			addCacheSizePropertyDescriptor(object);
+			addCyclePropertyDescriptor(object);
+			addColumnsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -95,7 +98,7 @@ public class SequenceItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -117,7 +120,7 @@ public class SequenceItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -139,7 +142,7 @@ public class SequenceItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -161,7 +164,73 @@ public class SequenceItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Cache Size feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCacheSizePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sequence_cacheSize_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sequence_cacheSize_feature", "_UI_Sequence_type"),
+				 DatabasePackage.Literals.SEQUENCE__CACHE_SIZE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Cycle feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCyclePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sequence_cycle_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sequence_cycle_feature", "_UI_Sequence_type"),
+				 DatabasePackage.Literals.SEQUENCE__CYCLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Columns feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addColumnsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sequence_columns_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sequence_columns_feature", "_UI_Sequence_type"),
+				 DatabasePackage.Literals.SEQUENCE__COLUMNS,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
@@ -217,6 +286,8 @@ public class SequenceItemProvider
 			case DatabasePackage.SEQUENCE__INCREMENT:
 			case DatabasePackage.SEQUENCE__MIN_VALUE:
 			case DatabasePackage.SEQUENCE__MAX_VALUE:
+			case DatabasePackage.SEQUENCE__CACHE_SIZE:
+			case DatabasePackage.SEQUENCE__CYCLE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

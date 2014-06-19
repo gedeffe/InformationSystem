@@ -45,7 +45,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='DAD_AbstractTask'] //@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@defaultLayer/@toolSections.0/@subSections[name='Usability%20tools']/@ownedTools[name='DAD_System']" name="Tasks Graph" titleExpression="Tasks Graph" initialisation="true" domainClass="graal.System" preconditionExpression="&lt;%~target.filter(&quot;DDiagram&quot;)[eContainer != null].description[name==&quot;Tasks Graph&quot;].nSize &lt; 1%>">
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='DAD_AbstractTask'] //@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@defaultLayer/@toolSections.0/@subSections[name='Usability%20tools']/@ownedTools[name='DAD_System']" name="Tasks Graph" titleExpression="Tasks Graph" domainClass="graal.System" preconditionExpression="&lt;%~target.filter(&quot;DDiagram&quot;)[eContainer != null].description[name==&quot;Tasks Graph&quot;].nSize &lt; 1%>">
       <metamodel href="platform:/plugin/org.obeonetwork.graal/model/graal.ecore#/"/>
       <layout xsi:type="description:CompositeLayout" padding="20"/>
       <defaultLayer name="Default">
@@ -128,7 +128,7 @@
             <menuItemDescription xsi:type="tool:OperationAction" name="Create use case" precondition="&lt;%canExecuteCreateUseCaseAction($views)%>">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%executeCreateUseCaseAction($views)%>">
+                <firstModelOperations xsi:type="tool:If" conditionExpression="&lt;%executeCreateUseCaseAction($views) != null%>">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%eContainer(&quot;System&quot;)%>">
                     <subModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Use%20Cases%20Main%20View']"/>
                   </subModelOperations>
@@ -236,7 +236,7 @@
         <nodeMappings name="TG_Actor" deletionDescription="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@toolSections.0/@subSections[name='Usability%20tools']/@ownedTools[name='TG_Delete_Actor']" labelDirectEdit="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Generic%20Edit%20Label']" semanticCandidatesExpression="&lt;%getVisibleActors%>" domainClass="graal.Actor">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeGraalLabel()%>" workspacePath="/org.obeonetwork.graal.design/images/actor.png"/>
         </nodeMappings>
-        <edgeMappings name="TG_Edge_AbstractTaskToActor" deletionDescription="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@toolSections.0/@subSections[name='Usability%20tools']/@ownedTools[name='TG_Delete_Edge_AbstractTaskToActor']" sourceMapping="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@defaultLayer/@nodeMappings[name='TG_Task'] //@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@defaultLayer/@nodeMappings[name='TG_TasksGroup']" targetMapping="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@nodeMappings[name='TG_Actor']" targetFinderExpression="&lt;%getVisibleLinksToActors($diagram.visibleTasks)%>">
+        <edgeMappings name="TG_Edge_AbstractTaskToActor" deletionDescription="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@toolSections.0/@subSections[name='Usability%20tools']/@ownedTools[name='TG_Delete_Edge_AbstractTaskToActor']" sourceMapping="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@defaultLayer/@nodeMappings[name='TG_Task'] //@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@defaultLayer/@nodeMappings[name='TG_TasksGroup']" targetMapping="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@nodeMappings[name='TG_Actor']" targetFinderExpression="&lt;%getVisibleLinksToActors($diagram.visibleTasks)%>" reconnections="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@toolSections.0/@subSections[name='Usability%20tools']/@ownedTools[name='TG_REC_AbstractTaskToActor']">
           <style lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -299,6 +299,26 @@
                   <subModelOperations xsi:type="tool:DeleteView"/>
                 </firstModelOperations>
               </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="TG_REC_AbstractTaskToActor" precondition="&lt;%$source.filter(&quot;Task&quot;) != null &amp;&amp; $target.filter(&quot;Task&quot;) != null%>" reconnectionKind="RECONNECT_SOURCE">
+              <source name="source"/>
+              <target name="target"/>
+              <sourceView name="sourceView"/>
+              <targetView name="targetView"/>
+              <element name="element"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%filter(&quot;Task&quot;)%>">
+                    <subModelOperations xsi:type="tool:Unset" featureName="actors" elementExpression="&lt;%$edgeView.targetNode.target%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$target%>">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%filter(&quot;Task&quot;)%>">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="actors" valueExpression="&lt;%$edgeView.targetNode.target%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+              <edgeView name="edgeView"/>
             </ownedTools>
           </subSections>
         </toolSections>
@@ -485,7 +505,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%eContainer(&quot;System&quot;)%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%eContainer(&quot;TasksContainer&quot;)%>">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="graal.Task" referenceName="tasks" variableName="createdTask">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Task&lt;%eContainer(&quot;System&quot;).tasks.nSize%>"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="id" valueExpression="T&lt;%eContainer(&quot;System&quot;).tasks.nSize%>"/>
@@ -758,7 +778,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" name="Actors Graph" titleExpression="Actors Graph" initialisation="true" domainClass="graal.System" preconditionExpression="&lt;%~target.filter(&quot;DDiagram&quot;)[eContainer != null].description[name==&quot;Actors Graph&quot;].nSize &lt; 1%>">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="Actors Graph" titleExpression="Actors Graph" domainClass="graal.System" preconditionExpression="&lt;%~target.filter(&quot;DDiagram&quot;)[eContainer != null].description[name==&quot;Actors Graph&quot;].nSize &lt; 1%>">
       <metamodel href="platform:/plugin/org.obeonetwork.graal/model/graal.ecore#/"/>
       <layout xsi:type="description:CompositeLayout" direction="bottomToTop"/>
       <defaultLayer name="Default">
@@ -828,10 +848,10 @@
         </toolSections>
       </defaultLayer>
       <optionalLayers name="Actors" reusedMappings="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@nodeMappings[name='TG_Actor'] //@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@edgeMappings[name='TG_Edge_AbstractTaskToActor'] //@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@edgeMappings[name='TG_Edge_UsedForCreateEdgeTool']" activeByDefault="true">
-        <toolSections name="Actors" reusedTools="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@toolSections.0/@ownedTools[name='Works%20on'] //@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@toolSections.0/@ownedTools[name='Actor']"/>
+        <toolSections name="Actors" reusedTools="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@toolSections.0/@ownedTools[name='Works%20on'] //@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@toolSections.0/@ownedTools[name='Actor'] //@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@toolSections.0/@subSections[name='Usability%20tools']/@ownedTools[name='TG_REC_AbstractTaskToActor']"/>
       </optionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" name="Use Cases Main View" titleExpression="Use Cases Main View" initialisation="true" domainClass="graal.System" preconditionExpression="&lt;%~target.filter(&quot;DDiagram&quot;)[eContainer != null].description[name==&quot;Use Cases Main View&quot;].nSize &lt; 1%>">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="Use Cases Main View" titleExpression="Use Cases Main View" domainClass="graal.System" preconditionExpression="&lt;%~target.filter(&quot;DDiagram&quot;)[eContainer != null].description[name==&quot;Use Cases Main View&quot;].nSize &lt; 1%>">
       <metamodel href="platform:/plugin/org.obeonetwork.graal/model/graal.ecore#/"/>
       <layout xsi:type="description:CompositeLayout"/>
       <defaultLayer name="Default">
@@ -846,7 +866,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="UCM_Include" deletionDescription="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Use%20Cases%20Main%20View']/@defaultLayer/@toolSections.0/@subSections[name='Usability%20tools']/@ownedTools[name='UCM_Delete_Include']" sourceMapping="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Use%20Cases%20Main%20View']/@defaultLayer/@nodeMappings[name='UCM_UseCase']" targetMapping="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Use%20Cases%20Main%20View']/@defaultLayer/@nodeMappings[name='UCM_UseCase']" targetFinderExpression="&lt;%(includes + tasks.tasksUsed.nMinimize.~tasks.filter(&quot;UseCase&quot;)).nMinimize - self%>" targetExpression="&lt;%self%>">
+        <edgeMappings name="UCM_Include" preconditionExpression="&lt;%$source != $target %>" deletionDescription="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Use%20Cases%20Main%20View']/@defaultLayer/@toolSections.0/@subSections[name='Usability%20tools']/@ownedTools[name='UCM_Delete_Include']" sourceMapping="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Use%20Cases%20Main%20View']/@defaultLayer/@nodeMappings[name='UCM_UseCase']" targetMapping="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Use%20Cases%20Main%20View']/@defaultLayer/@nodeMappings[name='UCM_UseCase']" targetFinderExpression="&lt;%includes + tasks.tasksUsed.~tasks.filter(&quot;UseCase&quot;)%>" targetExpression="&lt;%self%>">
           <style sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;include>>">
@@ -929,8 +949,11 @@
           </subSections>
         </toolSections>
       </defaultLayer>
-      <optionalLayers name="Actors" reusedMappings="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@nodeMappings[name='TG_Actor']" activeByDefault="true">
-        <edgeMappings name="UCM_ActorWorksOnUseCase" sourceMapping="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Use%20Cases%20Main%20View']/@defaultLayer/@nodeMappings[name='UCM_UseCase']" targetMapping="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@nodeMappings[name='TG_Actor']" targetFinderExpression="&lt;%getVisibleActors%>">
+      <optionalLayers name="Actors" activeByDefault="true">
+        <nodeMappings name="UCM_Actor" deletionDescription="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@toolSections.0/@subSections[name='Usability%20tools']/@ownedTools[name='TG_Delete_Actor']" labelDirectEdit="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Generic%20Edit%20Label']" semanticCandidatesExpression="&lt;%useCases.getVisibleActors%>" domainClass="graal.Actor">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeGraalLabel()%>" workspacePath="/org.obeonetwork.graal.design/images/actor.png"/>
+        </nodeMappings>
+        <edgeMappings name="UCM_ActorWorksOnUseCase" sourceMapping="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Use%20Cases%20Main%20View']/@defaultLayer/@nodeMappings[name='UCM_UseCase']" targetMapping="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Use%20Cases%20Main%20View']/@optionalLayers[name='Actors']/@nodeMappings[name='UCM_Actor']" targetFinderExpression="&lt;%getVisibleActors%>">
           <style lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -978,7 +1001,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Existing task" candidatesExpression="&lt;%eContainer(&quot;System&quot;).eAllContents(&quot;AbstractTask&quot;) - $diagram.eAllContents.target.filter(&quot;Task&quot;)%>" tree="true" rootExpression="&lt;%eContainer(&quot;System&quot;).tasks%>" childrenExpression="&lt;%tasks%>" message="Choose an existing task to be added on this diagram" iconPath="/org.obeonetwork.graal.edit/icons/full/obj16/Task.gif">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Existing task" candidatesExpression="&lt;%eContainer(&quot;System&quot;).eAllContents(&quot;AbstractTask&quot;) - $diagram.eAllContents.filter(&quot;DSemanticDecorator&quot;).target.filter(&quot;Task&quot;)%>" tree="true" rootExpression="&lt;%eContainer(&quot;System&quot;).tasks%>" childrenExpression="&lt;%tasks%>" message="Choose an existing task to be added on this diagram" iconPath="/org.obeonetwork.graal.edit/icons/full/obj16/Task.gif">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -1031,7 +1054,7 @@
         <toolSections name="Actors" reusedTools="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@toolSections.0/@ownedTools[name='Actor'] //@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='Tasks%20Graph']/@optionalLayers[name='Actors']/@toolSections.0/@ownedTools[name='Works%20on']"/>
       </optionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="User Stories Table" titleExpression="User Stories Table" initialisation="true" domainClass="graal.System">
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="User Stories Table" titleExpression="User Stories Table" domainClass="graal.System">
       <ownedLineMappings name="UST_UserStory" domainClass="graal.UserStory" semanticCandidatesExpression="&lt;%userStories%>"/>
       <ownedCreateLine name="CRE_UserStory" label="User story" mapping="//@ownedViewpoints[name='Graal%20Methodology']/@ownedRepresentations[name='User%20Stories%20Table']/@ownedLineMappings[name='UST_UserStory']">
         <variables name="root" documentation="The semantic element of the table."/>

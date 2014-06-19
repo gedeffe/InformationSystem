@@ -7,10 +7,6 @@
 <%@ taglib
         uri="http://struts.apache.org/tags-logic"
         prefix="logic" %>
-<%@ taglib 
-        uri="http://displaytag.sf.net" 
-        prefix="display" %>
-
 
 <logic:messagesPresent>
    <bean:message key="errors.header"/>
@@ -32,9 +28,24 @@
 	
 	<table>
 		<tr>
+			<td><label for="tags"><bean:message key="ManageTags.tags"/></label> :</td>
+			<td><logic:iterate name="ManageTagsForm" id="tags_id" property="tags" /></td>
+		</tr>
+		<tr>
+			<td><label for="hidden"><bean:message key="ManageTags.hidden"/></label> :</td>
+			<td><html:text property="hidden" /></td>
+		</tr>
+		<tr>
 			<td>
 				<html:link action="/manage/managetags?event=unspecified">
-					<bean:message key="ManageTags.remove"/>
+					<bean:message key="ManageTags.create"/>
+				</html:link>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<html:link action="/manage/managetags?event=unspecified">
+					<bean:message key="ManageTags.update"/>
 				</html:link>
 			</td>
 		</tr>
@@ -53,26 +64,11 @@
 			</td>
 		</tr>
 		<tr>
-			<td><label for="tags"><bean:message key="ManageTags.tags"/></label> :</td>
-			<td><logic:iterate name="ManageTagsForm" id="tags_id" property="tags" /></td>
-		</tr>
-		<tr>
 			<td>
 				<html:link action="/manage/managetags?event=unspecified">
-					<bean:message key="ManageTags.create"/>
+					<bean:message key="ManageTags.remove"/>
 				</html:link>
 			</td>
-		</tr>
-		<tr>
-			<td>
-				<html:link action="/manage/managetags?event=unspecified">
-					<bean:message key="ManageTags.update"/>
-				</html:link>
-			</td>
-		</tr>
-		<tr>
-			<td><label for="hidden"><bean:message key="ManageTags.hidden"/></label> :</td>
-			<td><html:text property="hidden" /></td>
 		</tr>
 	</table>
 </fieldset>

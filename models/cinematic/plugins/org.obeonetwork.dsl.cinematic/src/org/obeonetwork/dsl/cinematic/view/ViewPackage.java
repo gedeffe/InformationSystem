@@ -120,6 +120,33 @@ public interface ViewPackage extends EPackage {
 	int ABSTRACT_VIEW_ELEMENT__BINDING_REGISTRIES = CinematicPackage.NAMED_ELEMENT__BINDING_REGISTRIES;
 
 	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_VIEW_ELEMENT__VERSION = CinematicPackage.NAMED_ELEMENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_VIEW_ELEMENT__CREATED_ON = CinematicPackage.NAMED_ELEMENT__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_VIEW_ELEMENT__MODIFIED_ON = CinematicPackage.NAMED_ELEMENT__MODIFIED_ON;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -165,22 +192,13 @@ public interface ViewPackage extends EPackage {
 	int ABSTRACT_VIEW_ELEMENT__LABEL = CinematicPackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Data Bindings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_VIEW_ELEMENT__DATA_BINDINGS = CinematicPackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
 	 * The number of structural features of the '<em>Abstract View Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_VIEW_ELEMENT_FEATURE_COUNT = CinematicPackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int ABSTRACT_VIEW_ELEMENT_FEATURE_COUNT = CinematicPackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.obeonetwork.dsl.cinematic.view.impl.ViewContainerImpl <em>Container</em>}' class.
@@ -238,6 +256,33 @@ public interface ViewPackage extends EPackage {
 	int VIEW_CONTAINER__BINDING_REGISTRIES = ABSTRACT_VIEW_ELEMENT__BINDING_REGISTRIES;
 
 	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_CONTAINER__VERSION = ABSTRACT_VIEW_ELEMENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_CONTAINER__CREATED_ON = ABSTRACT_VIEW_ELEMENT__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_CONTAINER__MODIFIED_ON = ABSTRACT_VIEW_ELEMENT__MODIFIED_ON;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -281,15 +326,6 @@ public interface ViewPackage extends EPackage {
 	 * @ordered
 	 */
 	int VIEW_CONTAINER__LABEL = ABSTRACT_VIEW_ELEMENT__LABEL;
-
-	/**
-	 * The feature id for the '<em><b>Data Bindings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIEW_CONTAINER__DATA_BINDINGS = ABSTRACT_VIEW_ELEMENT__DATA_BINDINGS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Elements</b></em>' containment reference list.
@@ -392,6 +428,33 @@ public interface ViewPackage extends EPackage {
 	int VIEW_ELEMENT__BINDING_REGISTRIES = ABSTRACT_VIEW_ELEMENT__BINDING_REGISTRIES;
 
 	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_ELEMENT__VERSION = ABSTRACT_VIEW_ELEMENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_ELEMENT__CREATED_ON = ABSTRACT_VIEW_ELEMENT__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_ELEMENT__MODIFIED_ON = ABSTRACT_VIEW_ELEMENT__MODIFIED_ON;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -435,15 +498,6 @@ public interface ViewPackage extends EPackage {
 	 * @ordered
 	 */
 	int VIEW_ELEMENT__LABEL = ABSTRACT_VIEW_ELEMENT__LABEL;
-
-	/**
-	 * The feature id for the '<em><b>Data Bindings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIEW_ELEMENT__DATA_BINDINGS = ABSTRACT_VIEW_ELEMENT__DATA_BINDINGS;
 
 	/**
 	 * The feature id for the '<em><b>Required</b></em>' attribute.
@@ -528,6 +582,33 @@ public interface ViewPackage extends EPackage {
 	int VIEW_ACTION__BINDING_REGISTRIES = CinematicPackage.NAMED_ELEMENT__BINDING_REGISTRIES;
 
 	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_ACTION__VERSION = CinematicPackage.NAMED_ELEMENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_ACTION__CREATED_ON = CinematicPackage.NAMED_ELEMENT__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_ACTION__MODIFIED_ON = CinematicPackage.NAMED_ELEMENT__MODIFIED_ON;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -601,6 +682,33 @@ public interface ViewPackage extends EPackage {
 	int VIEW_EVENT__BINDING_REGISTRIES = CinematicPackage.EVENT__BINDING_REGISTRIES;
 
 	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_EVENT__VERSION = CinematicPackage.EVENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_EVENT__CREATED_ON = CinematicPackage.EVENT__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_EVENT__MODIFIED_ON = CinematicPackage.EVENT__MODIFIED_ON;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -628,363 +736,6 @@ public interface ViewPackage extends EPackage {
 	int VIEW_EVENT_FEATURE_COUNT = CinematicPackage.EVENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.obeonetwork.dsl.cinematic.view.impl.DataBindingImpl <em>Data Binding</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.obeonetwork.dsl.cinematic.view.impl.DataBindingImpl
-	 * @see org.obeonetwork.dsl.cinematic.view.impl.ViewPackageImpl#getDataBinding()
-	 * @generated
-	 */
-	int DATA_BINDING = 9;
-
-	/**
-	 * The feature id for the '<em><b>Metadatas</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_BINDING__METADATAS = CinematicPackage.CINEMATIC_ELEMENT__METADATAS;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_BINDING__DESCRIPTION = CinematicPackage.CINEMATIC_ELEMENT__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Keywords</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_BINDING__KEYWORDS = CinematicPackage.CINEMATIC_ELEMENT__KEYWORDS;
-
-	/**
-	 * The feature id for the '<em><b>Behaviours</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_BINDING__BEHAVIOURS = CinematicPackage.CINEMATIC_ELEMENT__BEHAVIOURS;
-
-	/**
-	 * The feature id for the '<em><b>Binding Registries</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_BINDING__BINDING_REGISTRIES = CinematicPackage.CINEMATIC_ELEMENT__BINDING_REGISTRIES;
-
-	/**
-	 * The number of structural features of the '<em>Data Binding</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_BINDING_FEATURE_COUNT = CinematicPackage.CINEMATIC_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.obeonetwork.dsl.cinematic.view.impl.EntityBindingImpl <em>Entity Binding</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.obeonetwork.dsl.cinematic.view.impl.EntityBindingImpl
-	 * @see org.obeonetwork.dsl.cinematic.view.impl.ViewPackageImpl#getEntityBinding()
-	 * @generated
-	 */
-	int ENTITY_BINDING = 5;
-
-	/**
-	 * The feature id for the '<em><b>Metadatas</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_BINDING__METADATAS = DATA_BINDING__METADATAS;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_BINDING__DESCRIPTION = DATA_BINDING__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Keywords</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_BINDING__KEYWORDS = DATA_BINDING__KEYWORDS;
-
-	/**
-	 * The feature id for the '<em><b>Behaviours</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_BINDING__BEHAVIOURS = DATA_BINDING__BEHAVIOURS;
-
-	/**
-	 * The feature id for the '<em><b>Binding Registries</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_BINDING__BINDING_REGISTRIES = DATA_BINDING__BINDING_REGISTRIES;
-
-	/**
-	 * The feature id for the '<em><b>Entity</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_BINDING__ENTITY = DATA_BINDING_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Entity Binding</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_BINDING_FEATURE_COUNT = DATA_BINDING_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.obeonetwork.dsl.cinematic.view.impl.EntityPropertyBindingImpl <em>Entity Property Binding</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.obeonetwork.dsl.cinematic.view.impl.EntityPropertyBindingImpl
-	 * @see org.obeonetwork.dsl.cinematic.view.impl.ViewPackageImpl#getEntityPropertyBinding()
-	 * @generated
-	 */
-	int ENTITY_PROPERTY_BINDING = 6;
-
-	/**
-	 * The feature id for the '<em><b>Metadatas</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_PROPERTY_BINDING__METADATAS = DATA_BINDING__METADATAS;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_PROPERTY_BINDING__DESCRIPTION = DATA_BINDING__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Keywords</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_PROPERTY_BINDING__KEYWORDS = DATA_BINDING__KEYWORDS;
-
-	/**
-	 * The feature id for the '<em><b>Behaviours</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_PROPERTY_BINDING__BEHAVIOURS = DATA_BINDING__BEHAVIOURS;
-
-	/**
-	 * The feature id for the '<em><b>Binding Registries</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_PROPERTY_BINDING__BINDING_REGISTRIES = DATA_BINDING__BINDING_REGISTRIES;
-
-	/**
-	 * The feature id for the '<em><b>Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_PROPERTY_BINDING__PROPERTY = DATA_BINDING_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Entity Property Binding</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_PROPERTY_BINDING_FEATURE_COUNT = DATA_BINDING_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.obeonetwork.dsl.cinematic.view.impl.DTOPropertyBindingImpl <em>DTO Property Binding</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.obeonetwork.dsl.cinematic.view.impl.DTOPropertyBindingImpl
-	 * @see org.obeonetwork.dsl.cinematic.view.impl.ViewPackageImpl#getDTOPropertyBinding()
-	 * @generated
-	 */
-	int DTO_PROPERTY_BINDING = 7;
-
-	/**
-	 * The feature id for the '<em><b>Metadatas</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DTO_PROPERTY_BINDING__METADATAS = DATA_BINDING__METADATAS;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DTO_PROPERTY_BINDING__DESCRIPTION = DATA_BINDING__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Keywords</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DTO_PROPERTY_BINDING__KEYWORDS = DATA_BINDING__KEYWORDS;
-
-	/**
-	 * The feature id for the '<em><b>Behaviours</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DTO_PROPERTY_BINDING__BEHAVIOURS = DATA_BINDING__BEHAVIOURS;
-
-	/**
-	 * The feature id for the '<em><b>Binding Registries</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DTO_PROPERTY_BINDING__BINDING_REGISTRIES = DATA_BINDING__BINDING_REGISTRIES;
-
-	/**
-	 * The feature id for the '<em><b>Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DTO_PROPERTY_BINDING__PROPERTY = DATA_BINDING_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>DTO Property Binding</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DTO_PROPERTY_BINDING_FEATURE_COUNT = DATA_BINDING_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.obeonetwork.dsl.cinematic.view.impl.DTOBindingImpl <em>DTO Binding</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.obeonetwork.dsl.cinematic.view.impl.DTOBindingImpl
-	 * @see org.obeonetwork.dsl.cinematic.view.impl.ViewPackageImpl#getDTOBinding()
-	 * @generated
-	 */
-	int DTO_BINDING = 8;
-
-	/**
-	 * The feature id for the '<em><b>Metadatas</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DTO_BINDING__METADATAS = DATA_BINDING__METADATAS;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DTO_BINDING__DESCRIPTION = DATA_BINDING__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Keywords</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DTO_BINDING__KEYWORDS = DATA_BINDING__KEYWORDS;
-
-	/**
-	 * The feature id for the '<em><b>Behaviours</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DTO_BINDING__BEHAVIOURS = DATA_BINDING__BEHAVIOURS;
-
-	/**
-	 * The feature id for the '<em><b>Binding Registries</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DTO_BINDING__BINDING_REGISTRIES = DATA_BINDING__BINDING_REGISTRIES;
-
-	/**
-	 * The feature id for the '<em><b>Dto</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DTO_BINDING__DTO = DATA_BINDING_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>DTO Binding</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DTO_BINDING_FEATURE_COUNT = DATA_BINDING_FEATURE_COUNT + 1;
-
-
-	/**
 	 * The meta object id for the '{@link org.obeonetwork.dsl.cinematic.view.impl.ViewContainerReferenceImpl <em>Container Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -992,7 +743,7 @@ public interface ViewPackage extends EPackage {
 	 * @see org.obeonetwork.dsl.cinematic.view.impl.ViewPackageImpl#getViewContainerReference()
 	 * @generated
 	 */
-	int VIEW_CONTAINER_REFERENCE = 10;
+	int VIEW_CONTAINER_REFERENCE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Metadatas</b></em>' containment reference.
@@ -1040,6 +791,33 @@ public interface ViewPackage extends EPackage {
 	int VIEW_CONTAINER_REFERENCE__BINDING_REGISTRIES = ABSTRACT_VIEW_ELEMENT__BINDING_REGISTRIES;
 
 	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_CONTAINER_REFERENCE__VERSION = ABSTRACT_VIEW_ELEMENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_CONTAINER_REFERENCE__CREATED_ON = ABSTRACT_VIEW_ELEMENT__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_CONTAINER_REFERENCE__MODIFIED_ON = ABSTRACT_VIEW_ELEMENT__MODIFIED_ON;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1083,15 +861,6 @@ public interface ViewPackage extends EPackage {
 	 * @ordered
 	 */
 	int VIEW_CONTAINER_REFERENCE__LABEL = ABSTRACT_VIEW_ELEMENT__LABEL;
-
-	/**
-	 * The feature id for the '<em><b>Data Bindings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIEW_CONTAINER_REFERENCE__DATA_BINDINGS = ABSTRACT_VIEW_ELEMENT__DATA_BINDINGS;
 
 	/**
 	 * The feature id for the '<em><b>View Container</b></em>' reference.
@@ -1165,17 +934,6 @@ public interface ViewPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAbstractViewElement_Label();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.obeonetwork.dsl.cinematic.view.AbstractViewElement#getDataBindings <em>Data Bindings</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Data Bindings</em>'.
-	 * @see org.obeonetwork.dsl.cinematic.view.AbstractViewElement#getDataBindings()
-	 * @see #getAbstractViewElement()
-	 * @generated
-	 */
-	EReference getAbstractViewElement_DataBindings();
 
 	/**
 	 * Returns the meta object for class '{@link org.obeonetwork.dsl.cinematic.view.ViewContainer <em>Container</em>}'.
@@ -1295,100 +1053,6 @@ public interface ViewPackage extends EPackage {
 	EReference getViewEvent_Type();
 
 	/**
-	 * Returns the meta object for class '{@link org.obeonetwork.dsl.cinematic.view.EntityBinding <em>Entity Binding</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Entity Binding</em>'.
-	 * @see org.obeonetwork.dsl.cinematic.view.EntityBinding
-	 * @generated
-	 */
-	EClass getEntityBinding();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.obeonetwork.dsl.cinematic.view.EntityBinding#getEntity <em>Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Entity</em>'.
-	 * @see org.obeonetwork.dsl.cinematic.view.EntityBinding#getEntity()
-	 * @see #getEntityBinding()
-	 * @generated
-	 */
-	EReference getEntityBinding_Entity();
-
-	/**
-	 * Returns the meta object for class '{@link org.obeonetwork.dsl.cinematic.view.EntityPropertyBinding <em>Entity Property Binding</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Entity Property Binding</em>'.
-	 * @see org.obeonetwork.dsl.cinematic.view.EntityPropertyBinding
-	 * @generated
-	 */
-	EClass getEntityPropertyBinding();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.obeonetwork.dsl.cinematic.view.EntityPropertyBinding#getProperty <em>Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Property</em>'.
-	 * @see org.obeonetwork.dsl.cinematic.view.EntityPropertyBinding#getProperty()
-	 * @see #getEntityPropertyBinding()
-	 * @generated
-	 */
-	EReference getEntityPropertyBinding_Property();
-
-	/**
-	 * Returns the meta object for class '{@link org.obeonetwork.dsl.cinematic.view.DTOPropertyBinding <em>DTO Property Binding</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>DTO Property Binding</em>'.
-	 * @see org.obeonetwork.dsl.cinematic.view.DTOPropertyBinding
-	 * @generated
-	 */
-	EClass getDTOPropertyBinding();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.obeonetwork.dsl.cinematic.view.DTOPropertyBinding#getProperty <em>Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Property</em>'.
-	 * @see org.obeonetwork.dsl.cinematic.view.DTOPropertyBinding#getProperty()
-	 * @see #getDTOPropertyBinding()
-	 * @generated
-	 */
-	EReference getDTOPropertyBinding_Property();
-
-	/**
-	 * Returns the meta object for class '{@link org.obeonetwork.dsl.cinematic.view.DTOBinding <em>DTO Binding</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>DTO Binding</em>'.
-	 * @see org.obeonetwork.dsl.cinematic.view.DTOBinding
-	 * @generated
-	 */
-	EClass getDTOBinding();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.obeonetwork.dsl.cinematic.view.DTOBinding#getDto <em>Dto</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Dto</em>'.
-	 * @see org.obeonetwork.dsl.cinematic.view.DTOBinding#getDto()
-	 * @see #getDTOBinding()
-	 * @generated
-	 */
-	EReference getDTOBinding_Dto();
-
-	/**
-	 * Returns the meta object for class '{@link org.obeonetwork.dsl.cinematic.view.DataBinding <em>Data Binding</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data Binding</em>'.
-	 * @see org.obeonetwork.dsl.cinematic.view.DataBinding
-	 * @generated
-	 */
-	EClass getDataBinding();
-
-	/**
 	 * Returns the meta object for class '{@link org.obeonetwork.dsl.cinematic.view.ViewContainerReference <em>Container Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1472,14 +1136,6 @@ public interface ViewPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ABSTRACT_VIEW_ELEMENT__LABEL = eINSTANCE.getAbstractViewElement_Label();
-
-		/**
-		 * The meta object literal for the '<em><b>Data Bindings</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ABSTRACT_VIEW_ELEMENT__DATA_BINDINGS = eINSTANCE.getAbstractViewElement_DataBindings();
 
 		/**
 		 * The meta object literal for the '{@link org.obeonetwork.dsl.cinematic.view.impl.ViewContainerImpl <em>Container</em>}' class.
@@ -1576,88 +1232,6 @@ public interface ViewPackage extends EPackage {
 		 * @generated
 		 */
 		EReference VIEW_EVENT__TYPE = eINSTANCE.getViewEvent_Type();
-
-		/**
-		 * The meta object literal for the '{@link org.obeonetwork.dsl.cinematic.view.impl.EntityBindingImpl <em>Entity Binding</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.obeonetwork.dsl.cinematic.view.impl.EntityBindingImpl
-		 * @see org.obeonetwork.dsl.cinematic.view.impl.ViewPackageImpl#getEntityBinding()
-		 * @generated
-		 */
-		EClass ENTITY_BINDING = eINSTANCE.getEntityBinding();
-
-		/**
-		 * The meta object literal for the '<em><b>Entity</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ENTITY_BINDING__ENTITY = eINSTANCE.getEntityBinding_Entity();
-
-		/**
-		 * The meta object literal for the '{@link org.obeonetwork.dsl.cinematic.view.impl.EntityPropertyBindingImpl <em>Entity Property Binding</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.obeonetwork.dsl.cinematic.view.impl.EntityPropertyBindingImpl
-		 * @see org.obeonetwork.dsl.cinematic.view.impl.ViewPackageImpl#getEntityPropertyBinding()
-		 * @generated
-		 */
-		EClass ENTITY_PROPERTY_BINDING = eINSTANCE.getEntityPropertyBinding();
-
-		/**
-		 * The meta object literal for the '<em><b>Property</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ENTITY_PROPERTY_BINDING__PROPERTY = eINSTANCE.getEntityPropertyBinding_Property();
-
-		/**
-		 * The meta object literal for the '{@link org.obeonetwork.dsl.cinematic.view.impl.DTOPropertyBindingImpl <em>DTO Property Binding</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.obeonetwork.dsl.cinematic.view.impl.DTOPropertyBindingImpl
-		 * @see org.obeonetwork.dsl.cinematic.view.impl.ViewPackageImpl#getDTOPropertyBinding()
-		 * @generated
-		 */
-		EClass DTO_PROPERTY_BINDING = eINSTANCE.getDTOPropertyBinding();
-
-		/**
-		 * The meta object literal for the '<em><b>Property</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DTO_PROPERTY_BINDING__PROPERTY = eINSTANCE.getDTOPropertyBinding_Property();
-
-		/**
-		 * The meta object literal for the '{@link org.obeonetwork.dsl.cinematic.view.impl.DTOBindingImpl <em>DTO Binding</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.obeonetwork.dsl.cinematic.view.impl.DTOBindingImpl
-		 * @see org.obeonetwork.dsl.cinematic.view.impl.ViewPackageImpl#getDTOBinding()
-		 * @generated
-		 */
-		EClass DTO_BINDING = eINSTANCE.getDTOBinding();
-
-		/**
-		 * The meta object literal for the '<em><b>Dto</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DTO_BINDING__DTO = eINSTANCE.getDTOBinding_Dto();
-
-		/**
-		 * The meta object literal for the '{@link org.obeonetwork.dsl.cinematic.view.impl.DataBindingImpl <em>Data Binding</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.obeonetwork.dsl.cinematic.view.impl.DataBindingImpl
-		 * @see org.obeonetwork.dsl.cinematic.view.impl.ViewPackageImpl#getDataBinding()
-		 * @generated
-		 */
-		EClass DATA_BINDING = eINSTANCE.getDataBinding();
 
 		/**
 		 * The meta object literal for the '{@link org.obeonetwork.dsl.cinematic.view.impl.ViewContainerReferenceImpl <em>Container Reference</em>}' class.

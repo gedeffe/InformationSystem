@@ -4,13 +4,11 @@ package org.obeonetwork.dsl.entity.gen.java.common.tests.block1;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
-import org.obeonetwork.dsl.entity.gen.java.common.tests.block1.Entity1;
 
 // End of user code for imports
 
 /**
- * 
- */
+ *  */
 public class Entity4 extends Entity1 implements Serializable {
 
 	/**
@@ -22,7 +20,6 @@ public class Entity4 extends Entity1 implements Serializable {
      * Constant representing the name of the automatic primary key field.
      */
 	public static final String PROP_ID = "id";
-	
 	/**
      * Constant representing the name of the field reference3.
      */

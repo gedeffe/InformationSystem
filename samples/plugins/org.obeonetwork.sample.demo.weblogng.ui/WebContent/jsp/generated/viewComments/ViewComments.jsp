@@ -7,10 +7,6 @@
 <%@ taglib
         uri="http://struts.apache.org/tags-logic"
         prefix="logic" %>
-<%@ taglib 
-        uri="http://displaytag.sf.net" 
-        prefix="display" %>
-
 
 <logic:messagesPresent>
    <bean:message key="errors.header"/>
@@ -32,6 +28,14 @@
 	
 	<table>
 		<tr>
+			<td><label for="comments"><bean:message key="ViewComments.comments"/></label> :</td>
+			<td><logic:iterate name="ViewCommentsForm" id="comments_id" property="comments" /></td>
+		</tr>
+		<tr>
+			<td><label for="name"><bean:message key="ViewComments.name"/></label> :</td>
+			<td><html:text property="name" /></td>
+		</tr>
+		<tr>
 			<td><label for="email"><bean:message key="ViewComments.email"/></label> :</td>
 			<td><html:text property="email" /></td>
 		</tr>
@@ -42,14 +46,6 @@
 		<tr>
 			<td><label for="content"><bean:message key="ViewComments.content"/></label> :</td>
 			<td><html:textarea property="content" /></td>
-		</tr>
-		<tr>
-			<td><label for="name"><bean:message key="ViewComments.name"/></label> :</td>
-			<td><html:text property="name" /></td>
-		</tr>
-		<tr>
-			<td><label for="comments"><bean:message key="ViewComments.comments"/></label> :</td>
-			<td><logic:iterate name="ViewCommentsForm" id="comments_id" property="comments" /></td>
 		</tr>
 		<tr>
 			<td><label for="log"><bean:message key="ViewComments.log"/></label> :</td>

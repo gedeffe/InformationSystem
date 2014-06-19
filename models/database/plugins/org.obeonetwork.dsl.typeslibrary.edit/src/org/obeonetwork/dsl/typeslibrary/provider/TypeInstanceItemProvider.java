@@ -17,7 +17,9 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -83,14 +85,8 @@ public class TypeInstanceItemProvider
 		}
 		return itemPropertyDescriptors;
 	}
-
-	/**
-	 * This adds a property descriptor for the Native Type feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addNativeTypePropertyDescriptor(Object object) {
+	
+	protected Collection<NativeTypesLibrary> getUsedNativeTypesLibraries(Object object) {
 		final Collection<NativeTypesLibrary> nativeTypesLibraries = new ArrayList<NativeTypesLibrary>();
 		if (object instanceof EObject) {
 			EObject eObject = (EObject)object;
@@ -103,32 +99,33 @@ public class TypeInstanceItemProvider
 				}
 			}
 		}
+		return nativeTypesLibraries;
+	}
+
+	/**
+	 * This adds a property descriptor for the Native Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addNativeTypePropertyDescriptor(Object object) {
+		final Collection<NativeTypesLibrary> nativeTypesLibraries = getUsedNativeTypesLibraries(object);
 		// There is no restriction on choices, let's use an unmodified PropertyDescriptor
 		if (nativeTypesLibraries.isEmpty() == false) {
-			itemPropertyDescriptors.add
-				(new ItemPropertyDescriptor
-					(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-					 getResourceLocator(),
-					 getString("_UI_TypeInstance_nativeType_feature"),
-					 getString("_UI_PropertyDescriptor_description", "_UI_TypeInstance_nativeType_feature", "_UI_TypeInstance_type"),
-					 TypesLibraryPackage.Literals.TYPE_INSTANCE__NATIVE_TYPE,
-					 true,
-					 false,
-					 true,
-					 null,
-					 null,
-					 null) {
-					@Override
-					public Collection<?> getChoiceOfValues(Object object) {
-						// We propose the types referenced by the used libraries
-						Collection<NativeType> suggestedTypes = new ArrayList<NativeType>();
-						
-						for (NativeTypesLibrary nativeTypesLibrary : nativeTypesLibraries) {
-							suggestedTypes.addAll(nativeTypesLibrary.getNativeTypes());
-						}
-						return suggestedTypes;
-				}
-			});
+			itemPropertyDescriptors.add(
+					new NativeTypeItemPropertyDescriptor(
+							((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+							getResourceLocator(),
+							getString("_UI_TypeInstance_nativeType_feature"),
+							getString("_UI_PropertyDescriptor_description", "_UI_TypeInstance_nativeType_feature", "_UI_TypeInstance_type"),
+							TypesLibraryPackage.Literals.TYPE_INSTANCE__NATIVE_TYPE,
+							true,
+							false,
+							true,
+							null,
+							null,
+							null)
+					);
 		} else {
 			itemPropertyDescriptors.add
 				(createItemPropertyDescriptor
@@ -144,6 +141,30 @@ public class TypeInstanceItemProvider
 					 null,
 					 null));
 		}
+	}
+	
+	private class NativeTypeItemPropertyDescriptor extends ItemPropertyDescriptor {
+
+		public NativeTypeItemPropertyDescriptor(AdapterFactory adapterFactory,
+				ResourceLocator resourceLocator, String displayName,
+				String description, EStructuralFeature feature,
+				boolean isSettable, boolean multiLine, boolean sortChoices,
+				Object staticImage, String category, String[] filterFlags) {
+			super(adapterFactory, resourceLocator, displayName, description, feature,
+					isSettable, multiLine, sortChoices, staticImage, category, filterFlags);
+		}
+		@Override
+		public Collection<?> getChoiceOfValues(Object object) {
+			Collection<NativeTypesLibrary> nativeTypesLibraries = getUsedNativeTypesLibraries(object);
+			
+			// We propose the types referenced by the used libraries
+			Collection<NativeType> suggestedTypes = new ArrayList<NativeType>();
+			
+			for (NativeTypesLibrary nativeTypesLibrary : nativeTypesLibraries) {
+				suggestedTypes.addAll(nativeTypesLibrary.getNativeTypes());
+			}
+			return suggestedTypes;
+		}		
 	}
 	
 	/**
@@ -177,7 +198,7 @@ public class TypeInstanceItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -199,7 +220,7 @@ public class TypeInstanceItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -258,6 +279,8 @@ public class TypeInstanceItemProvider
 		TypeInstance typeInstance = (TypeInstance)object;
 		NativeType nativeType = typeInstance.getNativeType();
 		String label = null;
+		String length = "";
+		String precision = "";
 		if (nativeType != null) {
 			label = nativeType.getName();
 			if (label == null || label.length() == 0) {
@@ -265,14 +288,23 @@ public class TypeInstanceItemProvider
 			}
 			switch(nativeType.getSpec()) {
 			case LENGTH :
+				if (typeInstance.getLength() != null) {
+					length = String.valueOf(typeInstance.getLength());
+				}
 				if (!label.contains("%n")) {
 					label = label + "(%n)";
 				}
 				label = replacePlaceholders(label,
 						new String[]{"%n"},
-						new String[]{String.valueOf(typeInstance.getLength())});
+						new String[]{length});
 				break;
 			case LENGTH_AND_PRECISION :
+				if (typeInstance.getLength() != null) {
+					length = String.valueOf(typeInstance.getLength());
+				}
+				if (typeInstance.getPrecision() != null) {
+					precision = String.valueOf(typeInstance.getPrecision());
+				}
 				if (!label.contains("%n") && !label.contains("%p")) {
 					label = label + "(%n, %p)";
 				} else if (!label.contains("%n")) {
@@ -282,7 +314,7 @@ public class TypeInstanceItemProvider
 				}
 				label = replacePlaceholders(label,
 						new String[]{"%n", "%p"},
-						new String[]{String.valueOf(typeInstance.getLength()), String.valueOf(typeInstance.getPrecision())});
+						new String[]{length, precision});
 				break;
 			case ENUM :
 				label += "(";

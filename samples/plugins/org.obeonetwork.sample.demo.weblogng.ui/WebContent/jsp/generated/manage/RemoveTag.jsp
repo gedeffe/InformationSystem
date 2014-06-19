@@ -7,10 +7,6 @@
 <%@ taglib
         uri="http://struts.apache.org/tags-logic"
         prefix="logic" %>
-<%@ taglib 
-        uri="http://displaytag.sf.net" 
-        prefix="display" %>
-
 
 <logic:messagesPresent>
    <bean:message key="errors.header"/>
@@ -36,19 +32,19 @@
 			<td><logic:iterate name="RemoveTagForm" id="tagDescription_id" property="tagDescription" /></td>
 		</tr>
 		<tr>
-			<td>
-				<html:link action="/manage/removetag?event=unspecified">
-					<bean:message key="RemoveTag.select"/>
-				</html:link>
-			</td>
+			<td><label for="logs"><bean:message key="RemoveTag.logs"/></label> :</td>
+			<td><logic:iterate name="RemoveTagForm" id="logs_id" property="logs" /></td>
 		</tr>
 		<tr>
 			<td><label for="hidden"><bean:message key="RemoveTag.hidden"/></label> :</td>
 			<td><html:text property="hidden" /></td>
 		</tr>
 		<tr>
-			<td><label for="logs"><bean:message key="RemoveTag.logs"/></label> :</td>
-			<td><logic:iterate name="RemoveTagForm" id="logs_id" property="logs" /></td>
+			<td>
+				<html:link action="/manage/removetag?event=unspecified">
+					<bean:message key="RemoveTag.select"/>
+				</html:link>
+			</td>
 		</tr>
 	</table>
 </fieldset>

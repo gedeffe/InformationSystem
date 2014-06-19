@@ -8,7 +8,6 @@
         uri="http://struts.apache.org/tags-logic"
         prefix="logic" %>
 
-
 <logic:messagesPresent>
    <bean:message key="errors.header"/>
    <ul>
@@ -31,14 +30,14 @@
 		<tr>
 			<td>
 				<html:link action="/manage/manager?event=unspecified">
-					<bean:message key="Manager.screenManageTags"/>
+					<bean:message key="Manager.screenDeleteUser"/>
 				</html:link>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<html:link action="/manage/manager?event=unspecified">
-					<bean:message key="Manager.screenDeleteUser"/>
+					<bean:message key="Manager.screenManageComments"/>
 				</html:link>
 			</td>
 		</tr>
@@ -52,7 +51,7 @@
 		<tr>
 			<td>
 				<html:link action="/manage/manager?event=unspecified">
-					<bean:message key="Manager.screenManageComments"/>
+					<bean:message key="Manager.screenManageTags"/>
 				</html:link>
 			</td>
 		</tr>

@@ -7,10 +7,6 @@
 <%@ taglib
         uri="http://struts.apache.org/tags-logic"
         prefix="logic" %>
-<%@ taglib 
-        uri="http://displaytag.sf.net" 
-        prefix="display" %>
-
 
 <logic:messagesPresent>
    <bean:message key="errors.header"/>
@@ -32,11 +28,12 @@
 	
 	<table>
 		<tr>
-			<td>
-				<html:link action="/manage/managecategories?event=unspecified">
-					<bean:message key="ManageCategories.update"/>
-				</html:link>
-			</td>
+			<td><label for="categories"><bean:message key="ManageCategories.categories"/></label> :</td>
+			<td><logic:iterate name="ManageCategoriesForm" id="categories_id" property="categories" /></td>
+		</tr>
+		<tr>
+			<td><label for="hidden"><bean:message key="ManageCategories.hidden"/></label> :</td>
+			<td><html:text property="hidden" /></td>
 		</tr>
 		<tr>
 			<td>
@@ -48,22 +45,21 @@
 		<tr>
 			<td>
 				<html:link action="/manage/managecategories?event=unspecified">
-					<bean:message key="ManageCategories.add"/>
+					<bean:message key="ManageCategories.update"/>
 				</html:link>
 			</td>
-		</tr>
-		<tr>
-			<td><label for="hidden"><bean:message key="ManageCategories.hidden"/></label> :</td>
-			<td><html:text property="hidden" /></td>
-		</tr>
-		<tr>
-			<td><label for="categories"><bean:message key="ManageCategories.categories"/></label> :</td>
-			<td><logic:iterate name="ManageCategoriesForm" id="categories_id" property="categories" /></td>
 		</tr>
 		<tr>
 			<td>
 				<html:link action="/manage/managecategories?event=unspecified">
 					<bean:message key="ManageCategories.delete"/>
+				</html:link>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<html:link action="/manage/managecategories?event=unspecified">
+					<bean:message key="ManageCategories.add"/>
 				</html:link>
 			</td>
 		</tr>
