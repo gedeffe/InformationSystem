@@ -5,8 +5,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
-abstract public class AbstractDatabasePropertiesEditionSection extends
-		PropertiesEditionSection {
+/**
+ * The class PropertiesEditionSection has disappeared in EEF runtime ...
+ */
+abstract public class AbstractDatabasePropertiesEditionSection /*
+																 * extends
+																 * PropertiesEditionSection
+																 */{
 
 	private AdapterFactory adapterFactory;
 
