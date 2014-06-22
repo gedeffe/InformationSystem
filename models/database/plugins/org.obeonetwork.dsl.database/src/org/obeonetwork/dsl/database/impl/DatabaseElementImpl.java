@@ -103,14 +103,15 @@ public abstract class DatabaseElementImpl extends CDOObjectImpl implements Datab
 	 * @generated NOT
 	 */
 	public String getID() {
-		eContainer.eURIFragmentSegment(eContainingFeature(), this);
+		// TODO should we use this.cdoID() ? 
+		this.eBasicInternalContainer().eURIFragmentSegment(eContainingFeature(), this);
 		String id = null;
 		String ownId = "";
 		if (eContainer() != null) {
 			if (eContainer() instanceof DatabaseElement) {
 				id = ((DatabaseElement)eContainer()).getID();				
 			}
-			ownId = eContainer.eURIFragmentSegment(eContainingFeature(), this);
+			ownId = this.eBasicInternalContainer().eURIFragmentSegment(eContainingFeature(), this);
 		}
 		if (id != null) {
 			id += "::" + ownId;
