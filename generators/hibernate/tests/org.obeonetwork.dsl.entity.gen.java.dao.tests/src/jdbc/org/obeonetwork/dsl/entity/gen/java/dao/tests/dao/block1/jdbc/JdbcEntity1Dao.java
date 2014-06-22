@@ -94,7 +94,7 @@ public class JdbcEntity1Dao implements IEntity1Dao {
 
 	// End of user code
 
-	protected Collection createList(ResultSet rs) throws DaoException {
+	protected Collection createList(ResultSet rs) throws DaoException, SQLException {
 		Collection result = new ArrayList();
 		Entity1 entity1 = null;
 		while (rs.next()) {
@@ -105,7 +105,7 @@ public class JdbcEntity1Dao implements IEntity1Dao {
 			entity1.setAtttribute3( rs.getDouble(ATTTRIBUTE3) );
 			entity1.setAtttribute4( rs.getString(ATTTRIBUTE4) );
 			entity1.setAtttribute5( rs.getFloat(ATTTRIBUTE5) );
-			entity1.setAtttribute6( rs.getInteger(ATTTRIBUTE6) );
+			entity1.setAtttribute6( rs.getInt(ATTTRIBUTE6) );
 			entity1.setAtttribute7( rs.getString(ATTTRIBUTE7) );
 
 			result.add(entity1);
@@ -126,7 +126,7 @@ public class JdbcEntity1Dao implements IEntity1Dao {
 			// Start of user code create
 			statement.setBoolean(3, element.getAttribute1());
 			statement.setDate(4, new Date(element.getAtttribute2().getTime()));
-			statement.setString(5, element.getAtttribute3());			
+			statement.setDouble(5, element.getAtttribute3());			
 			statement.setString(6, element.getAtttribute4());			
 			statement.setDouble(7, element.getAtttribute5());
 			statement.setInt(8, element.getAtttribute6());
@@ -157,7 +157,7 @@ public class JdbcEntity1Dao implements IEntity1Dao {
 			// Start of user code update
 			statement.setBoolean(2, element.getAttribute1());
 			statement.setDate(3, new Date(element.getAtttribute2().getTime()));
-			statement.setString(4, element.getAtttribute3());			
+			statement.setDouble(4, element.getAtttribute3());			
 			statement.setString(5, element.getAtttribute4());			
 			statement.setDouble(6, element.getAtttribute5());
 			statement.setInt(7, element.getAtttribute6());
@@ -244,7 +244,7 @@ public class JdbcEntity1Dao implements IEntity1Dao {
 				result.setAtttribute3( rs.getDouble(ATTTRIBUTE3) );
 				result.setAtttribute4( rs.getString(ATTTRIBUTE4) );
 				result.setAtttribute5( rs.getFloat(ATTTRIBUTE5) );
-				result.setAtttribute6( rs.getInteger(ATTTRIBUTE6) );
+				result.setAtttribute6( rs.getInt(ATTTRIBUTE6) );
 				result.setAtttribute7( rs.getString(ATTTRIBUTE7) );
 			}
 			return result;
@@ -326,8 +326,7 @@ public class JdbcEntity1Dao implements IEntity1Dao {
 		try {
 			cnx = TestsConnectionUtils.getInstance().getConnection();
 			statement = cnx.prepareStatement(FIND_BY_ATTTRIBUTE3);
-			statement.setString
-			(1,atttribute3);
+			statement.setDouble(1,atttribute3);
 			rs = statement.executeQuery();
 
 			Collection result = createList(rs);

@@ -59,7 +59,7 @@ public class JdbcEntity6Dao implements IEntity6Dao {
 	
 	// End of user code
 
-	protected Collection createList(ResultSet rs) throws DaoException {
+	protected Collection createList(ResultSet rs) throws DaoException, SQLException {
 		Collection result = new ArrayList();
 		Entity6 entity6 = null;
 		while (rs.next()) {

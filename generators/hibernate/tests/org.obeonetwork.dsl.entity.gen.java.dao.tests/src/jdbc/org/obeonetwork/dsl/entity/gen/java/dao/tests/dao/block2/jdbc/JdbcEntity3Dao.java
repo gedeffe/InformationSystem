@@ -58,7 +58,7 @@ public class JdbcEntity3Dao implements IEntity3Dao {
 	
 	// End of user code
 
-	protected Collection createList(ResultSet rs) throws DaoException {
+	protected Collection createList(ResultSet rs) throws DaoException, SQLException {
 		Collection result = new ArrayList();
 		Entity3 entity3 = null;
 		while (rs.next()) {

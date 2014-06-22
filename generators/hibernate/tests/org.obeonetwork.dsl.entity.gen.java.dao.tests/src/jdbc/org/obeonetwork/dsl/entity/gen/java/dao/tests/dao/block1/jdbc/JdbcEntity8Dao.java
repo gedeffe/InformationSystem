@@ -64,7 +64,7 @@ public class JdbcEntity8Dao implements IEntity8Dao {
 	
 	// End of user code
 
-	protected Collection createList(ResultSet rs) throws DaoException {
+	protected Collection createList(ResultSet rs) throws DaoException, SQLException {
 		Collection result = new ArrayList();
 		Entity8 entity8 = null;
 		while (rs.next()) {
