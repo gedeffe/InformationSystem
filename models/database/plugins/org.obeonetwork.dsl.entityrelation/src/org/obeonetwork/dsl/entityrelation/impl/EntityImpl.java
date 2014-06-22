@@ -40,6 +40,34 @@ import org.obeonetwork.dsl.entityrelation.Identifier;
  */
 public class EntityImpl extends NamedElementImpl implements Entity {
 	/**
+	 * The cached value of the '{@link #getAttributes() <em>Attributes</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Attribute> attributes;
+	/**
+	 * The cached value of the '{@link #getIdentifiers() <em>Identifiers</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Identifier> identifiers;
+	/**
+	 * The cached value of the '{@link #getPrimaryIdentifier() <em>Primary Identifier</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPrimaryIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Identifier primaryIdentifier;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -65,7 +93,10 @@ public class EntityImpl extends NamedElementImpl implements Entity {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Attribute> getAttributes() {
-		return (EList<Attribute>)eDynamicGet(EntityRelationPackage.ENTITY__ATTRIBUTES, EntityRelationPackage.Literals.ENTITY__ATTRIBUTES, true, true);
+		if (attributes == null) {
+			attributes = new EObjectContainmentWithInverseEList<Attribute>(Attribute.class, this, EntityRelationPackage.ENTITY__ATTRIBUTES, EntityRelationPackage.ATTRIBUTE__OWNER);
+		}
+		return attributes;
 	}
 
 	/**
@@ -75,7 +106,10 @@ public class EntityImpl extends NamedElementImpl implements Entity {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Identifier> getIdentifiers() {
-		return (EList<Identifier>)eDynamicGet(EntityRelationPackage.ENTITY__IDENTIFIERS, EntityRelationPackage.Literals.ENTITY__IDENTIFIERS, true, true);
+		if (identifiers == null) {
+			identifiers = new EObjectContainmentEList<Identifier>(Identifier.class, this, EntityRelationPackage.ENTITY__IDENTIFIERS);
+		}
+		return identifiers;
 	}
 
 	/**
@@ -84,7 +118,15 @@ public class EntityImpl extends NamedElementImpl implements Entity {
 	 * @generated
 	 */
 	public Identifier getPrimaryIdentifier() {
-		return (Identifier)eDynamicGet(EntityRelationPackage.ENTITY__PRIMARY_IDENTIFIER, EntityRelationPackage.Literals.ENTITY__PRIMARY_IDENTIFIER, true, true);
+		if (primaryIdentifier != null && primaryIdentifier.eIsProxy()) {
+			InternalEObject oldPrimaryIdentifier = (InternalEObject)primaryIdentifier;
+			primaryIdentifier = (Identifier)eResolveProxy(oldPrimaryIdentifier);
+			if (primaryIdentifier != oldPrimaryIdentifier) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityRelationPackage.ENTITY__PRIMARY_IDENTIFIER, oldPrimaryIdentifier, primaryIdentifier));
+			}
+		}
+		return primaryIdentifier;
 	}
 
 	/**
@@ -93,7 +135,7 @@ public class EntityImpl extends NamedElementImpl implements Entity {
 	 * @generated
 	 */
 	public Identifier basicGetPrimaryIdentifier() {
-		return (Identifier)eDynamicGet(EntityRelationPackage.ENTITY__PRIMARY_IDENTIFIER, EntityRelationPackage.Literals.ENTITY__PRIMARY_IDENTIFIER, false, true);
+		return primaryIdentifier;
 	}
 
 	/**
@@ -102,7 +144,10 @@ public class EntityImpl extends NamedElementImpl implements Entity {
 	 * @generated
 	 */
 	public void setPrimaryIdentifier(Identifier newPrimaryIdentifier) {
-		eDynamicSet(EntityRelationPackage.ENTITY__PRIMARY_IDENTIFIER, EntityRelationPackage.Literals.ENTITY__PRIMARY_IDENTIFIER, newPrimaryIdentifier);
+		Identifier oldPrimaryIdentifier = primaryIdentifier;
+		primaryIdentifier = newPrimaryIdentifier;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityRelationPackage.ENTITY__PRIMARY_IDENTIFIER, oldPrimaryIdentifier, primaryIdentifier));
 	}
 
 	/**
@@ -209,11 +254,11 @@ public class EntityImpl extends NamedElementImpl implements Entity {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EntityRelationPackage.ENTITY__ATTRIBUTES:
-				return !getAttributes().isEmpty();
+				return attributes != null && !attributes.isEmpty();
 			case EntityRelationPackage.ENTITY__IDENTIFIERS:
-				return !getIdentifiers().isEmpty();
+				return identifiers != null && !identifiers.isEmpty();
 			case EntityRelationPackage.ENTITY__PRIMARY_IDENTIFIER:
-				return basicGetPrimaryIdentifier() != null;
+				return primaryIdentifier != null;
 		}
 		return super.eIsSet(featureID);
 	}

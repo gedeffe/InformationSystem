@@ -41,7 +41,7 @@ public class EntityRelationFactoryImpl extends EFactoryImpl implements EntityRel
 	 */
 	public static EntityRelationFactory init() {
 		try {
-			EntityRelationFactory theEntityRelationFactory = (EntityRelationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.obeonetwork.org/dsl/entityrelation/1.0"); 
+			EntityRelationFactory theEntityRelationFactory = (EntityRelationFactory)EPackage.Registry.INSTANCE.getEFactory(EntityRelationPackage.eNS_URI);
 			if (theEntityRelationFactory != null) {
 				return theEntityRelationFactory;
 			}
@@ -70,12 +70,12 @@ public class EntityRelationFactoryImpl extends EFactoryImpl implements EntityRel
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case EntityRelationPackage.LOGICAL_MODEL: return (EObject)createLogicalModel();
-			case EntityRelationPackage.ENTITY: return (EObject)createEntity();
-			case EntityRelationPackage.RELATION: return (EObject)createRelation();
-			case EntityRelationPackage.RELATION_ELEMENT: return (EObject)createRelationElement();
-			case EntityRelationPackage.ATTRIBUTE: return (EObject)createAttribute();
-			case EntityRelationPackage.IDENTIFIER: return (EObject)createIdentifier();
+			case EntityRelationPackage.LOGICAL_MODEL: return createLogicalModel();
+			case EntityRelationPackage.ENTITY: return createEntity();
+			case EntityRelationPackage.RELATION: return createRelation();
+			case EntityRelationPackage.RELATION_ELEMENT: return createRelationElement();
+			case EntityRelationPackage.ATTRIBUTE: return createAttribute();
+			case EntityRelationPackage.IDENTIFIER: return createIdentifier();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

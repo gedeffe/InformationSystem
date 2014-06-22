@@ -40,6 +40,34 @@ import org.obeonetwork.dsl.typeslibrary.TypesLibraryUser;
  */
 public class LogicalModelImpl extends NamedElementImpl implements LogicalModel {
 	/**
+	 * The cached value of the '{@link #getUsedLibraries() <em>Used Libraries</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUsedLibraries()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TypesLibrary> usedLibraries;
+	/**
+	 * The cached value of the '{@link #getEntities() <em>Entities</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntities()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Entity> entities;
+	/**
+	 * The cached value of the '{@link #getRelations() <em>Relations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Relation> relations;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -65,7 +93,10 @@ public class LogicalModelImpl extends NamedElementImpl implements LogicalModel {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<TypesLibrary> getUsedLibraries() {
-		return (EList<TypesLibrary>)eDynamicGet(EntityRelationPackage.LOGICAL_MODEL__USED_LIBRARIES, TypesLibraryPackage.Literals.TYPES_LIBRARY_USER__USED_LIBRARIES, true, true);
+		if (usedLibraries == null) {
+			usedLibraries = new EObjectResolvingEList<TypesLibrary>(TypesLibrary.class, this, EntityRelationPackage.LOGICAL_MODEL__USED_LIBRARIES);
+		}
+		return usedLibraries;
 	}
 
 	/**
@@ -75,7 +106,10 @@ public class LogicalModelImpl extends NamedElementImpl implements LogicalModel {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Entity> getEntities() {
-		return (EList<Entity>)eDynamicGet(EntityRelationPackage.LOGICAL_MODEL__ENTITIES, EntityRelationPackage.Literals.LOGICAL_MODEL__ENTITIES, true, true);
+		if (entities == null) {
+			entities = new EObjectContainmentEList<Entity>(Entity.class, this, EntityRelationPackage.LOGICAL_MODEL__ENTITIES);
+		}
+		return entities;
 	}
 
 	/**
@@ -85,7 +119,10 @@ public class LogicalModelImpl extends NamedElementImpl implements LogicalModel {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Relation> getRelations() {
-		return (EList<Relation>)eDynamicGet(EntityRelationPackage.LOGICAL_MODEL__RELATIONS, EntityRelationPackage.Literals.LOGICAL_MODEL__RELATIONS, true, true);
+		if (relations == null) {
+			relations = new EObjectContainmentEList<Relation>(Relation.class, this, EntityRelationPackage.LOGICAL_MODEL__RELATIONS);
+		}
+		return relations;
 	}
 
 	/**
@@ -177,11 +214,11 @@ public class LogicalModelImpl extends NamedElementImpl implements LogicalModel {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EntityRelationPackage.LOGICAL_MODEL__USED_LIBRARIES:
-				return !getUsedLibraries().isEmpty();
+				return usedLibraries != null && !usedLibraries.isEmpty();
 			case EntityRelationPackage.LOGICAL_MODEL__ENTITIES:
-				return !getEntities().isEmpty();
+				return entities != null && !entities.isEmpty();
 			case EntityRelationPackage.LOGICAL_MODEL__RELATIONS:
-				return !getRelations().isEmpty();
+				return relations != null && !relations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

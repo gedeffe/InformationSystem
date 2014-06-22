@@ -14,7 +14,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
@@ -29,99 +31,116 @@ import org.obeonetwork.dsl.entityrelation.Identifier;
 import org.obeonetwork.dsl.entityrelation.parts.EntityrelationViewsRepository;
 import org.obeonetwork.dsl.entityrelation.parts.IdentifierPropertiesEditionPart;
 
-
 // End of user code
 
 /**
  * 
  * 
  */
-public class IdentifierPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class IdentifierPropertiesEditionComponent extends
+		SinglePartPropertiesEditingComponent {
 
-	
 	public static String IDENTIFIER_PART = "Identifier"; //$NON-NLS-1$
 
-	
 	/**
 	 * Settings for attributes ReferencesTable
 	 */
 	private ReferencesTableSettings attributesSettings;
-	
-	
+
 	/**
 	 * Default constructor
 	 * 
 	 */
-	public IdentifierPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject identifier, String editing_mode) {
+	public IdentifierPropertiesEditionComponent(
+			final PropertiesEditingContext editingContext,
+			final EObject identifier, final String editing_mode) {
 		super(editingContext, identifier, editing_mode);
-		parts = new String[] { IDENTIFIER_PART };
-		repositoryKey = EntityrelationViewsRepository.class;
-		partKey = EntityrelationViewsRepository.Identifier.class;
+		this.parts = new String[] { IDENTIFIER_PART };
+		this.repositoryKey = EntityrelationViewsRepository.class;
+		this.partKey = EntityrelationViewsRepository.Identifier.class;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
+	 *      int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			final Identifier identifier = (Identifier)elt;
-			final IdentifierPropertiesEditionPart identifierPart = (IdentifierPropertiesEditionPart)editingPart;
+	@Override
+	public void initPart(final Object key, final int kind, final EObject elt,
+			final ResourceSet allResource) {
+		this.setInitializing(true);
+		if ((this.editingPart != null) && (key == this.partKey)) {
+			this.editingPart.setContext(elt, allResource);
+
+			final Identifier identifier = (Identifier) elt;
+			final IdentifierPropertiesEditionPart identifierPart = (IdentifierPropertiesEditionPart) this.editingPart;
 			// init values
-			if (identifier.getName() != null && isAccessible(EntityrelationViewsRepository.Identifier.Properties.name))
-				identifierPart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, identifier.getName()));
-			
-			if (isAccessible(EntityrelationViewsRepository.Identifier.Properties.attributes)) {
-				attributesSettings = new ReferencesTableSettings(identifier, EntityRelationPackage.eINSTANCE.getIdentifier_Attributes());
-				identifierPart.initAttributes(attributesSettings);
+			if (this.isAccessible(EntityrelationViewsRepository.Identifier.Properties.name)) {
+				identifierPart.setName(EEFConverterUtil.convertToString(
+						EcorePackage.Literals.ESTRING, identifier.getName()));
 			}
-			if (identifier.getComments() != null && isAccessible(EntityrelationViewsRepository.Identifier.Properties.comments))
-				identifierPart.setComments(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, identifier.getComments()));
-			// init filters
-			
-			if (isAccessible(EntityrelationViewsRepository.Identifier.Properties.attributes)) {
+
+			if (this.isAccessible(EntityrelationViewsRepository.Identifier.Properties.attributes)) {
+				this.attributesSettings = new ReferencesTableSettings(
+						identifier,
+						EntityRelationPackage.eINSTANCE
+								.getIdentifier_Attributes());
+				identifierPart.initAttributes(this.attributesSettings);
+			}
+			if (this.isAccessible(EntityrelationViewsRepository.Identifier.Properties.comments)) {
+				identifierPart
+						.setComments(EcoreUtil.convertToString(
+								EcorePackage.Literals.ESTRING,
+								identifier.getComments()));
+				// init filters
+			}
+
+			if (this.isAccessible(EntityrelationViewsRepository.Identifier.Properties.attributes)) {
 				identifierPart.addFilterToAttributes(new ViewerFilter() {
-				
+
 					/**
 					 * {@inheritDoc}
 					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
+					 *      java.lang.Object, java.lang.Object)
 					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!identifierPart.isContainedInAttributesTable((EObject)element));
-						return element instanceof String && element.equals("");
+					@Override
+					public boolean select(final Viewer viewer,
+							final Object parentElement, final Object element) {
+						if (element instanceof EObject) {
+							return (!identifierPart
+									.isContainedInAttributesTable((EObject) element));
+						}
+						return (element instanceof String)
+								&& element.equals("");
 					}
-				
+
 				});
-				identifierPart.addFilterToAttributes(new EObjectStrictFilter(EntityRelationPackage.Literals.ATTRIBUTE));
-				// Start of user code for additional businessfilters for attributes
+				identifierPart.addFilterToAttributes(new EObjectStrictFilter(
+						EntityRelationPackage.Literals.ATTRIBUTE));
+				// Start of user code for additional businessfilters for
+				// attributes
 				// End of user code
 			}
-			
+
 			// init values for referenced views
-			
+
 			// init filters for referenced views
-			
+
 		}
-		setInitializing(false);
+		this.setInitializing(false);
 	}
-
-
-
-
-
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	public EStructuralFeature associatedFeature(Object editorKey) {
+	@Override
+	public EStructuralFeature associatedFeature(final Object editorKey) {
 		if (editorKey == EntityrelationViewsRepository.Identifier.Properties.name) {
 			return EntityRelationPackage.eINSTANCE.getNamedElement_Name();
 		}
@@ -136,57 +155,98 @@ public class IdentifierPropertiesEditionComponent extends SinglePartPropertiesEd
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
+	@Override
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		Identifier identifier = (Identifier)semanticObject;
-		if (EntityrelationViewsRepository.Identifier.Properties.name == event.getAffectedEditor()) {
-			identifier.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		final Identifier identifier = (Identifier) this.semanticObject;
+		if (EntityrelationViewsRepository.Identifier.Properties.name == event
+				.getAffectedEditor()) {
+			identifier.setName((java.lang.String) EEFConverterUtil
+					.createFromString(EcorePackage.Literals.ESTRING,
+							(String) event.getNewValue()));
 		}
-		if (EntityrelationViewsRepository.Identifier.Properties.attributes == event.getAffectedEditor()) {
+		if (EntityrelationViewsRepository.Identifier.Properties.attributes == event
+				.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Attribute) {
-					attributesSettings.addToReference((EObject) event.getNewValue());
+					this.attributesSettings.addToReference((EObject) event
+							.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				attributesSettings.removeFromReference((EObject) event.getNewValue());
+				this.attributesSettings.removeFromReference((EObject) event
+						.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				attributesSettings.move(event.getNewIndex(), (Attribute) event.getNewValue());
+				this.attributesSettings.move(event.getNewIndex(),
+						(Attribute) event.getNewValue());
 			}
 		}
-		if (EntityrelationViewsRepository.Identifier.Properties.comments == event.getAffectedEditor()) {
-			identifier.setComments((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		if (EntityrelationViewsRepository.Identifier.Properties.comments == event
+				.getAffectedEditor()) {
+			identifier.setComments((java.lang.String) EEFConverterUtil
+					.createFromString(EcorePackage.Literals.ESTRING,
+							(String) event.getNewValue()));
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
-	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {
-			IdentifierPropertiesEditionPart identifierPart = (IdentifierPropertiesEditionPart)editingPart;
-			if (EntityRelationPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && identifierPart != null && isAccessible(EntityrelationViewsRepository.Identifier.Properties.name)) {
+	@Override
+	public void updatePart(final Notification msg) {
+		super.updatePart(msg);
+		if (this.editingPart.isVisible()) {
+			final IdentifierPropertiesEditionPart identifierPart = (IdentifierPropertiesEditionPart) this.editingPart;
+			if (EntityRelationPackage.eINSTANCE.getNamedElement_Name().equals(
+					msg.getFeature())
+					&& msg.getNotifier().equals(this.semanticObject)
+					&& (identifierPart != null)
+					&& this.isAccessible(EntityrelationViewsRepository.Identifier.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					identifierPart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					identifierPart.setName(EcoreUtil.convertToString(
+							EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					identifierPart.setName("");
 				}
 			}
-			if (EntityRelationPackage.eINSTANCE.getIdentifier_Attributes().equals(msg.getFeature())  && isAccessible(EntityrelationViewsRepository.Identifier.Properties.attributes))
+			if (EntityRelationPackage.eINSTANCE.getIdentifier_Attributes()
+					.equals(msg.getFeature())
+					&& this.isAccessible(EntityrelationViewsRepository.Identifier.Properties.attributes)) {
 				identifierPart.updateAttributes();
-			if (EntityRelationPackage.eINSTANCE.getLogicalElement_Comments().equals(msg.getFeature()) && identifierPart != null && isAccessible(EntityrelationViewsRepository.Identifier.Properties.comments)){
+			}
+			if (EntityRelationPackage.eINSTANCE.getLogicalElement_Comments()
+					.equals(msg.getFeature())
+					&& msg.getNotifier().equals(this.semanticObject)
+					&& (identifierPart != null)
+					&& this.isAccessible(EntityrelationViewsRepository.Identifier.Properties.comments)) {
 				if (msg.getNewValue() != null) {
-					identifierPart.setComments(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					identifierPart.setComments(EcoreUtil.convertToString(
+							EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					identifierPart.setComments("");
 				}
 			}
-			
+
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		final NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+				EntityRelationPackage.eINSTANCE.getNamedElement_Name(),
+				EntityRelationPackage.eINSTANCE.getIdentifier_Attributes(),
+				EntityRelationPackage.eINSTANCE.getLogicalElement_Comments());
+		return new NotificationFilter[] { filter, };
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -194,27 +254,47 @@ public class IdentifierPropertiesEditionComponent extends SinglePartPropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+	@Override
+	public Diagnostic validateValue(final IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (EntityrelationViewsRepository.Identifier.Properties.name == event.getAffectedEditor()) {
+				if (EntityrelationViewsRepository.Identifier.Properties.name == event
+						.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EntityRelationPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil
+								.createFromString(
+										EntityRelationPackage.eINSTANCE
+												.getNamedElement_Name()
+												.getEAttributeType(),
+										(String) newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(EntityRelationPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE
+							.validate(
+									EntityRelationPackage.eINSTANCE
+											.getNamedElement_Name()
+											.getEAttributeType(), newValue);
 				}
-				if (EntityrelationViewsRepository.Identifier.Properties.comments == event.getAffectedEditor()) {
+				if (EntityrelationViewsRepository.Identifier.Properties.comments == event
+						.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EntityRelationPackage.eINSTANCE.getLogicalElement_Comments().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil
+								.createFromString(
+										EntityRelationPackage.eINSTANCE
+												.getLogicalElement_Comments()
+												.getEAttributeType(),
+										(String) newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(EntityRelationPackage.eINSTANCE.getLogicalElement_Comments().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(
+							EntityRelationPackage.eINSTANCE
+									.getLogicalElement_Comments()
+									.getEAttributeType(), newValue);
 				}
-			} catch (IllegalArgumentException iae) {
+			} catch (final IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
+			} catch (final WrappedException we) {
 				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
