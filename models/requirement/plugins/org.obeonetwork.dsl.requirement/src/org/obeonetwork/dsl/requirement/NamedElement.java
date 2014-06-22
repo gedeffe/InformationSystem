@@ -29,10 +29,9 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.obeonetwork.dsl.requirement.RequirementPackage#getNamedElement()
  * @model abstract="true"
- * @extends CDOObject
  * @generated
  */
-public interface NamedElement extends CDOObject {
+public interface NamedElement extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

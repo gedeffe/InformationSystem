@@ -15,11 +15,15 @@ package org.obeonetwork.dsl.requirement.impl;
 import java.util.Collection;
 import java.util.Date;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.obeonetwork.dsl.requirement.Category;
 import org.obeonetwork.dsl.requirement.Requirement;
 import org.obeonetwork.dsl.requirement.RequirementPackage;
@@ -67,6 +71,16 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 */
 	protected static final String ID_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -75,6 +89,26 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @ordered
 	 */
 	protected static final int VERSION_EDEFAULT = 1;
+	/**
+	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected int version = VERSION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getReferencedObject() <em>Referenced Object</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReferencedObject()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EObject> referencedObject;
+
 	/**
 	 * The default value of the '{@link #getStatement() <em>Statement</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -85,6 +119,16 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 */
 	protected static final String STATEMENT_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getStatement() <em>Statement</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatement()
+	 * @generated
+	 * @ordered
+	 */
+	protected String statement = STATEMENT_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getRationale() <em>Rationale</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -93,6 +137,16 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @ordered
 	 */
 	protected static final String RATIONALE_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getRationale() <em>Rationale</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRationale()
+	 * @generated
+	 * @ordered
+	 */
+	protected String rationale = RATIONALE_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getAcceptanceCriteria() <em>Acceptance Criteria</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -103,6 +157,16 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 */
 	protected static final String ACCEPTANCE_CRITERIA_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getAcceptanceCriteria() <em>Acceptance Criteria</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAcceptanceCriteria()
+	 * @generated
+	 * @ordered
+	 */
+	protected String acceptanceCriteria = ACCEPTANCE_CRITERIA_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -111,6 +175,16 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @ordered
 	 */
 	protected static final RequirementType TYPE_EDEFAULT = RequirementType.FUNCTIONAL;
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected RequirementType type = TYPE_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getSubtype() <em>Subtype</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -121,6 +195,16 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 */
 	protected static final String SUBTYPE_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getSubtype() <em>Subtype</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubtype()
+	 * @generated
+	 * @ordered
+	 */
+	protected String subtype = SUBTYPE_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,6 +213,16 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @ordered
 	 */
 	protected static final String STATUS_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatus()
+	 * @generated
+	 * @ordered
+	 */
+	protected String status = STATUS_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getCreatedOn() <em>Created On</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -139,6 +233,16 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 */
 	protected static final Date CREATED_ON_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getCreatedOn() <em>Created On</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCreatedOn()
+	 * @generated
+	 * @ordered
+	 */
+	protected Date createdOn = CREATED_ON_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getModifiedOn() <em>Modified On</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -147,6 +251,16 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @ordered
 	 */
 	protected static final Date MODIFIED_ON_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getModifiedOn() <em>Modified On</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getModifiedOn()
+	 * @generated
+	 * @ordered
+	 */
+	protected Date modifiedOn = MODIFIED_ON_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -179,7 +293,7 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public String getId() {
-		return (String)eDynamicGet(RequirementPackage.REQUIREMENT__ID, RequirementPackage.Literals.REQUIREMENT__ID, true, true);
+		return id;
 	}
 
 	/**
@@ -188,7 +302,10 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public void setId(String newId) {
-		eDynamicSet(RequirementPackage.REQUIREMENT__ID, RequirementPackage.Literals.REQUIREMENT__ID, newId);
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENT__ID, oldId, id));
 	}
 
 	/**
@@ -197,7 +314,7 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public int getVersion() {
-		return (Integer)eDynamicGet(RequirementPackage.REQUIREMENT__VERSION, RequirementPackage.Literals.REQUIREMENT__VERSION, true, true);
+		return version;
 	}
 
 	/**
@@ -206,7 +323,10 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public void setVersion(int newVersion) {
-		eDynamicSet(RequirementPackage.REQUIREMENT__VERSION, RequirementPackage.Literals.REQUIREMENT__VERSION, newVersion);
+		int oldVersion = version;
+		version = newVersion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENT__VERSION, oldVersion, version));
 	}
 
 	/**
@@ -216,7 +336,10 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<EObject> getReferencedObject() {
-		return (EList<EObject>)eDynamicGet(RequirementPackage.REQUIREMENT__REFERENCED_OBJECT, RequirementPackage.Literals.REQUIREMENT__REFERENCED_OBJECT, true, true);
+		if (referencedObject == null) {
+			referencedObject = new EObjectResolvingEList<EObject>(EObject.class, this, RequirementPackage.REQUIREMENT__REFERENCED_OBJECT);
+		}
+		return referencedObject;
 	}
 
 	/**
@@ -225,7 +348,7 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public String getStatement() {
-		return (String)eDynamicGet(RequirementPackage.REQUIREMENT__STATEMENT, RequirementPackage.Literals.REQUIREMENT__STATEMENT, true, true);
+		return statement;
 	}
 
 	/**
@@ -234,7 +357,10 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public void setStatement(String newStatement) {
-		eDynamicSet(RequirementPackage.REQUIREMENT__STATEMENT, RequirementPackage.Literals.REQUIREMENT__STATEMENT, newStatement);
+		String oldStatement = statement;
+		statement = newStatement;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENT__STATEMENT, oldStatement, statement));
 	}
 
 	/**
@@ -243,7 +369,7 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public String getRationale() {
-		return (String)eDynamicGet(RequirementPackage.REQUIREMENT__RATIONALE, RequirementPackage.Literals.REQUIREMENT__RATIONALE, true, true);
+		return rationale;
 	}
 
 	/**
@@ -252,7 +378,10 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public void setRationale(String newRationale) {
-		eDynamicSet(RequirementPackage.REQUIREMENT__RATIONALE, RequirementPackage.Literals.REQUIREMENT__RATIONALE, newRationale);
+		String oldRationale = rationale;
+		rationale = newRationale;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENT__RATIONALE, oldRationale, rationale));
 	}
 
 	/**
@@ -261,7 +390,7 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public String getAcceptanceCriteria() {
-		return (String)eDynamicGet(RequirementPackage.REQUIREMENT__ACCEPTANCE_CRITERIA, RequirementPackage.Literals.REQUIREMENT__ACCEPTANCE_CRITERIA, true, true);
+		return acceptanceCriteria;
 	}
 
 	/**
@@ -270,7 +399,10 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public void setAcceptanceCriteria(String newAcceptanceCriteria) {
-		eDynamicSet(RequirementPackage.REQUIREMENT__ACCEPTANCE_CRITERIA, RequirementPackage.Literals.REQUIREMENT__ACCEPTANCE_CRITERIA, newAcceptanceCriteria);
+		String oldAcceptanceCriteria = acceptanceCriteria;
+		acceptanceCriteria = newAcceptanceCriteria;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENT__ACCEPTANCE_CRITERIA, oldAcceptanceCriteria, acceptanceCriteria));
 	}
 
 	/**
@@ -279,7 +411,7 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public RequirementType getType() {
-		return (RequirementType)eDynamicGet(RequirementPackage.REQUIREMENT__TYPE, RequirementPackage.Literals.REQUIREMENT__TYPE, true, true);
+		return type;
 	}
 
 	/**
@@ -288,7 +420,10 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public void setType(RequirementType newType) {
-		eDynamicSet(RequirementPackage.REQUIREMENT__TYPE, RequirementPackage.Literals.REQUIREMENT__TYPE, newType);
+		RequirementType oldType = type;
+		type = newType == null ? TYPE_EDEFAULT : newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENT__TYPE, oldType, type));
 	}
 
 	/**
@@ -297,7 +432,8 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public Category getCategory() {
-		return (Category)eDynamicGet(RequirementPackage.REQUIREMENT__CATEGORY, RequirementPackage.Literals.REQUIREMENT__CATEGORY, true, true);
+		if (eContainerFeatureID() != RequirementPackage.REQUIREMENT__CATEGORY) return null;
+		return (Category)eContainer();
 	}
 
 	/**
@@ -306,7 +442,8 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public Category basicGetCategory() {
-		return (Category)eDynamicGet(RequirementPackage.REQUIREMENT__CATEGORY, RequirementPackage.Literals.REQUIREMENT__CATEGORY, false, true);
+		if (eContainerFeatureID() != RequirementPackage.REQUIREMENT__CATEGORY) return null;
+		return (Category)eInternalContainer();
 	}
 
 	/**
@@ -325,7 +462,19 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public void setCategory(Category newCategory) {
-		eDynamicSet(RequirementPackage.REQUIREMENT__CATEGORY, RequirementPackage.Literals.REQUIREMENT__CATEGORY, newCategory);
+		if (newCategory != eInternalContainer() || (eContainerFeatureID() != RequirementPackage.REQUIREMENT__CATEGORY && newCategory != null)) {
+			if (EcoreUtil.isAncestor(this, newCategory))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newCategory != null)
+				msgs = ((InternalEObject)newCategory).eInverseAdd(this, RequirementPackage.CATEGORY__REQUIREMENTS, Category.class, msgs);
+			msgs = basicSetCategory(newCategory, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENT__CATEGORY, newCategory, newCategory));
 	}
 
 	/**
@@ -334,7 +483,7 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public String getSubtype() {
-		return (String)eDynamicGet(RequirementPackage.REQUIREMENT__SUBTYPE, RequirementPackage.Literals.REQUIREMENT__SUBTYPE, true, true);
+		return subtype;
 	}
 
 	/**
@@ -343,7 +492,10 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public void setSubtype(String newSubtype) {
-		eDynamicSet(RequirementPackage.REQUIREMENT__SUBTYPE, RequirementPackage.Literals.REQUIREMENT__SUBTYPE, newSubtype);
+		String oldSubtype = subtype;
+		subtype = newSubtype;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENT__SUBTYPE, oldSubtype, subtype));
 	}
 
 	/**
@@ -352,7 +504,7 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public String getStatus() {
-		return (String)eDynamicGet(RequirementPackage.REQUIREMENT__STATUS, RequirementPackage.Literals.REQUIREMENT__STATUS, true, true);
+		return status;
 	}
 
 	/**
@@ -361,7 +513,10 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public void setStatus(String newStatus) {
-		eDynamicSet(RequirementPackage.REQUIREMENT__STATUS, RequirementPackage.Literals.REQUIREMENT__STATUS, newStatus);
+		String oldStatus = status;
+		status = newStatus;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENT__STATUS, oldStatus, status));
 	}
 
 	/**
@@ -370,7 +525,7 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public Date getCreatedOn() {
-		return (Date)eDynamicGet(RequirementPackage.REQUIREMENT__CREATED_ON, RequirementPackage.Literals.REQUIREMENT__CREATED_ON, true, true);
+		return createdOn;
 	}
 
 	/**
@@ -379,7 +534,10 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public void setCreatedOn(Date newCreatedOn) {
-		eDynamicSet(RequirementPackage.REQUIREMENT__CREATED_ON, RequirementPackage.Literals.REQUIREMENT__CREATED_ON, newCreatedOn);
+		Date oldCreatedOn = createdOn;
+		createdOn = newCreatedOn;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENT__CREATED_ON, oldCreatedOn, createdOn));
 	}
 
 	/**
@@ -388,7 +546,7 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public Date getModifiedOn() {
-		return (Date)eDynamicGet(RequirementPackage.REQUIREMENT__MODIFIED_ON, RequirementPackage.Literals.REQUIREMENT__MODIFIED_ON, true, true);
+		return modifiedOn;
 	}
 
 	/**
@@ -397,7 +555,10 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	 * @generated
 	 */
 	public void setModifiedOn(Date newModifiedOn) {
-		eDynamicSet(RequirementPackage.REQUIREMENT__MODIFIED_ON, RequirementPackage.Literals.REQUIREMENT__MODIFIED_ON, newModifiedOn);
+		Date oldModifiedOn = modifiedOn;
+		modifiedOn = newModifiedOn;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.REQUIREMENT__MODIFIED_ON, oldModifiedOn, modifiedOn));
 	}
 
 	/**
@@ -588,31 +749,65 @@ public class RequirementImpl extends NamedElementImpl implements Requirement {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case RequirementPackage.REQUIREMENT__ID:
-				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case RequirementPackage.REQUIREMENT__VERSION:
-				return getVersion() != VERSION_EDEFAULT;
+				return version != VERSION_EDEFAULT;
 			case RequirementPackage.REQUIREMENT__REFERENCED_OBJECT:
-				return !getReferencedObject().isEmpty();
+				return referencedObject != null && !referencedObject.isEmpty();
 			case RequirementPackage.REQUIREMENT__STATEMENT:
-				return STATEMENT_EDEFAULT == null ? getStatement() != null : !STATEMENT_EDEFAULT.equals(getStatement());
+				return STATEMENT_EDEFAULT == null ? statement != null : !STATEMENT_EDEFAULT.equals(statement);
 			case RequirementPackage.REQUIREMENT__RATIONALE:
-				return RATIONALE_EDEFAULT == null ? getRationale() != null : !RATIONALE_EDEFAULT.equals(getRationale());
+				return RATIONALE_EDEFAULT == null ? rationale != null : !RATIONALE_EDEFAULT.equals(rationale);
 			case RequirementPackage.REQUIREMENT__ACCEPTANCE_CRITERIA:
-				return ACCEPTANCE_CRITERIA_EDEFAULT == null ? getAcceptanceCriteria() != null : !ACCEPTANCE_CRITERIA_EDEFAULT.equals(getAcceptanceCriteria());
+				return ACCEPTANCE_CRITERIA_EDEFAULT == null ? acceptanceCriteria != null : !ACCEPTANCE_CRITERIA_EDEFAULT.equals(acceptanceCriteria);
 			case RequirementPackage.REQUIREMENT__TYPE:
-				return getType() != TYPE_EDEFAULT;
+				return type != TYPE_EDEFAULT;
 			case RequirementPackage.REQUIREMENT__CATEGORY:
 				return basicGetCategory() != null;
 			case RequirementPackage.REQUIREMENT__SUBTYPE:
-				return SUBTYPE_EDEFAULT == null ? getSubtype() != null : !SUBTYPE_EDEFAULT.equals(getSubtype());
+				return SUBTYPE_EDEFAULT == null ? subtype != null : !SUBTYPE_EDEFAULT.equals(subtype);
 			case RequirementPackage.REQUIREMENT__STATUS:
-				return STATUS_EDEFAULT == null ? getStatus() != null : !STATUS_EDEFAULT.equals(getStatus());
+				return STATUS_EDEFAULT == null ? status != null : !STATUS_EDEFAULT.equals(status);
 			case RequirementPackage.REQUIREMENT__CREATED_ON:
-				return CREATED_ON_EDEFAULT == null ? getCreatedOn() != null : !CREATED_ON_EDEFAULT.equals(getCreatedOn());
+				return CREATED_ON_EDEFAULT == null ? createdOn != null : !CREATED_ON_EDEFAULT.equals(createdOn);
 			case RequirementPackage.REQUIREMENT__MODIFIED_ON:
-				return MODIFIED_ON_EDEFAULT == null ? getModifiedOn() != null : !MODIFIED_ON_EDEFAULT.equals(getModifiedOn());
+				return MODIFIED_ON_EDEFAULT == null ? modifiedOn != null : !MODIFIED_ON_EDEFAULT.equals(modifiedOn);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (id: ");
+		result.append(id);
+		result.append(", version: ");
+		result.append(version);
+		result.append(", statement: ");
+		result.append(statement);
+		result.append(", rationale: ");
+		result.append(rationale);
+		result.append(", acceptanceCriteria: ");
+		result.append(acceptanceCriteria);
+		result.append(", type: ");
+		result.append(type);
+		result.append(", subtype: ");
+		result.append(subtype);
+		result.append(", status: ");
+		result.append(status);
+		result.append(", createdOn: ");
+		result.append(createdOn);
+		result.append(", modifiedOn: ");
+		result.append(modifiedOn);
+		result.append(')');
+		return result.toString();
 	}
 
 

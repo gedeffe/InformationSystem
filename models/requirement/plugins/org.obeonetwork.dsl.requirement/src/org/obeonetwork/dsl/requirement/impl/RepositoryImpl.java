@@ -52,6 +52,24 @@ public class RepositoryImpl extends NamedElementImpl implements Repository {
 	 */
 	public static final String copyright = "Copyright (c) 2010 Obeo.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Obeo - initial API and implementation";
 	/**
+	 * The cached value of the '{@link #getMainCategories() <em>Main Categories</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMainCategories()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Category> mainCategories;
+	/**
+	 * The cached value of the '{@link #getReferencedObject() <em>Referenced Object</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReferencedObject()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EObject> referencedObject;
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -77,7 +95,10 @@ public class RepositoryImpl extends NamedElementImpl implements Repository {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Category> getMainCategories() {
-		return (EList<Category>)eDynamicGet(RequirementPackage.REPOSITORY__MAIN_CATEGORIES, RequirementPackage.Literals.REPOSITORY__MAIN_CATEGORIES, true, true);
+		if (mainCategories == null) {
+			mainCategories = new EObjectContainmentWithInverseEList.Resolving<Category>(Category.class, this, RequirementPackage.REPOSITORY__MAIN_CATEGORIES, RequirementPackage.CATEGORY__REPOSITORY);
+		}
+		return mainCategories;
 	}
 
 	/**
@@ -87,7 +108,10 @@ public class RepositoryImpl extends NamedElementImpl implements Repository {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<EObject> getReferencedObject() {
-		return (EList<EObject>)eDynamicGet(RequirementPackage.REPOSITORY__REFERENCED_OBJECT, RequirementPackage.Literals.REPOSITORY__REFERENCED_OBJECT, true, true);
+		if (referencedObject == null) {
+			referencedObject = new EObjectResolvingEList<EObject>(EObject.class, this, RequirementPackage.REPOSITORY__REFERENCED_OBJECT);
+		}
+		return referencedObject;
 	}
 
 	/**
@@ -183,9 +207,9 @@ public class RepositoryImpl extends NamedElementImpl implements Repository {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case RequirementPackage.REPOSITORY__MAIN_CATEGORIES:
-				return !getMainCategories().isEmpty();
+				return mainCategories != null && !mainCategories.isEmpty();
 			case RequirementPackage.REPOSITORY__REFERENCED_OBJECT:
-				return !getReferencedObject().isEmpty();
+				return referencedObject != null && !referencedObject.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

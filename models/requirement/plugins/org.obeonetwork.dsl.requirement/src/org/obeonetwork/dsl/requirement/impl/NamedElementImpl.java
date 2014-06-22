@@ -36,7 +36,7 @@ import org.obeonetwork.dsl.requirement.RequirementPackage;
  *
  * @generated
  */
-public abstract class NamedElementImpl extends CDOObjectImpl implements NamedElement {
+public abstract class NamedElementImpl extends EObjectImpl implements NamedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -53,6 +53,16 @@ public abstract class NamedElementImpl extends CDOObjectImpl implements NamedEle
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,18 +88,8 @@ public abstract class NamedElementImpl extends CDOObjectImpl implements NamedEle
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getName() {
-		return (String)eDynamicGet(RequirementPackage.NAMED_ELEMENT__NAME, RequirementPackage.Literals.NAMED_ELEMENT__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -98,7 +98,10 @@ public abstract class NamedElementImpl extends CDOObjectImpl implements NamedEle
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(RequirementPackage.NAMED_ELEMENT__NAME, RequirementPackage.Literals.NAMED_ELEMENT__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.NAMED_ELEMENT__NAME, oldName, name));
 	}
 
 	/**
@@ -154,9 +157,25 @@ public abstract class NamedElementImpl extends CDOObjectImpl implements NamedEle
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case RequirementPackage.NAMED_ELEMENT__NAME:
-				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //NamedElementImpl

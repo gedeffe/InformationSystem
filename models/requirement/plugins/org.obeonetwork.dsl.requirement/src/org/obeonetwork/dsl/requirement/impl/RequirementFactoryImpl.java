@@ -49,7 +49,7 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	 */
 	public static RequirementFactory init() {
 		try {
-			RequirementFactory theRequirementFactory = (RequirementFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.obeonetwork.org/dsl/requirement/1.0"); 
+			RequirementFactory theRequirementFactory = (RequirementFactory)EPackage.Registry.INSTANCE.getEFactory(RequirementPackage.eNS_URI);
 			if (theRequirementFactory != null) {
 				return theRequirementFactory;
 			}
@@ -78,9 +78,9 @@ public class RequirementFactoryImpl extends EFactoryImpl implements RequirementF
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case RequirementPackage.REPOSITORY: return (EObject)createRepository();
-			case RequirementPackage.CATEGORY: return (EObject)createCategory();
-			case RequirementPackage.REQUIREMENT: return (EObject)createRequirement();
+			case RequirementPackage.REPOSITORY: return createRepository();
+			case RequirementPackage.CATEGORY: return createCategory();
+			case RequirementPackage.REQUIREMENT: return createRequirement();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

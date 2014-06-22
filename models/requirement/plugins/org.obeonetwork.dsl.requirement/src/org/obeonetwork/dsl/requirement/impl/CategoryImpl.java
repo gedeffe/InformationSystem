@@ -63,6 +63,26 @@ public class CategoryImpl extends NamedElementImpl implements Category {
 	public static final String copyright = "Copyright (c) 2010 Obeo.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Obeo - initial API and implementation";
 
 	/**
+	 * The cached value of the '{@link #getRequirements() <em>Requirements</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRequirements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Requirement> requirements;
+
+	/**
+	 * The cached value of the '{@link #getSubCategories() <em>Sub Categories</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubCategories()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Category> subCategories;
+
+	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -71,6 +91,26 @@ public class CategoryImpl extends NamedElementImpl implements Category {
 	 * @ordered
 	 */
 	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getReferencedObject() <em>Referenced Object</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReferencedObject()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EObject> referencedObject;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -98,7 +138,10 @@ public class CategoryImpl extends NamedElementImpl implements Category {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Requirement> getRequirements() {
-		return (EList<Requirement>)eDynamicGet(RequirementPackage.CATEGORY__REQUIREMENTS, RequirementPackage.Literals.CATEGORY__REQUIREMENTS, true, true);
+		if (requirements == null) {
+			requirements = new EObjectContainmentWithInverseEList.Resolving<Requirement>(Requirement.class, this, RequirementPackage.CATEGORY__REQUIREMENTS, RequirementPackage.REQUIREMENT__CATEGORY);
+		}
+		return requirements;
 	}
 
 	/**
@@ -108,7 +151,10 @@ public class CategoryImpl extends NamedElementImpl implements Category {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Category> getSubCategories() {
-		return (EList<Category>)eDynamicGet(RequirementPackage.CATEGORY__SUB_CATEGORIES, RequirementPackage.Literals.CATEGORY__SUB_CATEGORIES, true, true);
+		if (subCategories == null) {
+			subCategories = new EObjectContainmentWithInverseEList.Resolving<Category>(Category.class, this, RequirementPackage.CATEGORY__SUB_CATEGORIES, RequirementPackage.CATEGORY__PARENT_CATEGORY);
+		}
+		return subCategories;
 	}
 
 	/**
@@ -117,7 +163,7 @@ public class CategoryImpl extends NamedElementImpl implements Category {
 	 * @generated
 	 */
 	public String getId() {
-		return (String)eDynamicGet(RequirementPackage.CATEGORY__ID, RequirementPackage.Literals.CATEGORY__ID, true, true);
+		return id;
 	}
 
 	/**
@@ -126,7 +172,10 @@ public class CategoryImpl extends NamedElementImpl implements Category {
 	 * @generated
 	 */
 	public void setId(String newId) {
-		eDynamicSet(RequirementPackage.CATEGORY__ID, RequirementPackage.Literals.CATEGORY__ID, newId);
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.CATEGORY__ID, oldId, id));
 	}
 
 	/**
@@ -135,7 +184,8 @@ public class CategoryImpl extends NamedElementImpl implements Category {
 	 * @generated
 	 */
 	public Repository getRepository() {
-		return (Repository)eDynamicGet(RequirementPackage.CATEGORY__REPOSITORY, RequirementPackage.Literals.CATEGORY__REPOSITORY, true, true);
+		if (eContainerFeatureID() != RequirementPackage.CATEGORY__REPOSITORY) return null;
+		return (Repository)eContainer();
 	}
 
 	/**
@@ -144,7 +194,8 @@ public class CategoryImpl extends NamedElementImpl implements Category {
 	 * @generated
 	 */
 	public Repository basicGetRepository() {
-		return (Repository)eDynamicGet(RequirementPackage.CATEGORY__REPOSITORY, RequirementPackage.Literals.CATEGORY__REPOSITORY, false, true);
+		if (eContainerFeatureID() != RequirementPackage.CATEGORY__REPOSITORY) return null;
+		return (Repository)eInternalContainer();
 	}
 
 	/**
@@ -163,7 +214,19 @@ public class CategoryImpl extends NamedElementImpl implements Category {
 	 * @generated
 	 */
 	public void setRepository(Repository newRepository) {
-		eDynamicSet(RequirementPackage.CATEGORY__REPOSITORY, RequirementPackage.Literals.CATEGORY__REPOSITORY, newRepository);
+		if (newRepository != eInternalContainer() || (eContainerFeatureID() != RequirementPackage.CATEGORY__REPOSITORY && newRepository != null)) {
+			if (EcoreUtil.isAncestor(this, newRepository))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newRepository != null)
+				msgs = ((InternalEObject)newRepository).eInverseAdd(this, RequirementPackage.REPOSITORY__MAIN_CATEGORIES, Repository.class, msgs);
+			msgs = basicSetRepository(newRepository, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.CATEGORY__REPOSITORY, newRepository, newRepository));
 	}
 
 	/**
@@ -172,7 +235,8 @@ public class CategoryImpl extends NamedElementImpl implements Category {
 	 * @generated
 	 */
 	public Category getParentCategory() {
-		return (Category)eDynamicGet(RequirementPackage.CATEGORY__PARENT_CATEGORY, RequirementPackage.Literals.CATEGORY__PARENT_CATEGORY, true, true);
+		if (eContainerFeatureID() != RequirementPackage.CATEGORY__PARENT_CATEGORY) return null;
+		return (Category)eContainer();
 	}
 
 	/**
@@ -181,7 +245,8 @@ public class CategoryImpl extends NamedElementImpl implements Category {
 	 * @generated
 	 */
 	public Category basicGetParentCategory() {
-		return (Category)eDynamicGet(RequirementPackage.CATEGORY__PARENT_CATEGORY, RequirementPackage.Literals.CATEGORY__PARENT_CATEGORY, false, true);
+		if (eContainerFeatureID() != RequirementPackage.CATEGORY__PARENT_CATEGORY) return null;
+		return (Category)eInternalContainer();
 	}
 
 	/**
@@ -200,7 +265,19 @@ public class CategoryImpl extends NamedElementImpl implements Category {
 	 * @generated
 	 */
 	public void setParentCategory(Category newParentCategory) {
-		eDynamicSet(RequirementPackage.CATEGORY__PARENT_CATEGORY, RequirementPackage.Literals.CATEGORY__PARENT_CATEGORY, newParentCategory);
+		if (newParentCategory != eInternalContainer() || (eContainerFeatureID() != RequirementPackage.CATEGORY__PARENT_CATEGORY && newParentCategory != null)) {
+			if (EcoreUtil.isAncestor(this, newParentCategory))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newParentCategory != null)
+				msgs = ((InternalEObject)newParentCategory).eInverseAdd(this, RequirementPackage.CATEGORY__SUB_CATEGORIES, Category.class, msgs);
+			msgs = basicSetParentCategory(newParentCategory, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementPackage.CATEGORY__PARENT_CATEGORY, newParentCategory, newParentCategory));
 	}
 
 	/**
@@ -210,7 +287,10 @@ public class CategoryImpl extends NamedElementImpl implements Category {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<EObject> getReferencedObject() {
-		return (EList<EObject>)eDynamicGet(RequirementPackage.CATEGORY__REFERENCED_OBJECT, RequirementPackage.Literals.CATEGORY__REFERENCED_OBJECT, true, true);
+		if (referencedObject == null) {
+			referencedObject = new EObjectResolvingEList<EObject>(EObject.class, this, RequirementPackage.CATEGORY__REFERENCED_OBJECT);
+		}
+		return referencedObject;
 	}
 
 	/**
@@ -373,19 +453,35 @@ public class CategoryImpl extends NamedElementImpl implements Category {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case RequirementPackage.CATEGORY__REQUIREMENTS:
-				return !getRequirements().isEmpty();
+				return requirements != null && !requirements.isEmpty();
 			case RequirementPackage.CATEGORY__SUB_CATEGORIES:
-				return !getSubCategories().isEmpty();
+				return subCategories != null && !subCategories.isEmpty();
 			case RequirementPackage.CATEGORY__ID:
-				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case RequirementPackage.CATEGORY__REPOSITORY:
 				return basicGetRepository() != null;
 			case RequirementPackage.CATEGORY__PARENT_CATEGORY:
 				return basicGetParentCategory() != null;
 			case RequirementPackage.CATEGORY__REFERENCED_OBJECT:
-				return !getReferencedObject().isEmpty();
+				return referencedObject != null && !referencedObject.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (id: ");
+		result.append(id);
+		result.append(')');
+		return result.toString();
 	}
 
 } //CategoryImpl

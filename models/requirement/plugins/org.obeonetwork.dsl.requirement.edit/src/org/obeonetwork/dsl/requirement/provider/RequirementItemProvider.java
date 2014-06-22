@@ -145,7 +145,7 @@ public class RequirementItemProvider
 				 getString("_UI_Requirement_referencedObject_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Requirement_referencedObject_feature", "_UI_Requirement_type"),
 				 RequirementPackage.Literals.REQUIREMENT__REFERENCED_OBJECT,
-				 false,
+				 true,
 				 false,
 				 true,
 				 null,
