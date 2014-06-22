@@ -34,7 +34,7 @@ public class CinematicFactoryImpl extends EFactoryImpl implements CinematicFacto
 	 */
 	public static CinematicFactory init() {
 		try {
-			CinematicFactory theCinematicFactory = (CinematicFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.obeonetwork.org/dsl/cinematic/3.0.0"); 
+			CinematicFactory theCinematicFactory = (CinematicFactory)EPackage.Registry.INSTANCE.getEFactory(CinematicPackage.eNS_URI);
 			if (theCinematicFactory != null) {
 				return theCinematicFactory;
 			}
@@ -63,8 +63,8 @@ public class CinematicFactoryImpl extends EFactoryImpl implements CinematicFacto
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case CinematicPackage.PACKAGE: return (EObject)createPackage();
-			case CinematicPackage.CINEMATIC_ROOT: return (EObject)createCinematicRoot();
+			case CinematicPackage.PACKAGE: return createPackage();
+			case CinematicPackage.CINEMATIC_ROOT: return createCinematicRoot();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

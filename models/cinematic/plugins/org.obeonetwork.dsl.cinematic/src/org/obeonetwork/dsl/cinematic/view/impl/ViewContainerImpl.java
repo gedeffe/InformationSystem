@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.obeonetwork.dsl.cinematic.view.AbstractViewElement;
 import org.obeonetwork.dsl.cinematic.view.ViewContainer;
@@ -40,6 +41,16 @@ import org.obeonetwork.dsl.cinematic.view.ViewPackage;
  * @generated
  */
 public class ViewContainerImpl extends AbstractViewElementImpl implements ViewContainer {
+	/**
+	 * The cached value of the '{@link #getOwnedElements() <em>Owned Elements</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AbstractViewElement> ownedElements;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -66,7 +77,10 @@ public class ViewContainerImpl extends AbstractViewElementImpl implements ViewCo
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<AbstractViewElement> getOwnedElements() {
-		return (EList<AbstractViewElement>)eDynamicGet(ViewPackage.VIEW_CONTAINER__OWNED_ELEMENTS, ViewPackage.Literals.VIEW_CONTAINER__OWNED_ELEMENTS, true, true);
+		if (ownedElements == null) {
+			ownedElements = new EObjectContainmentEList<AbstractViewElement>(AbstractViewElement.class, this, ViewPackage.VIEW_CONTAINER__OWNED_ELEMENTS);
+		}
+		return ownedElements;
 	}
 
 	/**
@@ -76,7 +90,11 @@ public class ViewContainerImpl extends AbstractViewElementImpl implements ViewCo
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<ViewContainer> getViewContainers() {
-		return (EList<ViewContainer>)eDynamicGet(ViewPackage.VIEW_CONTAINER__VIEW_CONTAINERS, ViewPackage.Literals.VIEW_CONTAINER__VIEW_CONTAINERS, true, true);
+		// TODO: implement this method to return the 'View Containers' reference list
+		// Ensure that you remove @generated or mark it @generated NOT
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -86,7 +104,11 @@ public class ViewContainerImpl extends AbstractViewElementImpl implements ViewCo
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<ViewElement> getViewElements() {
-		return (EList<ViewElement>)eDynamicGet(ViewPackage.VIEW_CONTAINER__VIEW_ELEMENTS, ViewPackage.Literals.VIEW_CONTAINER__VIEW_ELEMENTS, true, true);
+		// TODO: implement this method to return the 'View Elements' reference list
+		// Ensure that you remove @generated or mark it @generated NOT
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -96,7 +118,11 @@ public class ViewContainerImpl extends AbstractViewElementImpl implements ViewCo
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<ViewContainerReference> getViewContainerReferences() {
-		return (EList<ViewContainerReference>)eDynamicGet(ViewPackage.VIEW_CONTAINER__VIEW_CONTAINER_REFERENCES, ViewPackage.Literals.VIEW_CONTAINER__VIEW_CONTAINER_REFERENCES, true, true);
+		// TODO: implement this method to return the 'View Container References' reference list
+		// Ensure that you remove @generated or mark it @generated NOT
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -174,7 +200,7 @@ public class ViewContainerImpl extends AbstractViewElementImpl implements ViewCo
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ViewPackage.VIEW_CONTAINER__OWNED_ELEMENTS:
-				return !getOwnedElements().isEmpty();
+				return ownedElements != null && !ownedElements.isEmpty();
 			case ViewPackage.VIEW_CONTAINER__VIEW_CONTAINERS:
 				return !getViewContainers().isEmpty();
 			case ViewPackage.VIEW_CONTAINER__VIEW_ELEMENTS:

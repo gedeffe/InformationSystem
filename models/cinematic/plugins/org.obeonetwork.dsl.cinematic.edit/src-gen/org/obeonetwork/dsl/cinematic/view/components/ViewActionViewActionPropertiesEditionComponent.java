@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.cinematic.view.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -14,7 +13,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -25,14 +26,15 @@ import org.obeonetwork.dsl.cinematic.view.parts.ViewViewsRepository;
 import org.obeonetwork.dsl.environment.EnvironmentPackage;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public class ViewActionViewActionPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String VIEWACTION_PART = "ViewAction"; //$NON-NLS-1$
 
@@ -40,7 +42,7 @@ public class ViewActionViewActionPropertiesEditionComponent extends SinglePartPr
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public ViewActionViewActionPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject viewAction, String editing_mode) {
 		super(editingContext, viewAction, editing_mode);
@@ -54,19 +56,20 @@ public class ViewActionViewActionPropertiesEditionComponent extends SinglePartPr
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ViewAction viewAction = (ViewAction)elt;
 			final ViewActionPropertiesEditionPart viewActionPart = (ViewActionPropertiesEditionPart)editingPart;
 			// init values
-			if (viewAction.getDescription() != null && isAccessible(ViewViewsRepository.ViewAction.Properties.description))
+			if (isAccessible(ViewViewsRepository.ViewAction.Properties.description))
 				viewActionPart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, viewAction.getDescription()));
 			
-			if (viewAction.getName() != null && isAccessible(ViewViewsRepository.ViewAction.Properties.name))
+			if (isAccessible(ViewViewsRepository.ViewAction.Properties.name))
 				viewActionPart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, viewAction.getName()));
 			
 			// init filters
@@ -101,7 +104,7 @@ public class ViewActionViewActionPropertiesEditionComponent extends SinglePartPr
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ViewAction viewAction = (ViewAction)semanticObject;
@@ -118,16 +121,17 @@ public class ViewActionViewActionPropertiesEditionComponent extends SinglePartPr
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ViewActionPropertiesEditionPart viewActionPart = (ViewActionPropertiesEditionPart)editingPart;
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && viewActionPart != null && isAccessible(ViewViewsRepository.ViewAction.Properties.description)) {
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && viewActionPart != null && isAccessible(ViewViewsRepository.ViewAction.Properties.description)) {
 				if (msg.getNewValue() != null) {
 					viewActionPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					viewActionPart.setDescription("");
 				}
 			}
-			if (CinematicPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && viewActionPart != null && isAccessible(ViewViewsRepository.ViewAction.Properties.name)) {
+			if (CinematicPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && viewActionPart != null && isAccessible(ViewViewsRepository.ViewAction.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					viewActionPart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -138,12 +142,25 @@ public class ViewActionViewActionPropertiesEditionComponent extends SinglePartPr
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description(),
+			CinematicPackage.eINSTANCE.getNamedElement_Name()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -171,5 +188,8 @@ public class ViewActionViewActionPropertiesEditionComponent extends SinglePartPr
 		}
 		return ret;
 	}
+
+
+	
 
 }

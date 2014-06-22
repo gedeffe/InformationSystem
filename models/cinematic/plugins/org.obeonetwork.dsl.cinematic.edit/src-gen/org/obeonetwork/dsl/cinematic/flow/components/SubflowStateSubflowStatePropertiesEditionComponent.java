@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -14,7 +13,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
@@ -39,14 +40,15 @@ import org.obeonetwork.dsl.cinematic.flow.parts.SubflowStatePropertiesEditionPar
 import org.obeonetwork.dsl.environment.EnvironmentPackage;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public class SubflowStateSubflowStatePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String SUBFLOWSTATE_PART = "SubflowState"; //$NON-NLS-1$
 
@@ -64,7 +66,7 @@ public class SubflowStateSubflowStatePropertiesEditionComponent extends SinglePa
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public SubflowStateSubflowStatePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject subflowState, String editing_mode) {
 		super(editingContext, subflowState, editing_mode);
@@ -78,16 +80,17 @@ public class SubflowStateSubflowStatePropertiesEditionComponent extends SinglePa
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final SubflowState subflowState = (SubflowState)elt;
 			final SubflowStatePropertiesEditionPart subflowStatePart = (SubflowStatePropertiesEditionPart)editingPart;
 			// init values
-			if (subflowState.getDescription() != null && isAccessible(FlowViewsRepository.SubflowState.Properties.description))
+			if (isAccessible(FlowViewsRepository.SubflowState.Properties.description))
 				subflowStatePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, subflowState.getDescription()));
 			
 			if (isAccessible(FlowViewsRepository.SubflowState.Properties.actions)) {
@@ -115,8 +118,6 @@ public class SubflowStateSubflowStatePropertiesEditionComponent extends SinglePa
 					}
 			
 				});
-				// Start of user code for additional businessfilters for actions
-				// End of user code
 			}
 			if (isAccessible(FlowViewsRepository.SubflowState.Properties.subflow)) {
 				subflowStatePart.addFilterToSubflow(new ViewerFilter() {
@@ -131,8 +132,6 @@ public class SubflowStateSubflowStatePropertiesEditionComponent extends SinglePa
 					}
 					
 				});
-				// Start of user code for additional businessfilters for subflow
-				// End of user code
 			}
 			// init values for referenced views
 			
@@ -167,7 +166,7 @@ public class SubflowStateSubflowStatePropertiesEditionComponent extends SinglePa
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		SubflowState subflowState = (SubflowState)semanticObject;
@@ -222,9 +221,10 @@ public class SubflowStateSubflowStatePropertiesEditionComponent extends SinglePa
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SubflowStatePropertiesEditionPart subflowStatePart = (SubflowStatePropertiesEditionPart)editingPart;
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && subflowStatePart != null && isAccessible(FlowViewsRepository.SubflowState.Properties.description)) {
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && subflowStatePart != null && isAccessible(FlowViewsRepository.SubflowState.Properties.description)) {
 				if (msg.getNewValue() != null) {
 					subflowStatePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -239,12 +239,26 @@ public class SubflowStateSubflowStatePropertiesEditionComponent extends SinglePa
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description(),
+			FlowPackage.eINSTANCE.getFlowState_Actions(),
+			FlowPackage.eINSTANCE.getSubflowState_Subflow()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
-	 * 
+	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
 		return key == FlowViewsRepository.SubflowState.Properties.subflow;
@@ -254,7 +268,7 @@ public class SubflowStateSubflowStatePropertiesEditionComponent extends SinglePa
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -275,5 +289,8 @@ public class SubflowStateSubflowStatePropertiesEditionComponent extends SinglePa
 		}
 		return ret;
 	}
+
+
+	
 
 }

@@ -11,13 +11,16 @@
 package org.obeonetwork.dsl.cinematic.toolkits.impl;
 
 import java.util.Collection;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.obeonetwork.dsl.cinematic.toolkits.Toolkit;
 import org.obeonetwork.dsl.cinematic.toolkits.ToolkitsPackage;
 import org.obeonetwork.dsl.cinematic.toolkits.Widget;
@@ -41,7 +44,7 @@ import org.obeonetwork.dsl.cinematic.toolkits.WidgetEventType;
  *
  * @generated
  */
-public class WidgetImpl extends CDOObjectImpl implements Widget {
+public class WidgetImpl extends MinimalEObjectImpl.Container implements Widget {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -52,6 +55,15 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 */
 	protected static final String NAME_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+	/**
 	 * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60,6 +72,15 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 * @ordered
 	 */
 	protected static final String ICON_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIcon()
+	 * @generated
+	 * @ordered
+	 */
+	protected String icon = ICON_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -70,6 +91,24 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 */
 	protected static final String IMPLEMENTATION_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImplementation()
+	 * @generated
+	 * @ordered
+	 */
+	protected String implementation = IMPLEMENTATION_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getPossibleEvents() <em>Possible Events</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPossibleEvents()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<WidgetEventType> possibleEvents;
+	/**
 	 * The default value of the '{@link #isIsContainer() <em>Is Container</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,6 +117,16 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 * @ordered
 	 */
 	protected static final boolean IS_CONTAINER_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsContainer() <em>Is Container</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsContainer()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isContainer = IS_CONTAINER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,18 +152,8 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getName() {
-		return (String)eDynamicGet(ToolkitsPackage.WIDGET__NAME, ToolkitsPackage.Literals.WIDGET__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -123,7 +162,10 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(ToolkitsPackage.WIDGET__NAME, ToolkitsPackage.Literals.WIDGET__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolkitsPackage.WIDGET__NAME, oldName, name));
 	}
 
 	/**
@@ -132,7 +174,7 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 * @generated
 	 */
 	public String getIcon() {
-		return (String)eDynamicGet(ToolkitsPackage.WIDGET__ICON, ToolkitsPackage.Literals.WIDGET__ICON, true, true);
+		return icon;
 	}
 
 	/**
@@ -141,7 +183,10 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 * @generated
 	 */
 	public void setIcon(String newIcon) {
-		eDynamicSet(ToolkitsPackage.WIDGET__ICON, ToolkitsPackage.Literals.WIDGET__ICON, newIcon);
+		String oldIcon = icon;
+		icon = newIcon;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolkitsPackage.WIDGET__ICON, oldIcon, icon));
 	}
 
 	/**
@@ -150,7 +195,7 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 * @generated
 	 */
 	public String getImplementation() {
-		return (String)eDynamicGet(ToolkitsPackage.WIDGET__IMPLEMENTATION, ToolkitsPackage.Literals.WIDGET__IMPLEMENTATION, true, true);
+		return implementation;
 	}
 
 	/**
@@ -159,7 +204,10 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 * @generated
 	 */
 	public void setImplementation(String newImplementation) {
-		eDynamicSet(ToolkitsPackage.WIDGET__IMPLEMENTATION, ToolkitsPackage.Literals.WIDGET__IMPLEMENTATION, newImplementation);
+		String oldImplementation = implementation;
+		implementation = newImplementation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolkitsPackage.WIDGET__IMPLEMENTATION, oldImplementation, implementation));
 	}
 
 	/**
@@ -168,16 +216,8 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 * @generated
 	 */
 	public Toolkit getToolkit() {
-		return (Toolkit)eDynamicGet(ToolkitsPackage.WIDGET__TOOLKIT, ToolkitsPackage.Literals.WIDGET__TOOLKIT, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Toolkit basicGetToolkit() {
-		return (Toolkit)eDynamicGet(ToolkitsPackage.WIDGET__TOOLKIT, ToolkitsPackage.Literals.WIDGET__TOOLKIT, false, true);
+		if (eContainerFeatureID() != ToolkitsPackage.WIDGET__TOOLKIT) return null;
+		return (Toolkit)eInternalContainer();
 	}
 
 	/**
@@ -196,7 +236,19 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 * @generated
 	 */
 	public void setToolkit(Toolkit newToolkit) {
-		eDynamicSet(ToolkitsPackage.WIDGET__TOOLKIT, ToolkitsPackage.Literals.WIDGET__TOOLKIT, newToolkit);
+		if (newToolkit != eInternalContainer() || (eContainerFeatureID() != ToolkitsPackage.WIDGET__TOOLKIT && newToolkit != null)) {
+			if (EcoreUtil.isAncestor(this, newToolkit))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newToolkit != null)
+				msgs = ((InternalEObject)newToolkit).eInverseAdd(this, ToolkitsPackage.TOOLKIT__WIDGETS, Toolkit.class, msgs);
+			msgs = basicSetToolkit(newToolkit, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolkitsPackage.WIDGET__TOOLKIT, newToolkit, newToolkit));
 	}
 
 	/**
@@ -206,7 +258,10 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<WidgetEventType> getPossibleEvents() {
-		return (EList<WidgetEventType>)eDynamicGet(ToolkitsPackage.WIDGET__POSSIBLE_EVENTS, ToolkitsPackage.Literals.WIDGET__POSSIBLE_EVENTS, true, true);
+		if (possibleEvents == null) {
+			possibleEvents = new EObjectContainmentEList<WidgetEventType>(WidgetEventType.class, this, ToolkitsPackage.WIDGET__POSSIBLE_EVENTS);
+		}
+		return possibleEvents;
 	}
 
 	/**
@@ -215,7 +270,7 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 * @generated
 	 */
 	public boolean isIsContainer() {
-		return (Boolean)eDynamicGet(ToolkitsPackage.WIDGET__IS_CONTAINER, ToolkitsPackage.Literals.WIDGET__IS_CONTAINER, true, true);
+		return isContainer;
 	}
 
 	/**
@@ -224,7 +279,10 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	 * @generated
 	 */
 	public void setIsContainer(boolean newIsContainer) {
-		eDynamicSet(ToolkitsPackage.WIDGET__IS_CONTAINER, ToolkitsPackage.Literals.WIDGET__IS_CONTAINER, newIsContainer);
+		boolean oldIsContainer = isContainer;
+		isContainer = newIsContainer;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolkitsPackage.WIDGET__IS_CONTAINER, oldIsContainer, isContainer));
 	}
 
 	/**
@@ -288,8 +346,7 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 			case ToolkitsPackage.WIDGET__IMPLEMENTATION:
 				return getImplementation();
 			case ToolkitsPackage.WIDGET__TOOLKIT:
-				if (resolve) return getToolkit();
-				return basicGetToolkit();
+				return getToolkit();
 			case ToolkitsPackage.WIDGET__POSSIBLE_EVENTS:
 				return getPossibleEvents();
 			case ToolkitsPackage.WIDGET__IS_CONTAINER:
@@ -369,19 +426,41 @@ public class WidgetImpl extends CDOObjectImpl implements Widget {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ToolkitsPackage.WIDGET__NAME:
-				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ToolkitsPackage.WIDGET__ICON:
-				return ICON_EDEFAULT == null ? getIcon() != null : !ICON_EDEFAULT.equals(getIcon());
+				return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT.equals(icon);
 			case ToolkitsPackage.WIDGET__IMPLEMENTATION:
-				return IMPLEMENTATION_EDEFAULT == null ? getImplementation() != null : !IMPLEMENTATION_EDEFAULT.equals(getImplementation());
+				return IMPLEMENTATION_EDEFAULT == null ? implementation != null : !IMPLEMENTATION_EDEFAULT.equals(implementation);
 			case ToolkitsPackage.WIDGET__TOOLKIT:
-				return basicGetToolkit() != null;
+				return getToolkit() != null;
 			case ToolkitsPackage.WIDGET__POSSIBLE_EVENTS:
-				return !getPossibleEvents().isEmpty();
+				return possibleEvents != null && !possibleEvents.isEmpty();
 			case ToolkitsPackage.WIDGET__IS_CONTAINER:
-				return isIsContainer() != IS_CONTAINER_EDEFAULT;
+				return isContainer != IS_CONTAINER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(", icon: ");
+		result.append(icon);
+		result.append(", implementation: ");
+		result.append(implementation);
+		result.append(", isContainer: ");
+		result.append(isContainer);
+		result.append(')');
+		return result.toString();
 	}
 
 } //WidgetImpl

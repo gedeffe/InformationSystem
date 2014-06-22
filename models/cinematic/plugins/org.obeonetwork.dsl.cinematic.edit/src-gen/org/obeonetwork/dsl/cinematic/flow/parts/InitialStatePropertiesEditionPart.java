@@ -3,32 +3,27 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public interface InitialStatePropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
@@ -46,7 +41,7 @@ public interface InitialStatePropertiesEditionPart {
 	/**
 	 * Update the actions
 	 * @param newValue the actions to update
-	 * 
+	 * @generated
 	 */
 	public void updateActions();
 
@@ -56,7 +51,7 @@ public interface InitialStatePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActions(ViewerFilter filter);
 
@@ -66,27 +61,27 @@ public interface InitialStatePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActions(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the actions table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInActionsTable(EObject element);
 
 
 	/**
 	 * @return the description
-	 * 
+	 * @generated
 	 */
 	public String getDescription();
 
 	/**
 	 * Defines a new description
 	 * @param newValue the new description to set
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue);
 
@@ -98,12 +93,9 @@ public interface InitialStatePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-	
-	// End of user code
 
 }

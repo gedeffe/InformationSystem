@@ -3,67 +3,47 @@
  */
 package org.obeonetwork.dsl.cinematic.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
-
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
-
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.swt.SWT;
-
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
 import org.obeonetwork.dsl.cinematic.parts.CinematicViewsRepository;
 import org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart;
-
 import org.obeonetwork.dsl.cinematic.providers.CinematicMessages;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, Package_PropertiesEditionPart {
 
@@ -84,7 +64,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public Package_PropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -95,7 +75,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -111,7 +91,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence package_Step = new BindingCompositionSequence(propertiesEditionComponent);
@@ -152,7 +132,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -166,6 +146,9 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, CinematicViewsRepository.Package_.Properties.name, CinematicMessages.Package_PropertiesEditionPart_NameLabel);
@@ -178,7 +161,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -194,7 +177,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -209,9 +192,15 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 		EditingUtils.setID(name, CinematicViewsRepository.Package_.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(CinematicViewsRepository.Package_.Properties.name, CinematicViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createDescriptionText(Composite parent) {
 		createDescription(parent, CinematicViewsRepository.Package_.Properties.description, CinematicMessages.Package_PropertiesEditionPart_DescriptionLabel);
@@ -224,7 +213,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -240,7 +229,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -255,12 +244,15 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 		EditingUtils.setID(description, CinematicViewsRepository.Package_.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(CinematicViewsRepository.Package_.Properties.description, CinematicViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
+	 * @generated
 	 */
 	protected Composite createSubPackagesAdvancedTableComposition(Composite parent) {
 		this.subPackages = new ReferencesTable(getDescription(CinematicViewsRepository.Package_.Properties.subPackages, CinematicMessages.Package_PropertiesEditionPart_SubPackagesLabel), new ReferencesTableListener() {
@@ -303,12 +295,15 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 		this.subPackages.setUpperBound(-1);
 		subPackages.setID(CinematicViewsRepository.Package_.Properties.subPackages);
 		subPackages.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createSubPackagesAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
+	 * @generated
 	 */
 	protected Composite createFlowsAdvancedTableComposition(Composite parent) {
 		this.flows = new ReferencesTable(getDescription(CinematicViewsRepository.Package_.Properties.flows, CinematicMessages.Package_PropertiesEditionPart_FlowsLabel), new ReferencesTableListener() {
@@ -351,12 +346,15 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 		this.flows.setUpperBound(-1);
 		flows.setID(CinematicViewsRepository.Package_.Properties.flows);
 		flows.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createFlowsAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
+	 * @generated
 	 */
 	protected Composite createViewContainersAdvancedTableComposition(Composite parent) {
 		this.viewContainers = new ReferencesTable(getDescription(CinematicViewsRepository.Package_.Properties.viewContainers, CinematicMessages.Package_PropertiesEditionPart_ViewContainersLabel), new ReferencesTableListener() {
@@ -399,6 +397,9 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 		this.viewContainers.setUpperBound(-1);
 		viewContainers.setID(CinematicViewsRepository.Package_.Properties.viewContainers);
 		viewContainers.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createViewContainersAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 
@@ -407,19 +408,16 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -429,7 +427,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -437,13 +435,21 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(CinematicViewsRepository.Package_.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(CinematicMessages.Package__ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#getDescription()
-	 * 
+	 * @generated
 	 */
 	public String getDescription() {
 		return description.getText();
@@ -453,7 +459,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#setDescription(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue) {
 		if (newValue != null) {
@@ -461,6 +467,14 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			description.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(CinematicViewsRepository.Package_.Properties.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(CinematicMessages.Package__ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -476,13 +490,21 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		subPackages.setContentProvider(contentProvider);
 		subPackages.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(CinematicViewsRepository.Package_.Properties.subPackages);
+		if (eefElementEditorReadOnlyState && subPackages.isEnabled()) {
+			subPackages.setEnabled(false);
+			subPackages.setToolTipText(CinematicMessages.Package__ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !subPackages.isEnabled()) {
+			subPackages.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#updateSubPackages()
-	 * 
+	 * @generated
 	 */
 	public void updateSubPackages() {
 	subPackages.refresh();
@@ -492,7 +514,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#addFilterSubPackages(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSubPackages(ViewerFilter filter) {
 		subPackagesFilters.add(filter);
@@ -505,7 +527,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#addBusinessFilterSubPackages(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSubPackages(ViewerFilter filter) {
 		subPackagesBusinessFilters.add(filter);
@@ -515,7 +537,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#isContainedInSubPackagesTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInSubPackagesTable(EObject element) {
 		return ((ReferencesTableSettings)subPackages.getInput()).contains(element);
@@ -534,13 +556,21 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		flows.setContentProvider(contentProvider);
 		flows.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(CinematicViewsRepository.Package_.Properties.flows);
+		if (eefElementEditorReadOnlyState && flows.isEnabled()) {
+			flows.setEnabled(false);
+			flows.setToolTipText(CinematicMessages.Package__ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !flows.isEnabled()) {
+			flows.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#updateFlows()
-	 * 
+	 * @generated
 	 */
 	public void updateFlows() {
 	flows.refresh();
@@ -550,7 +580,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#addFilterFlows(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToFlows(ViewerFilter filter) {
 		flowsFilters.add(filter);
@@ -563,7 +593,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#addBusinessFilterFlows(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToFlows(ViewerFilter filter) {
 		flowsBusinessFilters.add(filter);
@@ -573,7 +603,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#isContainedInFlowsTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInFlowsTable(EObject element) {
 		return ((ReferencesTableSettings)flows.getInput()).contains(element);
@@ -592,13 +622,21 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		viewContainers.setContentProvider(contentProvider);
 		viewContainers.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(CinematicViewsRepository.Package_.Properties.viewContainers);
+		if (eefElementEditorReadOnlyState && viewContainers.isEnabled()) {
+			viewContainers.setEnabled(false);
+			viewContainers.setToolTipText(CinematicMessages.Package__ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !viewContainers.isEnabled()) {
+			viewContainers.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#updateViewContainers()
-	 * 
+	 * @generated
 	 */
 	public void updateViewContainers() {
 	viewContainers.refresh();
@@ -608,7 +646,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#addFilterViewContainers(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToViewContainers(ViewerFilter filter) {
 		viewContainersFilters.add(filter);
@@ -621,7 +659,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#addBusinessFilterViewContainers(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToViewContainers(ViewerFilter filter) {
 		viewContainersBusinessFilters.add(filter);
@@ -631,7 +669,7 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.parts.Package_PropertiesEditionPart#isContainedInViewContainersTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInViewContainersTable(EObject element) {
 		return ((ReferencesTableSettings)viewContainers.getInput()).contains(element);
@@ -646,15 +684,12 @@ public class Package_PropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return CinematicMessages.Package__Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

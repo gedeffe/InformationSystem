@@ -46,7 +46,7 @@ public interface AbstractPackage extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Flows</em>' containment reference list.
 	 * @see org.obeonetwork.dsl.cinematic.CinematicPackage#getAbstractPackage_Flows()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Flow> getFlows();
@@ -62,7 +62,7 @@ public interface AbstractPackage extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>View Containers</em>' containment reference list.
 	 * @see org.obeonetwork.dsl.cinematic.CinematicPackage#getAbstractPackage_ViewContainers()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ViewContainer> getViewContainers();
@@ -78,7 +78,7 @@ public interface AbstractPackage extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sub Packages</em>' containment reference list.
 	 * @see org.obeonetwork.dsl.cinematic.CinematicPackage#getAbstractPackage_SubPackages()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<org.obeonetwork.dsl.cinematic.Package> getSubPackages();

@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.cinematic.view.parts.forms;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,11 +51,10 @@ import org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPa
 import org.obeonetwork.dsl.cinematic.view.parts.ViewViewsRepository;
 import org.obeonetwork.dsl.cinematic.view.providers.ViewMessages;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, ViewContainerPropertiesEditionPart {
 
@@ -84,7 +82,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public ViewContainerPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -95,7 +93,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -113,7 +111,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence viewContainerStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -161,7 +159,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		composer.compose(view);
 	}
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -177,6 +175,9 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ViewViewsRepository.ViewContainer.Properties.name, ViewMessages.ViewContainerPropertiesEditionPart_NameLabel);
@@ -188,7 +189,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		name.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -225,7 +226,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		name.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -239,9 +240,15 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		EditingUtils.setID(name, ViewViewsRepository.ViewContainer.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewViewsRepository.ViewContainer.Properties.name, ViewViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createLabelText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ViewViewsRepository.ViewContainer.Properties.label, ViewMessages.ViewContainerPropertiesEditionPart_LabelLabel);
@@ -253,7 +260,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		label.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -290,7 +297,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		label.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -304,13 +311,16 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		EditingUtils.setID(label, ViewViewsRepository.ViewContainer.Properties.label);
 		EditingUtils.setEEFtype(label, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewViewsRepository.ViewContainer.Properties.label, ViewViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createLabelText
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createWidgetFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		createDescription(parent, ViewViewsRepository.ViewContainer.Properties.widget, ViewMessages.ViewContainerPropertiesEditionPart_WidgetLabel);
@@ -334,12 +344,15 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		});
 		widget.setID(ViewViewsRepository.ViewContainer.Properties.widget);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewViewsRepository.ViewContainer.Properties.widget, ViewViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createWidgetFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
+	 * @generated
 	 */
 	protected Composite createActionsTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.actions = new ReferencesTable(getDescription(ViewViewsRepository.ViewContainer.Properties.actions, ViewMessages.ViewContainerPropertiesEditionPart_ActionsLabel), new ReferencesTableListener() {
@@ -382,12 +395,15 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		this.actions.setUpperBound(-1);
 		actions.setID(ViewViewsRepository.ViewContainer.Properties.actions);
 		actions.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createActionsTableComposition
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
+	 * @generated
 	 */
 	protected Composite createEventsTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.events = new ReferencesTable(getDescription(ViewViewsRepository.ViewContainer.Properties.events, ViewMessages.ViewContainerPropertiesEditionPart_EventsLabel), new ReferencesTableListener() {
@@ -430,9 +446,15 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		this.events.setUpperBound(-1);
 		events.setID(ViewViewsRepository.ViewContainer.Properties.events);
 		events.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createEventsTableComposition
+
+		// End of user code
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ViewViewsRepository.ViewContainer.Properties.description, ViewMessages.ViewContainerPropertiesEditionPart_DescriptionLabel);
@@ -444,7 +466,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		description.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -481,7 +503,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		description.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -495,12 +517,15 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		EditingUtils.setID(description, ViewViewsRepository.ViewContainer.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewViewsRepository.ViewContainer.Properties.description, ViewViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
+	 * @generated
 	 */
 	protected Composite createOwnedElementsTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.ownedElements = new ReferencesTable(getDescription(ViewViewsRepository.ViewContainer.Properties.ownedElements, ViewMessages.ViewContainerPropertiesEditionPart_OwnedElementsLabel), new ReferencesTableListener() {
@@ -543,6 +568,9 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		this.ownedElements.setUpperBound(-1);
 		ownedElements.setID(ViewViewsRepository.ViewContainer.Properties.ownedElements);
 		ownedElements.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createOwnedElementsTableComposition
+
+		// End of user code
 		return parent;
 	}
 
@@ -551,19 +579,16 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -573,7 +598,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -581,13 +606,21 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewContainer.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(ViewMessages.ViewContainer_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#getLabel()
-	 * 
+	 * @generated
 	 */
 	public String getLabel() {
 		return label.getText();
@@ -597,7 +630,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#setLabel(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setLabel(String newValue) {
 		if (newValue != null) {
@@ -605,13 +638,21 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		} else {
 			label.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewContainer.Properties.label);
+		if (eefElementEditorReadOnlyState && label.isEnabled()) {
+			label.setEnabled(false);
+			label.setToolTipText(ViewMessages.ViewContainer_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !label.isEnabled()) {
+			label.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#getWidget()
-	 * 
+	 * @generated
 	 */
 	public EObject getWidget() {
 		if (widget.getSelection() instanceof StructuredSelection) {
@@ -632,13 +673,21 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		if (current != null) {
 			widget.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewContainer.Properties.widget);
+		if (eefElementEditorReadOnlyState && widget.isEnabled()) {
+			widget.setEnabled(false);
+			widget.setToolTipText(ViewMessages.ViewContainer_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !widget.isEnabled()) {
+			widget.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#setWidget(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setWidget(EObject newValue) {
 		if (newValue != null) {
@@ -646,6 +695,14 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		} else {
 			widget.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewContainer.Properties.widget);
+		if (eefElementEditorReadOnlyState && widget.isEnabled()) {
+			widget.setEnabled(false);
+			widget.setToolTipText(ViewMessages.ViewContainer_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !widget.isEnabled()) {
+			widget.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -661,7 +718,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#addFilterWidget(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToWidget(ViewerFilter filter) {
 		widget.addFilter(filter);
@@ -671,7 +728,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#addBusinessFilterWidget(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToWidget(ViewerFilter filter) {
 		widget.addBusinessRuleFilter(filter);
@@ -690,13 +747,21 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		actions.setContentProvider(contentProvider);
 		actions.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewContainer.Properties.actions);
+		if (eefElementEditorReadOnlyState && actions.isEnabled()) {
+			actions.setEnabled(false);
+			actions.setToolTipText(ViewMessages.ViewContainer_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !actions.isEnabled()) {
+			actions.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#updateActions()
-	 * 
+	 * @generated
 	 */
 	public void updateActions() {
 	actions.refresh();
@@ -706,7 +771,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#addFilterActions(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActions(ViewerFilter filter) {
 		actionsFilters.add(filter);
@@ -719,7 +784,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#addBusinessFilterActions(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActions(ViewerFilter filter) {
 		actionsBusinessFilters.add(filter);
@@ -729,7 +794,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#isContainedInActionsTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInActionsTable(EObject element) {
 		return ((ReferencesTableSettings)actions.getInput()).contains(element);
@@ -748,13 +813,21 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		events.setContentProvider(contentProvider);
 		events.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewContainer.Properties.events);
+		if (eefElementEditorReadOnlyState && events.isEnabled()) {
+			events.setEnabled(false);
+			events.setToolTipText(ViewMessages.ViewContainer_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !events.isEnabled()) {
+			events.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#updateEvents()
-	 * 
+	 * @generated
 	 */
 	public void updateEvents() {
 	events.refresh();
@@ -764,7 +837,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#addFilterEvents(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToEvents(ViewerFilter filter) {
 		eventsFilters.add(filter);
@@ -777,7 +850,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#addBusinessFilterEvents(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToEvents(ViewerFilter filter) {
 		eventsBusinessFilters.add(filter);
@@ -787,7 +860,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#isContainedInEventsTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInEventsTable(EObject element) {
 		return ((ReferencesTableSettings)events.getInput()).contains(element);
@@ -797,7 +870,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#getDescription()
-	 * 
+	 * @generated
 	 */
 	public String getDescription() {
 		return description.getText();
@@ -807,7 +880,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#setDescription(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue) {
 		if (newValue != null) {
@@ -815,6 +888,14 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		} else {
 			description.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewContainer.Properties.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(ViewMessages.ViewContainer_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -830,13 +911,21 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		ownedElements.setContentProvider(contentProvider);
 		ownedElements.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewContainer.Properties.ownedElements);
+		if (eefElementEditorReadOnlyState && ownedElements.isEnabled()) {
+			ownedElements.setEnabled(false);
+			ownedElements.setToolTipText(ViewMessages.ViewContainer_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !ownedElements.isEnabled()) {
+			ownedElements.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#updateOwnedElements()
-	 * 
+	 * @generated
 	 */
 	public void updateOwnedElements() {
 	ownedElements.refresh();
@@ -846,7 +935,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#addFilterOwnedElements(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOwnedElements(ViewerFilter filter) {
 		ownedElementsFilters.add(filter);
@@ -859,7 +948,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#addBusinessFilterOwnedElements(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOwnedElements(ViewerFilter filter) {
 		ownedElementsBusinessFilters.add(filter);
@@ -869,7 +958,7 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewContainerPropertiesEditionPart#isContainedInOwnedElementsTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInOwnedElementsTable(EObject element) {
 		return ((ReferencesTableSettings)ownedElements.getInput()).contains(element);
@@ -884,15 +973,12 @@ public class ViewContainerPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return ViewMessages.ViewContainer_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

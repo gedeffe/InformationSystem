@@ -36,7 +36,7 @@ public class ToolkitsFactoryImpl extends EFactoryImpl implements ToolkitsFactory
 	 */
 	public static ToolkitsFactory init() {
 		try {
-			ToolkitsFactory theToolkitsFactory = (ToolkitsFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.obeonetwork.org/dsl/cinematic/toolkits/1.0.0"); 
+			ToolkitsFactory theToolkitsFactory = (ToolkitsFactory)EPackage.Registry.INSTANCE.getEFactory(ToolkitsPackage.eNS_URI);
 			if (theToolkitsFactory != null) {
 				return theToolkitsFactory;
 			}
@@ -65,9 +65,9 @@ public class ToolkitsFactoryImpl extends EFactoryImpl implements ToolkitsFactory
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ToolkitsPackage.TOOLKIT: return (EObject)createToolkit();
-			case ToolkitsPackage.WIDGET: return (EObject)createWidget();
-			case ToolkitsPackage.WIDGET_EVENT_TYPE: return (EObject)createWidgetEventType();
+			case ToolkitsPackage.TOOLKIT: return createToolkit();
+			case ToolkitsPackage.WIDGET: return createWidget();
+			case ToolkitsPackage.WIDGET_EVENT_TYPE: return createWidgetEventType();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

@@ -11,11 +11,13 @@
 package org.obeonetwork.dsl.cinematic.view.impl;
 
 import java.util.Collection;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.obeonetwork.dsl.cinematic.impl.NamedElementImpl;
 import org.obeonetwork.dsl.cinematic.toolkits.Widget;
@@ -43,6 +45,33 @@ import org.obeonetwork.dsl.environment.BoundableElement;
  */
 public abstract class AbstractViewElementImpl extends NamedElementImpl implements AbstractViewElement {
 	/**
+	 * The cached value of the '{@link #getWidget() <em>Widget</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWidget()
+	 * @generated
+	 * @ordered
+	 */
+	protected Widget widget;
+	/**
+	 * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ViewAction> actions;
+	/**
+	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEvents()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ViewEvent> events;
+	/**
 	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -51,6 +80,16 @@ public abstract class AbstractViewElementImpl extends NamedElementImpl implement
 	 * @ordered
 	 */
 	protected static final String LABEL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected String label = LABEL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -77,7 +116,15 @@ public abstract class AbstractViewElementImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 	public Widget getWidget() {
-		return (Widget)eDynamicGet(ViewPackage.ABSTRACT_VIEW_ELEMENT__WIDGET, ViewPackage.Literals.ABSTRACT_VIEW_ELEMENT__WIDGET, true, true);
+		if (widget != null && widget.eIsProxy()) {
+			InternalEObject oldWidget = (InternalEObject)widget;
+			widget = (Widget)eResolveProxy(oldWidget);
+			if (widget != oldWidget) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewPackage.ABSTRACT_VIEW_ELEMENT__WIDGET, oldWidget, widget));
+			}
+		}
+		return widget;
 	}
 
 	/**
@@ -86,7 +133,7 @@ public abstract class AbstractViewElementImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 	public Widget basicGetWidget() {
-		return (Widget)eDynamicGet(ViewPackage.ABSTRACT_VIEW_ELEMENT__WIDGET, ViewPackage.Literals.ABSTRACT_VIEW_ELEMENT__WIDGET, false, true);
+		return widget;
 	}
 
 	/**
@@ -95,7 +142,10 @@ public abstract class AbstractViewElementImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 	public void setWidget(Widget newWidget) {
-		eDynamicSet(ViewPackage.ABSTRACT_VIEW_ELEMENT__WIDGET, ViewPackage.Literals.ABSTRACT_VIEW_ELEMENT__WIDGET, newWidget);
+		Widget oldWidget = widget;
+		widget = newWidget;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.ABSTRACT_VIEW_ELEMENT__WIDGET, oldWidget, widget));
 	}
 
 	/**
@@ -105,7 +155,10 @@ public abstract class AbstractViewElementImpl extends NamedElementImpl implement
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<ViewAction> getActions() {
-		return (EList<ViewAction>)eDynamicGet(ViewPackage.ABSTRACT_VIEW_ELEMENT__ACTIONS, ViewPackage.Literals.ABSTRACT_VIEW_ELEMENT__ACTIONS, true, true);
+		if (actions == null) {
+			actions = new EObjectContainmentEList<ViewAction>(ViewAction.class, this, ViewPackage.ABSTRACT_VIEW_ELEMENT__ACTIONS);
+		}
+		return actions;
 	}
 
 	/**
@@ -115,7 +168,10 @@ public abstract class AbstractViewElementImpl extends NamedElementImpl implement
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<ViewEvent> getEvents() {
-		return (EList<ViewEvent>)eDynamicGet(ViewPackage.ABSTRACT_VIEW_ELEMENT__EVENTS, ViewPackage.Literals.ABSTRACT_VIEW_ELEMENT__EVENTS, true, true);
+		if (events == null) {
+			events = new EObjectContainmentEList<ViewEvent>(ViewEvent.class, this, ViewPackage.ABSTRACT_VIEW_ELEMENT__EVENTS);
+		}
+		return events;
 	}
 
 	/**
@@ -124,7 +180,7 @@ public abstract class AbstractViewElementImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 	public String getLabel() {
-		return (String)eDynamicGet(ViewPackage.ABSTRACT_VIEW_ELEMENT__LABEL, ViewPackage.Literals.ABSTRACT_VIEW_ELEMENT__LABEL, true, true);
+		return label;
 	}
 
 	/**
@@ -133,7 +189,10 @@ public abstract class AbstractViewElementImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 	public void setLabel(String newLabel) {
-		eDynamicSet(ViewPackage.ABSTRACT_VIEW_ELEMENT__LABEL, ViewPackage.Literals.ABSTRACT_VIEW_ELEMENT__LABEL, newLabel);
+		String oldLabel = label;
+		label = newLabel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.ABSTRACT_VIEW_ELEMENT__LABEL, oldLabel, label));
 	}
 
 	/**
@@ -244,15 +303,31 @@ public abstract class AbstractViewElementImpl extends NamedElementImpl implement
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ViewPackage.ABSTRACT_VIEW_ELEMENT__WIDGET:
-				return basicGetWidget() != null;
+				return widget != null;
 			case ViewPackage.ABSTRACT_VIEW_ELEMENT__ACTIONS:
-				return !getActions().isEmpty();
+				return actions != null && !actions.isEmpty();
 			case ViewPackage.ABSTRACT_VIEW_ELEMENT__EVENTS:
-				return !getEvents().isEmpty();
+				return events != null && !events.isEmpty();
 			case ViewPackage.ABSTRACT_VIEW_ELEMENT__LABEL:
-				return LABEL_EDEFAULT == null ? getLabel() != null : !LABEL_EDEFAULT.equals(getLabel());
+				return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (label: ");
+		result.append(label);
+		result.append(')');
+		return result.toString();
 	}
 
 } //AbstractViewElementImpl

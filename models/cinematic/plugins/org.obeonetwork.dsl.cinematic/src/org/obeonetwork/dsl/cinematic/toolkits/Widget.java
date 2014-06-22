@@ -10,8 +10,8 @@
  */
 package org.obeonetwork.dsl.cinematic.toolkits;
 
-import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,10 +32,9 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see org.obeonetwork.dsl.cinematic.toolkits.ToolkitsPackage#getWidget()
  * @model
- * @extends CDOObject
  * @generated
  */
-public interface Widget extends CDOObject {
+public interface Widget extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -153,7 +152,7 @@ public interface Widget extends CDOObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Possible Events</em>' containment reference list.
 	 * @see org.obeonetwork.dsl.cinematic.toolkits.ToolkitsPackage#getWidget_PossibleEvents()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<WidgetEventType> getPossibleEvents();

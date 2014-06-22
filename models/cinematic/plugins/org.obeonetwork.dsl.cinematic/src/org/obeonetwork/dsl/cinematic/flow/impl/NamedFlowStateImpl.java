@@ -10,7 +10,9 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.obeonetwork.dsl.cinematic.CinematicPackage;
 import org.obeonetwork.dsl.cinematic.NamedElement;
 import org.obeonetwork.dsl.cinematic.flow.FlowPackage;
@@ -41,6 +43,16 @@ public abstract class NamedFlowStateImpl extends FlowStateImpl implements NamedF
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -65,7 +77,7 @@ public abstract class NamedFlowStateImpl extends FlowStateImpl implements NamedF
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eDynamicGet(FlowPackage.NAMED_FLOW_STATE__NAME, CinematicPackage.Literals.NAMED_ELEMENT__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -74,7 +86,10 @@ public abstract class NamedFlowStateImpl extends FlowStateImpl implements NamedF
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(FlowPackage.NAMED_FLOW_STATE__NAME, CinematicPackage.Literals.NAMED_ELEMENT__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FlowPackage.NAMED_FLOW_STATE__NAME, oldName, name));
 	}
 
 	/**
@@ -130,7 +145,7 @@ public abstract class NamedFlowStateImpl extends FlowStateImpl implements NamedF
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case FlowPackage.NAMED_FLOW_STATE__NAME:
-				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -165,6 +180,22 @@ public abstract class NamedFlowStateImpl extends FlowStateImpl implements NamedF
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //NamedFlowStateImpl

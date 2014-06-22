@@ -10,8 +10,10 @@
  */
 package org.obeonetwork.dsl.cinematic.toolkits.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.obeonetwork.dsl.cinematic.toolkits.ToolkitsPackage;
 import org.obeonetwork.dsl.cinematic.toolkits.WidgetEventType;
 
@@ -28,7 +30,7 @@ import org.obeonetwork.dsl.cinematic.toolkits.WidgetEventType;
  *
  * @generated
  */
-public class WidgetEventTypeImpl extends CDOObjectImpl implements WidgetEventType {
+public class WidgetEventTypeImpl extends MinimalEObjectImpl.Container implements WidgetEventType {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -38,6 +40,16 @@ public class WidgetEventTypeImpl extends CDOObjectImpl implements WidgetEventTyp
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,18 +75,8 @@ public class WidgetEventTypeImpl extends CDOObjectImpl implements WidgetEventTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getName() {
-		return (String)eDynamicGet(ToolkitsPackage.WIDGET_EVENT_TYPE__NAME, ToolkitsPackage.Literals.WIDGET_EVENT_TYPE__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -83,7 +85,10 @@ public class WidgetEventTypeImpl extends CDOObjectImpl implements WidgetEventTyp
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(ToolkitsPackage.WIDGET_EVENT_TYPE__NAME, ToolkitsPackage.Literals.WIDGET_EVENT_TYPE__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolkitsPackage.WIDGET_EVENT_TYPE__NAME, oldName, name));
 	}
 
 	/**
@@ -139,9 +144,25 @@ public class WidgetEventTypeImpl extends CDOObjectImpl implements WidgetEventTyp
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ToolkitsPackage.WIDGET_EVENT_TYPE__NAME:
-				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //WidgetEventTypeImpl

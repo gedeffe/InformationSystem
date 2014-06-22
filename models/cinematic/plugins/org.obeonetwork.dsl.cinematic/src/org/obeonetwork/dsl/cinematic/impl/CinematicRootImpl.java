@@ -14,6 +14,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.obeonetwork.dsl.cinematic.CinematicPackage;
 import org.obeonetwork.dsl.cinematic.CinematicRoot;
 import org.obeonetwork.dsl.cinematic.toolkits.Toolkit;
@@ -32,6 +33,16 @@ import org.obeonetwork.dsl.cinematic.toolkits.Toolkit;
  * @generated
  */
 public class CinematicRootImpl extends AbstractPackageImpl implements CinematicRoot {
+	/**
+	 * The cached value of the '{@link #getToolkits() <em>Toolkits</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getToolkits()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Toolkit> toolkits;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,7 +69,10 @@ public class CinematicRootImpl extends AbstractPackageImpl implements CinematicR
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Toolkit> getToolkits() {
-		return (EList<Toolkit>)eDynamicGet(CinematicPackage.CINEMATIC_ROOT__TOOLKITS, CinematicPackage.Literals.CINEMATIC_ROOT__TOOLKITS, true, true);
+		if (toolkits == null) {
+			toolkits = new EObjectResolvingEList<Toolkit>(Toolkit.class, this, CinematicPackage.CINEMATIC_ROOT__TOOLKITS);
+		}
+		return toolkits;
 	}
 
 	/**
@@ -116,7 +130,7 @@ public class CinematicRootImpl extends AbstractPackageImpl implements CinematicR
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CinematicPackage.CINEMATIC_ROOT__TOOLKITS:
-				return !getToolkits().isEmpty();
+				return toolkits != null && !toolkits.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

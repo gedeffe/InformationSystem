@@ -39,7 +39,7 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 	 */
 	public static ViewFactory init() {
 		try {
-			ViewFactory theViewFactory = (ViewFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.obeonetwork.org/dsl/cinematic/view/1.0.0"); 
+			ViewFactory theViewFactory = (ViewFactory)EPackage.Registry.INSTANCE.getEFactory(ViewPackage.eNS_URI);
 			if (theViewFactory != null) {
 				return theViewFactory;
 			}
@@ -68,11 +68,11 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ViewPackage.VIEW_CONTAINER: return (EObject)createViewContainer();
-			case ViewPackage.VIEW_ELEMENT: return (EObject)createViewElement();
-			case ViewPackage.VIEW_ACTION: return (EObject)createViewAction();
-			case ViewPackage.VIEW_EVENT: return (EObject)createViewEvent();
-			case ViewPackage.VIEW_CONTAINER_REFERENCE: return (EObject)createViewContainerReference();
+			case ViewPackage.VIEW_CONTAINER: return createViewContainer();
+			case ViewPackage.VIEW_ELEMENT: return createViewElement();
+			case ViewPackage.VIEW_ACTION: return createViewAction();
+			case ViewPackage.VIEW_EVENT: return createViewEvent();
+			case ViewPackage.VIEW_CONTAINER_REFERENCE: return createViewContainerReference();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -11,19 +10,18 @@ import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
 import org.obeonetwork.dsl.cinematic.CinematicPackage;
 import org.obeonetwork.dsl.cinematic.flow.FlowEvent;
 import org.obeonetwork.dsl.cinematic.flow.FlowPackage;
@@ -34,14 +32,15 @@ import org.obeonetwork.dsl.cinematic.view.ViewPackage;
 import org.obeonetwork.dsl.environment.EnvironmentPackage;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public class FlowEventFlowEventPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String FLOWEVENT_PART = "FlowEvent"; //$NON-NLS-1$
 
@@ -54,7 +53,7 @@ public class FlowEventFlowEventPropertiesEditionComponent extends SinglePartProp
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public FlowEventFlowEventPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject flowEvent, String editing_mode) {
 		super(editingContext, flowEvent, editing_mode);
@@ -68,19 +67,20 @@ public class FlowEventFlowEventPropertiesEditionComponent extends SinglePartProp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final FlowEvent flowEvent = (FlowEvent)elt;
 			final FlowEventPropertiesEditionPart flowEventPart = (FlowEventPropertiesEditionPart)editingPart;
 			// init values
-			if (flowEvent.getDescription() != null && isAccessible(FlowViewsRepository.FlowEvent.Properties.description))
+			if (isAccessible(FlowViewsRepository.FlowEvent.Properties.description))
 				flowEventPart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, flowEvent.getDescription()));
 			
-			if (flowEvent.getName() != null && isAccessible(FlowViewsRepository.FlowEvent.Properties.name))
+			if (isAccessible(FlowViewsRepository.FlowEvent.Properties.name))
 				flowEventPart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, flowEvent.getName()));
 			
 			if (isAccessible(FlowViewsRepository.FlowEvent.Properties.binds)) {
@@ -91,23 +91,7 @@ public class FlowEventFlowEventPropertiesEditionComponent extends SinglePartProp
 			
 			
 			if (isAccessible(FlowViewsRepository.FlowEvent.Properties.binds)) {
-				flowEventPart.addFilterToBinds(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!flowEventPart.isContainedInBindsTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
 				flowEventPart.addFilterToBinds(new EObjectFilter(ViewPackage.Literals.VIEW_EVENT));
-				// Start of user code for additional businessfilters for binds
-				// End of user code
 			}
 			// init values for referenced views
 			
@@ -142,7 +126,7 @@ public class FlowEventFlowEventPropertiesEditionComponent extends SinglePartProp
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		FlowEvent flowEvent = (FlowEvent)semanticObject;
@@ -170,16 +154,17 @@ public class FlowEventFlowEventPropertiesEditionComponent extends SinglePartProp
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			FlowEventPropertiesEditionPart flowEventPart = (FlowEventPropertiesEditionPart)editingPart;
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && flowEventPart != null && isAccessible(FlowViewsRepository.FlowEvent.Properties.description)) {
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && flowEventPart != null && isAccessible(FlowViewsRepository.FlowEvent.Properties.description)) {
 				if (msg.getNewValue() != null) {
 					flowEventPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					flowEventPart.setDescription("");
 				}
 			}
-			if (CinematicPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && flowEventPart != null && isAccessible(FlowViewsRepository.FlowEvent.Properties.name)) {
+			if (CinematicPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && flowEventPart != null && isAccessible(FlowViewsRepository.FlowEvent.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					flowEventPart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -192,12 +177,26 @@ public class FlowEventFlowEventPropertiesEditionComponent extends SinglePartProp
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description(),
+			CinematicPackage.eINSTANCE.getNamedElement_Name(),
+			FlowPackage.eINSTANCE.getFlowEvent_Binds()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -225,5 +224,8 @@ public class FlowEventFlowEventPropertiesEditionComponent extends SinglePartProp
 		}
 		return ret;
 	}
+
+
+	
 
 }

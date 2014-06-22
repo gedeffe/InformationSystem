@@ -12,8 +12,12 @@ package org.obeonetwork.dsl.cinematic.flow.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.obeonetwork.dsl.cinematic.Event;
 import org.obeonetwork.dsl.cinematic.flow.FlowPackage;
 import org.obeonetwork.dsl.cinematic.flow.FlowState;
@@ -48,6 +52,15 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 */
 	protected static final String GUARD_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGuard()
+	 * @generated
+	 * @ordered
+	 */
+	protected String guard = GUARD_EDEFAULT;
+	/**
 	 * The default value of the '{@link #isModal() <em>Modal</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -56,6 +69,43 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @ordered
 	 */
 	protected static final boolean MODAL_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isModal() <em>Modal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isModal()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean modal = MODAL_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getFrom() <em>From</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFrom()
+	 * @generated
+	 * @ordered
+	 */
+	protected FlowState from;
+	/**
+	 * The cached value of the '{@link #getTo() <em>To</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTo()
+	 * @generated
+	 * @ordered
+	 */
+	protected FlowState to;
+	/**
+	 * The cached value of the '{@link #getOn() <em>On</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOn()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Event> on;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,7 +132,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 	public String getGuard() {
-		return (String)eDynamicGet(FlowPackage.TRANSITION__GUARD, FlowPackage.Literals.TRANSITION__GUARD, true, true);
+		return guard;
 	}
 
 	/**
@@ -91,7 +141,10 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 	public void setGuard(String newGuard) {
-		eDynamicSet(FlowPackage.TRANSITION__GUARD, FlowPackage.Literals.TRANSITION__GUARD, newGuard);
+		String oldGuard = guard;
+		guard = newGuard;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FlowPackage.TRANSITION__GUARD, oldGuard, guard));
 	}
 
 	/**
@@ -100,7 +153,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 	public boolean isModal() {
-		return (Boolean)eDynamicGet(FlowPackage.TRANSITION__MODAL, FlowPackage.Literals.TRANSITION__MODAL, true, true);
+		return modal;
 	}
 
 	/**
@@ -109,7 +162,10 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 	public void setModal(boolean newModal) {
-		eDynamicSet(FlowPackage.TRANSITION__MODAL, FlowPackage.Literals.TRANSITION__MODAL, newModal);
+		boolean oldModal = modal;
+		modal = newModal;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FlowPackage.TRANSITION__MODAL, oldModal, modal));
 	}
 
 	/**
@@ -118,7 +174,15 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 	public FlowState getTo() {
-		return (FlowState)eDynamicGet(FlowPackage.TRANSITION__TO, FlowPackage.Literals.TRANSITION__TO, true, true);
+		if (to != null && to.eIsProxy()) {
+			InternalEObject oldTo = (InternalEObject)to;
+			to = (FlowState)eResolveProxy(oldTo);
+			if (to != oldTo) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FlowPackage.TRANSITION__TO, oldTo, to));
+			}
+		}
+		return to;
 	}
 
 	/**
@@ -127,7 +191,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 	public FlowState basicGetTo() {
-		return (FlowState)eDynamicGet(FlowPackage.TRANSITION__TO, FlowPackage.Literals.TRANSITION__TO, false, true);
+		return to;
 	}
 
 	/**
@@ -136,7 +200,10 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 	public void setTo(FlowState newTo) {
-		eDynamicSet(FlowPackage.TRANSITION__TO, FlowPackage.Literals.TRANSITION__TO, newTo);
+		FlowState oldTo = to;
+		to = newTo;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FlowPackage.TRANSITION__TO, oldTo, to));
 	}
 
 	/**
@@ -145,7 +212,15 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 	public FlowState getFrom() {
-		return (FlowState)eDynamicGet(FlowPackage.TRANSITION__FROM, FlowPackage.Literals.TRANSITION__FROM, true, true);
+		if (from != null && from.eIsProxy()) {
+			InternalEObject oldFrom = (InternalEObject)from;
+			from = (FlowState)eResolveProxy(oldFrom);
+			if (from != oldFrom) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FlowPackage.TRANSITION__FROM, oldFrom, from));
+			}
+		}
+		return from;
 	}
 
 	/**
@@ -154,7 +229,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 	public FlowState basicGetFrom() {
-		return (FlowState)eDynamicGet(FlowPackage.TRANSITION__FROM, FlowPackage.Literals.TRANSITION__FROM, false, true);
+		return from;
 	}
 
 	/**
@@ -163,7 +238,10 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 	public void setFrom(FlowState newFrom) {
-		eDynamicSet(FlowPackage.TRANSITION__FROM, FlowPackage.Literals.TRANSITION__FROM, newFrom);
+		FlowState oldFrom = from;
+		from = newFrom;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FlowPackage.TRANSITION__FROM, oldFrom, from));
 	}
 
 	/**
@@ -173,7 +251,10 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Event> getOn() {
-		return (EList<Event>)eDynamicGet(FlowPackage.TRANSITION__ON, FlowPackage.Literals.TRANSITION__ON, true, true);
+		if (on == null) {
+			on = new EObjectResolvingEList<Event>(Event.class, this, FlowPackage.TRANSITION__ON);
+		}
+		return on;
 	}
 
 	/**
@@ -265,17 +346,35 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case FlowPackage.TRANSITION__GUARD:
-				return GUARD_EDEFAULT == null ? getGuard() != null : !GUARD_EDEFAULT.equals(getGuard());
+				return GUARD_EDEFAULT == null ? guard != null : !GUARD_EDEFAULT.equals(guard);
 			case FlowPackage.TRANSITION__MODAL:
-				return isModal() != MODAL_EDEFAULT;
+				return modal != MODAL_EDEFAULT;
 			case FlowPackage.TRANSITION__FROM:
-				return basicGetFrom() != null;
+				return from != null;
 			case FlowPackage.TRANSITION__TO:
-				return basicGetTo() != null;
+				return to != null;
 			case FlowPackage.TRANSITION__ON:
-				return !getOn().isEmpty();
+				return on != null && !on.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (guard: ");
+		result.append(guard);
+		result.append(", modal: ");
+		result.append(modal);
+		result.append(')');
+		return result.toString();
 	}
 
 } //TransitionImpl

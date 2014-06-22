@@ -10,8 +10,8 @@
  */
 package org.obeonetwork.dsl.cinematic.toolkits;
 
-import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,10 +28,9 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see org.obeonetwork.dsl.cinematic.toolkits.ToolkitsPackage#getToolkit()
  * @model
- * @extends CDOObject
  * @generated
  */
-public interface Toolkit extends CDOObject {
+public interface Toolkit extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Widgets</b></em>' containment reference list.
 	 * The list contents are of type {@link org.obeonetwork.dsl.cinematic.toolkits.Widget}.
@@ -45,7 +44,7 @@ public interface Toolkit extends CDOObject {
 	 * @return the value of the '<em>Widgets</em>' containment reference list.
 	 * @see org.obeonetwork.dsl.cinematic.toolkits.ToolkitsPackage#getToolkit_Widgets()
 	 * @see org.obeonetwork.dsl.cinematic.toolkits.Widget#getToolkit
-	 * @model opposite="toolkit" containment="true" resolveProxies="true"
+	 * @model opposite="toolkit" containment="true"
 	 * @generated
 	 */
 	EList<Widget> getWidgets();

@@ -12,8 +12,11 @@ package org.obeonetwork.dsl.cinematic.flow.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.obeonetwork.dsl.cinematic.flow.FlowPackage;
 import org.obeonetwork.dsl.cinematic.flow.ViewState;
 import org.obeonetwork.dsl.cinematic.view.ViewContainer;
@@ -44,6 +47,15 @@ public class ViewStateImpl extends NamedFlowStateImpl implements ViewState {
 	 */
 	protected static final boolean NEW_INSTANCE_EDEFAULT = false;
 	/**
+	 * The cached value of the '{@link #isNewInstance() <em>New Instance</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNewInstance()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean newInstance = NEW_INSTANCE_EDEFAULT;
+	/**
 	 * The default value of the '{@link #isRefresh() <em>Refresh</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -52,6 +64,25 @@ public class ViewStateImpl extends NamedFlowStateImpl implements ViewState {
 	 * @ordered
 	 */
 	protected static final boolean REFRESH_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRefresh() <em>Refresh</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRefresh()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean refresh = REFRESH_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getViewContainers() <em>View Containers</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getViewContainers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ViewContainer> viewContainers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,7 +109,7 @@ public class ViewStateImpl extends NamedFlowStateImpl implements ViewState {
 	 * @generated
 	 */
 	public boolean isNewInstance() {
-		return (Boolean)eDynamicGet(FlowPackage.VIEW_STATE__NEW_INSTANCE, FlowPackage.Literals.VIEW_STATE__NEW_INSTANCE, true, true);
+		return newInstance;
 	}
 
 	/**
@@ -87,7 +118,10 @@ public class ViewStateImpl extends NamedFlowStateImpl implements ViewState {
 	 * @generated
 	 */
 	public void setNewInstance(boolean newNewInstance) {
-		eDynamicSet(FlowPackage.VIEW_STATE__NEW_INSTANCE, FlowPackage.Literals.VIEW_STATE__NEW_INSTANCE, newNewInstance);
+		boolean oldNewInstance = newInstance;
+		newInstance = newNewInstance;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FlowPackage.VIEW_STATE__NEW_INSTANCE, oldNewInstance, newInstance));
 	}
 
 	/**
@@ -96,7 +130,7 @@ public class ViewStateImpl extends NamedFlowStateImpl implements ViewState {
 	 * @generated
 	 */
 	public boolean isRefresh() {
-		return (Boolean)eDynamicGet(FlowPackage.VIEW_STATE__REFRESH, FlowPackage.Literals.VIEW_STATE__REFRESH, true, true);
+		return refresh;
 	}
 
 	/**
@@ -105,7 +139,10 @@ public class ViewStateImpl extends NamedFlowStateImpl implements ViewState {
 	 * @generated
 	 */
 	public void setRefresh(boolean newRefresh) {
-		eDynamicSet(FlowPackage.VIEW_STATE__REFRESH, FlowPackage.Literals.VIEW_STATE__REFRESH, newRefresh);
+		boolean oldRefresh = refresh;
+		refresh = newRefresh;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FlowPackage.VIEW_STATE__REFRESH, oldRefresh, refresh));
 	}
 
 	/**
@@ -115,7 +152,10 @@ public class ViewStateImpl extends NamedFlowStateImpl implements ViewState {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<ViewContainer> getViewContainers() {
-		return (EList<ViewContainer>)eDynamicGet(FlowPackage.VIEW_STATE__VIEW_CONTAINERS, FlowPackage.Literals.VIEW_STATE__VIEW_CONTAINERS, true, true);
+		if (viewContainers == null) {
+			viewContainers = new EObjectResolvingEList<ViewContainer>(ViewContainer.class, this, FlowPackage.VIEW_STATE__VIEW_CONTAINERS);
+		}
+		return viewContainers;
 	}
 
 	/**
@@ -189,13 +229,31 @@ public class ViewStateImpl extends NamedFlowStateImpl implements ViewState {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case FlowPackage.VIEW_STATE__NEW_INSTANCE:
-				return isNewInstance() != NEW_INSTANCE_EDEFAULT;
+				return newInstance != NEW_INSTANCE_EDEFAULT;
 			case FlowPackage.VIEW_STATE__REFRESH:
-				return isRefresh() != REFRESH_EDEFAULT;
+				return refresh != REFRESH_EDEFAULT;
 			case FlowPackage.VIEW_STATE__VIEW_CONTAINERS:
-				return !getViewContainers().isEmpty();
+				return viewContainers != null && !viewContainers.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (newInstance: ");
+		result.append(newInstance);
+		result.append(", refresh: ");
+		result.append(refresh);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ViewStateImpl

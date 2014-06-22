@@ -3,70 +3,51 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.parts.forms;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
-
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
-
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
-
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.swt.SWT;
-
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
-
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.eclipse.ui.views.properties.tabbed.ISection;
 import org.obeonetwork.dsl.cinematic.flow.parts.AsyncEventStatePropertiesEditionPart;
 import org.obeonetwork.dsl.cinematic.flow.parts.FlowViewsRepository;
-
 import org.obeonetwork.dsl.cinematic.flow.providers.FlowMessages;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, AsyncEventStatePropertiesEditionPart {
 
@@ -86,7 +67,7 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public AsyncEventStatePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -97,7 +78,7 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -115,7 +96,7 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence asyncEventStateStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -147,7 +128,7 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 		composer.compose(view);
 	}
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -163,6 +144,9 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, FlowViewsRepository.AsyncEventState.Properties.name, FlowMessages.AsyncEventStatePropertiesEditionPart_NameLabel);
@@ -174,7 +158,7 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 		name.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -211,7 +195,7 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 		name.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -225,12 +209,15 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 		EditingUtils.setID(name, FlowViewsRepository.AsyncEventState.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.AsyncEventState.Properties.name, FlowViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
+	 * @generated
 	 */
 	protected Composite createActionsTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.actions = new ReferencesTable(getDescription(FlowViewsRepository.AsyncEventState.Properties.actions, FlowMessages.AsyncEventStatePropertiesEditionPart_ActionsLabel), new ReferencesTableListener() {
@@ -273,9 +260,15 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 		this.actions.setUpperBound(-1);
 		actions.setID(FlowViewsRepository.AsyncEventState.Properties.actions);
 		actions.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createActionsTableComposition
+
+		// End of user code
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, FlowViewsRepository.AsyncEventState.Properties.description, FlowMessages.AsyncEventStatePropertiesEditionPart_DescriptionLabel);
@@ -287,7 +280,7 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 		description.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -324,7 +317,7 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 		description.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -338,6 +331,9 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 		EditingUtils.setID(description, FlowViewsRepository.AsyncEventState.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.AsyncEventState.Properties.description, FlowViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
+
+		// End of user code
 		return parent;
 	}
 
@@ -346,19 +342,16 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.AsyncEventStatePropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -368,7 +361,7 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.AsyncEventStatePropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -376,6 +369,14 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.AsyncEventState.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(FlowMessages.AsyncEventState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -391,13 +392,21 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		actions.setContentProvider(contentProvider);
 		actions.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.AsyncEventState.Properties.actions);
+		if (eefElementEditorReadOnlyState && actions.isEnabled()) {
+			actions.setEnabled(false);
+			actions.setToolTipText(FlowMessages.AsyncEventState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !actions.isEnabled()) {
+			actions.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.AsyncEventStatePropertiesEditionPart#updateActions()
-	 * 
+	 * @generated
 	 */
 	public void updateActions() {
 	actions.refresh();
@@ -407,7 +416,7 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.AsyncEventStatePropertiesEditionPart#addFilterActions(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActions(ViewerFilter filter) {
 		actionsFilters.add(filter);
@@ -420,7 +429,7 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.AsyncEventStatePropertiesEditionPart#addBusinessFilterActions(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActions(ViewerFilter filter) {
 		actionsBusinessFilters.add(filter);
@@ -430,7 +439,7 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.AsyncEventStatePropertiesEditionPart#isContainedInActionsTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInActionsTable(EObject element) {
 		return ((ReferencesTableSettings)actions.getInput()).contains(element);
@@ -440,7 +449,7 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.AsyncEventStatePropertiesEditionPart#getDescription()
-	 * 
+	 * @generated
 	 */
 	public String getDescription() {
 		return description.getText();
@@ -450,7 +459,7 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.AsyncEventStatePropertiesEditionPart#setDescription(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue) {
 		if (newValue != null) {
@@ -458,6 +467,14 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 		} else {
 			description.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.AsyncEventState.Properties.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(FlowMessages.AsyncEventState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -469,15 +486,12 @@ public class AsyncEventStatePropertiesEditionPartForm extends SectionPropertiesE
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return FlowMessages.AsyncEventState_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -14,7 +13,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
@@ -36,14 +37,15 @@ import org.obeonetwork.dsl.cinematic.flow.parts.FlowViewsRepository;
 import org.obeonetwork.dsl.environment.EnvironmentPackage;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public class FinalStateFinalStatePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String FINALSTATE_PART = "FinalState"; //$NON-NLS-1$
 
@@ -56,7 +58,7 @@ public class FinalStateFinalStatePropertiesEditionComponent extends SinglePartPr
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public FinalStateFinalStatePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject finalState, String editing_mode) {
 		super(editingContext, finalState, editing_mode);
@@ -70,23 +72,24 @@ public class FinalStateFinalStatePropertiesEditionComponent extends SinglePartPr
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final FinalState finalState = (FinalState)elt;
 			final FinalStatePropertiesEditionPart finalStatePart = (FinalStatePropertiesEditionPart)editingPart;
 			// init values
-			if (finalState.getDescription() != null && isAccessible(FlowViewsRepository.FinalState.Properties.description))
+			if (isAccessible(FlowViewsRepository.FinalState.Properties.description))
 				finalStatePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, finalState.getDescription()));
 			
 			if (isAccessible(FlowViewsRepository.FinalState.Properties.actions)) {
 				actionsSettings = new ReferencesTableSettings(finalState, FlowPackage.eINSTANCE.getFlowState_Actions());
 				finalStatePart.initActions(actionsSettings);
 			}
-			if (finalState.getName() != null && isAccessible(FlowViewsRepository.FinalState.Properties.name))
+			if (isAccessible(FlowViewsRepository.FinalState.Properties.name))
 				finalStatePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, finalState.getName()));
 			
 			// init filters
@@ -103,8 +106,6 @@ public class FinalStateFinalStatePropertiesEditionComponent extends SinglePartPr
 					}
 			
 				});
-				// Start of user code for additional businessfilters for actions
-				// End of user code
 			}
 			
 			// init values for referenced views
@@ -140,7 +141,7 @@ public class FinalStateFinalStatePropertiesEditionComponent extends SinglePartPr
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		FinalState finalState = (FinalState)semanticObject;
@@ -182,9 +183,10 @@ public class FinalStateFinalStatePropertiesEditionComponent extends SinglePartPr
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			FinalStatePropertiesEditionPart finalStatePart = (FinalStatePropertiesEditionPart)editingPart;
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && finalStatePart != null && isAccessible(FlowViewsRepository.FinalState.Properties.description)) {
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && finalStatePart != null && isAccessible(FlowViewsRepository.FinalState.Properties.description)) {
 				if (msg.getNewValue() != null) {
 					finalStatePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -193,7 +195,7 @@ public class FinalStateFinalStatePropertiesEditionComponent extends SinglePartPr
 			}
 			if (FlowPackage.eINSTANCE.getFlowState_Actions().equals(msg.getFeature()) && isAccessible(FlowViewsRepository.FinalState.Properties.actions))
 				finalStatePart.updateActions();
-			if (CinematicPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && finalStatePart != null && isAccessible(FlowViewsRepository.FinalState.Properties.name)) {
+			if (CinematicPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && finalStatePart != null && isAccessible(FlowViewsRepository.FinalState.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					finalStatePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -204,12 +206,26 @@ public class FinalStateFinalStatePropertiesEditionComponent extends SinglePartPr
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description(),
+			FlowPackage.eINSTANCE.getFlowState_Actions(),
+			CinematicPackage.eINSTANCE.getNamedElement_Name()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -237,5 +253,8 @@ public class FinalStateFinalStatePropertiesEditionComponent extends SinglePartPr
 		}
 		return ret;
 	}
+
+
+	
 
 }

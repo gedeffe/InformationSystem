@@ -14,6 +14,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.obeonetwork.dsl.cinematic.flow.FlowEvent;
 import org.obeonetwork.dsl.cinematic.flow.FlowPackage;
 import org.obeonetwork.dsl.cinematic.impl.EventImpl;
@@ -33,6 +34,16 @@ import org.obeonetwork.dsl.cinematic.view.ViewEvent;
  * @generated
  */
 public class FlowEventImpl extends EventImpl implements FlowEvent {
+	/**
+	 * The cached value of the '{@link #getBinds() <em>Binds</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBinds()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ViewEvent> binds;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -59,7 +70,10 @@ public class FlowEventImpl extends EventImpl implements FlowEvent {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<ViewEvent> getBinds() {
-		return (EList<ViewEvent>)eDynamicGet(FlowPackage.FLOW_EVENT__BINDS, FlowPackage.Literals.FLOW_EVENT__BINDS, true, true);
+		if (binds == null) {
+			binds = new EObjectResolvingEList<ViewEvent>(ViewEvent.class, this, FlowPackage.FLOW_EVENT__BINDS);
+		}
+		return binds;
 	}
 
 	/**
@@ -117,7 +131,7 @@ public class FlowEventImpl extends EventImpl implements FlowEvent {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case FlowPackage.FLOW_EVENT__BINDS:
-				return !getBinds().isEmpty();
+				return binds != null && !binds.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

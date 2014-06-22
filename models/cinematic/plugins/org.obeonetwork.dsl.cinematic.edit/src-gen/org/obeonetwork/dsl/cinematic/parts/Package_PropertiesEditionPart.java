@@ -3,46 +3,41 @@
  */
 package org.obeonetwork.dsl.cinematic.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public interface Package_PropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
 
 	/**
 	 * @return the description
-	 * 
+	 * @generated
 	 */
 	public String getDescription();
 
 	/**
 	 * Defines a new description
 	 * @param newValue the new description to set
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue);
 
@@ -60,7 +55,7 @@ public interface Package_PropertiesEditionPart {
 	/**
 	 * Update the subPackages
 	 * @param newValue the subPackages to update
-	 * 
+	 * @generated
 	 */
 	public void updateSubPackages();
 
@@ -70,7 +65,7 @@ public interface Package_PropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSubPackages(ViewerFilter filter);
 
@@ -80,13 +75,13 @@ public interface Package_PropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSubPackages(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the subPackages table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInSubPackagesTable(EObject element);
 
@@ -104,7 +99,7 @@ public interface Package_PropertiesEditionPart {
 	/**
 	 * Update the flows
 	 * @param newValue the flows to update
-	 * 
+	 * @generated
 	 */
 	public void updateFlows();
 
@@ -114,7 +109,7 @@ public interface Package_PropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToFlows(ViewerFilter filter);
 
@@ -124,13 +119,13 @@ public interface Package_PropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToFlows(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the flows table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInFlowsTable(EObject element);
 
@@ -148,7 +143,7 @@ public interface Package_PropertiesEditionPart {
 	/**
 	 * Update the viewContainers
 	 * @param newValue the viewContainers to update
-	 * 
+	 * @generated
 	 */
 	public void updateViewContainers();
 
@@ -158,7 +153,7 @@ public interface Package_PropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToViewContainers(ViewerFilter filter);
 
@@ -168,13 +163,13 @@ public interface Package_PropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToViewContainers(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the viewContainers table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInViewContainersTable(EObject element);
 
@@ -186,12 +181,9 @@ public interface Package_PropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-	
-	// End of user code
 
 }

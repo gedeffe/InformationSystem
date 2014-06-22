@@ -10,7 +10,10 @@
  */
 package org.obeonetwork.dsl.cinematic.view.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.obeonetwork.dsl.cinematic.view.ViewContainer;
 import org.obeonetwork.dsl.cinematic.view.ViewContainerReference;
 import org.obeonetwork.dsl.cinematic.view.ViewPackage;
@@ -29,6 +32,16 @@ import org.obeonetwork.dsl.cinematic.view.ViewPackage;
  * @generated
  */
 public class ViewContainerReferenceImpl extends AbstractViewElementImpl implements ViewContainerReference {
+	/**
+	 * The cached value of the '{@link #getViewContainer() <em>View Container</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getViewContainer()
+	 * @generated
+	 * @ordered
+	 */
+	protected ViewContainer viewContainer;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -54,7 +67,15 @@ public class ViewContainerReferenceImpl extends AbstractViewElementImpl implemen
 	 * @generated
 	 */
 	public ViewContainer getViewContainer() {
-		return (ViewContainer)eDynamicGet(ViewPackage.VIEW_CONTAINER_REFERENCE__VIEW_CONTAINER, ViewPackage.Literals.VIEW_CONTAINER_REFERENCE__VIEW_CONTAINER, true, true);
+		if (viewContainer != null && viewContainer.eIsProxy()) {
+			InternalEObject oldViewContainer = (InternalEObject)viewContainer;
+			viewContainer = (ViewContainer)eResolveProxy(oldViewContainer);
+			if (viewContainer != oldViewContainer) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewPackage.VIEW_CONTAINER_REFERENCE__VIEW_CONTAINER, oldViewContainer, viewContainer));
+			}
+		}
+		return viewContainer;
 	}
 
 	/**
@@ -63,7 +84,7 @@ public class ViewContainerReferenceImpl extends AbstractViewElementImpl implemen
 	 * @generated
 	 */
 	public ViewContainer basicGetViewContainer() {
-		return (ViewContainer)eDynamicGet(ViewPackage.VIEW_CONTAINER_REFERENCE__VIEW_CONTAINER, ViewPackage.Literals.VIEW_CONTAINER_REFERENCE__VIEW_CONTAINER, false, true);
+		return viewContainer;
 	}
 
 	/**
@@ -72,7 +93,10 @@ public class ViewContainerReferenceImpl extends AbstractViewElementImpl implemen
 	 * @generated
 	 */
 	public void setViewContainer(ViewContainer newViewContainer) {
-		eDynamicSet(ViewPackage.VIEW_CONTAINER_REFERENCE__VIEW_CONTAINER, ViewPackage.Literals.VIEW_CONTAINER_REFERENCE__VIEW_CONTAINER, newViewContainer);
+		ViewContainer oldViewContainer = viewContainer;
+		viewContainer = newViewContainer;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.VIEW_CONTAINER_REFERENCE__VIEW_CONTAINER, oldViewContainer, viewContainer));
 	}
 
 	/**
@@ -129,7 +153,7 @@ public class ViewContainerReferenceImpl extends AbstractViewElementImpl implemen
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ViewPackage.VIEW_CONTAINER_REFERENCE__VIEW_CONTAINER:
-				return basicGetViewContainer() != null;
+				return viewContainer != null;
 		}
 		return super.eIsSet(featureID);
 	}

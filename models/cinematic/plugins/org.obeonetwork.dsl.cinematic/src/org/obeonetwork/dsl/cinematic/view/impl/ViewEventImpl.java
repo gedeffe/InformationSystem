@@ -10,7 +10,10 @@
  */
 package org.obeonetwork.dsl.cinematic.view.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.obeonetwork.dsl.cinematic.impl.EventImpl;
 import org.obeonetwork.dsl.cinematic.toolkits.WidgetEventType;
 import org.obeonetwork.dsl.cinematic.view.ViewEvent;
@@ -30,6 +33,16 @@ import org.obeonetwork.dsl.cinematic.view.ViewPackage;
  * @generated
  */
 public class ViewEventImpl extends EventImpl implements ViewEvent {
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected WidgetEventType type;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -55,7 +68,15 @@ public class ViewEventImpl extends EventImpl implements ViewEvent {
 	 * @generated
 	 */
 	public WidgetEventType getType() {
-		return (WidgetEventType)eDynamicGet(ViewPackage.VIEW_EVENT__TYPE, ViewPackage.Literals.VIEW_EVENT__TYPE, true, true);
+		if (type != null && type.eIsProxy()) {
+			InternalEObject oldType = (InternalEObject)type;
+			type = (WidgetEventType)eResolveProxy(oldType);
+			if (type != oldType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewPackage.VIEW_EVENT__TYPE, oldType, type));
+			}
+		}
+		return type;
 	}
 
 	/**
@@ -64,7 +85,7 @@ public class ViewEventImpl extends EventImpl implements ViewEvent {
 	 * @generated
 	 */
 	public WidgetEventType basicGetType() {
-		return (WidgetEventType)eDynamicGet(ViewPackage.VIEW_EVENT__TYPE, ViewPackage.Literals.VIEW_EVENT__TYPE, false, true);
+		return type;
 	}
 
 	/**
@@ -73,7 +94,10 @@ public class ViewEventImpl extends EventImpl implements ViewEvent {
 	 * @generated
 	 */
 	public void setType(WidgetEventType newType) {
-		eDynamicSet(ViewPackage.VIEW_EVENT__TYPE, ViewPackage.Literals.VIEW_EVENT__TYPE, newType);
+		WidgetEventType oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.VIEW_EVENT__TYPE, oldType, type));
 	}
 
 	/**
@@ -130,7 +154,7 @@ public class ViewEventImpl extends EventImpl implements ViewEvent {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ViewPackage.VIEW_EVENT__TYPE:
-				return basicGetType() != null;
+				return type != null;
 		}
 		return super.eIsSet(featureID);
 	}

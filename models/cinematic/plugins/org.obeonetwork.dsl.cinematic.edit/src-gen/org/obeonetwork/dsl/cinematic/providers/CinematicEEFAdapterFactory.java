@@ -13,14 +13,14 @@ import org.obeonetwork.dsl.environment.providers.MetadataCptPropertiesEditionPro
 
 /**
  * 
- * 
+ * @generated
  */
 public class CinematicEEFAdapterFactory extends CinematicAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.util.CinematicAdapterFactory#createObeoDSMObjectAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createObeoDSMObjectAdapter() {
 		return new MetadataCptPropertiesEditionProvider();
@@ -28,7 +28,7 @@ public class CinematicEEFAdapterFactory extends CinematicAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.util.CinematicAdapterFactory#createPackageAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createPackageAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -38,7 +38,7 @@ public class CinematicEEFAdapterFactory extends CinematicAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.util.CinematicAdapterFactory#createCinematicRootAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createCinematicRootAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);

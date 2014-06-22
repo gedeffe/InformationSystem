@@ -20,7 +20,7 @@ import org.obeonetwork.dsl.environment.components.MetadataCptPropertiesEditionCo
 
 /**
  * 
- * 
+ * @generated
  */
 public class FlowActionPropertiesEditionProvider extends PropertiesEditingProviderImpl {
 
@@ -42,7 +42,7 @@ public class FlowActionPropertiesEditionProvider extends PropertiesEditingProvid
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
-	 * 
+	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof FlowAction) 
@@ -52,7 +52,7 @@ public class FlowActionPropertiesEditionProvider extends PropertiesEditingProvid
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
-	 * 
+	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
 		return (editingContext.getEObject() instanceof FlowAction) && (FlowActionFlowActionPropertiesEditionComponent.FLOWACTION_PART.equals(part) || MetadataCptPropertiesEditionComponent.METADATAS_PART.equals(part));
@@ -61,7 +61,7 @@ public class FlowActionPropertiesEditionProvider extends PropertiesEditingProvid
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
-	 * 
+	 * @generated
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
@@ -71,7 +71,7 @@ public class FlowActionPropertiesEditionProvider extends PropertiesEditingProvid
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
-	 * 
+	 * @generated
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
@@ -81,7 +81,7 @@ public class FlowActionPropertiesEditionProvider extends PropertiesEditingProvid
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
-	 * 
+	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
 		if (editingContext.getEObject() instanceof FlowAction) {
@@ -93,7 +93,7 @@ public class FlowActionPropertiesEditionProvider extends PropertiesEditingProvid
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
-	 * 
+	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof FlowAction) {

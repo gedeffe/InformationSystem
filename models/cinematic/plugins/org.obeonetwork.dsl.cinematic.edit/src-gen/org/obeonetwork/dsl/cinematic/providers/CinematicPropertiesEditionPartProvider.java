@@ -14,14 +14,14 @@ import org.obeonetwork.dsl.cinematic.parts.impl.Package_PropertiesEditionPartImp
 
 /**
  * 
- * 
+ * @generated
  */
 public class CinematicPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
 
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Object)
-	 * 
+	 * @generated
 	 */
 	public boolean provides(Object key) {
 		return key == CinematicViewsRepository.class;
@@ -30,7 +30,7 @@ public class CinematicPropertiesEditionPartProvider implements IPropertiesEditio
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
-	 * 
+	 * @generated
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component) {
 		if (key == CinematicViewsRepository.Package_.class) {

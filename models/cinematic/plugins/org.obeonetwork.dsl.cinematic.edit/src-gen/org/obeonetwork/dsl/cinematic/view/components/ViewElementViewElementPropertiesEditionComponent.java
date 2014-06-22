@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.cinematic.view.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -14,7 +13,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
@@ -42,14 +43,15 @@ import org.obeonetwork.dsl.environment.EnvironmentPackage;
 import org.obeonetwork.dsl.environment.Type;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public class ViewElementViewElementPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String VIEWELEMENT_PART = "ViewElement"; //$NON-NLS-1$
 
@@ -77,7 +79,7 @@ public class ViewElementViewElementPropertiesEditionComponent extends SinglePart
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public ViewElementViewElementPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject viewElement, String editing_mode) {
 		super(editingContext, viewElement, editing_mode);
@@ -91,19 +93,20 @@ public class ViewElementViewElementPropertiesEditionComponent extends SinglePart
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ViewElement viewElement = (ViewElement)elt;
 			final ViewElementPropertiesEditionPart viewElementPart = (ViewElementPropertiesEditionPart)editingPart;
 			// init values
-			if (viewElement.getDescription() != null && isAccessible(ViewViewsRepository.ViewElement.Properties.description))
+			if (isAccessible(ViewViewsRepository.ViewElement.Properties.description))
 				viewElementPart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, viewElement.getDescription()));
 			
-			if (viewElement.getName() != null && isAccessible(ViewViewsRepository.ViewElement.Properties.name))
+			if (isAccessible(ViewViewsRepository.ViewElement.Properties.name))
 				viewElementPart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, viewElement.getName()));
 			
 			if (isAccessible(ViewViewsRepository.ViewElement.Properties.widget)) {
@@ -121,7 +124,7 @@ public class ViewElementViewElementPropertiesEditionComponent extends SinglePart
 				eventsSettings = new ReferencesTableSettings(viewElement, ViewPackage.eINSTANCE.getAbstractViewElement_Events());
 				viewElementPart.initEvents(eventsSettings);
 			}
-			if (viewElement.getLabel() != null && isAccessible(ViewViewsRepository.ViewElement.Properties.label))
+			if (isAccessible(ViewViewsRepository.ViewElement.Properties.label))
 				viewElementPart.setLabel(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, viewElement.getLabel()));
 			
 			if (isAccessible(ViewViewsRepository.ViewElement.Properties.required)) {
@@ -150,8 +153,6 @@ public class ViewElementViewElementPropertiesEditionComponent extends SinglePart
 					}
 					
 				});
-				// Start of user code for additional businessfilters for widget
-				// End of user code
 			}
 			if (isAccessible(ViewViewsRepository.ViewElement.Properties.actions)) {
 				viewElementPart.addFilterToActions(new ViewerFilter() {
@@ -165,8 +166,6 @@ public class ViewElementViewElementPropertiesEditionComponent extends SinglePart
 					}
 			
 				});
-				// Start of user code for additional businessfilters for actions
-				// End of user code
 			}
 			if (isAccessible(ViewViewsRepository.ViewElement.Properties.events)) {
 				viewElementPart.addFilterToEvents(new ViewerFilter() {
@@ -180,8 +179,6 @@ public class ViewElementViewElementPropertiesEditionComponent extends SinglePart
 					}
 			
 				});
-				// Start of user code for additional businessfilters for events
-				// End of user code
 			}
 			
 			
@@ -198,8 +195,6 @@ public class ViewElementViewElementPropertiesEditionComponent extends SinglePart
 					}
 					
 				});
-				// Start of user code for additional businessfilters for type
-				// End of user code
 			}
 			// init values for referenced views
 			
@@ -254,7 +249,7 @@ public class ViewElementViewElementPropertiesEditionComponent extends SinglePart
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ViewElement viewElement = (ViewElement)semanticObject;
@@ -357,16 +352,17 @@ public class ViewElementViewElementPropertiesEditionComponent extends SinglePart
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ViewElementPropertiesEditionPart viewElementPart = (ViewElementPropertiesEditionPart)editingPart;
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && viewElementPart != null && isAccessible(ViewViewsRepository.ViewElement.Properties.description)) {
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && viewElementPart != null && isAccessible(ViewViewsRepository.ViewElement.Properties.description)) {
 				if (msg.getNewValue() != null) {
 					viewElementPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					viewElementPart.setDescription("");
 				}
 			}
-			if (CinematicPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && viewElementPart != null && isAccessible(ViewViewsRepository.ViewElement.Properties.name)) {
+			if (CinematicPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && viewElementPart != null && isAccessible(ViewViewsRepository.ViewElement.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					viewElementPart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -379,14 +375,14 @@ public class ViewElementViewElementPropertiesEditionComponent extends SinglePart
 				viewElementPart.updateActions();
 			if (ViewPackage.eINSTANCE.getAbstractViewElement_Events().equals(msg.getFeature()) && isAccessible(ViewViewsRepository.ViewElement.Properties.events))
 				viewElementPart.updateEvents();
-			if (ViewPackage.eINSTANCE.getAbstractViewElement_Label().equals(msg.getFeature()) && viewElementPart != null && isAccessible(ViewViewsRepository.ViewElement.Properties.label)) {
+			if (ViewPackage.eINSTANCE.getAbstractViewElement_Label().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && viewElementPart != null && isAccessible(ViewViewsRepository.ViewElement.Properties.label)) {
 				if (msg.getNewValue() != null) {
 					viewElementPart.setLabel(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					viewElementPart.setLabel("");
 				}
 			}
-			if (ViewPackage.eINSTANCE.getViewElement_Required().equals(msg.getFeature()) && viewElementPart != null && isAccessible(ViewViewsRepository.ViewElement.Properties.required))
+			if (ViewPackage.eINSTANCE.getViewElement_Required().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && viewElementPart != null && isAccessible(ViewViewsRepository.ViewElement.Properties.required))
 				viewElementPart.setRequired((Boolean)msg.getNewValue());
 			
 			if (ViewPackage.eINSTANCE.getViewElement_Type().equals(msg.getFeature()) && viewElementPart != null && isAccessible(ViewViewsRepository.ViewElement.Properties.type))
@@ -395,12 +391,31 @@ public class ViewElementViewElementPropertiesEditionComponent extends SinglePart
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description(),
+			CinematicPackage.eINSTANCE.getNamedElement_Name(),
+			ViewPackage.eINSTANCE.getAbstractViewElement_Widget(),
+			ViewPackage.eINSTANCE.getAbstractViewElement_Actions(),
+			ViewPackage.eINSTANCE.getAbstractViewElement_Events(),
+			ViewPackage.eINSTANCE.getAbstractViewElement_Label(),
+			ViewPackage.eINSTANCE.getViewElement_Required(),
+			ViewPackage.eINSTANCE.getViewElement_Type()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -442,5 +457,8 @@ public class ViewElementViewElementPropertiesEditionComponent extends SinglePart
 		}
 		return ret;
 	}
+
+
+	
 
 }

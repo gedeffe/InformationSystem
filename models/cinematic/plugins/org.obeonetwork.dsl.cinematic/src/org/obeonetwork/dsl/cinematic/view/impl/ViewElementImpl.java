@@ -10,7 +10,10 @@
  */
 package org.obeonetwork.dsl.cinematic.view.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.obeonetwork.dsl.cinematic.view.ViewElement;
 import org.obeonetwork.dsl.cinematic.view.ViewPackage;
 import org.obeonetwork.dsl.environment.Type;
@@ -41,6 +44,25 @@ public class ViewElementImpl extends AbstractViewElementImpl implements ViewElem
 	protected static final boolean REQUIRED_EDEFAULT = false;
 
 	/**
+	 * The cached value of the '{@link #isRequired() <em>Required</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRequired()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean required = REQUIRED_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Type type;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -65,7 +87,7 @@ public class ViewElementImpl extends AbstractViewElementImpl implements ViewElem
 	 * @generated
 	 */
 	public boolean isRequired() {
-		return (Boolean)eDynamicGet(ViewPackage.VIEW_ELEMENT__REQUIRED, ViewPackage.Literals.VIEW_ELEMENT__REQUIRED, true, true);
+		return required;
 	}
 
 	/**
@@ -74,7 +96,10 @@ public class ViewElementImpl extends AbstractViewElementImpl implements ViewElem
 	 * @generated
 	 */
 	public void setRequired(boolean newRequired) {
-		eDynamicSet(ViewPackage.VIEW_ELEMENT__REQUIRED, ViewPackage.Literals.VIEW_ELEMENT__REQUIRED, newRequired);
+		boolean oldRequired = required;
+		required = newRequired;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.VIEW_ELEMENT__REQUIRED, oldRequired, required));
 	}
 
 	/**
@@ -83,7 +108,15 @@ public class ViewElementImpl extends AbstractViewElementImpl implements ViewElem
 	 * @generated
 	 */
 	public Type getType() {
-		return (Type)eDynamicGet(ViewPackage.VIEW_ELEMENT__TYPE, ViewPackage.Literals.VIEW_ELEMENT__TYPE, true, true);
+		if (type != null && type.eIsProxy()) {
+			InternalEObject oldType = (InternalEObject)type;
+			type = (Type)eResolveProxy(oldType);
+			if (type != oldType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewPackage.VIEW_ELEMENT__TYPE, oldType, type));
+			}
+		}
+		return type;
 	}
 
 	/**
@@ -92,7 +125,7 @@ public class ViewElementImpl extends AbstractViewElementImpl implements ViewElem
 	 * @generated
 	 */
 	public Type basicGetType() {
-		return (Type)eDynamicGet(ViewPackage.VIEW_ELEMENT__TYPE, ViewPackage.Literals.VIEW_ELEMENT__TYPE, false, true);
+		return type;
 	}
 
 	/**
@@ -101,7 +134,10 @@ public class ViewElementImpl extends AbstractViewElementImpl implements ViewElem
 	 * @generated
 	 */
 	public void setType(Type newType) {
-		eDynamicSet(ViewPackage.VIEW_ELEMENT__TYPE, ViewPackage.Literals.VIEW_ELEMENT__TYPE, newType);
+		Type oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.VIEW_ELEMENT__TYPE, oldType, type));
 	}
 
 	/**
@@ -166,11 +202,27 @@ public class ViewElementImpl extends AbstractViewElementImpl implements ViewElem
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ViewPackage.VIEW_ELEMENT__REQUIRED:
-				return isRequired() != REQUIRED_EDEFAULT;
+				return required != REQUIRED_EDEFAULT;
 			case ViewPackage.VIEW_ELEMENT__TYPE:
-				return basicGetType() != null;
+				return type != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (required: ");
+		result.append(required);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ViewElementImpl

@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.cinematic.view.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,11 +48,10 @@ import org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart
 import org.obeonetwork.dsl.cinematic.view.parts.ViewViewsRepository;
 import org.obeonetwork.dsl.cinematic.view.providers.ViewMessages;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ViewElementPropertiesEditionPart {
 
@@ -75,7 +73,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public ViewElementPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -86,7 +84,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -102,7 +100,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence viewElementStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -155,7 +153,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -169,6 +167,9 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, ViewViewsRepository.ViewElement.Properties.name, ViewMessages.ViewElementPropertiesEditionPart_NameLabel);
@@ -181,7 +182,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -197,7 +198,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -212,9 +213,15 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		EditingUtils.setID(name, ViewViewsRepository.ViewElement.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewViewsRepository.ViewElement.Properties.name, ViewViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createLabelText(Composite parent) {
 		createDescription(parent, ViewViewsRepository.ViewElement.Properties.label, ViewMessages.ViewElementPropertiesEditionPart_LabelLabel);
@@ -227,7 +234,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -243,7 +250,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -258,12 +265,15 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		EditingUtils.setID(label, ViewViewsRepository.ViewElement.Properties.label);
 		EditingUtils.setEEFtype(label, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewViewsRepository.ViewElement.Properties.label, ViewViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createLabelText
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createWidgetFlatComboViewer(Composite parent) {
 		createDescription(parent, ViewViewsRepository.ViewElement.Properties.widget, ViewMessages.ViewElementPropertiesEditionPart_WidgetLabel);
@@ -281,9 +291,15 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		widget.setLayoutData(widgetData);
 		widget.setID(ViewViewsRepository.ViewElement.Properties.widget);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewViewsRepository.ViewElement.Properties.widget, ViewViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createWidgetFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createRequiredCheckbox(Composite parent) {
 		required = new Button(parent, SWT.CHECK);
@@ -294,7 +310,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -308,12 +324,15 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		EditingUtils.setID(required, ViewViewsRepository.ViewElement.Properties.required);
 		EditingUtils.setEEFtype(required, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewViewsRepository.ViewElement.Properties.required, ViewViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createRequiredCheckbox
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createTypeFlatComboViewer(Composite parent) {
 		createDescription(parent, ViewViewsRepository.ViewElement.Properties.type, ViewMessages.ViewElementPropertiesEditionPart_TypeLabel);
@@ -331,12 +350,15 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		type.setLayoutData(typeData);
 		type.setID(ViewViewsRepository.ViewElement.Properties.type);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewViewsRepository.ViewElement.Properties.type, ViewViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTypeFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
+	 * @generated
 	 */
 	protected Composite createActionsAdvancedTableComposition(Composite parent) {
 		this.actions = new ReferencesTable(getDescription(ViewViewsRepository.ViewElement.Properties.actions, ViewMessages.ViewElementPropertiesEditionPart_ActionsLabel), new ReferencesTableListener() {
@@ -379,12 +401,15 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		this.actions.setUpperBound(-1);
 		actions.setID(ViewViewsRepository.ViewElement.Properties.actions);
 		actions.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createActionsAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
+	 * @generated
 	 */
 	protected Composite createEventsAdvancedTableComposition(Composite parent) {
 		this.events = new ReferencesTable(getDescription(ViewViewsRepository.ViewElement.Properties.events, ViewMessages.ViewElementPropertiesEditionPart_EventsLabel), new ReferencesTableListener() {
@@ -427,9 +452,15 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		this.events.setUpperBound(-1);
 		events.setID(ViewViewsRepository.ViewElement.Properties.events);
 		events.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createEventsAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createDescriptionText(Composite parent) {
 		createDescription(parent, ViewViewsRepository.ViewElement.Properties.description, ViewMessages.ViewElementPropertiesEditionPart_DescriptionLabel);
@@ -442,7 +473,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -458,7 +489,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -473,6 +504,9 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		EditingUtils.setID(description, ViewViewsRepository.ViewElement.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewViewsRepository.ViewElement.Properties.description, ViewViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
+
+		// End of user code
 		return parent;
 	}
 
@@ -481,19 +515,16 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -503,7 +534,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -511,13 +542,21 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewElement.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(ViewMessages.ViewElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#getLabel()
-	 * 
+	 * @generated
 	 */
 	public String getLabel() {
 		return label.getText();
@@ -527,7 +566,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#setLabel(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setLabel(String newValue) {
 		if (newValue != null) {
@@ -535,13 +574,21 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		} else {
 			label.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewElement.Properties.label);
+		if (eefElementEditorReadOnlyState && label.isEnabled()) {
+			label.setEnabled(false);
+			label.setToolTipText(ViewMessages.ViewElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !label.isEnabled()) {
+			label.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#getWidget()
-	 * 
+	 * @generated
 	 */
 	public EObject getWidget() {
 		if (widget.getSelection() instanceof StructuredSelection) {
@@ -562,13 +609,21 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		if (current != null) {
 			widget.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewElement.Properties.widget);
+		if (eefElementEditorReadOnlyState && widget.isEnabled()) {
+			widget.setEnabled(false);
+			widget.setToolTipText(ViewMessages.ViewElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !widget.isEnabled()) {
+			widget.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#setWidget(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setWidget(EObject newValue) {
 		if (newValue != null) {
@@ -576,6 +631,14 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		} else {
 			widget.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewElement.Properties.widget);
+		if (eefElementEditorReadOnlyState && widget.isEnabled()) {
+			widget.setEnabled(false);
+			widget.setToolTipText(ViewMessages.ViewElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !widget.isEnabled()) {
+			widget.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -591,7 +654,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#addFilterWidget(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToWidget(ViewerFilter filter) {
 		widget.addFilter(filter);
@@ -601,7 +664,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#addBusinessFilterWidget(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToWidget(ViewerFilter filter) {
 		widget.addBusinessRuleFilter(filter);
@@ -611,7 +674,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#getRequired()
-	 * 
+	 * @generated
 	 */
 	public Boolean getRequired() {
 		return Boolean.valueOf(required.getSelection());
@@ -621,7 +684,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#setRequired(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setRequired(Boolean newValue) {
 		if (newValue != null) {
@@ -629,13 +692,21 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		} else {
 			required.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewElement.Properties.required);
+		if (eefElementEditorReadOnlyState && required.isEnabled()) {
+			required.setEnabled(false);
+			required.setToolTipText(ViewMessages.ViewElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !required.isEnabled()) {
+			required.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#getType()
-	 * 
+	 * @generated
 	 */
 	public EObject getType() {
 		if (type.getSelection() instanceof StructuredSelection) {
@@ -656,13 +727,21 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		if (current != null) {
 			type.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewElement.Properties.type);
+		if (eefElementEditorReadOnlyState && type.isEnabled()) {
+			type.setEnabled(false);
+			type.setToolTipText(ViewMessages.ViewElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !type.isEnabled()) {
+			type.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#setType(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setType(EObject newValue) {
 		if (newValue != null) {
@@ -670,6 +749,14 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		} else {
 			type.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewElement.Properties.type);
+		if (eefElementEditorReadOnlyState && type.isEnabled()) {
+			type.setEnabled(false);
+			type.setToolTipText(ViewMessages.ViewElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !type.isEnabled()) {
+			type.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -685,7 +772,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#addFilterType(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToType(ViewerFilter filter) {
 		type.addFilter(filter);
@@ -695,7 +782,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#addBusinessFilterType(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToType(ViewerFilter filter) {
 		type.addBusinessRuleFilter(filter);
@@ -714,13 +801,21 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		actions.setContentProvider(contentProvider);
 		actions.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewElement.Properties.actions);
+		if (eefElementEditorReadOnlyState && actions.isEnabled()) {
+			actions.setEnabled(false);
+			actions.setToolTipText(ViewMessages.ViewElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !actions.isEnabled()) {
+			actions.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#updateActions()
-	 * 
+	 * @generated
 	 */
 	public void updateActions() {
 	actions.refresh();
@@ -730,7 +825,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#addFilterActions(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActions(ViewerFilter filter) {
 		actionsFilters.add(filter);
@@ -743,7 +838,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#addBusinessFilterActions(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActions(ViewerFilter filter) {
 		actionsBusinessFilters.add(filter);
@@ -753,7 +848,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#isContainedInActionsTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInActionsTable(EObject element) {
 		return ((ReferencesTableSettings)actions.getInput()).contains(element);
@@ -772,13 +867,21 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		events.setContentProvider(contentProvider);
 		events.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewElement.Properties.events);
+		if (eefElementEditorReadOnlyState && events.isEnabled()) {
+			events.setEnabled(false);
+			events.setToolTipText(ViewMessages.ViewElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !events.isEnabled()) {
+			events.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#updateEvents()
-	 * 
+	 * @generated
 	 */
 	public void updateEvents() {
 	events.refresh();
@@ -788,7 +891,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#addFilterEvents(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToEvents(ViewerFilter filter) {
 		eventsFilters.add(filter);
@@ -801,7 +904,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#addBusinessFilterEvents(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToEvents(ViewerFilter filter) {
 		eventsBusinessFilters.add(filter);
@@ -811,7 +914,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#isContainedInEventsTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInEventsTable(EObject element) {
 		return ((ReferencesTableSettings)events.getInput()).contains(element);
@@ -821,7 +924,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#getDescription()
-	 * 
+	 * @generated
 	 */
 	public String getDescription() {
 		return description.getText();
@@ -831,7 +934,7 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.view.parts.ViewElementPropertiesEditionPart#setDescription(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue) {
 		if (newValue != null) {
@@ -839,6 +942,14 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 		} else {
 			description.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewViewsRepository.ViewElement.Properties.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(ViewMessages.ViewElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -850,15 +961,12 @@ public class ViewElementPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return ViewMessages.ViewElement_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

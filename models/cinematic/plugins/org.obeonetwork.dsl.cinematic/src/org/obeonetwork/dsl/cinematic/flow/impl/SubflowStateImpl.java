@@ -10,7 +10,10 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.obeonetwork.dsl.cinematic.flow.Flow;
 import org.obeonetwork.dsl.cinematic.flow.FlowPackage;
 import org.obeonetwork.dsl.cinematic.flow.SubflowState;
@@ -30,6 +33,15 @@ import org.obeonetwork.dsl.cinematic.flow.SubflowState;
  * @generated
  */
 public class SubflowStateImpl extends FlowStateImpl implements SubflowState {
+	/**
+	 * The cached value of the '{@link #getSubflow() <em>Subflow</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubflow()
+	 * @generated
+	 * @ordered
+	 */
+	protected Flow subflow;
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -65,7 +77,15 @@ public class SubflowStateImpl extends FlowStateImpl implements SubflowState {
 	 * @generated
 	 */
 	public Flow getSubflow() {
-		return (Flow)eDynamicGet(FlowPackage.SUBFLOW_STATE__SUBFLOW, FlowPackage.Literals.SUBFLOW_STATE__SUBFLOW, true, true);
+		if (subflow != null && subflow.eIsProxy()) {
+			InternalEObject oldSubflow = (InternalEObject)subflow;
+			subflow = (Flow)eResolveProxy(oldSubflow);
+			if (subflow != oldSubflow) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FlowPackage.SUBFLOW_STATE__SUBFLOW, oldSubflow, subflow));
+			}
+		}
+		return subflow;
 	}
 
 	/**
@@ -74,7 +94,7 @@ public class SubflowStateImpl extends FlowStateImpl implements SubflowState {
 	 * @generated
 	 */
 	public Flow basicGetSubflow() {
-		return (Flow)eDynamicGet(FlowPackage.SUBFLOW_STATE__SUBFLOW, FlowPackage.Literals.SUBFLOW_STATE__SUBFLOW, false, true);
+		return subflow;
 	}
 
 	/**
@@ -83,7 +103,10 @@ public class SubflowStateImpl extends FlowStateImpl implements SubflowState {
 	 * @generated
 	 */
 	public void setSubflow(Flow newSubflow) {
-		eDynamicSet(FlowPackage.SUBFLOW_STATE__SUBFLOW, FlowPackage.Literals.SUBFLOW_STATE__SUBFLOW, newSubflow);
+		Flow oldSubflow = subflow;
+		subflow = newSubflow;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FlowPackage.SUBFLOW_STATE__SUBFLOW, oldSubflow, subflow));
 	}
 
 	/**
@@ -92,7 +115,9 @@ public class SubflowStateImpl extends FlowStateImpl implements SubflowState {
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eDynamicGet(FlowPackage.SUBFLOW_STATE__NAME, FlowPackage.Literals.SUBFLOW_STATE__NAME, true, true);
+		// TODO: implement this method to return the 'Name' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -151,7 +176,7 @@ public class SubflowStateImpl extends FlowStateImpl implements SubflowState {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case FlowPackage.SUBFLOW_STATE__SUBFLOW:
-				return basicGetSubflow() != null;
+				return subflow != null;
 			case FlowPackage.SUBFLOW_STATE__NAME:
 				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
 		}

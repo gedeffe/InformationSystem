@@ -3,8 +3,6 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.components;
 
-// Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -17,29 +15,28 @@ import org.obeonetwork.dsl.cinematic.flow.parts.FlowViewsRepository;
 import org.obeonetwork.dsl.environment.components.MetadataCptPropertiesEditionComponent;
 import org.obeonetwork.dsl.environment.parts.EnvironmentViewsRepository;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class ActionStatePropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The ActionState part
-	 * 
+	 * @generated
 	 */
 	private ActionStatePropertiesEditionPart actionStatePart;
 
 	/**
 	 * The ActionStateActionStatePropertiesEditionComponent sub component
-	 * 
+	 * @generated
 	 */
 	protected ActionStateActionStatePropertiesEditionComponent actionStateActionStatePropertiesEditionComponent;
 
 	/**
 	 * The MetadataCptPropertiesEditionComponent sub component
-	 * 
+	 * @generated
 	 */
 	protected MetadataCptPropertiesEditionComponent metadataCptPropertiesEditionComponent;
 
@@ -47,7 +44,7 @@ public class ActionStatePropertiesEditionComponent extends ComposedPropertiesEdi
 	 * Parameterized constructor
 	 * 
 	 * @param actionState the EObject to edit
-	 * 
+	 * @generated
 	 */
 	public ActionStatePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject actionState, String editing_mode) {
 		super(editingContext, editing_mode);
@@ -67,7 +64,7 @@ public class ActionStatePropertiesEditionComponent extends ComposedPropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      getPropertiesEditionPart(int, java.lang.String)
-	 * 
+	 * @generated
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (ActionStateActionStatePropertiesEditionComponent.ACTIONSTATE_PART.equals(key)) {
@@ -83,7 +80,7 @@ public class ActionStatePropertiesEditionComponent extends ComposedPropertiesEdi
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Object, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
+	 * @generated
 	 */
 	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (FlowViewsRepository.ActionState.class == key) {
@@ -98,7 +95,7 @@ public class ActionStatePropertiesEditionComponent extends ComposedPropertiesEdi
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
 		if (key == FlowViewsRepository.ActionState.class) {

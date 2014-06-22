@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.cinematic.view.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
@@ -11,45 +10,43 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public interface ViewContainerPropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
 
 	/**
 	 * @return the label
-	 * 
+	 * @generated
 	 */
 	public String getLabel();
 
 	/**
 	 * Defines a new label
 	 * @param newValue the new label to set
-	 * 
+	 * @generated
 	 */
 	public void setLabel(String newValue);
 
 
 	/**
 	 * @return the widget
-	 * 
+	 * @generated
 	 */
 	public EObject getWidget();
 
@@ -62,14 +59,14 @@ public interface ViewContainerPropertiesEditionPart {
 	/**
 	 * Defines a new widget
 	 * @param newValue the new widget to set
-	 * 
+	 * @generated
 	 */
 	public void setWidget(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setWidgetButtonMode(ButtonsModeEnum newValue);
 
@@ -79,7 +76,7 @@ public interface ViewContainerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToWidget(ViewerFilter filter);
 
@@ -89,7 +86,7 @@ public interface ViewContainerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToWidget(ViewerFilter filter);
 
@@ -107,7 +104,7 @@ public interface ViewContainerPropertiesEditionPart {
 	/**
 	 * Update the actions
 	 * @param newValue the actions to update
-	 * 
+	 * @generated
 	 */
 	public void updateActions();
 
@@ -117,7 +114,7 @@ public interface ViewContainerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActions(ViewerFilter filter);
 
@@ -127,13 +124,13 @@ public interface ViewContainerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActions(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the actions table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInActionsTable(EObject element);
 
@@ -151,7 +148,7 @@ public interface ViewContainerPropertiesEditionPart {
 	/**
 	 * Update the events
 	 * @param newValue the events to update
-	 * 
+	 * @generated
 	 */
 	public void updateEvents();
 
@@ -161,7 +158,7 @@ public interface ViewContainerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToEvents(ViewerFilter filter);
 
@@ -171,27 +168,27 @@ public interface ViewContainerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToEvents(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the events table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInEventsTable(EObject element);
 
 
 	/**
 	 * @return the description
-	 * 
+	 * @generated
 	 */
 	public String getDescription();
 
 	/**
 	 * Defines a new description
 	 * @param newValue the new description to set
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue);
 
@@ -209,7 +206,7 @@ public interface ViewContainerPropertiesEditionPart {
 	/**
 	 * Update the ownedElements
 	 * @param newValue the ownedElements to update
-	 * 
+	 * @generated
 	 */
 	public void updateOwnedElements();
 
@@ -219,7 +216,7 @@ public interface ViewContainerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOwnedElements(ViewerFilter filter);
 
@@ -229,13 +226,13 @@ public interface ViewContainerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOwnedElements(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the ownedElements table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInOwnedElementsTable(EObject element);
 
@@ -247,12 +244,9 @@ public interface ViewContainerPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-	
-	// End of user code
 
 }

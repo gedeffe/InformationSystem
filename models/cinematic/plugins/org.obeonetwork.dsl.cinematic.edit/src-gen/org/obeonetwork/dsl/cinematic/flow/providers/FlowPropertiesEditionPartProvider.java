@@ -34,14 +34,14 @@ import org.obeonetwork.dsl.cinematic.flow.parts.impl.ViewStatePropertiesEditionP
 
 /**
  * 
- * 
+ * @generated
  */
 public class FlowPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
 
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Object)
-	 * 
+	 * @generated
 	 */
 	public boolean provides(Object key) {
 		return key == FlowViewsRepository.class;
@@ -50,7 +50,7 @@ public class FlowPropertiesEditionPartProvider implements IPropertiesEditionPart
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
-	 * 
+	 * @generated
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component) {
 		if (key == FlowViewsRepository.Flow_.class) {

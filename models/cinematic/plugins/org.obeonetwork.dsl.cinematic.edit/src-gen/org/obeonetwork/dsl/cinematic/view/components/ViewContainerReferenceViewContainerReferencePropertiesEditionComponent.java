@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.cinematic.view.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -14,7 +13,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
@@ -43,14 +44,15 @@ import org.obeonetwork.dsl.cinematic.view.parts.ViewViewsRepository;
 import org.obeonetwork.dsl.environment.EnvironmentPackage;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public class ViewContainerReferenceViewContainerReferencePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String VIEWCONTAINERREFERENCE_PART = "ViewContainerReference"; //$NON-NLS-1$
 
@@ -78,7 +80,7 @@ public class ViewContainerReferenceViewContainerReferencePropertiesEditionCompon
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public ViewContainerReferenceViewContainerReferencePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject viewContainerReference, String editing_mode) {
 		super(editingContext, viewContainerReference, editing_mode);
@@ -92,19 +94,20 @@ public class ViewContainerReferenceViewContainerReferencePropertiesEditionCompon
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ViewContainerReference viewContainerReference = (ViewContainerReference)elt;
 			final ViewContainerReferencePropertiesEditionPart viewContainerReferencePart = (ViewContainerReferencePropertiesEditionPart)editingPart;
 			// init values
-			if (viewContainerReference.getDescription() != null && isAccessible(ViewViewsRepository.ViewContainerReference.Properties.description))
+			if (isAccessible(ViewViewsRepository.ViewContainerReference.Properties.description))
 				viewContainerReferencePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, viewContainerReference.getDescription()));
 			
-			if (viewContainerReference.getName() != null && isAccessible(ViewViewsRepository.ViewContainerReference.Properties.name))
+			if (isAccessible(ViewViewsRepository.ViewContainerReference.Properties.name))
 				viewContainerReferencePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, viewContainerReference.getName()));
 			
 			if (isAccessible(ViewViewsRepository.ViewContainerReference.Properties.widget)) {
@@ -122,7 +125,7 @@ public class ViewContainerReferenceViewContainerReferencePropertiesEditionCompon
 				eventsSettings = new ReferencesTableSettings(viewContainerReference, ViewPackage.eINSTANCE.getAbstractViewElement_Events());
 				viewContainerReferencePart.initEvents(eventsSettings);
 			}
-			if (viewContainerReference.getLabel() != null && isAccessible(ViewViewsRepository.ViewContainerReference.Properties.label))
+			if (isAccessible(ViewViewsRepository.ViewContainerReference.Properties.label))
 				viewContainerReferencePart.setLabel(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, viewContainerReference.getLabel()));
 			
 			if (isAccessible(ViewViewsRepository.ViewContainerReference.Properties.viewContainer)) {
@@ -148,8 +151,6 @@ public class ViewContainerReferenceViewContainerReferencePropertiesEditionCompon
 					}
 					
 				});
-				// Start of user code for additional businessfilters for widget
-				// End of user code
 			}
 			if (isAccessible(ViewViewsRepository.ViewContainerReference.Properties.actions)) {
 				viewContainerReferencePart.addFilterToActions(new ViewerFilter() {
@@ -163,8 +164,6 @@ public class ViewContainerReferenceViewContainerReferencePropertiesEditionCompon
 					}
 			
 				});
-				// Start of user code for additional businessfilters for actions
-				// End of user code
 			}
 			if (isAccessible(ViewViewsRepository.ViewContainerReference.Properties.events)) {
 				viewContainerReferencePart.addFilterToEvents(new ViewerFilter() {
@@ -178,8 +177,6 @@ public class ViewContainerReferenceViewContainerReferencePropertiesEditionCompon
 					}
 			
 				});
-				// Start of user code for additional businessfilters for events
-				// End of user code
 			}
 			
 			if (isAccessible(ViewViewsRepository.ViewContainerReference.Properties.viewContainer)) {
@@ -195,8 +192,6 @@ public class ViewContainerReferenceViewContainerReferencePropertiesEditionCompon
 					}
 					
 				});
-				// Start of user code for additional businessfilters for viewContainer
-				// End of user code
 			}
 			// init values for referenced views
 			
@@ -247,7 +242,7 @@ public class ViewContainerReferenceViewContainerReferencePropertiesEditionCompon
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ViewContainerReference viewContainerReference = (ViewContainerReference)semanticObject;
@@ -349,16 +344,17 @@ public class ViewContainerReferenceViewContainerReferencePropertiesEditionCompon
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ViewContainerReferencePropertiesEditionPart viewContainerReferencePart = (ViewContainerReferencePropertiesEditionPart)editingPart;
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && viewContainerReferencePart != null && isAccessible(ViewViewsRepository.ViewContainerReference.Properties.description)) {
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && viewContainerReferencePart != null && isAccessible(ViewViewsRepository.ViewContainerReference.Properties.description)) {
 				if (msg.getNewValue() != null) {
 					viewContainerReferencePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					viewContainerReferencePart.setDescription("");
 				}
 			}
-			if (CinematicPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && viewContainerReferencePart != null && isAccessible(ViewViewsRepository.ViewContainerReference.Properties.name)) {
+			if (CinematicPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && viewContainerReferencePart != null && isAccessible(ViewViewsRepository.ViewContainerReference.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					viewContainerReferencePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -371,7 +367,7 @@ public class ViewContainerReferenceViewContainerReferencePropertiesEditionCompon
 				viewContainerReferencePart.updateActions();
 			if (ViewPackage.eINSTANCE.getAbstractViewElement_Events().equals(msg.getFeature()) && isAccessible(ViewViewsRepository.ViewContainerReference.Properties.events))
 				viewContainerReferencePart.updateEvents();
-			if (ViewPackage.eINSTANCE.getAbstractViewElement_Label().equals(msg.getFeature()) && viewContainerReferencePart != null && isAccessible(ViewViewsRepository.ViewContainerReference.Properties.label)) {
+			if (ViewPackage.eINSTANCE.getAbstractViewElement_Label().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && viewContainerReferencePart != null && isAccessible(ViewViewsRepository.ViewContainerReference.Properties.label)) {
 				if (msg.getNewValue() != null) {
 					viewContainerReferencePart.setLabel(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -384,12 +380,30 @@ public class ViewContainerReferenceViewContainerReferencePropertiesEditionCompon
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description(),
+			CinematicPackage.eINSTANCE.getNamedElement_Name(),
+			ViewPackage.eINSTANCE.getAbstractViewElement_Widget(),
+			ViewPackage.eINSTANCE.getAbstractViewElement_Actions(),
+			ViewPackage.eINSTANCE.getAbstractViewElement_Events(),
+			ViewPackage.eINSTANCE.getAbstractViewElement_Label(),
+			ViewPackage.eINSTANCE.getViewContainerReference_ViewContainer()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
-	 * 
+	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
 		return key == ViewViewsRepository.ViewContainerReference.Properties.viewContainer;
@@ -399,7 +413,7 @@ public class ViewContainerReferenceViewContainerReferencePropertiesEditionCompon
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -434,5 +448,8 @@ public class ViewContainerReferenceViewContainerReferencePropertiesEditionCompon
 		}
 		return ret;
 	}
+
+
+	
 
 }

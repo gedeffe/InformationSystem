@@ -3,29 +3,22 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public interface SubflowStatePropertiesEditionPart {
 
 	/**
 	 * @return the subflow
-	 * 
+	 * @generated
 	 */
 	public EObject getSubflow();
 
@@ -38,14 +31,14 @@ public interface SubflowStatePropertiesEditionPart {
 	/**
 	 * Defines a new subflow
 	 * @param newValue the new subflow to set
-	 * 
+	 * @generated
 	 */
 	public void setSubflow(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setSubflowButtonMode(ButtonsModeEnum newValue);
 
@@ -55,7 +48,7 @@ public interface SubflowStatePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSubflow(ViewerFilter filter);
 
@@ -65,7 +58,7 @@ public interface SubflowStatePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSubflow(ViewerFilter filter);
 
@@ -83,7 +76,7 @@ public interface SubflowStatePropertiesEditionPart {
 	/**
 	 * Update the actions
 	 * @param newValue the actions to update
-	 * 
+	 * @generated
 	 */
 	public void updateActions();
 
@@ -93,7 +86,7 @@ public interface SubflowStatePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActions(ViewerFilter filter);
 
@@ -103,27 +96,27 @@ public interface SubflowStatePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActions(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the actions table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInActionsTable(EObject element);
 
 
 	/**
 	 * @return the description
-	 * 
+	 * @generated
 	 */
 	public String getDescription();
 
 	/**
 	 * Defines a new description
 	 * @param newValue the new description to set
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue);
 
@@ -135,12 +128,9 @@ public interface SubflowStatePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-	
-	// End of user code
 
 }

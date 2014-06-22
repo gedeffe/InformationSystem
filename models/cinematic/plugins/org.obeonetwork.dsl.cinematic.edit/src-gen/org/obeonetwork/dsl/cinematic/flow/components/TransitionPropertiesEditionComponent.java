@@ -3,8 +3,6 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.components;
 
-// Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -17,29 +15,28 @@ import org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart;
 import org.obeonetwork.dsl.environment.components.MetadataCptPropertiesEditionComponent;
 import org.obeonetwork.dsl.environment.parts.EnvironmentViewsRepository;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class TransitionPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The Transition part
-	 * 
+	 * @generated
 	 */
 	private TransitionPropertiesEditionPart transitionPart;
 
 	/**
 	 * The TransitionTransitionPropertiesEditionComponent sub component
-	 * 
+	 * @generated
 	 */
 	protected TransitionTransitionPropertiesEditionComponent transitionTransitionPropertiesEditionComponent;
 
 	/**
 	 * The MetadataCptPropertiesEditionComponent sub component
-	 * 
+	 * @generated
 	 */
 	protected MetadataCptPropertiesEditionComponent metadataCptPropertiesEditionComponent;
 
@@ -47,7 +44,7 @@ public class TransitionPropertiesEditionComponent extends ComposedPropertiesEdit
 	 * Parameterized constructor
 	 * 
 	 * @param transition the EObject to edit
-	 * 
+	 * @generated
 	 */
 	public TransitionPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject transition, String editing_mode) {
 		super(editingContext, editing_mode);
@@ -67,7 +64,7 @@ public class TransitionPropertiesEditionComponent extends ComposedPropertiesEdit
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      getPropertiesEditionPart(int, java.lang.String)
-	 * 
+	 * @generated
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (TransitionTransitionPropertiesEditionComponent.TRANSITION_PART.equals(key)) {
@@ -83,7 +80,7 @@ public class TransitionPropertiesEditionComponent extends ComposedPropertiesEdit
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Object, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
+	 * @generated
 	 */
 	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (FlowViewsRepository.Transition.class == key) {
@@ -98,7 +95,7 @@ public class TransitionPropertiesEditionComponent extends ComposedPropertiesEdit
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
 		if (key == FlowViewsRepository.Transition.class) {

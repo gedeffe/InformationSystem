@@ -22,7 +22,6 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
@@ -42,13 +41,12 @@ import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.ui.MarkerHelper;
+import org.eclipse.emf.common.ui.ViewerPane;
 import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
@@ -79,18 +77,22 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
+import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
@@ -179,7 +181,7 @@ public class ViewEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PropertySheetPage propertySheetPage;
+	protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
 
 	/**
 	 * This is the viewer that shadows the selection in the content outline.
@@ -189,6 +191,56 @@ public class ViewEditor
 	 * @generated
 	 */
 	protected TreeViewer selectionViewer;
+
+	/**
+	 * This inverts the roll of parent and child in the content provider and show parents as a tree.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TreeViewer parentViewer;
+
+	/**
+	 * This shows how a tree view works.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TreeViewer treeViewer;
+
+	/**
+	 * This shows how a list view works.
+	 * A list viewer doesn't support icons.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ListViewer listViewer;
+
+	/**
+	 * This shows how a table view works.
+	 * A table can be used as a list with icons.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TableViewer tableViewer;
+
+	/**
+	 * This shows how a tree view with columns works.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TreeViewer treeViewerWithColumns;
+
+	/**
+	 * This keeps track of the active viewer pane, in the book.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ViewerPane currentViewerPane;
 
 	/**
 	 * This keeps track of the active content viewer, which may be either one of the viewers in the pages or the content outline viewer.
@@ -248,7 +300,7 @@ public class ViewEditor
 					}
 				}
 				else if (p instanceof PropertySheet) {
-					if (((PropertySheet)p).getCurrentPage() == propertySheetPage) {
+					if (propertySheetPages.contains(((PropertySheet)p).getCurrentPage())) {
 						getActionBarContributor().setActiveEditor(ViewEditor.this);
 						handleActivate();
 					}
@@ -360,6 +412,15 @@ public class ViewEditor
 			@Override
 			protected void unsetTarget(Resource target) {
 				basicUnsetTarget(target);
+				resourceToDiagnosticMap.remove(target);
+				if (updateProblemIndication) {
+					getSite().getShell().getDisplay().asyncExec
+						(new Runnable() {
+							 public void run() {
+								 updateProblemIndication();
+							 }
+						 });
+				}
 			}
 		};
 
@@ -393,6 +454,7 @@ public class ViewEditor
 										}
 									}
 								}
+								return false;
 							}
 
 							return true;
@@ -633,8 +695,14 @@ public class ViewEditor
 								  if (mostRecentCommand != null) {
 									  setSelectionToViewer(mostRecentCommand.getAffectedObjects());
 								  }
-								  if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
-									  propertySheetPage.refresh();
+								  for (Iterator<PropertySheetPage> i = propertySheetPages.iterator(); i.hasNext(); ) {
+									  PropertySheetPage propertySheetPage = i.next();
+									  if (propertySheetPage.getControl().isDisposed()) {
+										  i.remove();
+									  }
+									  else {
+										  propertySheetPage.refresh();
+									  }
 								  }
 							  }
 						  });
@@ -754,6 +822,21 @@ public class ViewEditor
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCurrentViewerPane(ViewerPane viewerPane) {
+		if (currentViewerPane != viewerPane) {
+			if (currentViewerPane != null) {
+				currentViewerPane.showFocus(false);
+			}
+			currentViewerPane = viewerPane;
+		}
+		setCurrentViewer(currentViewerPane.getViewer());
+	}
+
+	/**
 	 * This makes sure that one content viewer, either for the current page or the outline view, if it has focus,
 	 * is the current one.
 	 * <!-- begin-user-doc -->
@@ -825,7 +908,7 @@ public class ViewEditor
 		getSite().registerContextMenu(contextMenu, new UnwrappingSelectionProvider(viewer));
 
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
-		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
+		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance(), LocalSelectionTransfer.getTransfer(), FileTransfer.getInstance() };
 		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
 		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(editingDomain, viewer));
 	}
@@ -1105,23 +1188,22 @@ public class ViewEditor
 	 * @generated
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
-		if (propertySheetPage == null) {
-			propertySheetPage =
-				new ExtendedPropertySheetPage(editingDomain) {
-					@Override
-					public void setSelectionToViewer(List<?> selection) {
-						ViewEditor.this.setSelectionToViewer(selection);
-						ViewEditor.this.setFocus();
-					}
+		PropertySheetPage propertySheetPage =
+			new ExtendedPropertySheetPage(editingDomain) {
+				@Override
+				public void setSelectionToViewer(List<?> selection) {
+					ViewEditor.this.setSelectionToViewer(selection);
+					ViewEditor.this.setFocus();
+				}
 
-					@Override
-					public void setActionBars(IActionBars actionBars) {
-						super.setActionBars(actionBars);
-						getActionBarContributor().shareGlobalActions(this, actionBars);
-					}
-				};
-			propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
-		}
+				@Override
+				public void setActionBars(IActionBars actionBars) {
+					super.setActionBars(actionBars);
+					getActionBarContributor().shareGlobalActions(this, actionBars);
+				}
+			};
+		propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
+		propertySheetPages.add(propertySheetPage);
 
 		return propertySheetPage;
 	}
@@ -1133,22 +1215,34 @@ public class ViewEditor
 	 * @generated
 	 */
 	public void handleContentOutlineSelection(ISelection selection) {
-		if (selectionViewer != null && !selection.isEmpty() && selection instanceof IStructuredSelection) {
+		if (currentViewerPane != null && !selection.isEmpty() && selection instanceof IStructuredSelection) {
 			Iterator<?> selectedElements = ((IStructuredSelection)selection).iterator();
 			if (selectedElements.hasNext()) {
 				// Get the first selected element.
 				//
 				Object selectedElement = selectedElements.next();
 
-				ArrayList<Object> selectionList = new ArrayList<Object>();
-				selectionList.add(selectedElement);
-				while (selectedElements.hasNext()) {
-					selectionList.add(selectedElements.next());
-				}
-
-				// Set the selection to the widget.
+				// If it's the selection viewer, then we want it to select the same selection as this selection.
 				//
-				selectionViewer.setSelection(new StructuredSelection(selectionList));
+				if (currentViewerPane.getViewer() == selectionViewer) {
+					ArrayList<Object> selectionList = new ArrayList<Object>();
+					selectionList.add(selectedElement);
+					while (selectedElements.hasNext()) {
+						selectionList.add(selectedElements.next());
+					}
+
+					// Set the selection to the widget.
+					//
+					selectionViewer.setSelection(new StructuredSelection(selectionList));
+				}
+				else {
+					// Set the input to the widget.
+					//
+					if (currentViewerPane.getViewer().getInput() != selectedElement) {
+						currentViewerPane.getViewer().setInput(selectedElement);
+						currentViewerPane.setTitle(selectedElement);
+					}
+				}
 			}
 		}
 	}
@@ -1176,6 +1270,7 @@ public class ViewEditor
 		//
 		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
 		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
+		saveOptions.put(Resource.OPTION_LINE_DELIMITER, Resource.OPTION_LINE_DELIMITER_UNSPECIFIED);
 
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//
@@ -1228,7 +1323,7 @@ public class ViewEditor
 
 	/**
 	 * This returns whether something has been persisted to the URI of the specified resource.
-	 * The implementation uses the URI converter from the editor's resource set to try to open an input stream. 
+	 * The implementation uses the URI converter from the editor's resource set to try to open an input stream.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1300,20 +1395,9 @@ public class ViewEditor
 	 * @generated
 	 */
 	public void gotoMarker(IMarker marker) {
-		try {
-			if (marker.getType().equals(EValidator.MARKER)) {
-				String uriAttribute = marker.getAttribute(EValidator.URI_ATTRIBUTE, null);
-				if (uriAttribute != null) {
-					URI uri = URI.createURI(uriAttribute);
-					EObject eObject = editingDomain.getResourceSet().getEObject(uri, true);
-					if (eObject != null) {
-					  setSelectionToViewer(Collections.singleton(editingDomain.getWrapper(eObject)));
-					}
-				}
-			}
-		}
-		catch (CoreException exception) {
-			CinematicEditorPlugin.INSTANCE.log(exception);
+		List<?> targetObjects = markerHelper.getTargetObjects(editingDomain, marker);
+		if (!targetObjects.isEmpty()) {
+			setSelectionToViewer(targetObjects);
 		}
 	}
 
@@ -1340,7 +1424,12 @@ public class ViewEditor
 	 */
 	@Override
 	public void setFocus() {
-		getControl(getActivePage()).setFocus();
+		if (currentViewerPane != null) {
+			currentViewerPane.setFocus();
+		}
+		else {
+			getControl(getActivePage()).setFocus();
+		}
 	}
 
 	/**
@@ -1499,7 +1588,7 @@ public class ViewEditor
 			getActionBarContributor().setActiveEditor(null);
 		}
 
-		if (propertySheetPage != null) {
+		for (PropertySheetPage propertySheetPage : propertySheetPages) {
 			propertySheetPage.dispose();
 		}
 
@@ -1517,6 +1606,6 @@ public class ViewEditor
 	 * @generated
 	 */
 	protected boolean showOutlineView() {
-		return false;
+		return true;
 	}
 }

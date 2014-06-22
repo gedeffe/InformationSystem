@@ -3,67 +3,47 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
-
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
-
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.swt.SWT;
-
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
 import org.obeonetwork.dsl.cinematic.flow.parts.FinalStatePropertiesEditionPart;
 import org.obeonetwork.dsl.cinematic.flow.parts.FlowViewsRepository;
-
 import org.obeonetwork.dsl.cinematic.flow.providers.FlowMessages;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, FinalStatePropertiesEditionPart {
 
@@ -78,7 +58,7 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public FinalStatePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -89,7 +69,7 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -105,7 +85,7 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence finalStateStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -138,7 +118,7 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -152,6 +132,9 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, FlowViewsRepository.FinalState.Properties.name, FlowMessages.FinalStatePropertiesEditionPart_NameLabel);
@@ -164,7 +147,7 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -180,7 +163,7 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -195,12 +178,15 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 		EditingUtils.setID(name, FlowViewsRepository.FinalState.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.FinalState.Properties.name, FlowViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
+	 * @generated
 	 */
 	protected Composite createActionsAdvancedTableComposition(Composite parent) {
 		this.actions = new ReferencesTable(getDescription(FlowViewsRepository.FinalState.Properties.actions, FlowMessages.FinalStatePropertiesEditionPart_ActionsLabel), new ReferencesTableListener() {
@@ -243,9 +229,15 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 		this.actions.setUpperBound(-1);
 		actions.setID(FlowViewsRepository.FinalState.Properties.actions);
 		actions.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createActionsAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createDescriptionText(Composite parent) {
 		createDescription(parent, FlowViewsRepository.FinalState.Properties.description, FlowMessages.FinalStatePropertiesEditionPart_DescriptionLabel);
@@ -258,7 +250,7 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -274,7 +266,7 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -289,6 +281,9 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 		EditingUtils.setID(description, FlowViewsRepository.FinalState.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.FinalState.Properties.description, FlowViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
+
+		// End of user code
 		return parent;
 	}
 
@@ -297,19 +292,16 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.FinalStatePropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -319,7 +311,7 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.FinalStatePropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -327,6 +319,14 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.FinalState.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(FlowMessages.FinalState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -342,13 +342,21 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		actions.setContentProvider(contentProvider);
 		actions.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.FinalState.Properties.actions);
+		if (eefElementEditorReadOnlyState && actions.isEnabled()) {
+			actions.setEnabled(false);
+			actions.setToolTipText(FlowMessages.FinalState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !actions.isEnabled()) {
+			actions.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.FinalStatePropertiesEditionPart#updateActions()
-	 * 
+	 * @generated
 	 */
 	public void updateActions() {
 	actions.refresh();
@@ -358,7 +366,7 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.FinalStatePropertiesEditionPart#addFilterActions(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActions(ViewerFilter filter) {
 		actionsFilters.add(filter);
@@ -371,7 +379,7 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.FinalStatePropertiesEditionPart#addBusinessFilterActions(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActions(ViewerFilter filter) {
 		actionsBusinessFilters.add(filter);
@@ -381,7 +389,7 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.FinalStatePropertiesEditionPart#isContainedInActionsTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInActionsTable(EObject element) {
 		return ((ReferencesTableSettings)actions.getInput()).contains(element);
@@ -391,7 +399,7 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.FinalStatePropertiesEditionPart#getDescription()
-	 * 
+	 * @generated
 	 */
 	public String getDescription() {
 		return description.getText();
@@ -401,7 +409,7 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.FinalStatePropertiesEditionPart#setDescription(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue) {
 		if (newValue != null) {
@@ -409,6 +417,14 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 		} else {
 			description.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.FinalState.Properties.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(FlowMessages.FinalState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -420,15 +436,12 @@ public class FinalStatePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return FlowMessages.FinalState_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

@@ -3,90 +3,64 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.parts.forms;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
-
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
-
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
-
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
-
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
-
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.swt.SWT;
-
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
-
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.eclipse.ui.views.properties.tabbed.ISection;
 import org.obeonetwork.dsl.cinematic.flow.parts.FlowViewsRepository;
 import org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart;
-
 import org.obeonetwork.dsl.cinematic.flow.providers.FlowMessages;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, TransitionPropertiesEditionPart {
 
@@ -110,7 +84,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public TransitionPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -121,7 +95,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -139,7 +113,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence transitionStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -187,7 +161,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		composer.compose(view);
 	}
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -203,6 +177,9 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, FlowViewsRepository.Transition.Properties.name, FlowMessages.TransitionPropertiesEditionPart_NameLabel);
@@ -214,7 +191,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		name.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -251,7 +228,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		name.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -265,9 +242,15 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		EditingUtils.setID(name, FlowViewsRepository.Transition.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.Transition.Properties.name, FlowViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createGuardText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, FlowViewsRepository.Transition.Properties.guard, FlowMessages.TransitionPropertiesEditionPart_GuardLabel);
@@ -279,7 +262,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		guard.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -316,7 +299,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		guard.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -330,9 +313,15 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		EditingUtils.setID(guard, FlowViewsRepository.Transition.Properties.guard);
 		EditingUtils.setEEFtype(guard, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.Transition.Properties.guard, FlowViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createGuardText
+
+		// End of user code
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createModalCheckbox(FormToolkit widgetFactory, Composite parent) {
 		modal = widgetFactory.createButton(parent, getDescription(FlowViewsRepository.Transition.Properties.modal, FlowMessages.TransitionPropertiesEditionPart_ModalLabel), SWT.CHECK);
@@ -342,7 +331,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -356,11 +345,14 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		EditingUtils.setID(modal, FlowViewsRepository.Transition.Properties.modal);
 		EditingUtils.setEEFtype(modal, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.Transition.Properties.modal, FlowViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createModalCheckbox
+
+		// End of user code
 		return parent;
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createOnReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.on = new ReferencesTable(getDescription(FlowViewsRepository.Transition.Properties.on, FlowMessages.TransitionPropertiesEditionPart_OnLabel), new ReferencesTableListener	() {
@@ -387,11 +379,14 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		this.on.disableMove();
 		on.setID(FlowViewsRepository.Transition.Properties.on);
 		on.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		// Start of user code for createOnReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addOn() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(on.getInput(), onFilters, onBusinessFilters,
@@ -410,7 +405,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveOn(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TransitionPropertiesEditionPartForm.this, FlowViewsRepository.Transition.Properties.on, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -418,7 +413,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromOn(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TransitionPropertiesEditionPartForm.this, FlowViewsRepository.Transition.Properties.on, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -426,7 +421,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editOn(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -440,6 +435,9 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		}
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, FlowViewsRepository.Transition.Properties.description, FlowMessages.TransitionPropertiesEditionPart_DescriptionLabel);
@@ -451,7 +449,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		description.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -488,7 +486,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		description.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -502,13 +500,16 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		EditingUtils.setID(description, FlowViewsRepository.Transition.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.Transition.Properties.description, FlowViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createFromFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		createDescription(parent, FlowViewsRepository.Transition.Properties.from, FlowMessages.TransitionPropertiesEditionPart_FromLabel);
@@ -532,13 +533,16 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		});
 		from.setID(FlowViewsRepository.Transition.Properties.from);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.Transition.Properties.from, FlowViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFromFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createToFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		createDescription(parent, FlowViewsRepository.Transition.Properties.to, FlowMessages.TransitionPropertiesEditionPart_ToLabel);
@@ -562,6 +566,9 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		});
 		to.setID(FlowViewsRepository.Transition.Properties.to);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.Transition.Properties.to, FlowViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createToFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -570,19 +577,16 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -592,7 +596,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -600,13 +604,21 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.Transition.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(FlowMessages.Transition_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#getGuard()
-	 * 
+	 * @generated
 	 */
 	public String getGuard() {
 		return guard.getText();
@@ -616,7 +628,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#setGuard(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setGuard(String newValue) {
 		if (newValue != null) {
@@ -624,13 +636,21 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		} else {
 			guard.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.Transition.Properties.guard);
+		if (eefElementEditorReadOnlyState && guard.isEnabled()) {
+			guard.setEnabled(false);
+			guard.setToolTipText(FlowMessages.Transition_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !guard.isEnabled()) {
+			guard.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#getModal()
-	 * 
+	 * @generated
 	 */
 	public Boolean getModal() {
 		return Boolean.valueOf(modal.getSelection());
@@ -640,7 +660,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#setModal(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setModal(Boolean newValue) {
 		if (newValue != null) {
@@ -648,6 +668,14 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		} else {
 			modal.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.Transition.Properties.modal);
+		if (eefElementEditorReadOnlyState && modal.isEnabled()) {
+			modal.setEnabled(false);
+			modal.setToolTipText(FlowMessages.Transition_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !modal.isEnabled()) {
+			modal.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -663,13 +691,21 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		on.setContentProvider(contentProvider);
 		on.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.Transition.Properties.on);
+		if (eefElementEditorReadOnlyState && on.getTable().isEnabled()) {
+			on.setEnabled(false);
+			on.setToolTipText(FlowMessages.Transition_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !on.getTable().isEnabled()) {
+			on.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#updateOn()
-	 * 
+	 * @generated
 	 */
 	public void updateOn() {
 	on.refresh();
@@ -679,7 +715,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#addFilterOn(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOn(ViewerFilter filter) {
 		onFilters.add(filter);
@@ -689,7 +725,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#addBusinessFilterOn(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOn(ViewerFilter filter) {
 		onBusinessFilters.add(filter);
@@ -699,7 +735,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#isContainedInOnTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInOnTable(EObject element) {
 		return ((ReferencesTableSettings)on.getInput()).contains(element);
@@ -709,7 +745,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#getDescription()
-	 * 
+	 * @generated
 	 */
 	public String getDescription() {
 		return description.getText();
@@ -719,7 +755,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#setDescription(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue) {
 		if (newValue != null) {
@@ -727,13 +763,21 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		} else {
 			description.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.Transition.Properties.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(FlowMessages.Transition_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#getFrom()
-	 * 
+	 * @generated
 	 */
 	public EObject getFrom() {
 		if (from.getSelection() instanceof StructuredSelection) {
@@ -754,13 +798,21 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		if (current != null) {
 			from.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.Transition.Properties.from);
+		if (eefElementEditorReadOnlyState && from.isEnabled()) {
+			from.setEnabled(false);
+			from.setToolTipText(FlowMessages.Transition_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !from.isEnabled()) {
+			from.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#setFrom(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setFrom(EObject newValue) {
 		if (newValue != null) {
@@ -768,6 +820,14 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		} else {
 			from.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.Transition.Properties.from);
+		if (eefElementEditorReadOnlyState && from.isEnabled()) {
+			from.setEnabled(false);
+			from.setToolTipText(FlowMessages.Transition_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !from.isEnabled()) {
+			from.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -783,7 +843,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#addFilterFrom(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToFrom(ViewerFilter filter) {
 		from.addFilter(filter);
@@ -793,7 +853,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#addBusinessFilterFrom(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToFrom(ViewerFilter filter) {
 		from.addBusinessRuleFilter(filter);
@@ -803,7 +863,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#getTo()
-	 * 
+	 * @generated
 	 */
 	public EObject getTo() {
 		if (to.getSelection() instanceof StructuredSelection) {
@@ -824,13 +884,21 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		if (current != null) {
 			to.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.Transition.Properties.to);
+		if (eefElementEditorReadOnlyState && to.isEnabled()) {
+			to.setEnabled(false);
+			to.setToolTipText(FlowMessages.Transition_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !to.isEnabled()) {
+			to.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#setTo(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setTo(EObject newValue) {
 		if (newValue != null) {
@@ -838,6 +906,14 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 		} else {
 			to.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.Transition.Properties.to);
+		if (eefElementEditorReadOnlyState && to.isEnabled()) {
+			to.setEnabled(false);
+			to.setToolTipText(FlowMessages.Transition_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !to.isEnabled()) {
+			to.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -853,7 +929,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#addFilterTo(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToTo(ViewerFilter filter) {
 		to.addFilter(filter);
@@ -863,7 +939,7 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.TransitionPropertiesEditionPart#addBusinessFilterTo(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToTo(ViewerFilter filter) {
 		to.addBusinessRuleFilter(filter);
@@ -878,15 +954,12 @@ public class TransitionPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return FlowMessages.Transition_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

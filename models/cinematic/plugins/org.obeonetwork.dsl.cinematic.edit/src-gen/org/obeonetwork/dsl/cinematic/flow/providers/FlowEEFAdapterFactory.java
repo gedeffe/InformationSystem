@@ -13,14 +13,14 @@ import org.obeonetwork.dsl.environment.providers.MetadataCptPropertiesEditionPro
 
 /**
  * 
- * 
+ * @generated
  */
 public class FlowEEFAdapterFactory extends FlowAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.flow.util.FlowAdapterFactory#createObeoDSMObjectAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createObeoDSMObjectAdapter() {
 		return new MetadataCptPropertiesEditionProvider();
@@ -28,7 +28,7 @@ public class FlowEEFAdapterFactory extends FlowAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.flow.util.FlowAdapterFactory#createFlowAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createFlowAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -38,7 +38,7 @@ public class FlowEEFAdapterFactory extends FlowAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.flow.util.FlowAdapterFactory#createTransitionAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createTransitionAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -48,7 +48,7 @@ public class FlowEEFAdapterFactory extends FlowAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.flow.util.FlowAdapterFactory#createActionStateAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createActionStateAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -58,7 +58,7 @@ public class FlowEEFAdapterFactory extends FlowAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.flow.util.FlowAdapterFactory#createViewStateAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createViewStateAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -68,7 +68,7 @@ public class FlowEEFAdapterFactory extends FlowAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.flow.util.FlowAdapterFactory#createDecisionStateAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createDecisionStateAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -78,7 +78,7 @@ public class FlowEEFAdapterFactory extends FlowAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.flow.util.FlowAdapterFactory#createSubflowStateAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createSubflowStateAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -88,7 +88,7 @@ public class FlowEEFAdapterFactory extends FlowAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.flow.util.FlowAdapterFactory#createAsyncEventStateAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createAsyncEventStateAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -98,7 +98,7 @@ public class FlowEEFAdapterFactory extends FlowAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.flow.util.FlowAdapterFactory#createInitialStateAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createInitialStateAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -108,7 +108,7 @@ public class FlowEEFAdapterFactory extends FlowAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.flow.util.FlowAdapterFactory#createAbortStateAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createAbortStateAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -118,7 +118,7 @@ public class FlowEEFAdapterFactory extends FlowAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.flow.util.FlowAdapterFactory#createFinalStateAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createFinalStateAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -128,7 +128,7 @@ public class FlowEEFAdapterFactory extends FlowAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.flow.util.FlowAdapterFactory#createFlowActionAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createFlowActionAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -138,7 +138,7 @@ public class FlowEEFAdapterFactory extends FlowAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.flow.util.FlowAdapterFactory#createFlowEventAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createFlowEventAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);

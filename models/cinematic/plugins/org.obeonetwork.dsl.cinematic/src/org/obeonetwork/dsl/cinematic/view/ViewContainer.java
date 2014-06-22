@@ -43,7 +43,7 @@ public interface ViewContainer extends AbstractViewElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Elements</em>' containment reference list.
 	 * @see org.obeonetwork.dsl.cinematic.view.ViewPackage#getViewContainer_OwnedElements()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<AbstractViewElement> getOwnedElements();

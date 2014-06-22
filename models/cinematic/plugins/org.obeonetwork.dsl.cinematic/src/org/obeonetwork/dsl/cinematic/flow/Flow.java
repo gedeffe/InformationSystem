@@ -44,7 +44,7 @@ public interface Flow extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>States</em>' containment reference list.
 	 * @see org.obeonetwork.dsl.cinematic.flow.FlowPackage#getFlow_States()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<FlowState> getStates();
@@ -60,7 +60,7 @@ public interface Flow extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Transitions</em>' containment reference list.
 	 * @see org.obeonetwork.dsl.cinematic.flow.FlowPackage#getFlow_Transitions()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Transition> getTransitions();
@@ -76,7 +76,7 @@ public interface Flow extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Events</em>' containment reference list.
 	 * @see org.obeonetwork.dsl.cinematic.flow.FlowPackage#getFlow_Events()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<FlowEvent> getEvents();

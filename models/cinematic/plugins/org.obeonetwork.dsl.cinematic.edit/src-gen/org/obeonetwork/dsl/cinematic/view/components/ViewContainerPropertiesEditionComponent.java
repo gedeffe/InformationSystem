@@ -3,8 +3,6 @@
  */
 package org.obeonetwork.dsl.cinematic.view.components;
 
-// Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -17,29 +15,28 @@ import org.obeonetwork.dsl.cinematic.view.parts.ViewViewsRepository;
 import org.obeonetwork.dsl.environment.components.MetadataCptPropertiesEditionComponent;
 import org.obeonetwork.dsl.environment.parts.EnvironmentViewsRepository;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class ViewContainerPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The ViewContainer part
-	 * 
+	 * @generated
 	 */
 	private ViewContainerPropertiesEditionPart viewContainerPart;
 
 	/**
 	 * The ViewContainerViewContainerPropertiesEditionComponent sub component
-	 * 
+	 * @generated
 	 */
 	protected ViewContainerViewContainerPropertiesEditionComponent viewContainerViewContainerPropertiesEditionComponent;
 
 	/**
 	 * The MetadataCptPropertiesEditionComponent sub component
-	 * 
+	 * @generated
 	 */
 	protected MetadataCptPropertiesEditionComponent metadataCptPropertiesEditionComponent;
 
@@ -47,7 +44,7 @@ public class ViewContainerPropertiesEditionComponent extends ComposedPropertiesE
 	 * Parameterized constructor
 	 * 
 	 * @param viewContainer the EObject to edit
-	 * 
+	 * @generated
 	 */
 	public ViewContainerPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject viewContainer, String editing_mode) {
 		super(editingContext, editing_mode);
@@ -67,7 +64,7 @@ public class ViewContainerPropertiesEditionComponent extends ComposedPropertiesE
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      getPropertiesEditionPart(int, java.lang.String)
-	 * 
+	 * @generated
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (ViewContainerViewContainerPropertiesEditionComponent.VIEWCONTAINER_PART.equals(key)) {
@@ -83,7 +80,7 @@ public class ViewContainerPropertiesEditionComponent extends ComposedPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Object, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
+	 * @generated
 	 */
 	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (ViewViewsRepository.ViewContainer.class == key) {
@@ -98,7 +95,7 @@ public class ViewContainerPropertiesEditionComponent extends ComposedPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
 		if (key == ViewViewsRepository.ViewContainer.class) {

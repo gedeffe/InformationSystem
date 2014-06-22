@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.obeonetwork.dsl.cinematic.flow.FlowAction;
 import org.obeonetwork.dsl.cinematic.flow.FlowPackage;
@@ -36,6 +37,16 @@ import org.obeonetwork.dsl.cinematic.impl.CinematicElementImpl;
  * @generated
  */
 public abstract class FlowStateImpl extends CinematicElementImpl implements FlowState {
+	/**
+	 * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<FlowAction> actions;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,7 +73,10 @@ public abstract class FlowStateImpl extends CinematicElementImpl implements Flow
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<FlowAction> getActions() {
-		return (EList<FlowAction>)eDynamicGet(FlowPackage.FLOW_STATE__ACTIONS, FlowPackage.Literals.FLOW_STATE__ACTIONS, true, true);
+		if (actions == null) {
+			actions = new EObjectContainmentEList<FlowAction>(FlowAction.class, this, FlowPackage.FLOW_STATE__ACTIONS);
+		}
+		return actions;
 	}
 
 	/**
@@ -134,7 +148,7 @@ public abstract class FlowStateImpl extends CinematicElementImpl implements Flow
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case FlowPackage.FLOW_STATE__ACTIONS:
-				return !getActions().isEmpty();
+				return actions != null && !actions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

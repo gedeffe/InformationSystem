@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.obeonetwork.dsl.cinematic.flow.Flow;
 import org.obeonetwork.dsl.cinematic.flow.FlowEvent;
@@ -40,6 +41,34 @@ import org.obeonetwork.dsl.cinematic.impl.NamedElementImpl;
  * @generated
  */
 public class FlowImpl extends NamedElementImpl implements Flow {
+	/**
+	 * The cached value of the '{@link #getStates() <em>States</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStates()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<FlowState> states;
+	/**
+	 * The cached value of the '{@link #getTransitions() <em>Transitions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Transition> transitions;
+	/**
+	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEvents()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<FlowEvent> events;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -66,7 +95,10 @@ public class FlowImpl extends NamedElementImpl implements Flow {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<FlowState> getStates() {
-		return (EList<FlowState>)eDynamicGet(FlowPackage.FLOW__STATES, FlowPackage.Literals.FLOW__STATES, true, true);
+		if (states == null) {
+			states = new EObjectContainmentEList<FlowState>(FlowState.class, this, FlowPackage.FLOW__STATES);
+		}
+		return states;
 	}
 
 	/**
@@ -76,7 +108,10 @@ public class FlowImpl extends NamedElementImpl implements Flow {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Transition> getTransitions() {
-		return (EList<Transition>)eDynamicGet(FlowPackage.FLOW__TRANSITIONS, FlowPackage.Literals.FLOW__TRANSITIONS, true, true);
+		if (transitions == null) {
+			transitions = new EObjectContainmentEList<Transition>(Transition.class, this, FlowPackage.FLOW__TRANSITIONS);
+		}
+		return transitions;
 	}
 
 	/**
@@ -86,7 +121,10 @@ public class FlowImpl extends NamedElementImpl implements Flow {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<FlowEvent> getEvents() {
-		return (EList<FlowEvent>)eDynamicGet(FlowPackage.FLOW__EVENTS, FlowPackage.Literals.FLOW__EVENTS, true, true);
+		if (events == null) {
+			events = new EObjectContainmentEList<FlowEvent>(FlowEvent.class, this, FlowPackage.FLOW__EVENTS);
+		}
+		return events;
 	}
 
 	/**
@@ -180,11 +218,11 @@ public class FlowImpl extends NamedElementImpl implements Flow {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case FlowPackage.FLOW__STATES:
-				return !getStates().isEmpty();
+				return states != null && !states.isEmpty();
 			case FlowPackage.FLOW__TRANSITIONS:
-				return !getTransitions().isEmpty();
+				return transitions != null && !transitions.isEmpty();
 			case FlowPackage.FLOW__EVENTS:
-				return !getEvents().isEmpty();
+				return events != null && !events.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

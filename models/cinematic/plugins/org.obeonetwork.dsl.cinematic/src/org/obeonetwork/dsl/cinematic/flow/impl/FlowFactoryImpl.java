@@ -46,7 +46,7 @@ public class FlowFactoryImpl extends EFactoryImpl implements FlowFactory {
 	 */
 	public static FlowFactory init() {
 		try {
-			FlowFactory theFlowFactory = (FlowFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.obeonetwork.org/dsl/cinematic/flow/1.0.0"); 
+			FlowFactory theFlowFactory = (FlowFactory)EPackage.Registry.INSTANCE.getEFactory(FlowPackage.eNS_URI);
 			if (theFlowFactory != null) {
 				return theFlowFactory;
 			}
@@ -75,18 +75,18 @@ public class FlowFactoryImpl extends EFactoryImpl implements FlowFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case FlowPackage.FLOW: return (EObject)createFlow();
-			case FlowPackage.TRANSITION: return (EObject)createTransition();
-			case FlowPackage.ACTION_STATE: return (EObject)createActionState();
-			case FlowPackage.VIEW_STATE: return (EObject)createViewState();
-			case FlowPackage.DECISION_STATE: return (EObject)createDecisionState();
-			case FlowPackage.SUBFLOW_STATE: return (EObject)createSubflowState();
-			case FlowPackage.ASYNC_EVENT_STATE: return (EObject)createAsyncEventState();
-			case FlowPackage.INITIAL_STATE: return (EObject)createInitialState();
-			case FlowPackage.ABORT_STATE: return (EObject)createAbortState();
-			case FlowPackage.FINAL_STATE: return (EObject)createFinalState();
-			case FlowPackage.FLOW_ACTION: return (EObject)createFlowAction();
-			case FlowPackage.FLOW_EVENT: return (EObject)createFlowEvent();
+			case FlowPackage.FLOW: return createFlow();
+			case FlowPackage.TRANSITION: return createTransition();
+			case FlowPackage.ACTION_STATE: return createActionState();
+			case FlowPackage.VIEW_STATE: return createViewState();
+			case FlowPackage.DECISION_STATE: return createDecisionState();
+			case FlowPackage.SUBFLOW_STATE: return createSubflowState();
+			case FlowPackage.ASYNC_EVENT_STATE: return createAsyncEventState();
+			case FlowPackage.INITIAL_STATE: return createInitialState();
+			case FlowPackage.ABORT_STATE: return createAbortState();
+			case FlowPackage.FINAL_STATE: return createFinalState();
+			case FlowPackage.FLOW_ACTION: return createFlowAction();
+			case FlowPackage.FLOW_EVENT: return createFlowEvent();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

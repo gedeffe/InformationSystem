@@ -11,13 +11,15 @@
 package org.obeonetwork.dsl.cinematic.toolkits.impl;
 
 import java.util.Collection;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.obeonetwork.dsl.cinematic.toolkits.Toolkit;
 import org.obeonetwork.dsl.cinematic.toolkits.ToolkitsPackage;
 import org.obeonetwork.dsl.cinematic.toolkits.Widget;
@@ -36,7 +38,16 @@ import org.obeonetwork.dsl.cinematic.toolkits.Widget;
  *
  * @generated
  */
-public class ToolkitImpl extends CDOObjectImpl implements Toolkit {
+public class ToolkitImpl extends MinimalEObjectImpl.Container implements Toolkit {
+	/**
+	 * The cached value of the '{@link #getWidgets() <em>Widgets</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWidgets()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Widget> widgets;
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -46,6 +57,16 @@ public class ToolkitImpl extends CDOObjectImpl implements Toolkit {
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -71,19 +92,12 @@ public class ToolkitImpl extends CDOObjectImpl implements Toolkit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	public EList<Widget> getWidgets() {
-		return (EList<Widget>)eDynamicGet(ToolkitsPackage.TOOLKIT__WIDGETS, ToolkitsPackage.Literals.TOOLKIT__WIDGETS, true, true);
+		if (widgets == null) {
+			widgets = new EObjectContainmentWithInverseEList<Widget>(Widget.class, this, ToolkitsPackage.TOOLKIT__WIDGETS, ToolkitsPackage.WIDGET__TOOLKIT);
+		}
+		return widgets;
 	}
 
 	/**
@@ -92,7 +106,7 @@ public class ToolkitImpl extends CDOObjectImpl implements Toolkit {
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eDynamicGet(ToolkitsPackage.TOOLKIT__NAME, ToolkitsPackage.Literals.TOOLKIT__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -101,7 +115,10 @@ public class ToolkitImpl extends CDOObjectImpl implements Toolkit {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(ToolkitsPackage.TOOLKIT__NAME, ToolkitsPackage.Literals.TOOLKIT__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolkitsPackage.TOOLKIT__NAME, oldName, name));
 	}
 
 	/**
@@ -196,11 +213,27 @@ public class ToolkitImpl extends CDOObjectImpl implements Toolkit {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ToolkitsPackage.TOOLKIT__WIDGETS:
-				return !getWidgets().isEmpty();
+				return widgets != null && !widgets.isEmpty();
 			case ToolkitsPackage.TOOLKIT__NAME:
-				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ToolkitImpl

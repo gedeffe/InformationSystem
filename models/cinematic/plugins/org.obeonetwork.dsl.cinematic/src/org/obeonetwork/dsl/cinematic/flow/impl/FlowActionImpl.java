@@ -14,6 +14,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.obeonetwork.dsl.cinematic.flow.FlowAction;
 import org.obeonetwork.dsl.cinematic.flow.FlowPackage;
 import org.obeonetwork.dsl.cinematic.impl.NamedElementImpl;
@@ -35,6 +36,25 @@ import org.obeonetwork.dsl.environment.Action;
  * @generated
  */
 public class FlowActionImpl extends NamedElementImpl implements FlowAction {
+	/**
+	 * The cached value of the '{@link #getCalls() <em>Calls</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCalls()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ViewAction> calls;
+	/**
+	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Action> operations;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61,7 +81,10 @@ public class FlowActionImpl extends NamedElementImpl implements FlowAction {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<ViewAction> getCalls() {
-		return (EList<ViewAction>)eDynamicGet(FlowPackage.FLOW_ACTION__CALLS, FlowPackage.Literals.FLOW_ACTION__CALLS, true, true);
+		if (calls == null) {
+			calls = new EObjectResolvingEList<ViewAction>(ViewAction.class, this, FlowPackage.FLOW_ACTION__CALLS);
+		}
+		return calls;
 	}
 
 	/**
@@ -71,7 +94,10 @@ public class FlowActionImpl extends NamedElementImpl implements FlowAction {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Action> getOperations() {
-		return (EList<Action>)eDynamicGet(FlowPackage.FLOW_ACTION__OPERATIONS, FlowPackage.Literals.FLOW_ACTION__OPERATIONS, true, true);
+		if (operations == null) {
+			operations = new EObjectResolvingEList<Action>(Action.class, this, FlowPackage.FLOW_ACTION__OPERATIONS);
+		}
+		return operations;
 	}
 
 	/**
@@ -138,9 +164,9 @@ public class FlowActionImpl extends NamedElementImpl implements FlowAction {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case FlowPackage.FLOW_ACTION__CALLS:
-				return !getCalls().isEmpty();
+				return calls != null && !calls.isEmpty();
 			case FlowPackage.FLOW_ACTION__OPERATIONS:
-				return !getOperations().isEmpty();
+				return operations != null && !operations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

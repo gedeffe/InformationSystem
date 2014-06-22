@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.obeonetwork.dsl.cinematic.AbstractPackage;
 import org.obeonetwork.dsl.cinematic.CinematicPackage;
@@ -38,6 +39,34 @@ import org.obeonetwork.dsl.cinematic.view.ViewContainer;
  * @generated
  */
 public abstract class AbstractPackageImpl extends NamedElementImpl implements AbstractPackage {
+	/**
+	 * The cached value of the '{@link #getFlows() <em>Flows</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFlows()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Flow> flows;
+	/**
+	 * The cached value of the '{@link #getViewContainers() <em>View Containers</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getViewContainers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ViewContainer> viewContainers;
+	/**
+	 * The cached value of the '{@link #getSubPackages() <em>Sub Packages</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubPackages()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<org.obeonetwork.dsl.cinematic.Package> subPackages;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -64,7 +93,10 @@ public abstract class AbstractPackageImpl extends NamedElementImpl implements Ab
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Flow> getFlows() {
-		return (EList<Flow>)eDynamicGet(CinematicPackage.ABSTRACT_PACKAGE__FLOWS, CinematicPackage.Literals.ABSTRACT_PACKAGE__FLOWS, true, true);
+		if (flows == null) {
+			flows = new EObjectContainmentEList<Flow>(Flow.class, this, CinematicPackage.ABSTRACT_PACKAGE__FLOWS);
+		}
+		return flows;
 	}
 
 	/**
@@ -74,7 +106,10 @@ public abstract class AbstractPackageImpl extends NamedElementImpl implements Ab
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<ViewContainer> getViewContainers() {
-		return (EList<ViewContainer>)eDynamicGet(CinematicPackage.ABSTRACT_PACKAGE__VIEW_CONTAINERS, CinematicPackage.Literals.ABSTRACT_PACKAGE__VIEW_CONTAINERS, true, true);
+		if (viewContainers == null) {
+			viewContainers = new EObjectContainmentEList<ViewContainer>(ViewContainer.class, this, CinematicPackage.ABSTRACT_PACKAGE__VIEW_CONTAINERS);
+		}
+		return viewContainers;
 	}
 
 	/**
@@ -84,7 +119,10 @@ public abstract class AbstractPackageImpl extends NamedElementImpl implements Ab
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<org.obeonetwork.dsl.cinematic.Package> getSubPackages() {
-		return (EList<org.obeonetwork.dsl.cinematic.Package>)eDynamicGet(CinematicPackage.ABSTRACT_PACKAGE__SUB_PACKAGES, CinematicPackage.Literals.ABSTRACT_PACKAGE__SUB_PACKAGES, true, true);
+		if (subPackages == null) {
+			subPackages = new EObjectContainmentEList<org.obeonetwork.dsl.cinematic.Package>(org.obeonetwork.dsl.cinematic.Package.class, this, CinematicPackage.ABSTRACT_PACKAGE__SUB_PACKAGES);
+		}
+		return subPackages;
 	}
 
 	/**
@@ -178,11 +216,11 @@ public abstract class AbstractPackageImpl extends NamedElementImpl implements Ab
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CinematicPackage.ABSTRACT_PACKAGE__FLOWS:
-				return !getFlows().isEmpty();
+				return flows != null && !flows.isEmpty();
 			case CinematicPackage.ABSTRACT_PACKAGE__VIEW_CONTAINERS:
-				return !getViewContainers().isEmpty();
+				return viewContainers != null && !viewContainers.isEmpty();
 			case CinematicPackage.ABSTRACT_PACKAGE__SUB_PACKAGES:
-				return !getSubPackages().isEmpty();
+				return subPackages != null && !subPackages.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

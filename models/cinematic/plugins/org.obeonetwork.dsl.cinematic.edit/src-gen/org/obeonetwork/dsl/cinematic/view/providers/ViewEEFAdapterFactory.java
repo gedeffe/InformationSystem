@@ -13,14 +13,14 @@ import org.obeonetwork.dsl.environment.providers.MetadataCptPropertiesEditionPro
 
 /**
  * 
- * 
+ * @generated
  */
 public class ViewEEFAdapterFactory extends ViewAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.view.util.ViewAdapterFactory#createObeoDSMObjectAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createObeoDSMObjectAdapter() {
 		return new MetadataCptPropertiesEditionProvider();
@@ -28,7 +28,7 @@ public class ViewEEFAdapterFactory extends ViewAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.view.util.ViewAdapterFactory#createViewContainerAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createViewContainerAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -38,7 +38,7 @@ public class ViewEEFAdapterFactory extends ViewAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.view.util.ViewAdapterFactory#createViewElementAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createViewElementAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -48,7 +48,7 @@ public class ViewEEFAdapterFactory extends ViewAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.view.util.ViewAdapterFactory#createViewActionAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createViewActionAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -58,7 +58,7 @@ public class ViewEEFAdapterFactory extends ViewAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.view.util.ViewAdapterFactory#createViewEventAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createViewEventAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
@@ -68,7 +68,7 @@ public class ViewEEFAdapterFactory extends ViewAdapterFactory {
 	/**
 	 * {@inheritDoc}
 	 * @see org.obeonetwork.dsl.cinematic.view.util.ViewAdapterFactory#createViewContainerReferenceAdapter()
-	 * 
+	 * @generated
 	 */
 	public Adapter createViewContainerReferenceAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);

@@ -20,14 +20,14 @@ import org.obeonetwork.dsl.cinematic.view.parts.impl.ViewEventPropertiesEditionP
 
 /**
  * 
- * 
+ * @generated
  */
 public class ViewPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
 
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Object)
-	 * 
+	 * @generated
 	 */
 	public boolean provides(Object key) {
 		return key == ViewViewsRepository.class;
@@ -36,7 +36,7 @@ public class ViewPropertiesEditionPartProvider implements IPropertiesEditionPart
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
-	 * 
+	 * @generated
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component) {
 		if (key == ViewViewsRepository.ViewContainer.class) {

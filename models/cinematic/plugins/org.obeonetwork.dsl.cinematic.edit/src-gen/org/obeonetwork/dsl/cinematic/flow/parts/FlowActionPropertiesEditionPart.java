@@ -3,32 +3,27 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public interface FlowActionPropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
@@ -44,7 +39,7 @@ public interface FlowActionPropertiesEditionPart {
 	/**
 	 * Update the calls
 	 * @param newValue the calls to update
-	 * 
+	 * @generated
 	 */
 	public void updateCalls();
 
@@ -54,7 +49,7 @@ public interface FlowActionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToCalls(ViewerFilter filter);
 
@@ -64,13 +59,13 @@ public interface FlowActionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToCalls(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the calls table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInCallsTable(EObject element);
 
@@ -86,7 +81,7 @@ public interface FlowActionPropertiesEditionPart {
 	/**
 	 * Update the operations
 	 * @param newValue the operations to update
-	 * 
+	 * @generated
 	 */
 	public void updateOperations();
 
@@ -96,7 +91,7 @@ public interface FlowActionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOperations(ViewerFilter filter);
 
@@ -106,27 +101,27 @@ public interface FlowActionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOperations(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the operations table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInOperationsTable(EObject element);
 
 
 	/**
 	 * @return the description
-	 * 
+	 * @generated
 	 */
 	public String getDescription();
 
 	/**
 	 * Defines a new description
 	 * @param newValue the new description to set
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue);
 
@@ -138,12 +133,9 @@ public interface FlowActionPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-	
-	// End of user code
 
 }

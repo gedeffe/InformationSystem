@@ -3,76 +3,54 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
-
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
-
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.swt.SWT;
-
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
 import org.obeonetwork.dsl.cinematic.flow.parts.FlowViewsRepository;
 import org.obeonetwork.dsl.cinematic.flow.parts.SubflowStatePropertiesEditionPart;
-
 import org.obeonetwork.dsl.cinematic.flow.providers.FlowMessages;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, SubflowStatePropertiesEditionPart {
 
@@ -87,7 +65,7 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public SubflowStatePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -98,7 +76,7 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -114,7 +92,7 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence subflowStateStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -147,7 +125,7 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -163,7 +141,7 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createSubflowFlatComboViewer(Composite parent) {
 		createDescription(parent, FlowViewsRepository.SubflowState.Properties.subflow, FlowMessages.SubflowStatePropertiesEditionPart_SubflowLabel);
@@ -181,12 +159,15 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 		subflow.setLayoutData(subflowData);
 		subflow.setID(FlowViewsRepository.SubflowState.Properties.subflow);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.SubflowState.Properties.subflow, FlowViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSubflowFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
+	 * @generated
 	 */
 	protected Composite createActionsAdvancedTableComposition(Composite parent) {
 		this.actions = new ReferencesTable(getDescription(FlowViewsRepository.SubflowState.Properties.actions, FlowMessages.SubflowStatePropertiesEditionPart_ActionsLabel), new ReferencesTableListener() {
@@ -229,9 +210,15 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 		this.actions.setUpperBound(-1);
 		actions.setID(FlowViewsRepository.SubflowState.Properties.actions);
 		actions.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createActionsAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createDescriptionText(Composite parent) {
 		createDescription(parent, FlowViewsRepository.SubflowState.Properties.description, FlowMessages.SubflowStatePropertiesEditionPart_DescriptionLabel);
@@ -244,7 +231,7 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -260,7 +247,7 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -275,6 +262,9 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 		EditingUtils.setID(description, FlowViewsRepository.SubflowState.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.SubflowState.Properties.description, FlowViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
+
+		// End of user code
 		return parent;
 	}
 
@@ -283,19 +273,16 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.SubflowStatePropertiesEditionPart#getSubflow()
-	 * 
+	 * @generated
 	 */
 	public EObject getSubflow() {
 		if (subflow.getSelection() instanceof StructuredSelection) {
@@ -316,13 +303,21 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 		if (current != null) {
 			subflow.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.SubflowState.Properties.subflow);
+		if (eefElementEditorReadOnlyState && subflow.isEnabled()) {
+			subflow.setEnabled(false);
+			subflow.setToolTipText(FlowMessages.SubflowState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !subflow.isEnabled()) {
+			subflow.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.SubflowStatePropertiesEditionPart#setSubflow(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setSubflow(EObject newValue) {
 		if (newValue != null) {
@@ -330,6 +325,14 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 		} else {
 			subflow.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.SubflowState.Properties.subflow);
+		if (eefElementEditorReadOnlyState && subflow.isEnabled()) {
+			subflow.setEnabled(false);
+			subflow.setToolTipText(FlowMessages.SubflowState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !subflow.isEnabled()) {
+			subflow.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -345,7 +348,7 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.SubflowStatePropertiesEditionPart#addFilterSubflow(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSubflow(ViewerFilter filter) {
 		subflow.addFilter(filter);
@@ -355,7 +358,7 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.SubflowStatePropertiesEditionPart#addBusinessFilterSubflow(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSubflow(ViewerFilter filter) {
 		subflow.addBusinessRuleFilter(filter);
@@ -374,13 +377,21 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		actions.setContentProvider(contentProvider);
 		actions.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.SubflowState.Properties.actions);
+		if (eefElementEditorReadOnlyState && actions.isEnabled()) {
+			actions.setEnabled(false);
+			actions.setToolTipText(FlowMessages.SubflowState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !actions.isEnabled()) {
+			actions.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.SubflowStatePropertiesEditionPart#updateActions()
-	 * 
+	 * @generated
 	 */
 	public void updateActions() {
 	actions.refresh();
@@ -390,7 +401,7 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.SubflowStatePropertiesEditionPart#addFilterActions(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActions(ViewerFilter filter) {
 		actionsFilters.add(filter);
@@ -403,7 +414,7 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.SubflowStatePropertiesEditionPart#addBusinessFilterActions(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActions(ViewerFilter filter) {
 		actionsBusinessFilters.add(filter);
@@ -413,7 +424,7 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.SubflowStatePropertiesEditionPart#isContainedInActionsTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInActionsTable(EObject element) {
 		return ((ReferencesTableSettings)actions.getInput()).contains(element);
@@ -423,7 +434,7 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.SubflowStatePropertiesEditionPart#getDescription()
-	 * 
+	 * @generated
 	 */
 	public String getDescription() {
 		return description.getText();
@@ -433,7 +444,7 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.SubflowStatePropertiesEditionPart#setDescription(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue) {
 		if (newValue != null) {
@@ -441,6 +452,14 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 		} else {
 			description.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.SubflowState.Properties.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(FlowMessages.SubflowState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -452,15 +471,12 @@ public class SubflowStatePropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return FlowMessages.SubflowState_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

@@ -72,7 +72,7 @@ public interface AbstractViewElement extends NamedElement, BoundableElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Actions</em>' containment reference list.
 	 * @see org.obeonetwork.dsl.cinematic.view.ViewPackage#getAbstractViewElement_Actions()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ViewAction> getActions();
@@ -88,7 +88,7 @@ public interface AbstractViewElement extends NamedElement, BoundableElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Events</em>' containment reference list.
 	 * @see org.obeonetwork.dsl.cinematic.view.ViewPackage#getAbstractViewElement_Events()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ViewEvent> getEvents();

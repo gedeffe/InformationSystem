@@ -3,77 +3,54 @@
  */
 package org.obeonetwork.dsl.cinematic.flow.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
-
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
-
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
-
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
-
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.swt.SWT;
-
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
 import org.obeonetwork.dsl.cinematic.flow.parts.FlowViewsRepository;
 import org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart;
-
 import org.obeonetwork.dsl.cinematic.flow.providers.FlowMessages;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ViewStatePropertiesEditionPart {
 
@@ -93,7 +70,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public ViewStatePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -104,7 +81,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -120,7 +97,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence viewStateStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -165,7 +142,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -179,6 +156,9 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, FlowViewsRepository.ViewState.Properties.name, FlowMessages.ViewStatePropertiesEditionPart_NameLabel);
@@ -191,7 +171,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -207,7 +187,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -222,12 +202,15 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 		EditingUtils.setID(name, FlowViewsRepository.ViewState.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.ViewState.Properties.name, FlowViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
 	/**
 	 * @param container
-	 * 
+	 * @generated
 	 */
 	protected Composite createActionsAdvancedTableComposition(Composite parent) {
 		this.actions = new ReferencesTable(getDescription(FlowViewsRepository.ViewState.Properties.actions, FlowMessages.ViewStatePropertiesEditionPart_ActionsLabel), new ReferencesTableListener() {
@@ -270,9 +253,15 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 		this.actions.setUpperBound(-1);
 		actions.setID(FlowViewsRepository.ViewState.Properties.actions);
 		actions.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createActionsAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNewInstanceCheckbox(Composite parent) {
 		newInstance = new Button(parent, SWT.CHECK);
@@ -283,7 +272,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -297,9 +286,15 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 		EditingUtils.setID(newInstance, FlowViewsRepository.ViewState.Properties.newInstance);
 		EditingUtils.setEEFtype(newInstance, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.ViewState.Properties.newInstance, FlowViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNewInstanceCheckbox
+
+		// End of user code
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createRefreshCheckbox(Composite parent) {
 		refresh = new Button(parent, SWT.CHECK);
@@ -310,7 +305,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -324,11 +319,14 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 		EditingUtils.setID(refresh, FlowViewsRepository.ViewState.Properties.refresh);
 		EditingUtils.setEEFtype(refresh, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.ViewState.Properties.refresh, FlowViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createRefreshCheckbox
+
+		// End of user code
 		return parent;
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createViewContainersAdvancedReferencesTable(Composite parent) {
 		String label = getDescription(FlowViewsRepository.ViewState.Properties.viewContainers, FlowMessages.ViewStatePropertiesEditionPart_ViewContainersLabel);		 
@@ -360,7 +358,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addViewContainers() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(viewContainers.getInput(), viewContainersFilters, viewContainersBusinessFilters,
@@ -379,7 +377,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveViewContainers(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ViewStatePropertiesEditionPartImpl.this, FlowViewsRepository.ViewState.Properties.viewContainers, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -387,7 +385,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromViewContainers(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ViewStatePropertiesEditionPartImpl.this, FlowViewsRepository.ViewState.Properties.viewContainers, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -395,7 +393,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editViewContainers(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -409,6 +407,9 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 		}
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createDescriptionText(Composite parent) {
 		createDescription(parent, FlowViewsRepository.ViewState.Properties.description, FlowMessages.ViewStatePropertiesEditionPart_DescriptionLabel);
@@ -421,7 +422,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -437,7 +438,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -452,6 +453,9 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 		EditingUtils.setID(description, FlowViewsRepository.ViewState.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FlowViewsRepository.ViewState.Properties.description, FlowViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
+
+		// End of user code
 		return parent;
 	}
 
@@ -460,19 +464,16 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -482,7 +483,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -490,6 +491,14 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.ViewState.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(FlowMessages.ViewState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -505,13 +514,21 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		actions.setContentProvider(contentProvider);
 		actions.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.ViewState.Properties.actions);
+		if (eefElementEditorReadOnlyState && actions.isEnabled()) {
+			actions.setEnabled(false);
+			actions.setToolTipText(FlowMessages.ViewState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !actions.isEnabled()) {
+			actions.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#updateActions()
-	 * 
+	 * @generated
 	 */
 	public void updateActions() {
 	actions.refresh();
@@ -521,7 +538,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#addFilterActions(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActions(ViewerFilter filter) {
 		actionsFilters.add(filter);
@@ -534,7 +551,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#addBusinessFilterActions(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActions(ViewerFilter filter) {
 		actionsBusinessFilters.add(filter);
@@ -544,7 +561,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#isContainedInActionsTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInActionsTable(EObject element) {
 		return ((ReferencesTableSettings)actions.getInput()).contains(element);
@@ -554,7 +571,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#getNewInstance()
-	 * 
+	 * @generated
 	 */
 	public Boolean getNewInstance() {
 		return Boolean.valueOf(newInstance.getSelection());
@@ -564,7 +581,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#setNewInstance(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setNewInstance(Boolean newValue) {
 		if (newValue != null) {
@@ -572,13 +589,21 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 		} else {
 			newInstance.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.ViewState.Properties.newInstance);
+		if (eefElementEditorReadOnlyState && newInstance.isEnabled()) {
+			newInstance.setEnabled(false);
+			newInstance.setToolTipText(FlowMessages.ViewState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !newInstance.isEnabled()) {
+			newInstance.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#getRefresh()
-	 * 
+	 * @generated
 	 */
 	public Boolean getRefresh() {
 		return Boolean.valueOf(refresh.getSelection());
@@ -588,7 +613,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#setRefresh(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setRefresh(Boolean newValue) {
 		if (newValue != null) {
@@ -596,6 +621,14 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 		} else {
 			refresh.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.ViewState.Properties.refresh);
+		if (eefElementEditorReadOnlyState && refresh.isEnabled()) {
+			refresh.setEnabled(false);
+			refresh.setToolTipText(FlowMessages.ViewState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !refresh.isEnabled()) {
+			refresh.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -611,13 +644,21 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		viewContainers.setContentProvider(contentProvider);
 		viewContainers.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.ViewState.Properties.viewContainers);
+		if (eefElementEditorReadOnlyState && viewContainers.getTable().isEnabled()) {
+			viewContainers.setEnabled(false);
+			viewContainers.setToolTipText(FlowMessages.ViewState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !viewContainers.getTable().isEnabled()) {
+			viewContainers.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#updateViewContainers()
-	 * 
+	 * @generated
 	 */
 	public void updateViewContainers() {
 	viewContainers.refresh();
@@ -627,7 +668,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#addFilterViewContainers(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToViewContainers(ViewerFilter filter) {
 		viewContainersFilters.add(filter);
@@ -637,7 +678,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#addBusinessFilterViewContainers(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToViewContainers(ViewerFilter filter) {
 		viewContainersBusinessFilters.add(filter);
@@ -647,7 +688,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#isContainedInViewContainersTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInViewContainersTable(EObject element) {
 		return ((ReferencesTableSettings)viewContainers.getInput()).contains(element);
@@ -657,7 +698,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#getDescription()
-	 * 
+	 * @generated
 	 */
 	public String getDescription() {
 		return description.getText();
@@ -667,7 +708,7 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.cinematic.flow.parts.ViewStatePropertiesEditionPart#setDescription(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue) {
 		if (newValue != null) {
@@ -675,6 +716,14 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 		} else {
 			description.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FlowViewsRepository.ViewState.Properties.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(FlowMessages.ViewState_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -686,15 +735,12 @@ public class ViewStatePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return FlowMessages.ViewState_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }
