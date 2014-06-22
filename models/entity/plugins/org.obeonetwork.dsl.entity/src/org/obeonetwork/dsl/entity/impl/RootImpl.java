@@ -17,6 +17,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.obeonetwork.dsl.entity.Block;
 import org.obeonetwork.dsl.entity.EntityPackage;
@@ -43,6 +44,15 @@ public class RootImpl extends NamespaceImpl implements Root {
 	 */
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
 	/**
+	 * The cached value of the '{@link #getBlocks() <em>Blocks</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBlocks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Block> blocks;
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -65,7 +75,10 @@ public class RootImpl extends NamespaceImpl implements Root {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Block> getBlocks() {
-		return (EList<Block>)eDynamicGet(EntityPackage.ROOT__BLOCKS, EntityPackage.Literals.ROOT__BLOCKS, true, true);
+		if (blocks == null) {
+			blocks = new EObjectContainmentEList.Resolving<Block>(Block.class, this, EntityPackage.ROOT__BLOCKS);
+		}
+		return blocks;
 	}
 
 	/**
@@ -137,7 +150,7 @@ public class RootImpl extends NamespaceImpl implements Root {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EntityPackage.ROOT__BLOCKS:
-				return !getBlocks().isEmpty();
+				return blocks != null && !blocks.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

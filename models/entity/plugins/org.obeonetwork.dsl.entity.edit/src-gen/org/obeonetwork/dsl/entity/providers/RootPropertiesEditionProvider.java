@@ -13,29 +13,20 @@ package org.obeonetwork.dsl.entity.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
-
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-
 import org.eclipse.jface.viewers.IFilter;
-
 import org.obeonetwork.dsl.entity.EntityPackage;
 import org.obeonetwork.dsl.entity.Root;
-
 import org.obeonetwork.dsl.entity.components.RootPropertiesEditionComponent;
 import org.obeonetwork.dsl.entity.components.RootRootPropertiesEditionComponent;
-
 import org.obeonetwork.dsl.environment.components.MetadataCptPropertiesEditionComponent;
 
 /**
- * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
+ * @author <a href="mailto:jerome.benois@obeo.fr>JÃ©rÃ´me Benois</a>
  * 
  */
 public class RootPropertiesEditionProvider extends PropertiesEditingProviderImpl {

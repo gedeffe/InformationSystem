@@ -53,7 +53,7 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory {
 	 */
 	public static EntityFactory init() {
 		try {
-			EntityFactory theEntityFactory = (EntityFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.obeonetwork.org/dsl/entity/2.0.0"); 
+			EntityFactory theEntityFactory = (EntityFactory)EPackage.Registry.INSTANCE.getEFactory(EntityPackage.eNS_URI);
 			if (theEntityFactory != null) {
 				return theEntityFactory;
 			}
@@ -81,14 +81,14 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case EntityPackage.ROOT: return (EObject)createRoot();
-			case EntityPackage.BLOCK: return (EObject)createBlock();
-			case EntityPackage.ENTITY: return (EObject)createEntity();
-			case EntityPackage.ATTRIBUTE: return (EObject)createAttribute();
-			case EntityPackage.REFERENCE: return (EObject)createReference();
-			case EntityPackage.FINDER: return (EObject)createFinder();
-			case EntityPackage.INTERNAL_CRITERION: return (EObject)createInternalCriterion();
-			case EntityPackage.EXTERNAL_CRITERION: return (EObject)createExternalCriterion();
+			case EntityPackage.ROOT: return createRoot();
+			case EntityPackage.BLOCK: return createBlock();
+			case EntityPackage.ENTITY: return createEntity();
+			case EntityPackage.ATTRIBUTE: return createAttribute();
+			case EntityPackage.REFERENCE: return createReference();
+			case EntityPackage.FINDER: return createFinder();
+			case EntityPackage.INTERNAL_CRITERION: return createInternalCriterion();
+			case EntityPackage.EXTERNAL_CRITERION: return createExternalCriterion();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

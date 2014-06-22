@@ -14,25 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
-
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
-import org.obeonetwork.dsl.entity.providers.AttributePropertiesEditionProvider;
-import org.obeonetwork.dsl.entity.providers.BlockPropertiesEditionProvider;
-import org.obeonetwork.dsl.entity.providers.EntityPropertiesEditionProvider;
-import org.obeonetwork.dsl.entity.providers.ExternalCriterionPropertiesEditionProvider;
-import org.obeonetwork.dsl.entity.providers.FinderPropertiesEditionProvider;
-import org.obeonetwork.dsl.entity.providers.InternalCriterionPropertiesEditionProvider;
-import org.obeonetwork.dsl.entity.providers.ReferencePropertiesEditionProvider;
-import org.obeonetwork.dsl.entity.providers.RootPropertiesEditionProvider;
-
 import org.obeonetwork.dsl.entity.util.EntityAdapterFactory;
-
 import org.obeonetwork.dsl.environment.providers.MetadataCptPropertiesEditionProvider;
 import org.obeonetwork.dsl.environment.providers.NamespacePropertiesEditionProvider;
 
 /**
- * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
+ * @author <a href="mailto:jerome.benois@obeo.fr>JÃ©rÃ´me Benois</a>
  * 
  */
 public class EntityEEFAdapterFactory extends EntityAdapterFactory {

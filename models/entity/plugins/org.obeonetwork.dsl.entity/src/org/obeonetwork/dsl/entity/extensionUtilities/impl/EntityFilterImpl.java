@@ -15,10 +15,14 @@ package org.obeonetwork.dsl.entity.extensionUtilities.impl;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.obeonetwork.dsl.entity.Attribute;
 import org.obeonetwork.dsl.entity.Entity;
@@ -50,6 +54,25 @@ public class EntityFilterImpl extends FilterImpl implements EntityFilter {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
+
+	/**
+	 * The cached value of the '{@link #getOwnedPropertyReferences() <em>Owned Property References</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedPropertyReferences()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Property> ownedPropertyReferences;
+	/**
+	 * The cached value of the '{@link #getEntity() <em>Entity</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntity()
+	 * @generated
+	 * @ordered
+	 */
+	protected Entity entity;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -134,7 +157,10 @@ public class EntityFilterImpl extends FilterImpl implements EntityFilter {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Property> getOwnedPropertyReferences() {
-		return (EList<Property>)eDynamicGet(ExtensionUtilitiesPackage.ENTITY_FILTER__OWNED_PROPERTY_REFERENCES, ExtensionUtilitiesPackage.Literals.ENTITY_FILTER__OWNED_PROPERTY_REFERENCES, true, true);
+		if (ownedPropertyReferences == null) {
+			ownedPropertyReferences = new EObjectResolvingEList<Property>(Property.class, this, ExtensionUtilitiesPackage.ENTITY_FILTER__OWNED_PROPERTY_REFERENCES);
+		}
+		return ownedPropertyReferences;
 	}
 
 	/**
@@ -142,7 +168,15 @@ public class EntityFilterImpl extends FilterImpl implements EntityFilter {
 	 * @generated
 	 */
 	public Entity getEntity() {
-		return (Entity)eDynamicGet(ExtensionUtilitiesPackage.ENTITY_FILTER__ENTITY, ExtensionUtilitiesPackage.Literals.ENTITY_FILTER__ENTITY, true, true);
+		if (entity != null && entity.eIsProxy()) {
+			InternalEObject oldEntity = (InternalEObject)entity;
+			entity = (Entity)eResolveProxy(oldEntity);
+			if (entity != oldEntity) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ExtensionUtilitiesPackage.ENTITY_FILTER__ENTITY, oldEntity, entity));
+			}
+		}
+		return entity;
 	}
 
 	/**
@@ -151,7 +185,7 @@ public class EntityFilterImpl extends FilterImpl implements EntityFilter {
 	 * @generated
 	 */
 	public Entity basicGetEntity() {
-		return (Entity)eDynamicGet(ExtensionUtilitiesPackage.ENTITY_FILTER__ENTITY, ExtensionUtilitiesPackage.Literals.ENTITY_FILTER__ENTITY, false, true);
+		return entity;
 	}
 
 	/**
@@ -159,7 +193,10 @@ public class EntityFilterImpl extends FilterImpl implements EntityFilter {
 	 * @generated
 	 */
 	public void setEntity(Entity newEntity) {
-		eDynamicSet(ExtensionUtilitiesPackage.ENTITY_FILTER__ENTITY, ExtensionUtilitiesPackage.Literals.ENTITY_FILTER__ENTITY, newEntity);
+		Entity oldEntity = entity;
+		entity = newEntity;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ExtensionUtilitiesPackage.ENTITY_FILTER__ENTITY, oldEntity, entity));
 	}
 
 	/**
@@ -234,9 +271,9 @@ public class EntityFilterImpl extends FilterImpl implements EntityFilter {
 			case ExtensionUtilitiesPackage.ENTITY_FILTER__REFERENCE_REFERENCES:
 				return !getReferenceReferences().isEmpty();
 			case ExtensionUtilitiesPackage.ENTITY_FILTER__OWNED_PROPERTY_REFERENCES:
-				return !getOwnedPropertyReferences().isEmpty();
+				return ownedPropertyReferences != null && !ownedPropertyReferences.isEmpty();
 			case ExtensionUtilitiesPackage.ENTITY_FILTER__ENTITY:
-				return basicGetEntity() != null;
+				return entity != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -21,7 +21,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -39,79 +41,84 @@ import org.obeonetwork.dsl.entity.parts.EntityViewsRepository;
 import org.obeonetwork.dsl.entity.parts.InternalCriterionPropertiesEditionPart;
 import org.obeonetwork.dsl.environment.EnvironmentPackage;
 
-
 // End of user code
 
 /**
- * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
+ * @author <a href="mailto:jerome.benois@obeo.fr>JÃ©rÃ´me Benois</a>
  * 
  */
-public class InternalCriterionInternalCriterionPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class InternalCriterionInternalCriterionPropertiesEditionComponent
+		extends SinglePartPropertiesEditingComponent {
 
-	
 	public static String INTERNALCRITERION_PART = "InternalCriterion"; //$NON-NLS-1$
 
-	
 	/**
 	 * Settings for target EObjectFlatComboViewer
 	 */
 	private EObjectFlatComboSettings targetSettings;
-	
-	
+
 	/**
 	 * Default constructor
 	 * 
 	 */
-	public InternalCriterionInternalCriterionPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject internalCriterion, String editing_mode) {
+	public InternalCriterionInternalCriterionPropertiesEditionComponent(
+			final PropertiesEditingContext editingContext,
+			final EObject internalCriterion, final String editing_mode) {
 		super(editingContext, internalCriterion, editing_mode);
-		parts = new String[] { INTERNALCRITERION_PART };
-		repositoryKey = EntityViewsRepository.class;
-		partKey = EntityViewsRepository.InternalCriterion.class;
+		this.parts = new String[] { INTERNALCRITERION_PART };
+		this.repositoryKey = EntityViewsRepository.class;
+		this.partKey = EntityViewsRepository.InternalCriterion.class;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
+	 *      int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			final InternalCriterion internalCriterion = (InternalCriterion)elt;
-			final InternalCriterionPropertiesEditionPart internalCriterionPart = (InternalCriterionPropertiesEditionPart)editingPart;
+	public void initPart(final Object key, final int kind, final EObject elt,
+			final ResourceSet allResource) {
+		this.setInitializing(true);
+		if ((this.editingPart != null) && (key == this.partKey)) {
+			this.editingPart.setContext(elt, allResource);
+
+			final InternalCriterion internalCriterion = (InternalCriterion) elt;
+			final InternalCriterionPropertiesEditionPart internalCriterionPart = (InternalCriterionPropertiesEditionPart) this.editingPart;
 			// init values
-			if (isAccessible(EntityViewsRepository.InternalCriterion.Properties.target)) {
+			if (this.isAccessible(EntityViewsRepository.InternalCriterion.Properties.target)) {
 				// init part
-				targetSettings = new EObjectFlatComboSettings(internalCriterion, EntityPackage.eINSTANCE.getInternalCriterion_Target());
-				internalCriterionPart.initTarget(targetSettings);
+				this.targetSettings = new EObjectFlatComboSettings(
+						internalCriterion,
+						EntityPackage.eINSTANCE.getInternalCriterion_Target());
+				internalCriterionPart.initTarget(this.targetSettings);
 				// set the button mode
-				internalCriterionPart.setTargetButtonMode(ButtonsModeEnum.BROWSE);
+				internalCriterionPart
+						.setTargetButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			if (internalCriterion.getDescription() != null && isAccessible(EntityViewsRepository.InternalCriterion.Properties.description))
-				internalCriterionPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, internalCriterion.getDescription()));
-			// init filters
-			
-			
+			if (this.isAccessible(EntityViewsRepository.InternalCriterion.Properties.description)) {
+				internalCriterionPart.setDescription(EcoreUtil.convertToString(
+						EcorePackage.Literals.ESTRING,
+						internalCriterion.getDescription()));
+				// init filters
+			}
+
 			// init values for referenced views
-			
+
 			// init filters for referenced views
-			
+
 		}
-		setInitializing(false);
+		this.setInitializing(false);
 	}
-
-
-
-
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	public EStructuralFeature associatedFeature(Object editorKey) {
+	@Override
+	public EStructuralFeature associatedFeature(final Object editorKey) {
 		if (editorKey == EntityViewsRepository.InternalCriterion.Properties.target) {
 			return EntityPackage.eINSTANCE.getInternalCriterion_Target();
 		}
@@ -123,60 +130,100 @@ public class InternalCriterionInternalCriterionPropertiesEditionComponent extend
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
+	@Override
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		InternalCriterion internalCriterion = (InternalCriterion)semanticObject;
-		if (EntityViewsRepository.InternalCriterion.Properties.target == event.getAffectedEditor()) {
+		final InternalCriterion internalCriterion = (InternalCriterion) this.semanticObject;
+		if (EntityViewsRepository.InternalCriterion.Properties.target == event
+				.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
-				targetSettings.setToReference((Attribute)event.getNewValue());
+				this.targetSettings.setToReference(event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				Attribute eObject = EntityFactory.eINSTANCE.createAttribute();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				final Attribute eObject = EntityFactory.eINSTANCE
+						.createAttribute();
+				final EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
+						this.editingContext, this, eObject,
+						this.editingContext.getAdapterFactory());
+				final PropertiesEditingProvider provider = (PropertiesEditingProvider) this.editingContext
+						.getAdapterFactory().adapt(eObject,
+								PropertiesEditingProvider.class);
 				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					final PropertiesEditingPolicy policy = provider
+							.getPolicy(context);
 					if (policy != null) {
 						policy.execute();
 					}
 				}
-				targetSettings.setToReference(eObject);
+				this.targetSettings.setToReference(eObject);
 			}
 		}
-		if (EntityViewsRepository.InternalCriterion.Properties.description == event.getAffectedEditor()) {
-			internalCriterion.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		if (EntityViewsRepository.InternalCriterion.Properties.description == event
+				.getAffectedEditor()) {
+			internalCriterion
+					.setDescription((java.lang.String) EEFConverterUtil
+							.createFromString(EcorePackage.Literals.ESTRING,
+									(String) event.getNewValue()));
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
-	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {
-			InternalCriterionPropertiesEditionPart internalCriterionPart = (InternalCriterionPropertiesEditionPart)editingPart;
-			if (EntityPackage.eINSTANCE.getInternalCriterion_Target().equals(msg.getFeature()) && internalCriterionPart != null && isAccessible(EntityViewsRepository.InternalCriterion.Properties.target))
-				internalCriterionPart.setTarget((EObject)msg.getNewValue());
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && internalCriterionPart != null && isAccessible(EntityViewsRepository.InternalCriterion.Properties.description)){
+	@Override
+	public void updatePart(final Notification msg) {
+		super.updatePart(msg);
+		if (this.editingPart.isVisible()) {
+			final InternalCriterionPropertiesEditionPart internalCriterionPart = (InternalCriterionPropertiesEditionPart) this.editingPart;
+			if (EntityPackage.eINSTANCE.getInternalCriterion_Target().equals(
+					msg.getFeature())
+					&& (internalCriterionPart != null)
+					&& this.isAccessible(EntityViewsRepository.InternalCriterion.Properties.target)) {
+				internalCriterionPart.setTarget((EObject) msg.getNewValue());
+			}
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()
+					.equals(msg.getFeature())
+					&& msg.getNotifier().equals(this.semanticObject)
+					&& (internalCriterionPart != null)
+					&& this.isAccessible(EntityViewsRepository.InternalCriterion.Properties.description)) {
 				if (msg.getNewValue() != null) {
-					internalCriterionPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					internalCriterionPart.setDescription(EcoreUtil
+							.convertToString(EcorePackage.Literals.ESTRING,
+									msg.getNewValue()));
 				} else {
 					internalCriterionPart.setDescription("");
 				}
 			}
-			
+
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		final NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+				EntityPackage.eINSTANCE.getInternalCriterion_Target(),
+				EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description());
+		return new NotificationFilter[] { filter, };
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object,
+	 *      int)
 	 * 
 	 */
-	public boolean isRequired(Object key, int kind) {
+	@Override
+	public boolean isRequired(final Object key, final int kind) {
 		return key == EntityViewsRepository.InternalCriterion.Properties.target;
 	}
 
@@ -186,20 +233,27 @@ public class InternalCriterionInternalCriterionPropertiesEditionComponent extend
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+	public Diagnostic validateValue(final IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (EntityViewsRepository.InternalCriterion.Properties.description == event.getAffectedEditor()) {
+				if (EntityViewsRepository.InternalCriterion.Properties.description == event
+						.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil
+								.createFromString(EnvironmentPackage.eINSTANCE
+										.getObeoDSMObject_Description()
+										.getEAttributeType(), (String) newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(
+							EnvironmentPackage.eINSTANCE
+									.getObeoDSMObject_Description()
+									.getEAttributeType(), newValue);
 				}
-			} catch (IllegalArgumentException iae) {
+			} catch (final IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
+			} catch (final WrappedException we) {
 				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}

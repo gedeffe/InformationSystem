@@ -16,9 +16,13 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
 import java.util.Iterator;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.obeonetwork.dsl.entity.Criterion;
 import org.obeonetwork.dsl.entity.Entity;
@@ -72,6 +76,26 @@ public class FinderImpl extends ObeoDSMObjectImpl implements Finder {
 	 */
 	protected static final String CUSTOMIZED_NAME_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getCustomizedName() <em>Customized Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCustomizedName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String customizedName = CUSTOMIZED_NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getCriterions() <em>Criterions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCriterions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Criterion> criterions;
+
+	/**
 	 * The default value of the '{@link #getMultiplicity() <em>Multiplicity</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -80,6 +104,16 @@ public class FinderImpl extends ObeoDSMObjectImpl implements Finder {
 	 * @ordered
 	 */
 	protected static final MultiplicityKind MULTIPLICITY_EDEFAULT = MultiplicityKind.ZERO_ONE_LITERAL;
+
+	/**
+	 * The cached value of the '{@link #getMultiplicity() <em>Multiplicity</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMultiplicity()
+	 * @generated
+	 * @ordered
+	 */
+	protected MultiplicityKind multiplicity = MULTIPLICITY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -136,7 +170,8 @@ public class FinderImpl extends ObeoDSMObjectImpl implements Finder {
 	 * @generated
 	 */
 	public Entity getEntity() {
-		return (Entity)eDynamicGet(EntityPackage.FINDER__ENTITY, EntityPackage.Literals.FINDER__ENTITY, true, true);
+		if (eContainerFeatureID() != EntityPackage.FINDER__ENTITY) return null;
+		return (Entity)eContainer();
 	}
 
 	/**
@@ -145,7 +180,8 @@ public class FinderImpl extends ObeoDSMObjectImpl implements Finder {
 	 * @generated
 	 */
 	public Entity basicGetEntity() {
-		return (Entity)eDynamicGet(EntityPackage.FINDER__ENTITY, EntityPackage.Literals.FINDER__ENTITY, false, true);
+		if (eContainerFeatureID() != EntityPackage.FINDER__ENTITY) return null;
+		return (Entity)eInternalContainer();
 	}
 
 	/**
@@ -163,7 +199,19 @@ public class FinderImpl extends ObeoDSMObjectImpl implements Finder {
 	 * @generated
 	 */
 	public void setEntity(Entity newEntity) {
-		eDynamicSet(EntityPackage.FINDER__ENTITY, EntityPackage.Literals.FINDER__ENTITY, newEntity);
+		if (newEntity != eInternalContainer() || (eContainerFeatureID() != EntityPackage.FINDER__ENTITY && newEntity != null)) {
+			if (EcoreUtil.isAncestor(this, newEntity))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newEntity != null)
+				msgs = ((InternalEObject)newEntity).eInverseAdd(this, EntityPackage.ENTITY__OWNED_FINDERS, Entity.class, msgs);
+			msgs = basicSetEntity(newEntity, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.FINDER__ENTITY, newEntity, newEntity));
 	}
 
 	/**
@@ -171,7 +219,7 @@ public class FinderImpl extends ObeoDSMObjectImpl implements Finder {
 	 * @generated
 	 */
 	public String getCustomizedName() {
-		return (String)eDynamicGet(EntityPackage.FINDER__CUSTOMIZED_NAME, EntityPackage.Literals.FINDER__CUSTOMIZED_NAME, true, true);
+		return customizedName;
 	}
 
 	/**
@@ -179,7 +227,10 @@ public class FinderImpl extends ObeoDSMObjectImpl implements Finder {
 	 * @generated
 	 */
 	public void setCustomizedName(String newCustomizedName) {
-		eDynamicSet(EntityPackage.FINDER__CUSTOMIZED_NAME, EntityPackage.Literals.FINDER__CUSTOMIZED_NAME, newCustomizedName);
+		String oldCustomizedName = customizedName;
+		customizedName = newCustomizedName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.FINDER__CUSTOMIZED_NAME, oldCustomizedName, customizedName));
 	}
 
 	/**
@@ -188,7 +239,10 @@ public class FinderImpl extends ObeoDSMObjectImpl implements Finder {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Criterion> getCriterions() {
-		return (EList<Criterion>)eDynamicGet(EntityPackage.FINDER__CRITERIONS, EntityPackage.Literals.FINDER__CRITERIONS, true, true);
+		if (criterions == null) {
+			criterions = new EObjectContainmentEList.Resolving<Criterion>(Criterion.class, this, EntityPackage.FINDER__CRITERIONS);
+		}
+		return criterions;
 	}
 
 	/**
@@ -197,7 +251,7 @@ public class FinderImpl extends ObeoDSMObjectImpl implements Finder {
 	 * @generated
 	 */
 	public MultiplicityKind getMultiplicity() {
-		return (MultiplicityKind)eDynamicGet(EntityPackage.FINDER__MULTIPLICITY, EntityPackage.Literals.FINDER__MULTIPLICITY, true, true);
+		return multiplicity;
 	}
 
 	/**
@@ -206,7 +260,10 @@ public class FinderImpl extends ObeoDSMObjectImpl implements Finder {
 	 * @generated
 	 */
 	public void setMultiplicity(MultiplicityKind newMultiplicity) {
-		eDynamicSet(EntityPackage.FINDER__MULTIPLICITY, EntityPackage.Literals.FINDER__MULTIPLICITY, newMultiplicity);
+		MultiplicityKind oldMultiplicity = multiplicity;
+		multiplicity = newMultiplicity == null ? MULTIPLICITY_EDEFAULT : newMultiplicity;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.FINDER__MULTIPLICITY, oldMultiplicity, multiplicity));
 	}
 
 	/**
@@ -341,13 +398,31 @@ public class FinderImpl extends ObeoDSMObjectImpl implements Finder {
 			case EntityPackage.FINDER__ENTITY:
 				return basicGetEntity() != null;
 			case EntityPackage.FINDER__CUSTOMIZED_NAME:
-				return CUSTOMIZED_NAME_EDEFAULT == null ? getCustomizedName() != null : !CUSTOMIZED_NAME_EDEFAULT.equals(getCustomizedName());
+				return CUSTOMIZED_NAME_EDEFAULT == null ? customizedName != null : !CUSTOMIZED_NAME_EDEFAULT.equals(customizedName);
 			case EntityPackage.FINDER__CRITERIONS:
-				return !getCriterions().isEmpty();
+				return criterions != null && !criterions.isEmpty();
 			case EntityPackage.FINDER__MULTIPLICITY:
-				return getMultiplicity() != MULTIPLICITY_EDEFAULT;
+				return multiplicity != MULTIPLICITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (customizedName: ");
+		result.append(customizedName);
+		result.append(", multiplicity: ");
+		result.append(multiplicity);
+		result.append(')');
+		return result.toString();
 	}
 
 } // FinderImpl

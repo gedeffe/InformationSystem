@@ -13,12 +13,15 @@
 package org.obeonetwork.dsl.entity.impl;
 
 import java.util.Collection;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -64,6 +67,36 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
 
 	/**
+	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attributes</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Attribute> ownedAttributes;
+
+	/**
+	 * The cached value of the '{@link #getOwnedReferences() <em>Owned References</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedReferences()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Reference> ownedReferences;
+
+	/**
+	 * The cached value of the '{@link #getSupertype() <em>Supertype</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSupertype()
+	 * @generated
+	 * @ordered
+	 */
+	protected Entity supertype;
+
+	/**
 	 * The default value of the '{@link #getEstimatedVolumetry() <em>Estimated Volumetry</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -72,6 +105,16 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @ordered
 	 */
 	protected static final int ESTIMATED_VOLUMETRY_EDEFAULT = 0;
+	/**
+	 * The cached value of the '{@link #getEstimatedVolumetry() <em>Estimated Volumetry</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEstimatedVolumetry()
+	 * @generated
+	 * @ordered
+	 */
+	protected int estimatedVolumetry = ESTIMATED_VOLUMETRY_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getEstimatedAccess() <em>Estimated Access</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -82,6 +125,16 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 */
 	protected static final int ESTIMATED_ACCESS_EDEFAULT = 0;
 	/**
+	 * The cached value of the '{@link #getEstimatedAccess() <em>Estimated Access</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEstimatedAccess()
+	 * @generated
+	 * @ordered
+	 */
+	protected int estimatedAccess = ESTIMATED_ACCESS_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #isHistorized() <em>Historized</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -91,6 +144,26 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 */
 	protected static final boolean HISTORIZED_EDEFAULT = false;
 	/**
+	 * The cached value of the '{@link #isHistorized() <em>Historized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isHistorized()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean historized = HISTORIZED_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getOwnedFinders() <em>Owned Finders</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedFinders()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Finder> ownedFinders;
+
+	/**
 	 * The default value of the '{@link #getInheritanceKind() <em>Inheritance Kind</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -99,6 +172,16 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @ordered
 	 */
 	protected static final InheritanceKind INHERITANCE_KIND_EDEFAULT = InheritanceKind.TABLE_PER_SUBCLASS_LITERAL;
+
+	/**
+	 * The cached value of the '{@link #getInheritanceKind() <em>Inheritance Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInheritanceKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected InheritanceKind inheritanceKind = INHERITANCE_KIND_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -123,7 +206,10 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Attribute> getOwnedAttributes() {
-		return (EList<Attribute>)eDynamicGet(EntityPackage.ENTITY__OWNED_ATTRIBUTES, EntityPackage.Literals.ENTITY__OWNED_ATTRIBUTES, true, true);
+		if (ownedAttributes == null) {
+			ownedAttributes = new EObjectContainmentWithInverseEList.Resolving<Attribute>(Attribute.class, this, EntityPackage.ENTITY__OWNED_ATTRIBUTES, EntityPackage.ATTRIBUTE__ENTITY);
+		}
+		return ownedAttributes;
 	}
 
 	/**
@@ -132,7 +218,10 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Reference> getOwnedReferences() {
-		return (EList<Reference>)eDynamicGet(EntityPackage.ENTITY__OWNED_REFERENCES, EntityPackage.Literals.ENTITY__OWNED_REFERENCES, true, true);
+		if (ownedReferences == null) {
+			ownedReferences = new EObjectContainmentWithInverseEList.Resolving<Reference>(Reference.class, this, EntityPackage.ENTITY__OWNED_REFERENCES, EntityPackage.REFERENCE__ENTITY);
+		}
+		return ownedReferences;
 	}
 
 	/**
@@ -140,7 +229,15 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @generated
 	 */
 	public Entity getSupertype() {
-		return (Entity)eDynamicGet(EntityPackage.ENTITY__SUPERTYPE, EntityPackage.Literals.ENTITY__SUPERTYPE, true, true);
+		if (supertype != null && supertype.eIsProxy()) {
+			InternalEObject oldSupertype = (InternalEObject)supertype;
+			supertype = (Entity)eResolveProxy(oldSupertype);
+			if (supertype != oldSupertype) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityPackage.ENTITY__SUPERTYPE, oldSupertype, supertype));
+			}
+		}
+		return supertype;
 	}
 
 	/**
@@ -149,7 +246,7 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @generated
 	 */
 	public Entity basicGetSupertype() {
-		return (Entity)eDynamicGet(EntityPackage.ENTITY__SUPERTYPE, EntityPackage.Literals.ENTITY__SUPERTYPE, false, true);
+		return supertype;
 	}
 
 	/**
@@ -157,7 +254,10 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @generated
 	 */
 	public void setSupertype(Entity newSupertype) {
-		eDynamicSet(EntityPackage.ENTITY__SUPERTYPE, EntityPackage.Literals.ENTITY__SUPERTYPE, newSupertype);
+		Entity oldSupertype = supertype;
+		supertype = newSupertype;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.ENTITY__SUPERTYPE, oldSupertype, supertype));
 	}
 
 	/**
@@ -239,7 +339,7 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @generated
 	 */
 	public int getEstimatedVolumetry() {
-		return (Integer)eDynamicGet(EntityPackage.ENTITY__ESTIMATED_VOLUMETRY, EntityPackage.Literals.ENTITY__ESTIMATED_VOLUMETRY, true, true);
+		return estimatedVolumetry;
 	}
 
 	/**
@@ -247,7 +347,10 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @generated
 	 */
 	public void setEstimatedVolumetry(int newEstimatedVolumetry) {
-		eDynamicSet(EntityPackage.ENTITY__ESTIMATED_VOLUMETRY, EntityPackage.Literals.ENTITY__ESTIMATED_VOLUMETRY, newEstimatedVolumetry);
+		int oldEstimatedVolumetry = estimatedVolumetry;
+		estimatedVolumetry = newEstimatedVolumetry;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.ENTITY__ESTIMATED_VOLUMETRY, oldEstimatedVolumetry, estimatedVolumetry));
 	}
 
 	/**
@@ -255,7 +358,7 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @generated
 	 */
 	public int getEstimatedAccess() {
-		return (Integer)eDynamicGet(EntityPackage.ENTITY__ESTIMATED_ACCESS, EntityPackage.Literals.ENTITY__ESTIMATED_ACCESS, true, true);
+		return estimatedAccess;
 	}
 
 	/**
@@ -263,7 +366,10 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @generated
 	 */
 	public void setEstimatedAccess(int newEstimatedAccess) {
-		eDynamicSet(EntityPackage.ENTITY__ESTIMATED_ACCESS, EntityPackage.Literals.ENTITY__ESTIMATED_ACCESS, newEstimatedAccess);
+		int oldEstimatedAccess = estimatedAccess;
+		estimatedAccess = newEstimatedAccess;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.ENTITY__ESTIMATED_ACCESS, oldEstimatedAccess, estimatedAccess));
 	}
 
 	/**
@@ -271,7 +377,7 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @generated
 	 */
 	public boolean isHistorized() {
-		return (Boolean)eDynamicGet(EntityPackage.ENTITY__HISTORIZED, EntityPackage.Literals.ENTITY__HISTORIZED, true, true);
+		return historized;
 	}
 
 	/**
@@ -279,7 +385,10 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @generated
 	 */
 	public void setHistorized(boolean newHistorized) {
-		eDynamicSet(EntityPackage.ENTITY__HISTORIZED, EntityPackage.Literals.ENTITY__HISTORIZED, newHistorized);
+		boolean oldHistorized = historized;
+		historized = newHistorized;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.ENTITY__HISTORIZED, oldHistorized, historized));
 	}
 
 	/**
@@ -288,7 +397,10 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Finder> getOwnedFinders() {
-		return (EList<Finder>)eDynamicGet(EntityPackage.ENTITY__OWNED_FINDERS, EntityPackage.Literals.ENTITY__OWNED_FINDERS, true, true);
+		if (ownedFinders == null) {
+			ownedFinders = new EObjectContainmentWithInverseEList.Resolving<Finder>(Finder.class, this, EntityPackage.ENTITY__OWNED_FINDERS, EntityPackage.FINDER__ENTITY);
+		}
+		return ownedFinders;
 	}
 
 	/**
@@ -296,7 +408,8 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @generated
 	 */
 	public Block getBlock() {
-		return (Block)eDynamicGet(EntityPackage.ENTITY__BLOCK, EntityPackage.Literals.ENTITY__BLOCK, true, true);
+		if (eContainerFeatureID() != EntityPackage.ENTITY__BLOCK) return null;
+		return (Block)eContainer();
 	}
 
 	/**
@@ -305,7 +418,8 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @generated
 	 */
 	public Block basicGetBlock() {
-		return (Block)eDynamicGet(EntityPackage.ENTITY__BLOCK, EntityPackage.Literals.ENTITY__BLOCK, false, true);
+		if (eContainerFeatureID() != EntityPackage.ENTITY__BLOCK) return null;
+		return (Block)eInternalContainer();
 	}
 
 	/**
@@ -323,7 +437,19 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @generated
 	 */
 	public void setBlock(Block newBlock) {
-		eDynamicSet(EntityPackage.ENTITY__BLOCK, EntityPackage.Literals.ENTITY__BLOCK, newBlock);
+		if (newBlock != eInternalContainer() || (eContainerFeatureID() != EntityPackage.ENTITY__BLOCK && newBlock != null)) {
+			if (EcoreUtil.isAncestor(this, newBlock))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newBlock != null)
+				msgs = ((InternalEObject)newBlock).eInverseAdd(this, EntityPackage.BLOCK__ENTITIES, Block.class, msgs);
+			msgs = basicSetBlock(newBlock, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.ENTITY__BLOCK, newBlock, newBlock));
 	}
 
 	/**
@@ -331,7 +457,7 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @generated
 	 */
 	public InheritanceKind getInheritanceKind() {
-		return (InheritanceKind)eDynamicGet(EntityPackage.ENTITY__INHERITANCE_KIND, EntityPackage.Literals.ENTITY__INHERITANCE_KIND, true, true);
+		return inheritanceKind;
 	}
 
 	/**
@@ -339,7 +465,10 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	 * @generated
 	 */
 	public void setInheritanceKind(InheritanceKind newInheritanceKind) {
-		eDynamicSet(EntityPackage.ENTITY__INHERITANCE_KIND, EntityPackage.Literals.ENTITY__INHERITANCE_KIND, newInheritanceKind);
+		InheritanceKind oldInheritanceKind = inheritanceKind;
+		inheritanceKind = newInheritanceKind == null ? INHERITANCE_KIND_EDEFAULT : newInheritanceKind;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.ENTITY__INHERITANCE_KIND, oldInheritanceKind, inheritanceKind));
 	}
 
 	/**
@@ -543,11 +672,11 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EntityPackage.ENTITY__OWNED_ATTRIBUTES:
-				return !getOwnedAttributes().isEmpty();
+				return ownedAttributes != null && !ownedAttributes.isEmpty();
 			case EntityPackage.ENTITY__OWNED_REFERENCES:
-				return !getOwnedReferences().isEmpty();
+				return ownedReferences != null && !ownedReferences.isEmpty();
 			case EntityPackage.ENTITY__SUPERTYPE:
-				return basicGetSupertype() != null;
+				return supertype != null;
 			case EntityPackage.ENTITY__ATTRIBUTES:
 				return !getAttributes().isEmpty();
 			case EntityPackage.ENTITY__REFERENCES:
@@ -555,19 +684,41 @@ public class EntityImpl extends StructuredTypeImpl implements Entity {
 			case EntityPackage.ENTITY__PROPERTIES:
 				return !getProperties().isEmpty();
 			case EntityPackage.ENTITY__ESTIMATED_VOLUMETRY:
-				return getEstimatedVolumetry() != ESTIMATED_VOLUMETRY_EDEFAULT;
+				return estimatedVolumetry != ESTIMATED_VOLUMETRY_EDEFAULT;
 			case EntityPackage.ENTITY__ESTIMATED_ACCESS:
-				return getEstimatedAccess() != ESTIMATED_ACCESS_EDEFAULT;
+				return estimatedAccess != ESTIMATED_ACCESS_EDEFAULT;
 			case EntityPackage.ENTITY__HISTORIZED:
-				return isHistorized() != HISTORIZED_EDEFAULT;
+				return historized != HISTORIZED_EDEFAULT;
 			case EntityPackage.ENTITY__OWNED_FINDERS:
-				return !getOwnedFinders().isEmpty();
+				return ownedFinders != null && !ownedFinders.isEmpty();
 			case EntityPackage.ENTITY__BLOCK:
 				return basicGetBlock() != null;
 			case EntityPackage.ENTITY__INHERITANCE_KIND:
-				return getInheritanceKind() != INHERITANCE_KIND_EDEFAULT;
+				return inheritanceKind != INHERITANCE_KIND_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (estimatedVolumetry: ");
+		result.append(estimatedVolumetry);
+		result.append(", estimatedAccess: ");
+		result.append(estimatedAccess);
+		result.append(", historized: ");
+		result.append(historized);
+		result.append(", inheritanceKind: ");
+		result.append(inheritanceKind);
+		result.append(')');
+		return result.toString();
 	}
 
 } // EntityImpl

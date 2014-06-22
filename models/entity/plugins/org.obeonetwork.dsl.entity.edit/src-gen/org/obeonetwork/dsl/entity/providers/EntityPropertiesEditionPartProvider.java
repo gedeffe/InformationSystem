@@ -11,13 +11,9 @@
 package org.obeonetwork.dsl.entity.providers;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-
 import org.obeonetwork.dsl.entity.parts.EntityViewsRepository;
-
 import org.obeonetwork.dsl.entity.parts.forms.AttributePropertiesEditionPartForm;
 import org.obeonetwork.dsl.entity.parts.forms.BlockPropertiesEditionPartForm;
 import org.obeonetwork.dsl.entity.parts.forms.EntityPropertiesEditionPartForm;
@@ -26,7 +22,6 @@ import org.obeonetwork.dsl.entity.parts.forms.FinderPropertiesEditionPartForm;
 import org.obeonetwork.dsl.entity.parts.forms.InternalCriterionPropertiesEditionPartForm;
 import org.obeonetwork.dsl.entity.parts.forms.ReferencePropertiesEditionPartForm;
 import org.obeonetwork.dsl.entity.parts.forms.RootPropertiesEditionPartForm;
-
 import org.obeonetwork.dsl.entity.parts.impl.AttributePropertiesEditionPartImpl;
 import org.obeonetwork.dsl.entity.parts.impl.BlockPropertiesEditionPartImpl;
 import org.obeonetwork.dsl.entity.parts.impl.EntityPropertiesEditionPartImpl;
@@ -37,7 +32,7 @@ import org.obeonetwork.dsl.entity.parts.impl.ReferencePropertiesEditionPartImpl;
 import org.obeonetwork.dsl.entity.parts.impl.RootPropertiesEditionPartImpl;
 
 /**
- * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
+ * @author <a href="mailto:jerome.benois@obeo.fr>JÃ©rÃ´me Benois</a>
  * 
  */
 public class EntityPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {

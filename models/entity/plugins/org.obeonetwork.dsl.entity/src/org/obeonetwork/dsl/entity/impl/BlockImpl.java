@@ -13,10 +13,14 @@
 package org.obeonetwork.dsl.entity.impl;
 
 import java.util.Collection;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.obeonetwork.dsl.entity.Block;
 import org.obeonetwork.dsl.entity.Entity;
@@ -56,6 +60,36 @@ public class BlockImpl extends ObeoDSMObjectImpl implements Block {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getEntities() <em>Entities</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntities()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Entity> entities;
+
+	/**
+	 * The cached value of the '{@link #getSubblocks() <em>Subblocks</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubblocks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Block> subblocks;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -77,7 +111,7 @@ public class BlockImpl extends ObeoDSMObjectImpl implements Block {
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eDynamicGet(EntityPackage.BLOCK__NAME, EntityPackage.Literals.BLOCK__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -85,7 +119,10 @@ public class BlockImpl extends ObeoDSMObjectImpl implements Block {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(EntityPackage.BLOCK__NAME, EntityPackage.Literals.BLOCK__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.BLOCK__NAME, oldName, name));
 	}
 
 	/**
@@ -94,7 +131,10 @@ public class BlockImpl extends ObeoDSMObjectImpl implements Block {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Entity> getEntities() {
-		return (EList<Entity>)eDynamicGet(EntityPackage.BLOCK__ENTITIES, EntityPackage.Literals.BLOCK__ENTITIES, true, true);
+		if (entities == null) {
+			entities = new EObjectContainmentWithInverseEList.Resolving<Entity>(Entity.class, this, EntityPackage.BLOCK__ENTITIES, EntityPackage.ENTITY__BLOCK);
+		}
+		return entities;
 	}
 
 	/**
@@ -103,7 +143,10 @@ public class BlockImpl extends ObeoDSMObjectImpl implements Block {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Block> getSubblocks() {
-		return (EList<Block>)eDynamicGet(EntityPackage.BLOCK__SUBBLOCKS, EntityPackage.Literals.BLOCK__SUBBLOCKS, true, true);
+		if (subblocks == null) {
+			subblocks = new EObjectContainmentEList.Resolving<Block>(Block.class, this, EntityPackage.BLOCK__SUBBLOCKS);
+		}
+		return subblocks;
 	}
 
 	/**
@@ -209,13 +252,29 @@ public class BlockImpl extends ObeoDSMObjectImpl implements Block {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EntityPackage.BLOCK__NAME:
-				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case EntityPackage.BLOCK__ENTITIES:
-				return !getEntities().isEmpty();
+				return entities != null && !entities.isEmpty();
 			case EntityPackage.BLOCK__SUBBLOCKS:
-				return !getSubblocks().isEmpty();
+				return subblocks != null && !subblocks.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } // BlockImpl

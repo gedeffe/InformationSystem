@@ -43,6 +43,16 @@ public class InternalCriterionImpl extends CriterionImpl implements
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
 
 	/**
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected Attribute target;
+
+	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -74,7 +84,15 @@ public class InternalCriterionImpl extends CriterionImpl implements
 	 * @generated
 	 */
 	public Attribute getTarget() {
-		return (Attribute)eDynamicGet(EntityPackage.INTERNAL_CRITERION__TARGET, EntityPackage.Literals.INTERNAL_CRITERION__TARGET, true, true);
+		if (target != null && target.eIsProxy()) {
+			InternalEObject oldTarget = (InternalEObject)target;
+			target = (Attribute)eResolveProxy(oldTarget);
+			if (target != oldTarget) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityPackage.INTERNAL_CRITERION__TARGET, oldTarget, target));
+			}
+		}
+		return target;
 	}
 
 	/**
@@ -83,7 +101,7 @@ public class InternalCriterionImpl extends CriterionImpl implements
 	 * @generated
 	 */
 	public Attribute basicGetTarget() {
-		return (Attribute)eDynamicGet(EntityPackage.INTERNAL_CRITERION__TARGET, EntityPackage.Literals.INTERNAL_CRITERION__TARGET, false, true);
+		return target;
 	}
 
 	/**
@@ -91,7 +109,10 @@ public class InternalCriterionImpl extends CriterionImpl implements
 	 * @generated
 	 */
 	public void setTarget(Attribute newTarget) {
-		eDynamicSet(EntityPackage.INTERNAL_CRITERION__TARGET, EntityPackage.Literals.INTERNAL_CRITERION__TARGET, newTarget);
+		Attribute oldTarget = target;
+		target = newTarget;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.INTERNAL_CRITERION__TARGET, oldTarget, target));
 	}
 
 	/**
@@ -162,7 +183,7 @@ public class InternalCriterionImpl extends CriterionImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EntityPackage.INTERNAL_CRITERION__TARGET:
-				return basicGetTarget() != null;
+				return target != null;
 			case EntityPackage.INTERNAL_CRITERION__NAME:
 				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
 		}

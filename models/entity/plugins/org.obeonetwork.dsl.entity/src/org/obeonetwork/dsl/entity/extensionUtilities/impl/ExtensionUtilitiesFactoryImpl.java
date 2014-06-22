@@ -44,7 +44,7 @@ public class ExtensionUtilitiesFactoryImpl extends EFactoryImpl implements
 	 */
 	public static ExtensionUtilitiesFactory init() {
 		try {
-			ExtensionUtilitiesFactory theExtensionUtilitiesFactory = (ExtensionUtilitiesFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.obeonetwork.org/dsl/entity/2.0.0/utilities"); 
+			ExtensionUtilitiesFactory theExtensionUtilitiesFactory = (ExtensionUtilitiesFactory)EPackage.Registry.INSTANCE.getEFactory(ExtensionUtilitiesPackage.eNS_URI);
 			if (theExtensionUtilitiesFactory != null) {
 				return theExtensionUtilitiesFactory;
 			}
@@ -72,7 +72,7 @@ public class ExtensionUtilitiesFactoryImpl extends EFactoryImpl implements
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ExtensionUtilitiesPackage.ENTITY_FILTER: return (EObject)createEntityFilter();
+			case ExtensionUtilitiesPackage.ENTITY_FILTER: return createEntityFilter();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

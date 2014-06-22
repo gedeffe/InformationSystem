@@ -12,7 +12,9 @@
  */
 package org.obeonetwork.dsl.entity.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.obeonetwork.dsl.entity.EntityPackage;
 import org.obeonetwork.dsl.entity.Property;
 import org.obeonetwork.dsl.environment.BoundableElement;
@@ -52,6 +54,16 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 */
 	protected static final String NAME_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getMultiplicity() <em>Multiplicity</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61,6 +73,16 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 */
 	protected static final MultiplicityKind MULTIPLICITY_EDEFAULT = MultiplicityKind.ZERO_ONE_LITERAL;
 	/**
+	 * The cached value of the '{@link #getMultiplicity() <em>Multiplicity</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMultiplicity()
+	 * @generated
+	 * @ordered
+	 */
+	protected MultiplicityKind multiplicity = MULTIPLICITY_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #isIsPrimaryKey() <em>Is Primary Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -69,6 +91,16 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 * @ordered
 	 */
 	protected static final boolean IS_PRIMARY_KEY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsPrimaryKey() <em>Is Primary Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsPrimaryKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isPrimaryKey = IS_PRIMARY_KEY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -92,7 +124,7 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eDynamicGet(EntityPackage.PROPERTY__NAME, EntityPackage.Literals.PROPERTY__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -100,7 +132,10 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(EntityPackage.PROPERTY__NAME, EntityPackage.Literals.PROPERTY__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.PROPERTY__NAME, oldName, name));
 	}
 
 	/**
@@ -108,7 +143,7 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public MultiplicityKind getMultiplicity() {
-		return (MultiplicityKind)eDynamicGet(EntityPackage.PROPERTY__MULTIPLICITY, EntityPackage.Literals.PROPERTY__MULTIPLICITY, true, true);
+		return multiplicity;
 	}
 
 	/**
@@ -116,7 +151,10 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public void setMultiplicity(MultiplicityKind newMultiplicity) {
-		eDynamicSet(EntityPackage.PROPERTY__MULTIPLICITY, EntityPackage.Literals.PROPERTY__MULTIPLICITY, newMultiplicity);
+		MultiplicityKind oldMultiplicity = multiplicity;
+		multiplicity = newMultiplicity == null ? MULTIPLICITY_EDEFAULT : newMultiplicity;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.PROPERTY__MULTIPLICITY, oldMultiplicity, multiplicity));
 	}
 
 	/**
@@ -124,7 +162,7 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public boolean isIsPrimaryKey() {
-		return (Boolean)eDynamicGet(EntityPackage.PROPERTY__IS_PRIMARY_KEY, EntityPackage.Literals.PROPERTY__IS_PRIMARY_KEY, true, true);
+		return isPrimaryKey;
 	}
 
 	/**
@@ -132,7 +170,10 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public void setIsPrimaryKey(boolean newIsPrimaryKey) {
-		eDynamicSet(EntityPackage.PROPERTY__IS_PRIMARY_KEY, EntityPackage.Literals.PROPERTY__IS_PRIMARY_KEY, newIsPrimaryKey);
+		boolean oldIsPrimaryKey = isPrimaryKey;
+		isPrimaryKey = newIsPrimaryKey;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.PROPERTY__IS_PRIMARY_KEY, oldIsPrimaryKey, isPrimaryKey));
 	}
 
 	/**
@@ -215,13 +256,33 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EntityPackage.PROPERTY__NAME:
-				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case EntityPackage.PROPERTY__MULTIPLICITY:
-				return getMultiplicity() != MULTIPLICITY_EDEFAULT;
+				return multiplicity != MULTIPLICITY_EDEFAULT;
 			case EntityPackage.PROPERTY__IS_PRIMARY_KEY:
-				return isIsPrimaryKey() != IS_PRIMARY_KEY_EDEFAULT;
+				return isPrimaryKey != IS_PRIMARY_KEY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(", multiplicity: ");
+		result.append(multiplicity);
+		result.append(", isPrimaryKey: ");
+		result.append(isPrimaryKey);
+		result.append(')');
+		return result.toString();
 	}
 
 } // PropertyImpl

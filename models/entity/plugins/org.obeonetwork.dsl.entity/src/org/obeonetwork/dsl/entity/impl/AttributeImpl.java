@@ -44,6 +44,15 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	 */
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
 	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected PrimitiveType type;
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -65,7 +74,8 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	 * @generated
 	 */
 	public Entity getEntity() {
-		return (Entity)eDynamicGet(EntityPackage.ATTRIBUTE__ENTITY, EntityPackage.Literals.ATTRIBUTE__ENTITY, true, true);
+		if (eContainerFeatureID() != EntityPackage.ATTRIBUTE__ENTITY) return null;
+		return (Entity)eContainer();
 	}
 
 	/**
@@ -74,7 +84,8 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	 * @generated
 	 */
 	public Entity basicGetEntity() {
-		return (Entity)eDynamicGet(EntityPackage.ATTRIBUTE__ENTITY, EntityPackage.Literals.ATTRIBUTE__ENTITY, false, true);
+		if (eContainerFeatureID() != EntityPackage.ATTRIBUTE__ENTITY) return null;
+		return (Entity)eInternalContainer();
 	}
 
 	/**
@@ -92,7 +103,19 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	 * @generated
 	 */
 	public void setEntity(Entity newEntity) {
-		eDynamicSet(EntityPackage.ATTRIBUTE__ENTITY, EntityPackage.Literals.ATTRIBUTE__ENTITY, newEntity);
+		if (newEntity != eInternalContainer() || (eContainerFeatureID() != EntityPackage.ATTRIBUTE__ENTITY && newEntity != null)) {
+			if (EcoreUtil.isAncestor(this, newEntity))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newEntity != null)
+				msgs = ((InternalEObject)newEntity).eInverseAdd(this, EntityPackage.ENTITY__OWNED_ATTRIBUTES, Entity.class, msgs);
+			msgs = basicSetEntity(newEntity, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.ATTRIBUTE__ENTITY, newEntity, newEntity));
 	}
 
 	/**
@@ -100,7 +123,15 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	 * @generated
 	 */
 	public PrimitiveType getType() {
-		return (PrimitiveType)eDynamicGet(EntityPackage.ATTRIBUTE__TYPE, EntityPackage.Literals.ATTRIBUTE__TYPE, true, true);
+		if (type != null && type.eIsProxy()) {
+			InternalEObject oldType = (InternalEObject)type;
+			type = (PrimitiveType)eResolveProxy(oldType);
+			if (type != oldType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityPackage.ATTRIBUTE__TYPE, oldType, type));
+			}
+		}
+		return type;
 	}
 
 	/**
@@ -109,7 +140,7 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	 * @generated
 	 */
 	public PrimitiveType basicGetType() {
-		return (PrimitiveType)eDynamicGet(EntityPackage.ATTRIBUTE__TYPE, EntityPackage.Literals.ATTRIBUTE__TYPE, false, true);
+		return type;
 	}
 
 	/**
@@ -117,7 +148,10 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	 * @generated
 	 */
 	public void setType(PrimitiveType newType) {
-		eDynamicSet(EntityPackage.ATTRIBUTE__TYPE, EntityPackage.Literals.ATTRIBUTE__TYPE, newType);
+		PrimitiveType oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.ATTRIBUTE__TYPE, oldType, type));
 	}
 
 	/**
@@ -229,7 +263,7 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 			case EntityPackage.ATTRIBUTE__ENTITY:
 				return basicGetEntity() != null;
 			case EntityPackage.ATTRIBUTE__TYPE:
-				return basicGetType() != null;
+				return type != null;
 		}
 		return super.eIsSet(featureID);
 	}

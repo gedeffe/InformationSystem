@@ -12,9 +12,12 @@
  */
 package org.obeonetwork.dsl.entity.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.obeonetwork.dsl.entity.Entity;
 import org.obeonetwork.dsl.entity.EntityPackage;
 import org.obeonetwork.dsl.entity.Reference;
@@ -53,6 +56,36 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 */
 	protected static final boolean IS_COMPOSITE_EDEFAULT = false;
 	/**
+	 * The cached value of the '{@link #isIsComposite() <em>Is Composite</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsComposite()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isComposite = IS_COMPOSITE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getOppositeOf() <em>Opposite Of</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOppositeOf()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference oppositeOf;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Entity type;
+
+	/**
 	 * The default value of the '{@link #isNavigable() <em>Navigable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61,6 +94,16 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @ordered
 	 */
 	protected static final boolean NAVIGABLE_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isNavigable() <em>Navigable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNavigable()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean navigable = NAVIGABLE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -84,7 +127,8 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public Entity getEntity() {
-		return (Entity)eDynamicGet(EntityPackage.REFERENCE__ENTITY, EntityPackage.Literals.REFERENCE__ENTITY, true, true);
+		if (eContainerFeatureID() != EntityPackage.REFERENCE__ENTITY) return null;
+		return (Entity)eContainer();
 	}
 
 	/**
@@ -93,7 +137,8 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public Entity basicGetEntity() {
-		return (Entity)eDynamicGet(EntityPackage.REFERENCE__ENTITY, EntityPackage.Literals.REFERENCE__ENTITY, false, true);
+		if (eContainerFeatureID() != EntityPackage.REFERENCE__ENTITY) return null;
+		return (Entity)eInternalContainer();
 	}
 
 	/**
@@ -111,7 +156,19 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public void setEntity(Entity newEntity) {
-		eDynamicSet(EntityPackage.REFERENCE__ENTITY, EntityPackage.Literals.REFERENCE__ENTITY, newEntity);
+		if (newEntity != eInternalContainer() || (eContainerFeatureID() != EntityPackage.REFERENCE__ENTITY && newEntity != null)) {
+			if (EcoreUtil.isAncestor(this, newEntity))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newEntity != null)
+				msgs = ((InternalEObject)newEntity).eInverseAdd(this, EntityPackage.ENTITY__OWNED_REFERENCES, Entity.class, msgs);
+			msgs = basicSetEntity(newEntity, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.REFERENCE__ENTITY, newEntity, newEntity));
 	}
 
 	/**
@@ -119,7 +176,7 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public boolean isIsComposite() {
-		return (Boolean)eDynamicGet(EntityPackage.REFERENCE__IS_COMPOSITE, EntityPackage.Literals.REFERENCE__IS_COMPOSITE, true, true);
+		return isComposite;
 	}
 
 	/**
@@ -127,7 +184,10 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public void setIsComposite(boolean newIsComposite) {
-		eDynamicSet(EntityPackage.REFERENCE__IS_COMPOSITE, EntityPackage.Literals.REFERENCE__IS_COMPOSITE, newIsComposite);
+		boolean oldIsComposite = isComposite;
+		isComposite = newIsComposite;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.REFERENCE__IS_COMPOSITE, oldIsComposite, isComposite));
 	}
 
 	/**
@@ -135,7 +195,15 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public Reference getOppositeOf() {
-		return (Reference)eDynamicGet(EntityPackage.REFERENCE__OPPOSITE_OF, EntityPackage.Literals.REFERENCE__OPPOSITE_OF, true, true);
+		if (oppositeOf != null && oppositeOf.eIsProxy()) {
+			InternalEObject oldOppositeOf = (InternalEObject)oppositeOf;
+			oppositeOf = (Reference)eResolveProxy(oldOppositeOf);
+			if (oppositeOf != oldOppositeOf) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityPackage.REFERENCE__OPPOSITE_OF, oldOppositeOf, oppositeOf));
+			}
+		}
+		return oppositeOf;
 	}
 
 	/**
@@ -144,7 +212,7 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public Reference basicGetOppositeOf() {
-		return (Reference)eDynamicGet(EntityPackage.REFERENCE__OPPOSITE_OF, EntityPackage.Literals.REFERENCE__OPPOSITE_OF, false, true);
+		return oppositeOf;
 	}
 
 	/**
@@ -152,7 +220,10 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public void setOppositeOf(Reference newOppositeOf) {
-		eDynamicSet(EntityPackage.REFERENCE__OPPOSITE_OF, EntityPackage.Literals.REFERENCE__OPPOSITE_OF, newOppositeOf);
+		Reference oldOppositeOf = oppositeOf;
+		oppositeOf = newOppositeOf;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.REFERENCE__OPPOSITE_OF, oldOppositeOf, oppositeOf));
 	}
 
 	/**
@@ -160,7 +231,15 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public Entity getType() {
-		return (Entity)eDynamicGet(EntityPackage.REFERENCE__TYPE, EntityPackage.Literals.REFERENCE__TYPE, true, true);
+		if (type != null && type.eIsProxy()) {
+			InternalEObject oldType = (InternalEObject)type;
+			type = (Entity)eResolveProxy(oldType);
+			if (type != oldType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityPackage.REFERENCE__TYPE, oldType, type));
+			}
+		}
+		return type;
 	}
 
 	/**
@@ -169,7 +248,7 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public Entity basicGetType() {
-		return (Entity)eDynamicGet(EntityPackage.REFERENCE__TYPE, EntityPackage.Literals.REFERENCE__TYPE, false, true);
+		return type;
 	}
 
 	/**
@@ -177,7 +256,10 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public void setType(Entity newType) {
-		eDynamicSet(EntityPackage.REFERENCE__TYPE, EntityPackage.Literals.REFERENCE__TYPE, newType);
+		Entity oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.REFERENCE__TYPE, oldType, type));
 	}
 
 	/**
@@ -185,7 +267,7 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public boolean isNavigable() {
-		return (Boolean)eDynamicGet(EntityPackage.REFERENCE__NAVIGABLE, EntityPackage.Literals.REFERENCE__NAVIGABLE, true, true);
+		return navigable;
 	}
 
 	/**
@@ -193,7 +275,10 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public void setNavigable(boolean newNavigable) {
-		eDynamicSet(EntityPackage.REFERENCE__NAVIGABLE, EntityPackage.Literals.REFERENCE__NAVIGABLE, newNavigable);
+		boolean oldNavigable = navigable;
+		navigable = newNavigable;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.REFERENCE__NAVIGABLE, oldNavigable, navigable));
 	}
 
 	/**
@@ -346,15 +431,33 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 			case EntityPackage.REFERENCE__ENTITY:
 				return basicGetEntity() != null;
 			case EntityPackage.REFERENCE__IS_COMPOSITE:
-				return isIsComposite() != IS_COMPOSITE_EDEFAULT;
+				return isComposite != IS_COMPOSITE_EDEFAULT;
 			case EntityPackage.REFERENCE__OPPOSITE_OF:
-				return basicGetOppositeOf() != null;
+				return oppositeOf != null;
 			case EntityPackage.REFERENCE__TYPE:
-				return basicGetType() != null;
+				return type != null;
 			case EntityPackage.REFERENCE__NAVIGABLE:
-				return isNavigable() != NAVIGABLE_EDEFAULT;
+				return navigable != NAVIGABLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isComposite: ");
+		result.append(isComposite);
+		result.append(", navigable: ");
+		result.append(navigable);
+		result.append(')');
+		return result.toString();
 	}
 
 } // ReferenceImpl
