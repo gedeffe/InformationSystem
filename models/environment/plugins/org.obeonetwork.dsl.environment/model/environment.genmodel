@@ -6,10 +6,10 @@
     modelName="Environment" editPluginClass="org.obeonetwork.dsl.environment.provider.EnvironmentEditPlugin"
     editorPluginClass="org.obeonetwork.dsl.environment.presentation.EnvironmentEditorPlugin"
     codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" containmentProxies="true"
-    complianceLevel="5.0" runtimeVersion="2.6">
+    complianceLevel="5.0" runtimeVersion="2.6" importOrganizing="true">
   <foreignModel>environment.ecore</foreignModel>
   <genPackages prefix="Environment" basePackage="org.obeonetwork.dsl" resource="XMI"
-      disposableProviderFactory="true" ecorePackage="environment.ecore#/">
+      disposableProviderFactory="true" multipleEditorPages="false" ecorePackage="environment.ecore#/">
     <genEnums ecoreEnum="environment.ecore#//MultiplicityKind">
       <genEnumLiterals ecoreEnumLiteral="environment.ecore#//MultiplicityKind/ZERO_ONE"/>
       <genEnumLiterals ecoreEnumLiteral="environment.ecore#//MultiplicityKind/ONE"/>

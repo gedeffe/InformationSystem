@@ -14,7 +14,6 @@ package org.obeonetwork.dsl.environment.impl;
 
 import java.util.Collection;
 import java.util.Date;
-
 import org.eclipse.emf.cdo.CDONotification;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -28,7 +27,6 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.obeonetwork.dsl.environment.Behaviour;
 import org.obeonetwork.dsl.environment.BindingRegistry;
 import org.obeonetwork.dsl.environment.EnvironmentPackage;
