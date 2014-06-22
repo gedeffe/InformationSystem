@@ -41,77 +41,74 @@ import org.obeonetwork.dsl.soa.parts.SoaViewsRepository;
  * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
  * 
  */
-public class OperationOperationPropertiesEditionComponent extends
-		SinglePartPropertiesEditingComponent {
+public class OperationOperationPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	
 	public static String OPERATION_PART = "Operation"; //$NON-NLS-1$
 
+	
+	
 	/**
 	 * Default constructor
 	 * 
 	 */
-	public OperationOperationPropertiesEditionComponent(
-			final PropertiesEditingContext editingContext,
-			final EObject operation, final String editing_mode) {
+	public OperationOperationPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject operation, String editing_mode) {
 		super(editingContext, operation, editing_mode);
-		this.parts = new String[] { OPERATION_PART };
-		this.repositoryKey = SoaViewsRepository.class;
-		this.partKey = SoaViewsRepository.Operation.class;
+		parts = new String[] { OPERATION_PART };
+		repositoryKey = SoaViewsRepository.class;
+		partKey = SoaViewsRepository.Operation.class;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
-	 *      int, org.eclipse.emf.ecore.EObject,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(final Object key, final int kind, final EObject elt,
-			final ResourceSet allResource) {
-		this.setInitializing(true);
-		if ((this.editingPart != null) && (key == this.partKey)) {
-			this.editingPart.setContext(elt, allResource);
-
-			final Operation operation = (Operation) elt;
-			final OperationPropertiesEditionPart operationPart = (OperationPropertiesEditionPart) this.editingPart;
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
+			
+			final Operation operation = (Operation)elt;
+			final OperationPropertiesEditionPart operationPart = (OperationPropertiesEditionPart)editingPart;
 			// init values
-			if (this.isAccessible(SoaViewsRepository.Operation.Properties.name)) {
-				operationPart.setName(EEFConverterUtil.convertToString(
-						EcorePackage.Literals.ESTRING, operation.getName()));
+			if (isAccessible(SoaViewsRepository.Operation.Properties.name))
+				operationPart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, operation.getName()));
+			
+			if (isAccessible(SoaViewsRepository.Operation.Properties.kind)) {
+				operationPart.initKind(EEFUtils.choiceOfValues(operation, SoaPackage.eINSTANCE.getOperation_Kind()), operation.getKind());
 			}
-
-			if (this.isAccessible(SoaViewsRepository.Operation.Properties.kind)) {
-				operationPart.initKind(
-						EEFUtils.choiceOfValues(operation,
-								SoaPackage.eINSTANCE.getOperation_Kind()),
-						operation.getKind());
-			}
-			if (this.isAccessible(SoaViewsRepository.Operation.Properties.public_)) {
+			if (isAccessible(SoaViewsRepository.Operation.Properties.public_)) {
 				operationPart.setPublic_(operation.isPublic());
 			}
-			if (this.isAccessible(SoaViewsRepository.Operation.Properties.description)) {
-				operationPart.setDescription(EcoreUtil.convertToString(
-						EcorePackage.Literals.ESTRING,
-						operation.getDescription()));
-				// init filters
-			}
-
+			if (isAccessible(SoaViewsRepository.Operation.Properties.description))
+				operationPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, operation.getDescription()));
+			// init filters
+			
+			
+			
+			
 			// init values for referenced views
-
+			
 			// init filters for referenced views
-
+			
 		}
-		this.setInitializing(false);
+		setInitializing(false);
 	}
+
+
+
+
+
+
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	@Override
-	public EStructuralFeature associatedFeature(final Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == SoaViewsRepository.Operation.Properties.name) {
 			return EnvironmentPackage.eINSTANCE.getAction_Name();
 		}
@@ -129,85 +126,54 @@ public class OperationOperationPropertiesEditionComponent extends
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	@Override
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		final Operation operation = (Operation) this.semanticObject;
-		if (SoaViewsRepository.Operation.Properties.name == event
-				.getAffectedEditor()) {
-			operation.setName((java.lang.String) EEFConverterUtil
-					.createFromString(EcorePackage.Literals.ESTRING,
-							(String) event.getNewValue()));
+		Operation operation = (Operation)semanticObject;
+		if (SoaViewsRepository.Operation.Properties.name == event.getAffectedEditor()) {
+			operation.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (SoaViewsRepository.Operation.Properties.kind == event
-				.getAffectedEditor()) {
-			operation.setKind((OperationKind) event.getNewValue());
+		if (SoaViewsRepository.Operation.Properties.kind == event.getAffectedEditor()) {
+			operation.setKind((OperationKind)event.getNewValue());
 		}
-		if (SoaViewsRepository.Operation.Properties.public_ == event
-				.getAffectedEditor()) {
-			operation.setPublic((Boolean) event.getNewValue());
+		if (SoaViewsRepository.Operation.Properties.public_ == event.getAffectedEditor()) {
+			operation.setPublic((Boolean)event.getNewValue());
 		}
-		if (SoaViewsRepository.Operation.Properties.description == event
-				.getAffectedEditor()) {
-			operation.setDescription((java.lang.String) EEFConverterUtil
-					.createFromString(EcorePackage.Literals.ESTRING,
-							(String) event.getNewValue()));
+		if (SoaViewsRepository.Operation.Properties.description == event.getAffectedEditor()) {
+			operation.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
-	@Override
-	public void updatePart(final Notification msg) {
+	public void updatePart(Notification msg) {
 		super.updatePart(msg);
-		if (this.editingPart.isVisible()) {
-			final OperationPropertiesEditionPart operationPart = (OperationPropertiesEditionPart) this.editingPart;
-			if (EnvironmentPackage.eINSTANCE.getAction_Name().equals(
-					msg.getFeature())
-					&& msg.getNotifier().equals(this.semanticObject)
-					&& (operationPart != null)
-					&& this.isAccessible(SoaViewsRepository.Operation.Properties.name)) {
+		if (editingPart.isVisible()) {
+			OperationPropertiesEditionPart operationPart = (OperationPropertiesEditionPart)editingPart;
+			if (EnvironmentPackage.eINSTANCE.getAction_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && operationPart != null && isAccessible(SoaViewsRepository.Operation.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					operationPart.setName(EcoreUtil.convertToString(
-							EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					operationPart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					operationPart.setName("");
 				}
 			}
-			if (SoaPackage.eINSTANCE.getOperation_Kind().equals(
-					msg.getFeature())
-					&& msg.getNotifier().equals(this.semanticObject)
-					&& this.isAccessible(SoaViewsRepository.Operation.Properties.kind)) {
-				operationPart.setKind((OperationKind) msg.getNewValue());
-			}
-
-			if (SoaPackage.eINSTANCE.getOperation_Public().equals(
-					msg.getFeature())
-					&& msg.getNotifier().equals(this.semanticObject)
-					&& (operationPart != null)
-					&& this.isAccessible(SoaViewsRepository.Operation.Properties.public_)) {
-				operationPart.setPublic_((Boolean) msg.getNewValue());
-			}
-
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()
-					.equals(msg.getFeature())
-					&& msg.getNotifier().equals(this.semanticObject)
-					&& (operationPart != null)
-					&& this.isAccessible(SoaViewsRepository.Operation.Properties.description)) {
+			if (SoaPackage.eINSTANCE.getOperation_Kind().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(SoaViewsRepository.Operation.Properties.kind))
+				operationPart.setKind((OperationKind)msg.getNewValue());
+			
+			if (SoaPackage.eINSTANCE.getOperation_Public().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && operationPart != null && isAccessible(SoaViewsRepository.Operation.Properties.public_))
+				operationPart.setPublic_((Boolean)msg.getNewValue());
+			
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && operationPart != null && isAccessible(SoaViewsRepository.Operation.Properties.description)){
 				if (msg.getNewValue() != null) {
-					operationPart.setDescription(EcoreUtil.convertToString(
-							EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					operationPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					operationPart.setDescription("");
 				}
 			}
-
+			
 		}
 	}
 
@@ -218,25 +184,23 @@ public class OperationOperationPropertiesEditionComponent extends
 	 */
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
-		final NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-				EnvironmentPackage.eINSTANCE.getAction_Name(),
-				SoaPackage.eINSTANCE.getOperation_Kind(),
-				SoaPackage.eINSTANCE.getOperation_Public(),
-				EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description());
-		return new NotificationFilter[] { filter, };
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EnvironmentPackage.eINSTANCE.getAction_Name(),
+			SoaPackage.eINSTANCE.getOperation_Kind(),
+			SoaPackage.eINSTANCE.getOperation_Public(),
+			EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()		);
+		return new NotificationFilter[] {filter,};
 	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object,
-	 *      int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
-	@Override
-	public boolean isRequired(final Object key, final int kind) {
-		return (key == SoaViewsRepository.Operation.Properties.name)
-				|| (key == SoaViewsRepository.Operation.Properties.public_);
+	public boolean isRequired(Object key, int kind) {
+		return key == SoaViewsRepository.Operation.Properties.name || key == SoaViewsRepository.Operation.Properties.public_;
 	}
 
 	/**
@@ -245,69 +209,50 @@ public class OperationOperationPropertiesEditionComponent extends
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(final IPropertiesEditionEvent event) {
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (SoaViewsRepository.Operation.Properties.name == event
-						.getAffectedEditor()) {
+				if (SoaViewsRepository.Operation.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil
-								.createFromString(EnvironmentPackage.eINSTANCE
-										.getAction_Name().getEAttributeType(),
-										(String) newValue);
+						newValue = EEFConverterUtil.createFromString(EnvironmentPackage.eINSTANCE.getAction_Name().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(
-							EnvironmentPackage.eINSTANCE.getAction_Name()
-									.getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getAction_Name().getEAttributeType(), newValue);
 				}
-				if (SoaViewsRepository.Operation.Properties.kind == event
-						.getAffectedEditor()) {
+				if (SoaViewsRepository.Operation.Properties.kind == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil
-								.createFromString(SoaPackage.eINSTANCE
-										.getOperation_Kind()
-										.getEAttributeType(), (String) newValue);
+						newValue = EEFConverterUtil.createFromString(SoaPackage.eINSTANCE.getOperation_Kind().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(SoaPackage.eINSTANCE
-							.getOperation_Kind().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(SoaPackage.eINSTANCE.getOperation_Kind().getEAttributeType(), newValue);
 				}
-				if (SoaViewsRepository.Operation.Properties.public_ == event
-						.getAffectedEditor()) {
+				if (SoaViewsRepository.Operation.Properties.public_ == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil
-								.createFromString(SoaPackage.eINSTANCE
-										.getOperation_Public()
-										.getEAttributeType(), (String) newValue);
+						newValue = EEFConverterUtil.createFromString(SoaPackage.eINSTANCE.getOperation_Public().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(SoaPackage.eINSTANCE
-							.getOperation_Public().getEAttributeType(),
-							newValue);
+					ret = Diagnostician.INSTANCE.validate(SoaPackage.eINSTANCE.getOperation_Public().getEAttributeType(), newValue);
 				}
-				if (SoaViewsRepository.Operation.Properties.description == event
-						.getAffectedEditor()) {
+				if (SoaViewsRepository.Operation.Properties.description == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil
-								.createFromString(EnvironmentPackage.eINSTANCE
-										.getObeoDSMObject_Description()
-										.getEAttributeType(), (String) newValue);
+						newValue = EEFConverterUtil.createFromString(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(
-							EnvironmentPackage.eINSTANCE
-									.getObeoDSMObject_Description()
-									.getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), newValue);
 				}
-			} catch (final IllegalArgumentException iae) {
+			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (final WrappedException we) {
+			} catch (WrappedException we) {
 				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
 	}
+
+
+	
+
+	
 
 }

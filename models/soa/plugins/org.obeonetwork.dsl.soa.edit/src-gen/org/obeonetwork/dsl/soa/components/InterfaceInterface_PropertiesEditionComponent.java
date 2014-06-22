@@ -39,68 +39,64 @@ import org.obeonetwork.dsl.soa.parts.SoaViewsRepository;
  * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
  * 
  */
-public class InterfaceInterface_PropertiesEditionComponent extends
-		SinglePartPropertiesEditingComponent {
+public class InterfaceInterface_PropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	
 	public static String INTERFACE__PART = "Interface"; //$NON-NLS-1$
 
+	
+	
 	/**
 	 * Default constructor
 	 * 
 	 */
-	public InterfaceInterface_PropertiesEditionComponent(
-			final PropertiesEditingContext editingContext,
-			final EObject interface_, final String editing_mode) {
+	public InterfaceInterface_PropertiesEditionComponent(PropertiesEditingContext editingContext, EObject interface_, String editing_mode) {
 		super(editingContext, interface_, editing_mode);
-		this.parts = new String[] { INTERFACE__PART };
-		this.repositoryKey = SoaViewsRepository.class;
-		this.partKey = SoaViewsRepository.Interface_.class;
+		parts = new String[] { INTERFACE__PART };
+		repositoryKey = SoaViewsRepository.class;
+		partKey = SoaViewsRepository.Interface_.class;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
-	 *      int, org.eclipse.emf.ecore.EObject,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(final Object key, final int kind, final EObject elt,
-			final ResourceSet allResource) {
-		this.setInitializing(true);
-		if ((this.editingPart != null) && (key == this.partKey)) {
-			this.editingPart.setContext(elt, allResource);
-
-			final Interface interface_ = (Interface) elt;
-			final Interface_PropertiesEditionPart interface_Part = (Interface_PropertiesEditionPart) this.editingPart;
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
+			
+			final Interface interface_ = (Interface)elt;
+			final Interface_PropertiesEditionPart interface_Part = (Interface_PropertiesEditionPart)editingPart;
 			// init values
-			if (this.isAccessible(SoaViewsRepository.Interface_.Properties.name)) {
-				interface_Part.setName(EEFConverterUtil.convertToString(
-						EcorePackage.Literals.ESTRING, interface_.getName()));
-			}
-
-			if (this.isAccessible(SoaViewsRepository.Interface_.Properties.description)) {
-				interface_Part.setDescription(EcoreUtil.convertToString(
-						EcorePackage.Literals.ESTRING,
-						interface_.getDescription()));
-				// init filters
-			}
-
+			if (isAccessible(SoaViewsRepository.Interface_.Properties.name))
+				interface_Part.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, interface_.getName()));
+			
+			if (isAccessible(SoaViewsRepository.Interface_.Properties.description))
+				interface_Part.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, interface_.getDescription()));
+			// init filters
+			
+			
 			// init values for referenced views
-
+			
 			// init filters for referenced views
-
+			
 		}
-		this.setInitializing(false);
+		setInitializing(false);
 	}
+
+
+
+
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	@Override
-	public EStructuralFeature associatedFeature(final Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == SoaViewsRepository.Interface_.Properties.name) {
 			return SoaPackage.eINSTANCE.getInterface_Name();
 		}
@@ -112,62 +108,42 @@ public class InterfaceInterface_PropertiesEditionComponent extends
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	@Override
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		final Interface interface_ = (Interface) this.semanticObject;
-		if (SoaViewsRepository.Interface_.Properties.name == event
-				.getAffectedEditor()) {
-			interface_.setName((java.lang.String) EEFConverterUtil
-					.createFromString(EcorePackage.Literals.ESTRING,
-							(String) event.getNewValue()));
+		Interface interface_ = (Interface)semanticObject;
+		if (SoaViewsRepository.Interface_.Properties.name == event.getAffectedEditor()) {
+			interface_.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (SoaViewsRepository.Interface_.Properties.description == event
-				.getAffectedEditor()) {
-			interface_.setDescription((java.lang.String) EEFConverterUtil
-					.createFromString(EcorePackage.Literals.ESTRING,
-							(String) event.getNewValue()));
+		if (SoaViewsRepository.Interface_.Properties.description == event.getAffectedEditor()) {
+			interface_.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
-	@Override
-	public void updatePart(final Notification msg) {
+	public void updatePart(Notification msg) {
 		super.updatePart(msg);
-		if (this.editingPart.isVisible()) {
-			final Interface_PropertiesEditionPart interface_Part = (Interface_PropertiesEditionPart) this.editingPart;
-			if (SoaPackage.eINSTANCE.getInterface_Name().equals(
-					msg.getFeature())
-					&& msg.getNotifier().equals(this.semanticObject)
-					&& (interface_Part != null)
-					&& this.isAccessible(SoaViewsRepository.Interface_.Properties.name)) {
+		if (editingPart.isVisible()) {
+			Interface_PropertiesEditionPart interface_Part = (Interface_PropertiesEditionPart)editingPart;
+			if (SoaPackage.eINSTANCE.getInterface_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && interface_Part != null && isAccessible(SoaViewsRepository.Interface_.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					interface_Part.setName(EcoreUtil.convertToString(
-							EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					interface_Part.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					interface_Part.setName("");
 				}
 			}
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()
-					.equals(msg.getFeature())
-					&& msg.getNotifier().equals(this.semanticObject)
-					&& (interface_Part != null)
-					&& this.isAccessible(SoaViewsRepository.Interface_.Properties.description)) {
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && interface_Part != null && isAccessible(SoaViewsRepository.Interface_.Properties.description)){
 				if (msg.getNewValue() != null) {
-					interface_Part.setDescription(EcoreUtil.convertToString(
-							EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					interface_Part.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					interface_Part.setDescription("");
 				}
 			}
-
+			
 		}
 	}
 
@@ -178,11 +154,12 @@ public class InterfaceInterface_PropertiesEditionComponent extends
 	 */
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
-		final NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-				SoaPackage.eINSTANCE.getInterface_Name(),
-				EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description());
-		return new NotificationFilter[] { filter, };
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			SoaPackage.eINSTANCE.getInterface_Name(),
+			EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()		);
+		return new NotificationFilter[] {filter,};
 	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -190,43 +167,36 @@ public class InterfaceInterface_PropertiesEditionComponent extends
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(final IPropertiesEditionEvent event) {
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (SoaViewsRepository.Interface_.Properties.name == event
-						.getAffectedEditor()) {
+				if (SoaViewsRepository.Interface_.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil
-								.createFromString(SoaPackage.eINSTANCE
-										.getInterface_Name()
-										.getEAttributeType(), (String) newValue);
+						newValue = EEFConverterUtil.createFromString(SoaPackage.eINSTANCE.getInterface_Name().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(SoaPackage.eINSTANCE
-							.getInterface_Name().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(SoaPackage.eINSTANCE.getInterface_Name().getEAttributeType(), newValue);
 				}
-				if (SoaViewsRepository.Interface_.Properties.description == event
-						.getAffectedEditor()) {
+				if (SoaViewsRepository.Interface_.Properties.description == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil
-								.createFromString(EnvironmentPackage.eINSTANCE
-										.getObeoDSMObject_Description()
-										.getEAttributeType(), (String) newValue);
+						newValue = EEFConverterUtil.createFromString(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(
-							EnvironmentPackage.eINSTANCE
-									.getObeoDSMObject_Description()
-									.getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), newValue);
 				}
-			} catch (final IllegalArgumentException iae) {
+			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (final WrappedException we) {
+			} catch (WrappedException we) {
 				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
 	}
+
+
+	
+
+	
 
 }

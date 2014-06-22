@@ -42,81 +42,74 @@ import org.obeonetwork.dsl.soa.parts.SoaViewsRepository;
  * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
  * 
  */
-public class ServiceServicePropertiesEditionComponent extends
-		SinglePartPropertiesEditingComponent {
+public class ServiceServicePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	
 	public static String SERVICE_PART = "Service"; //$NON-NLS-1$
 
+	
+	
 	/**
 	 * Default constructor
 	 * 
 	 */
-	public ServiceServicePropertiesEditionComponent(
-			final PropertiesEditingContext editingContext,
-			final EObject service, final String editing_mode) {
+	public ServiceServicePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject service, String editing_mode) {
 		super(editingContext, service, editing_mode);
-		this.parts = new String[] { SERVICE_PART };
-		this.repositoryKey = SoaViewsRepository.class;
-		this.partKey = SoaViewsRepository.Service.class;
+		parts = new String[] { SERVICE_PART };
+		repositoryKey = SoaViewsRepository.class;
+		partKey = SoaViewsRepository.Service.class;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
-	 *      int, org.eclipse.emf.ecore.EObject,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(final Object key, final int kind, final EObject elt,
-			final ResourceSet allResource) {
-		this.setInitializing(true);
-		if ((this.editingPart != null) && (key == this.partKey)) {
-			this.editingPart.setContext(elt, allResource);
-
-			final Service service = (Service) elt;
-			final ServicePropertiesEditionPart servicePart = (ServicePropertiesEditionPart) this.editingPart;
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
+			
+			final Service service = (Service)elt;
+			final ServicePropertiesEditionPart servicePart = (ServicePropertiesEditionPart)editingPart;
 			// init values
-			if (this.isAccessible(SoaViewsRepository.Service.Properties.synchronization)) {
-				servicePart.initSynchronization(EEFUtils.choiceOfValues(
-						service,
-						SoaPackage.eINSTANCE.getService_Synchronization()),
-						service.getSynchronization());
+			if (isAccessible(SoaViewsRepository.Service.Properties.synchronization)) {
+				servicePart.initSynchronization(EEFUtils.choiceOfValues(service, SoaPackage.eINSTANCE.getService_Synchronization()), service.getSynchronization());
 			}
-			if (this.isAccessible(SoaViewsRepository.Service.Properties.kind)) {
-				servicePart.initKind(
-						EEFUtils.choiceOfValues(service,
-								SoaPackage.eINSTANCE.getService_Kind()),
-						service.getKind());
+			if (isAccessible(SoaViewsRepository.Service.Properties.kind)) {
+				servicePart.initKind(EEFUtils.choiceOfValues(service, SoaPackage.eINSTANCE.getService_Kind()), service.getKind());
 			}
-			if (this.isAccessible(SoaViewsRepository.Service.Properties.name)) {
-				servicePart.setName(EEFConverterUtil.convertToString(
-						EcorePackage.Literals.ESTRING, service.getName()));
-			}
-
-			if (this.isAccessible(SoaViewsRepository.Service.Properties.description)) {
-				servicePart
-						.setDescription(EcoreUtil.convertToString(
-								EcorePackage.Literals.ESTRING,
-								service.getDescription()));
-				// init filters
-			}
-
+			if (isAccessible(SoaViewsRepository.Service.Properties.name))
+				servicePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, service.getName()));
+			
+			if (isAccessible(SoaViewsRepository.Service.Properties.description))
+				servicePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, service.getDescription()));
+			// init filters
+			
+			
+			
+			
 			// init values for referenced views
-
+			
 			// init filters for referenced views
-
+			
 		}
-		this.setInitializing(false);
+		setInitializing(false);
 	}
+
+
+
+
+
+
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	@Override
-	public EStructuralFeature associatedFeature(final Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == SoaViewsRepository.Service.Properties.synchronization) {
 			return SoaPackage.eINSTANCE.getService_Synchronization();
 		}
@@ -134,84 +127,54 @@ public class ServiceServicePropertiesEditionComponent extends
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	@Override
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		final Service service = (Service) this.semanticObject;
-		if (SoaViewsRepository.Service.Properties.synchronization == event
-				.getAffectedEditor()) {
-			service.setSynchronization((SynchronizationKind) event
-					.getNewValue());
+		Service service = (Service)semanticObject;
+		if (SoaViewsRepository.Service.Properties.synchronization == event.getAffectedEditor()) {
+			service.setSynchronization((SynchronizationKind)event.getNewValue());
 		}
-		if (SoaViewsRepository.Service.Properties.kind == event
-				.getAffectedEditor()) {
-			service.setKind((InterfaceKind) event.getNewValue());
+		if (SoaViewsRepository.Service.Properties.kind == event.getAffectedEditor()) {
+			service.setKind((InterfaceKind)event.getNewValue());
 		}
-		if (SoaViewsRepository.Service.Properties.name == event
-				.getAffectedEditor()) {
-			service.setName((java.lang.String) EEFConverterUtil
-					.createFromString(EcorePackage.Literals.ESTRING,
-							(String) event.getNewValue()));
+		if (SoaViewsRepository.Service.Properties.name == event.getAffectedEditor()) {
+			service.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (SoaViewsRepository.Service.Properties.description == event
-				.getAffectedEditor()) {
-			service.setDescription((java.lang.String) EEFConverterUtil
-					.createFromString(EcorePackage.Literals.ESTRING,
-							(String) event.getNewValue()));
+		if (SoaViewsRepository.Service.Properties.description == event.getAffectedEditor()) {
+			service.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
-	@Override
-	public void updatePart(final Notification msg) {
+	public void updatePart(Notification msg) {
 		super.updatePart(msg);
-		if (this.editingPart.isVisible()) {
-			final ServicePropertiesEditionPart servicePart = (ServicePropertiesEditionPart) this.editingPart;
-			if (SoaPackage.eINSTANCE.getService_Synchronization().equals(
-					msg.getFeature())
-					&& msg.getNotifier().equals(this.semanticObject)
-					&& this.isAccessible(SoaViewsRepository.Service.Properties.synchronization)) {
-				servicePart.setSynchronization((SynchronizationKind) msg
-						.getNewValue());
-			}
-
-			if (SoaPackage.eINSTANCE.getService_Kind().equals(msg.getFeature())
-					&& msg.getNotifier().equals(this.semanticObject)
-					&& this.isAccessible(SoaViewsRepository.Service.Properties.kind)) {
-				servicePart.setKind((InterfaceKind) msg.getNewValue());
-			}
-
-			if (SoaPackage.eINSTANCE.getService_Name().equals(msg.getFeature())
-					&& msg.getNotifier().equals(this.semanticObject)
-					&& (servicePart != null)
-					&& this.isAccessible(SoaViewsRepository.Service.Properties.name)) {
+		if (editingPart.isVisible()) {
+			ServicePropertiesEditionPart servicePart = (ServicePropertiesEditionPart)editingPart;
+			if (SoaPackage.eINSTANCE.getService_Synchronization().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(SoaViewsRepository.Service.Properties.synchronization))
+				servicePart.setSynchronization((SynchronizationKind)msg.getNewValue());
+			
+			if (SoaPackage.eINSTANCE.getService_Kind().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(SoaViewsRepository.Service.Properties.kind))
+				servicePart.setKind((InterfaceKind)msg.getNewValue());
+			
+			if (SoaPackage.eINSTANCE.getService_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && servicePart != null && isAccessible(SoaViewsRepository.Service.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					servicePart.setName(EcoreUtil.convertToString(
-							EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					servicePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					servicePart.setName("");
 				}
 			}
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()
-					.equals(msg.getFeature())
-					&& msg.getNotifier().equals(this.semanticObject)
-					&& (servicePart != null)
-					&& this.isAccessible(SoaViewsRepository.Service.Properties.description)) {
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && servicePart != null && isAccessible(SoaViewsRepository.Service.Properties.description)){
 				if (msg.getNewValue() != null) {
-					servicePart.setDescription(EcoreUtil.convertToString(
-							EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					servicePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					servicePart.setDescription("");
 				}
 			}
-
+			
 		}
 	}
 
@@ -222,25 +185,23 @@ public class ServiceServicePropertiesEditionComponent extends
 	 */
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
-		final NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-				SoaPackage.eINSTANCE.getService_Synchronization(),
-				SoaPackage.eINSTANCE.getService_Kind(),
-				SoaPackage.eINSTANCE.getService_Name(),
-				EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description());
-		return new NotificationFilter[] { filter, };
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			SoaPackage.eINSTANCE.getService_Synchronization(),
+			SoaPackage.eINSTANCE.getService_Kind(),
+			SoaPackage.eINSTANCE.getService_Name(),
+			EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()		);
+		return new NotificationFilter[] {filter,};
 	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object,
-	 *      int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
-	@Override
-	public boolean isRequired(final Object key, final int kind) {
-		return (key == SoaViewsRepository.Service.Properties.synchronization)
-				|| (key == SoaViewsRepository.Service.Properties.kind);
+	public boolean isRequired(Object key, int kind) {
+		return key == SoaViewsRepository.Service.Properties.synchronization || key == SoaViewsRepository.Service.Properties.kind;
 	}
 
 	/**
@@ -249,68 +210,50 @@ public class ServiceServicePropertiesEditionComponent extends
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(final IPropertiesEditionEvent event) {
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (SoaViewsRepository.Service.Properties.synchronization == event
-						.getAffectedEditor()) {
+				if (SoaViewsRepository.Service.Properties.synchronization == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil
-								.createFromString(SoaPackage.eINSTANCE
-										.getService_Synchronization()
-										.getEAttributeType(), (String) newValue);
+						newValue = EEFConverterUtil.createFromString(SoaPackage.eINSTANCE.getService_Synchronization().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(SoaPackage.eINSTANCE
-							.getService_Synchronization().getEAttributeType(),
-							newValue);
+					ret = Diagnostician.INSTANCE.validate(SoaPackage.eINSTANCE.getService_Synchronization().getEAttributeType(), newValue);
 				}
-				if (SoaViewsRepository.Service.Properties.kind == event
-						.getAffectedEditor()) {
+				if (SoaViewsRepository.Service.Properties.kind == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil
-								.createFromString(SoaPackage.eINSTANCE
-										.getService_Kind().getEAttributeType(),
-										(String) newValue);
+						newValue = EEFConverterUtil.createFromString(SoaPackage.eINSTANCE.getService_Kind().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(SoaPackage.eINSTANCE
-							.getService_Kind().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(SoaPackage.eINSTANCE.getService_Kind().getEAttributeType(), newValue);
 				}
-				if (SoaViewsRepository.Service.Properties.name == event
-						.getAffectedEditor()) {
+				if (SoaViewsRepository.Service.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil
-								.createFromString(SoaPackage.eINSTANCE
-										.getService_Name().getEAttributeType(),
-										(String) newValue);
+						newValue = EEFConverterUtil.createFromString(SoaPackage.eINSTANCE.getService_Name().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(SoaPackage.eINSTANCE
-							.getService_Name().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(SoaPackage.eINSTANCE.getService_Name().getEAttributeType(), newValue);
 				}
-				if (SoaViewsRepository.Service.Properties.description == event
-						.getAffectedEditor()) {
+				if (SoaViewsRepository.Service.Properties.description == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil
-								.createFromString(EnvironmentPackage.eINSTANCE
-										.getObeoDSMObject_Description()
-										.getEAttributeType(), (String) newValue);
+						newValue = EEFConverterUtil.createFromString(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(
-							EnvironmentPackage.eINSTANCE
-									.getObeoDSMObject_Description()
-									.getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), newValue);
 				}
-			} catch (final IllegalArgumentException iae) {
+			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (final WrappedException we) {
+			} catch (WrappedException we) {
 				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
 	}
+
+
+	
+
+	
 
 }

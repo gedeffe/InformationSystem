@@ -47,88 +47,87 @@ import org.obeonetwork.dsl.soa.parts.WirePropertiesEditionPart;
  * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
  * 
  */
-public class WireWirePropertiesEditionComponent extends
-		SinglePartPropertiesEditingComponent {
+public class WireWirePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	
 	public static String WIRE_PART = "Wire"; //$NON-NLS-1$
 
+	
 	/**
 	 * Settings for source EObjectFlatComboViewer
 	 */
 	private EObjectFlatComboSettings sourceSettings;
-
+	
 	/**
 	 * Settings for dest EObjectFlatComboViewer
 	 */
 	private EObjectFlatComboSettings destSettings;
-
+	
+	
 	/**
 	 * Default constructor
 	 * 
 	 */
-	public WireWirePropertiesEditionComponent(
-			final PropertiesEditingContext editingContext, final EObject wire,
-			final String editing_mode) {
+	public WireWirePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject wire, String editing_mode) {
 		super(editingContext, wire, editing_mode);
-		this.parts = new String[] { WIRE_PART };
-		this.repositoryKey = SoaViewsRepository.class;
-		this.partKey = SoaViewsRepository.Wire.class;
+		parts = new String[] { WIRE_PART };
+		repositoryKey = SoaViewsRepository.class;
+		partKey = SoaViewsRepository.Wire.class;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
-	 *      int, org.eclipse.emf.ecore.EObject,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(final Object key, final int kind, final EObject elt,
-			final ResourceSet allResource) {
-		this.setInitializing(true);
-		if ((this.editingPart != null) && (key == this.partKey)) {
-			this.editingPart.setContext(elt, allResource);
-
-			final Wire wire = (Wire) elt;
-			final WirePropertiesEditionPart wirePart = (WirePropertiesEditionPart) this.editingPart;
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
+			
+			final Wire wire = (Wire)elt;
+			final WirePropertiesEditionPart wirePart = (WirePropertiesEditionPart)editingPart;
 			// init values
-			if (this.isAccessible(SoaViewsRepository.Wire.Properties.source)) {
+			if (isAccessible(SoaViewsRepository.Wire.Properties.source)) {
 				// init part
-				this.sourceSettings = new EObjectFlatComboSettings(wire,
-						SoaPackage.eINSTANCE.getWire_Source());
-				wirePart.initSource(this.sourceSettings);
+				sourceSettings = new EObjectFlatComboSettings(wire, SoaPackage.eINSTANCE.getWire_Source());
+				wirePart.initSource(sourceSettings);
 				// set the button mode
 				wirePart.setSourceButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			if (this.isAccessible(SoaViewsRepository.Wire.Properties.dest)) {
+			if (isAccessible(SoaViewsRepository.Wire.Properties.dest)) {
 				// init part
-				this.destSettings = new EObjectFlatComboSettings(wire,
-						SoaPackage.eINSTANCE.getWire_Dest());
-				wirePart.initDest(this.destSettings);
+				destSettings = new EObjectFlatComboSettings(wire, SoaPackage.eINSTANCE.getWire_Dest());
+				wirePart.initDest(destSettings);
 				// set the button mode
 				wirePart.setDestButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			if (this.isAccessible(SoaViewsRepository.Wire.Properties.description)) {
-				wirePart.setDescription(EcoreUtil.convertToString(
-						EcorePackage.Literals.ESTRING, wire.getDescription()));
-				// init filters
-			}
-
+			if (isAccessible(SoaViewsRepository.Wire.Properties.description))
+				wirePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, wire.getDescription()));
+			// init filters
+			
+			
+			
 			// init values for referenced views
-
+			
 			// init filters for referenced views
-
+			
 		}
-		this.setInitializing(false);
+		setInitializing(false);
 	}
+
+
+
+
+
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	@Override
-	public EStructuralFeature associatedFeature(final Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == SoaViewsRepository.Wire.Properties.source) {
 			return SoaPackage.eINSTANCE.getWire_Source();
 		}
@@ -143,98 +142,68 @@ public class WireWirePropertiesEditionComponent extends
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	@Override
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		final Wire wire = (Wire) this.semanticObject;
-		if (SoaViewsRepository.Wire.Properties.source == event
-				.getAffectedEditor()) {
+		Wire wire = (Wire)semanticObject;
+		if (SoaViewsRepository.Wire.Properties.source == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
-				this.sourceSettings.setToReference(event.getNewValue());
+				sourceSettings.setToReference((Service)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				final Service eObject = SoaFactory.eINSTANCE.createService();
-				final EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
-						this.editingContext, this, eObject,
-						this.editingContext.getAdapterFactory());
-				final PropertiesEditingProvider provider = (PropertiesEditingProvider) this.editingContext
-						.getAdapterFactory().adapt(eObject,
-								PropertiesEditingProvider.class);
+				Service eObject = SoaFactory.eINSTANCE.createService();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
-					final PropertiesEditingPolicy policy = provider
-							.getPolicy(context);
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy != null) {
 						policy.execute();
 					}
 				}
-				this.sourceSettings.setToReference(eObject);
+				sourceSettings.setToReference(eObject);
 			}
 		}
-		if (SoaViewsRepository.Wire.Properties.dest == event
-				.getAffectedEditor()) {
+		if (SoaViewsRepository.Wire.Properties.dest == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
-				this.destSettings.setToReference(event.getNewValue());
+				destSettings.setToReference((Service)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				final Service eObject = SoaFactory.eINSTANCE.createService();
-				final EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
-						this.editingContext, this, eObject,
-						this.editingContext.getAdapterFactory());
-				final PropertiesEditingProvider provider = (PropertiesEditingProvider) this.editingContext
-						.getAdapterFactory().adapt(eObject,
-								PropertiesEditingProvider.class);
+				Service eObject = SoaFactory.eINSTANCE.createService();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
-					final PropertiesEditingPolicy policy = provider
-							.getPolicy(context);
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy != null) {
 						policy.execute();
 					}
 				}
-				this.destSettings.setToReference(eObject);
+				destSettings.setToReference(eObject);
 			}
 		}
-		if (SoaViewsRepository.Wire.Properties.description == event
-				.getAffectedEditor()) {
-			wire.setDescription((java.lang.String) EEFConverterUtil
-					.createFromString(EcorePackage.Literals.ESTRING,
-							(String) event.getNewValue()));
+		if (SoaViewsRepository.Wire.Properties.description == event.getAffectedEditor()) {
+			wire.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
-	@Override
-	public void updatePart(final Notification msg) {
+	public void updatePart(Notification msg) {
 		super.updatePart(msg);
-		if (this.editingPart.isVisible()) {
-			final WirePropertiesEditionPart wirePart = (WirePropertiesEditionPart) this.editingPart;
-			if (SoaPackage.eINSTANCE.getWire_Source().equals(msg.getFeature())
-					&& (wirePart != null)
-					&& this.isAccessible(SoaViewsRepository.Wire.Properties.source)) {
-				wirePart.setSource((EObject) msg.getNewValue());
-			}
-			if (SoaPackage.eINSTANCE.getWire_Dest().equals(msg.getFeature())
-					&& (wirePart != null)
-					&& this.isAccessible(SoaViewsRepository.Wire.Properties.dest)) {
-				wirePart.setDest((EObject) msg.getNewValue());
-			}
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()
-					.equals(msg.getFeature())
-					&& msg.getNotifier().equals(this.semanticObject)
-					&& (wirePart != null)
-					&& this.isAccessible(SoaViewsRepository.Wire.Properties.description)) {
+		if (editingPart.isVisible()) {
+			WirePropertiesEditionPart wirePart = (WirePropertiesEditionPart)editingPart;
+			if (SoaPackage.eINSTANCE.getWire_Source().equals(msg.getFeature()) && wirePart != null && isAccessible(SoaViewsRepository.Wire.Properties.source))
+				wirePart.setSource((EObject)msg.getNewValue());
+			if (SoaPackage.eINSTANCE.getWire_Dest().equals(msg.getFeature()) && wirePart != null && isAccessible(SoaViewsRepository.Wire.Properties.dest))
+				wirePart.setDest((EObject)msg.getNewValue());
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && wirePart != null && isAccessible(SoaViewsRepository.Wire.Properties.description)){
 				if (msg.getNewValue() != null) {
-					wirePart.setDescription(EcoreUtil.convertToString(
-							EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					wirePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					wirePart.setDescription("");
 				}
 			}
-
+			
 		}
 	}
 
@@ -245,12 +214,13 @@ public class WireWirePropertiesEditionComponent extends
 	 */
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
-		final NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-				SoaPackage.eINSTANCE.getWire_Source(),
-				SoaPackage.eINSTANCE.getWire_Dest(),
-				EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description());
-		return new NotificationFilter[] { filter, };
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			SoaPackage.eINSTANCE.getWire_Source(),
+			SoaPackage.eINSTANCE.getWire_Dest(),
+			EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()		);
+		return new NotificationFilter[] {filter,};
 	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -258,31 +228,29 @@ public class WireWirePropertiesEditionComponent extends
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(final IPropertiesEditionEvent event) {
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (SoaViewsRepository.Wire.Properties.description == event
-						.getAffectedEditor()) {
+				if (SoaViewsRepository.Wire.Properties.description == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil
-								.createFromString(EnvironmentPackage.eINSTANCE
-										.getObeoDSMObject_Description()
-										.getEAttributeType(), (String) newValue);
+						newValue = EEFConverterUtil.createFromString(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(
-							EnvironmentPackage.eINSTANCE
-									.getObeoDSMObject_Description()
-									.getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), newValue);
 				}
-			} catch (final IllegalArgumentException iae) {
+			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (final WrappedException we) {
+			} catch (WrappedException we) {
 				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
 	}
+
+
+	
+
+	
 
 }

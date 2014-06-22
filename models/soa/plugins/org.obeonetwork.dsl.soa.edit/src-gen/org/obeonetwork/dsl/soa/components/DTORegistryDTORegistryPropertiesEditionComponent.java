@@ -49,94 +49,84 @@ import org.obeonetwork.dsl.soa.parts.SoaViewsRepository;
  * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
  * 
  */
-public class DTORegistryDTORegistryPropertiesEditionComponent extends
-		SinglePartPropertiesEditingComponent {
+public class DTORegistryDTORegistryPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	
 	public static String DTOREGISTRY_PART = "DTORegistry"; //$NON-NLS-1$
 
+	
 	/**
 	 * Settings for categories ReferencesTable
 	 */
 	protected ReferencesTableSettings categoriesSettings;
-
+	
+	
 	/**
 	 * Default constructor
 	 * 
 	 */
-	public DTORegistryDTORegistryPropertiesEditionComponent(
-			final PropertiesEditingContext editingContext,
-			final EObject dTORegistry, final String editing_mode) {
+	public DTORegistryDTORegistryPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject dTORegistry, String editing_mode) {
 		super(editingContext, dTORegistry, editing_mode);
-		this.parts = new String[] { DTOREGISTRY_PART };
-		this.repositoryKey = SoaViewsRepository.class;
-		this.partKey = SoaViewsRepository.DTORegistry.class;
+		parts = new String[] { DTOREGISTRY_PART };
+		repositoryKey = SoaViewsRepository.class;
+		partKey = SoaViewsRepository.DTORegistry.class;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
-	 *      int, org.eclipse.emf.ecore.EObject,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(final Object key, final int kind, final EObject elt,
-			final ResourceSet allResource) {
-		this.setInitializing(true);
-		if ((this.editingPart != null) && (key == this.partKey)) {
-			this.editingPart.setContext(elt, allResource);
-
-			final DTORegistry dTORegistry = (DTORegistry) elt;
-			final DTORegistryPropertiesEditionPart dTORegistryPart = (DTORegistryPropertiesEditionPart) this.editingPart;
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
+			
+			final DTORegistry dTORegistry = (DTORegistry)elt;
+			final DTORegistryPropertiesEditionPart dTORegistryPart = (DTORegistryPropertiesEditionPart)editingPart;
 			// init values
-			if (this.isAccessible(SoaViewsRepository.DTORegistry.Properties.categories)) {
-				this.categoriesSettings = new ReferencesTableSettings(
-						dTORegistry,
-						SoaPackage.eINSTANCE.getDTORegistry_OwnedCategories());
-				dTORegistryPart.initCategories(this.categoriesSettings);
+			if (isAccessible(SoaViewsRepository.DTORegistry.Properties.categories)) {
+				categoriesSettings = new ReferencesTableSettings(dTORegistry, SoaPackage.eINSTANCE.getDTORegistry_OwnedCategories());
+				dTORegistryPart.initCategories(categoriesSettings);
 			}
-			if (this.isAccessible(SoaViewsRepository.DTORegistry.Properties.description)) {
-				dTORegistryPart.setDescription(EcoreUtil.convertToString(
-						EcorePackage.Literals.ESTRING,
-						dTORegistry.getDescription()));
-			}
+			if (isAccessible(SoaViewsRepository.DTORegistry.Properties.description))
+				dTORegistryPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, dTORegistry.getDescription()));
 			// init filters
-			if (this.isAccessible(SoaViewsRepository.DTORegistry.Properties.categories)) {
+			if (isAccessible(SoaViewsRepository.DTORegistry.Properties.categories)) {
 				dTORegistryPart.addFilterToCategories(new ViewerFilter() {
 					/**
 					 * {@inheritDoc}
 					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
-					 *      java.lang.Object, java.lang.Object)
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
-					@Override
-					public boolean select(final Viewer viewer,
-							final Object parentElement, final Object element) {
-						return ((element instanceof String) && element
-								.equals("")) || (element instanceof Category); //$NON-NLS-1$ 
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Category); //$NON-NLS-1$ 
 					}
-
+			
 				});
-				// Start of user code for additional businessfilters for
-				// categories
+				// Start of user code for additional businessfilters for categories
 				// End of user code
 			}
-
+			
 			// init values for referenced views
-
+			
 			// init filters for referenced views
-
+			
 		}
-		this.setInitializing(false);
+		setInitializing(false);
 	}
+
+
+
+
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	@Override
-	public EStructuralFeature associatedFeature(final Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == SoaViewsRepository.DTORegistry.Properties.categories) {
 			return SoaPackage.eINSTANCE.getDTORegistry_OwnedCategories();
 		}
@@ -148,89 +138,59 @@ public class DTORegistryDTORegistryPropertiesEditionComponent extends
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	@Override
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		final DTORegistry dTORegistry = (DTORegistry) this.semanticObject;
-		if (SoaViewsRepository.DTORegistry.Properties.categories == event
-				.getAffectedEditor()) {
+		DTORegistry dTORegistry = (DTORegistry)semanticObject;
+		if (SoaViewsRepository.DTORegistry.Properties.categories == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				final EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(
-						this.editingContext, this, this.categoriesSettings,
-						this.editingContext.getAdapterFactory());
-				final PropertiesEditingProvider provider = (PropertiesEditingProvider) this.editingContext
-						.getAdapterFactory().adapt(this.semanticObject,
-								PropertiesEditingProvider.class);
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, categoriesSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
-					final PropertiesEditingPolicy policy = provider
-							.getPolicy(context);
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				final EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
-						this.editingContext, this,
-						(EObject) event.getNewValue(),
-						this.editingContext.getAdapterFactory());
-				final PropertiesEditingProvider provider = (PropertiesEditingProvider) this.editingContext
-						.getAdapterFactory().adapt(
-								(EObject) event.getNewValue(),
-								PropertiesEditingProvider.class);
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 				if (provider != null) {
-					final PropertiesEditingPolicy editionPolicy = provider
-							.getPolicy(context);
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
 					if (editionPolicy != null) {
 						editionPolicy.execute();
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				this.categoriesSettings.removeFromReference((EObject) event
-						.getNewValue());
+				categoriesSettings.removeFromReference((EObject) event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				this.categoriesSettings.move(event.getNewIndex(),
-						(Category) event.getNewValue());
+				categoriesSettings.move(event.getNewIndex(), (Category) event.getNewValue());
 			}
 		}
-		if (SoaViewsRepository.DTORegistry.Properties.description == event
-				.getAffectedEditor()) {
-			dTORegistry.setDescription((java.lang.String) EEFConverterUtil
-					.createFromString(EcorePackage.Literals.ESTRING,
-							(String) event.getNewValue()));
+		if (SoaViewsRepository.DTORegistry.Properties.description == event.getAffectedEditor()) {
+			dTORegistry.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
-	@Override
-	public void updatePart(final Notification msg) {
+	public void updatePart(Notification msg) {
 		super.updatePart(msg);
-		if (this.editingPart.isVisible()) {
-			final DTORegistryPropertiesEditionPart dTORegistryPart = (DTORegistryPropertiesEditionPart) this.editingPart;
-			if (SoaPackage.eINSTANCE.getDTORegistry_OwnedCategories().equals(
-					msg.getFeature())
-					&& this.isAccessible(SoaViewsRepository.DTORegistry.Properties.categories)) {
+		if (editingPart.isVisible()) {
+			DTORegistryPropertiesEditionPart dTORegistryPart = (DTORegistryPropertiesEditionPart)editingPart;
+			if (SoaPackage.eINSTANCE.getDTORegistry_OwnedCategories().equals(msg.getFeature()) && isAccessible(SoaViewsRepository.DTORegistry.Properties.categories))
 				dTORegistryPart.updateCategories();
-			}
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()
-					.equals(msg.getFeature())
-					&& msg.getNotifier().equals(this.semanticObject)
-					&& (dTORegistryPart != null)
-					&& this.isAccessible(SoaViewsRepository.DTORegistry.Properties.description)) {
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && dTORegistryPart != null && isAccessible(SoaViewsRepository.DTORegistry.Properties.description)){
 				if (msg.getNewValue() != null) {
-					dTORegistryPart.setDescription(EcoreUtil.convertToString(
-							EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					dTORegistryPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					dTORegistryPart.setDescription("");
 				}
 			}
-
+			
 		}
 	}
 
@@ -241,11 +201,12 @@ public class DTORegistryDTORegistryPropertiesEditionComponent extends
 	 */
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
-		final NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-				SoaPackage.eINSTANCE.getDTORegistry_OwnedCategories(),
-				EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description());
-		return new NotificationFilter[] { filter, };
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			SoaPackage.eINSTANCE.getDTORegistry_OwnedCategories(),
+			EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()		);
+		return new NotificationFilter[] {filter,};
 	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -253,31 +214,29 @@ public class DTORegistryDTORegistryPropertiesEditionComponent extends
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(final IPropertiesEditionEvent event) {
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (SoaViewsRepository.DTORegistry.Properties.description == event
-						.getAffectedEditor()) {
+				if (SoaViewsRepository.DTORegistry.Properties.description == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil
-								.createFromString(EnvironmentPackage.eINSTANCE
-										.getObeoDSMObject_Description()
-										.getEAttributeType(), (String) newValue);
+						newValue = EEFConverterUtil.createFromString(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(
-							EnvironmentPackage.eINSTANCE
-									.getObeoDSMObject_Description()
-									.getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), newValue);
 				}
-			} catch (final IllegalArgumentException iae) {
+			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (final WrappedException we) {
+			} catch (WrappedException we) {
 				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
 	}
+
+
+	
+
+	
 
 }

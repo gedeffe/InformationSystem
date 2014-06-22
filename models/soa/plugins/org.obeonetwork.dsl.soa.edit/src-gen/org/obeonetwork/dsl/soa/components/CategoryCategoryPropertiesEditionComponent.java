@@ -39,68 +39,64 @@ import org.obeonetwork.dsl.soa.parts.SoaViewsRepository;
  * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
  * 
  */
-public class CategoryCategoryPropertiesEditionComponent extends
-		SinglePartPropertiesEditingComponent {
+public class CategoryCategoryPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	
 	public static String CATEGORY_PART = "Category"; //$NON-NLS-1$
 
+	
+	
 	/**
 	 * Default constructor
 	 * 
 	 */
-	public CategoryCategoryPropertiesEditionComponent(
-			final PropertiesEditingContext editingContext,
-			final EObject category, final String editing_mode) {
+	public CategoryCategoryPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject category, String editing_mode) {
 		super(editingContext, category, editing_mode);
-		this.parts = new String[] { CATEGORY_PART };
-		this.repositoryKey = SoaViewsRepository.class;
-		this.partKey = SoaViewsRepository.Category.class;
+		parts = new String[] { CATEGORY_PART };
+		repositoryKey = SoaViewsRepository.class;
+		partKey = SoaViewsRepository.Category.class;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
-	 *      int, org.eclipse.emf.ecore.EObject,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(final Object key, final int kind, final EObject elt,
-			final ResourceSet allResource) {
-		this.setInitializing(true);
-		if ((this.editingPart != null) && (key == this.partKey)) {
-			this.editingPart.setContext(elt, allResource);
-
-			final Category category = (Category) elt;
-			final CategoryPropertiesEditionPart categoryPart = (CategoryPropertiesEditionPart) this.editingPart;
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
+			
+			final Category category = (Category)elt;
+			final CategoryPropertiesEditionPart categoryPart = (CategoryPropertiesEditionPart)editingPart;
 			// init values
-			if (this.isAccessible(SoaViewsRepository.Category.Properties.name)) {
-				categoryPart.setName(EEFConverterUtil.convertToString(
-						EcorePackage.Literals.ESTRING, category.getName()));
-			}
-
-			if (this.isAccessible(SoaViewsRepository.Category.Properties.description)) {
-				categoryPart.setDescription(EcoreUtil.convertToString(
-						EcorePackage.Literals.ESTRING,
-						category.getDescription()));
-				// init filters
-			}
-
+			if (isAccessible(SoaViewsRepository.Category.Properties.name))
+				categoryPart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, category.getName()));
+			
+			if (isAccessible(SoaViewsRepository.Category.Properties.description))
+				categoryPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, category.getDescription()));
+			// init filters
+			
+			
 			// init values for referenced views
-
+			
 			// init filters for referenced views
-
+			
 		}
-		this.setInitializing(false);
+		setInitializing(false);
 	}
+
+
+
+
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	@Override
-	public EStructuralFeature associatedFeature(final Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == SoaViewsRepository.Category.Properties.name) {
 			return SoaPackage.eINSTANCE.getCategory_Name();
 		}
@@ -112,62 +108,42 @@ public class CategoryCategoryPropertiesEditionComponent extends
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	@Override
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		final Category category = (Category) this.semanticObject;
-		if (SoaViewsRepository.Category.Properties.name == event
-				.getAffectedEditor()) {
-			category.setName((java.lang.String) EEFConverterUtil
-					.createFromString(EcorePackage.Literals.ESTRING,
-							(String) event.getNewValue()));
+		Category category = (Category)semanticObject;
+		if (SoaViewsRepository.Category.Properties.name == event.getAffectedEditor()) {
+			category.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (SoaViewsRepository.Category.Properties.description == event
-				.getAffectedEditor()) {
-			category.setDescription((java.lang.String) EEFConverterUtil
-					.createFromString(EcorePackage.Literals.ESTRING,
-							(String) event.getNewValue()));
+		if (SoaViewsRepository.Category.Properties.description == event.getAffectedEditor()) {
+			category.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
-	@Override
-	public void updatePart(final Notification msg) {
+	public void updatePart(Notification msg) {
 		super.updatePart(msg);
-		if (this.editingPart.isVisible()) {
-			final CategoryPropertiesEditionPart categoryPart = (CategoryPropertiesEditionPart) this.editingPart;
-			if (SoaPackage.eINSTANCE.getCategory_Name()
-					.equals(msg.getFeature())
-					&& msg.getNotifier().equals(this.semanticObject)
-					&& (categoryPart != null)
-					&& this.isAccessible(SoaViewsRepository.Category.Properties.name)) {
+		if (editingPart.isVisible()) {
+			CategoryPropertiesEditionPart categoryPart = (CategoryPropertiesEditionPart)editingPart;
+			if (SoaPackage.eINSTANCE.getCategory_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && categoryPart != null && isAccessible(SoaViewsRepository.Category.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					categoryPart.setName(EcoreUtil.convertToString(
-							EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					categoryPart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					categoryPart.setName("");
 				}
 			}
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()
-					.equals(msg.getFeature())
-					&& msg.getNotifier().equals(this.semanticObject)
-					&& (categoryPart != null)
-					&& this.isAccessible(SoaViewsRepository.Category.Properties.description)) {
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && categoryPart != null && isAccessible(SoaViewsRepository.Category.Properties.description)){
 				if (msg.getNewValue() != null) {
-					categoryPart.setDescription(EcoreUtil.convertToString(
-							EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					categoryPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					categoryPart.setDescription("");
 				}
 			}
-
+			
 		}
 	}
 
@@ -178,21 +154,20 @@ public class CategoryCategoryPropertiesEditionComponent extends
 	 */
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
-		final NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-				SoaPackage.eINSTANCE.getCategory_Name(),
-				EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description());
-		return new NotificationFilter[] { filter, };
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			SoaPackage.eINSTANCE.getCategory_Name(),
+			EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()		);
+		return new NotificationFilter[] {filter,};
 	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object,
-	 *      int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
-	@Override
-	public boolean isRequired(final Object key, final int kind) {
+	public boolean isRequired(Object key, int kind) {
 		return key == SoaViewsRepository.Category.Properties.name;
 	}
 
@@ -202,44 +177,36 @@ public class CategoryCategoryPropertiesEditionComponent extends
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(final IPropertiesEditionEvent event) {
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (SoaViewsRepository.Category.Properties.name == event
-						.getAffectedEditor()) {
+				if (SoaViewsRepository.Category.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil
-								.createFromString(
-										SoaPackage.eINSTANCE.getCategory_Name()
-												.getEAttributeType(),
-										(String) newValue);
+						newValue = EEFConverterUtil.createFromString(SoaPackage.eINSTANCE.getCategory_Name().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(SoaPackage.eINSTANCE
-							.getCategory_Name().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(SoaPackage.eINSTANCE.getCategory_Name().getEAttributeType(), newValue);
 				}
-				if (SoaViewsRepository.Category.Properties.description == event
-						.getAffectedEditor()) {
+				if (SoaViewsRepository.Category.Properties.description == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil
-								.createFromString(EnvironmentPackage.eINSTANCE
-										.getObeoDSMObject_Description()
-										.getEAttributeType(), (String) newValue);
+						newValue = EEFConverterUtil.createFromString(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(
-							EnvironmentPackage.eINSTANCE
-									.getObeoDSMObject_Description()
-									.getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), newValue);
 				}
-			} catch (final IllegalArgumentException iae) {
+			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (final WrappedException we) {
+			} catch (WrappedException we) {
 				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
 	}
+
+
+	
+
+	
 
 }
