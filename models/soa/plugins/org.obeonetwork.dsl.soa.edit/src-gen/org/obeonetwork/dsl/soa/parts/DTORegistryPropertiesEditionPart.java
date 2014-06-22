@@ -12,16 +12,14 @@ package org.obeonetwork.dsl.soa.parts;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
 // End of user code
 
 /**
- * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
+ * @author <a href="mailto:jerome.benois@obeo.fr>JÃ©rÃ´me Benois</a>
  * 
  */
 public interface DTORegistryPropertiesEditionPart {
@@ -95,7 +93,7 @@ public interface DTORegistryPropertiesEditionPart {
 	 */
 	public String getTitle();
 
-	// Start of user code 
+	// Start of user code for additional methods
 	
 	// End of user code
 

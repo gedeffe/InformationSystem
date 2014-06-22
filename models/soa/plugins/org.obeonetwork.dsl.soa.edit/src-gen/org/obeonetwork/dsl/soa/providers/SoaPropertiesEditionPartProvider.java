@@ -11,13 +11,9 @@
 package org.obeonetwork.dsl.soa.providers;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-
 import org.obeonetwork.dsl.soa.parts.SoaViewsRepository;
-
 import org.obeonetwork.dsl.soa.parts.forms.BindingPropertiesEditionPartForm;
 import org.obeonetwork.dsl.soa.parts.forms.CategoryPropertiesEditionPartForm;
 import org.obeonetwork.dsl.soa.parts.forms.ComponentPropertiesEditionPartForm;
@@ -29,7 +25,6 @@ import org.obeonetwork.dsl.soa.parts.forms.ServiceDTOPropertiesEditionPartForm;
 import org.obeonetwork.dsl.soa.parts.forms.ServicePropertiesEditionPartForm;
 import org.obeonetwork.dsl.soa.parts.forms.SystemPropertiesEditionPartForm;
 import org.obeonetwork.dsl.soa.parts.forms.WirePropertiesEditionPartForm;
-
 import org.obeonetwork.dsl.soa.parts.impl.BindingPropertiesEditionPartImpl;
 import org.obeonetwork.dsl.soa.parts.impl.CategoryPropertiesEditionPartImpl;
 import org.obeonetwork.dsl.soa.parts.impl.ComponentPropertiesEditionPartImpl;
@@ -43,7 +38,7 @@ import org.obeonetwork.dsl.soa.parts.impl.SystemPropertiesEditionPartImpl;
 import org.obeonetwork.dsl.soa.parts.impl.WirePropertiesEditionPartImpl;
 
 /**
- * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
+ * @author <a href="mailto:jerome.benois@obeo.fr>JÃ©rÃ´me Benois</a>
  * 
  */
 public class SoaPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {

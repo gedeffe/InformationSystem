@@ -12,59 +12,40 @@ package org.obeonetwork.dsl.soa.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
-
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
-
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
-
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.swt.SWT;
-
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
-
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-
 import org.obeonetwork.dsl.soa.parts.SoaViewsRepository;
 import org.obeonetwork.dsl.soa.parts.WirePropertiesEditionPart;
-
 import org.obeonetwork.dsl.soa.providers.SoaMessages;
 
 // End of user code
 
 /**
- * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
+ * @author <a href="mailto:jerome.benois@obeo.fr>JÃ©rÃ´me Benois</a>
  * 
  */
 public class WirePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, WirePropertiesEditionPart {
@@ -169,7 +150,11 @@ public class WirePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 			public EObject handleCreate() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(WirePropertiesEditionPartImpl.this, SoaViewsRepository.Wire.Properties.source, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null)); 
-				return null;
+				return getSource();
+			}
+
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(WirePropertiesEditionPartImpl.this, SoaViewsRepository.Wire.Properties.source, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element)); 
 			}
 		};
 		//create widget
@@ -179,6 +164,9 @@ public class WirePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		source.setLayoutData(sourceData);
 		source.setID(SoaViewsRepository.Wire.Properties.source);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(SoaViewsRepository.Wire.Properties.source, SoaViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSourceAdvancedFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -197,7 +185,11 @@ public class WirePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 			public EObject handleCreate() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(WirePropertiesEditionPartImpl.this, SoaViewsRepository.Wire.Properties.dest, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null)); 
-				return null;
+				return getDest();
+			}
+
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(WirePropertiesEditionPartImpl.this, SoaViewsRepository.Wire.Properties.dest, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element)); 
 			}
 		};
 		//create widget
@@ -207,6 +199,9 @@ public class WirePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		dest.setLayoutData(destData);
 		dest.setID(SoaViewsRepository.Wire.Properties.dest);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(SoaViewsRepository.Wire.Properties.dest, SoaViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDestAdvancedFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -216,7 +211,7 @@ public class WirePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		GridData descriptionLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		descriptionLabelData.horizontalSpan = 3;
 		descriptionLabel.setLayoutData(descriptionLabelData);
-		description = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+		description = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
 		descriptionData.horizontalSpan = 2;
 		descriptionData.heightHint = 80;
@@ -239,6 +234,9 @@ public class WirePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		EditingUtils.setID(description, SoaViewsRepository.Wire.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(SoaViewsRepository.Wire.Properties.description, SoaViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -250,7 +248,7 @@ public class WirePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code 
+		// Start of user code for tab synchronization
 		
 		// End of user code
 	}
@@ -275,6 +273,14 @@ public class WirePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		if (current != null) {
 			source.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(SoaViewsRepository.Wire.Properties.source);
+		if (eefElementEditorReadOnlyState && source.isEnabled()) {
+			source.setEnabled(false);
+			source.setToolTipText(SoaMessages.Wire_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !source.isEnabled()) {
+			source.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -289,6 +295,14 @@ public class WirePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		} else {
 			source.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(SoaViewsRepository.Wire.Properties.source);
+		if (eefElementEditorReadOnlyState && source.isEnabled()) {
+			source.setEnabled(false);
+			source.setToolTipText(SoaMessages.Wire_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !source.isEnabled()) {
+			source.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -340,6 +354,14 @@ public class WirePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		if (current != null) {
 			dest.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(SoaViewsRepository.Wire.Properties.dest);
+		if (eefElementEditorReadOnlyState && dest.isEnabled()) {
+			dest.setEnabled(false);
+			dest.setToolTipText(SoaMessages.Wire_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !dest.isEnabled()) {
+			dest.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -354,6 +376,14 @@ public class WirePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		} else {
 			dest.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(SoaViewsRepository.Wire.Properties.dest);
+		if (eefElementEditorReadOnlyState && dest.isEnabled()) {
+			dest.setEnabled(false);
+			dest.setToolTipText(SoaMessages.Wire_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !dest.isEnabled()) {
+			dest.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -407,6 +437,15 @@ public class WirePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		} else {
 			description.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(SoaViewsRepository.Wire.Properties.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setBackground(description.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			description.setToolTipText(SoaMessages.Wire_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+			description.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -424,7 +463,7 @@ public class WirePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		return SoaMessages.Wire_Part_Title;
 	}
 
-	// Start of user code 
+	// Start of user code additional methods
 	
 	// End of user code
 

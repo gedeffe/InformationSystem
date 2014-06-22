@@ -17,7 +17,7 @@ package org.obeonetwork.dsl.soa.parts;
 // End of user code
 
 /**
- * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
+ * @author <a href="mailto:jerome.benois@obeo.fr>JÃ©rÃ´me Benois</a>
  * 
  */
 public interface ComponentPropertiesEditionPart {
@@ -61,7 +61,7 @@ public interface ComponentPropertiesEditionPart {
 	 */
 	public String getTitle();
 
-	// Start of user code 
+	// Start of user code for additional methods
 	
 	// End of user code
 

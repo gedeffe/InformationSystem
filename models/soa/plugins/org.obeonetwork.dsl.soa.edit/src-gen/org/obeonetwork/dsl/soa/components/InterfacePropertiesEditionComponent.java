@@ -13,32 +13,21 @@ package org.obeonetwork.dsl.soa.components;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
 import org.obeonetwork.dsl.environment.components.MetadataCptPropertiesEditionComponent;
-
 import org.obeonetwork.dsl.environment.parts.EnvironmentViewsRepository;
-
 import org.obeonetwork.dsl.soa.Interface;
-
-import org.obeonetwork.dsl.soa.components.InterfaceInterface_PropertiesEditionComponent;
-
 import org.obeonetwork.dsl.soa.parts.Interface_PropertiesEditionPart;
 import org.obeonetwork.dsl.soa.parts.SoaViewsRepository;
 
 // End of user code
 
 /**
- * @author <a href="mailto:jerome.benois@obeo.fr>Jérôme Benois</a>
+ * @author <a href="mailto:jerome.benois@obeo.fr>JÃ©rÃ´me Benois</a>
  * 
  */
 public class InterfacePropertiesEditionComponent extends ComposedPropertiesEditionComponent {
