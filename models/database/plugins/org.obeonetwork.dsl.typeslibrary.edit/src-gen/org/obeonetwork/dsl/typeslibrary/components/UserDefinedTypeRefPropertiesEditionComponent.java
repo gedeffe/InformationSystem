@@ -11,7 +11,9 @@ import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -29,90 +31,99 @@ import org.obeonetwork.dsl.typeslibrary.UserDefinedTypeRef;
 import org.obeonetwork.dsl.typeslibrary.parts.TypeslibraryViewsRepository;
 import org.obeonetwork.dsl.typeslibrary.parts.UserDefinedTypeRefPropertiesEditionPart;
 
-
 // End of user code
 
 /**
  * 
  * 
  */
-public class UserDefinedTypeRefPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class UserDefinedTypeRefPropertiesEditionComponent extends
+		SinglePartPropertiesEditingComponent {
 
-	
 	public static String USERDEFINEDTYPEREF_PART = "UserDefinedTypeRef"; //$NON-NLS-1$
 
-	
 	/**
 	 * Settings for type EObjectFlatComboViewer
 	 */
 	private EObjectFlatComboSettings typeSettings;
-	
-	
+
 	/**
 	 * Default constructor
 	 * 
 	 */
-	public UserDefinedTypeRefPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject userDefinedTypeRef, String editing_mode) {
+	public UserDefinedTypeRefPropertiesEditionComponent(
+			final PropertiesEditingContext editingContext,
+			final EObject userDefinedTypeRef, final String editing_mode) {
 		super(editingContext, userDefinedTypeRef, editing_mode);
-		parts = new String[] { USERDEFINEDTYPEREF_PART };
-		repositoryKey = TypeslibraryViewsRepository.class;
-		partKey = TypeslibraryViewsRepository.UserDefinedTypeRef.class;
+		this.parts = new String[] { USERDEFINEDTYPEREF_PART };
+		this.repositoryKey = TypeslibraryViewsRepository.class;
+		this.partKey = TypeslibraryViewsRepository.UserDefinedTypeRef.class;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
+	 *      int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			final UserDefinedTypeRef userDefinedTypeRef = (UserDefinedTypeRef)elt;
-			final UserDefinedTypeRefPropertiesEditionPart userDefinedTypeRefPart = (UserDefinedTypeRefPropertiesEditionPart)editingPart;
+	@Override
+	public void initPart(final Object key, final int kind, final EObject elt,
+			final ResourceSet allResource) {
+		this.setInitializing(true);
+		if ((this.editingPart != null) && (key == this.partKey)) {
+			this.editingPart.setContext(elt, allResource);
+
+			final UserDefinedTypeRef userDefinedTypeRef = (UserDefinedTypeRef) elt;
+			final UserDefinedTypeRefPropertiesEditionPart userDefinedTypeRefPart = (UserDefinedTypeRefPropertiesEditionPart) this.editingPart;
 			// init values
-			if (isAccessible(TypeslibraryViewsRepository.UserDefinedTypeRef.Properties.type)) {
+			if (this.isAccessible(TypeslibraryViewsRepository.UserDefinedTypeRef.Properties.type)) {
 				// init part
-				typeSettings = new EObjectFlatComboSettings(userDefinedTypeRef, TypesLibraryPackage.eINSTANCE.getUserDefinedTypeRef_Type());
-				userDefinedTypeRefPart.initType(typeSettings);
+				this.typeSettings = new EObjectFlatComboSettings(
+						userDefinedTypeRef,
+						TypesLibraryPackage.eINSTANCE
+								.getUserDefinedTypeRef_Type());
+				userDefinedTypeRefPart.initType(this.typeSettings);
 				// set the button mode
-				userDefinedTypeRefPart.setTypeButtonMode(ButtonsModeEnum.BROWSE);
+				userDefinedTypeRefPart
+						.setTypeButtonMode(ButtonsModeEnum.BROWSE);
 			}
 			// init filters
-			if (isAccessible(TypeslibraryViewsRepository.UserDefinedTypeRef.Properties.type)) {
+			if (this.isAccessible(TypeslibraryViewsRepository.UserDefinedTypeRef.Properties.type)) {
 				userDefinedTypeRefPart.addFilterToType(new ViewerFilter() {
-				
+
 					/**
 					 * {@inheritDoc}
 					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
+					 *      java.lang.Object, java.lang.Object)
 					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
+					@Override
+					public boolean select(final Viewer viewer,
+							final Object parentElement, final Object element) {
 						return (element instanceof UserDefinedType);
 					}
-					
+
 				});
 				// Start of user code for additional businessfilters for type
 				// End of user code
 			}
 			// init values for referenced views
-			
+
 			// init filters for referenced views
-			
+
 		}
-		setInitializing(false);
+		this.setInitializing(false);
 	}
-
-
-
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	public EStructuralFeature associatedFeature(Object editorKey) {
+	@Override
+	public EStructuralFeature associatedFeature(final Object editorKey) {
 		if (editorKey == TypeslibraryViewsRepository.UserDefinedTypeRef.Properties.type) {
 			return TypesLibraryPackage.eINSTANCE.getUserDefinedTypeRef_Type();
 		}
@@ -121,19 +132,27 @@ public class UserDefinedTypeRefPropertiesEditionComponent extends SinglePartProp
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
+	@Override
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		UserDefinedTypeRef userDefinedTypeRef = (UserDefinedTypeRef)semanticObject;
-		if (TypeslibraryViewsRepository.UserDefinedTypeRef.Properties.type == event.getAffectedEditor()) {
+		final UserDefinedTypeRef userDefinedTypeRef = (UserDefinedTypeRef) this.semanticObject;
+		if (TypeslibraryViewsRepository.UserDefinedTypeRef.Properties.type == event
+				.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
-				typeSettings.setToReference((UserDefinedType)event.getNewValue());
+				this.typeSettings.setToReference(event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, typeSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				final EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(
+						this.editingContext, this, this.typeSettings,
+						this.editingContext.getAdapterFactory());
+				final PropertiesEditingProvider provider = (PropertiesEditingProvider) this.editingContext
+						.getAdapterFactory().adapt(this.semanticObject,
+								PropertiesEditingProvider.class);
 				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					final PropertiesEditingPolicy policy = provider
+							.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
 					}
@@ -144,25 +163,45 @@ public class UserDefinedTypeRefPropertiesEditionComponent extends SinglePartProp
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
-	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {
-			UserDefinedTypeRefPropertiesEditionPart userDefinedTypeRefPart = (UserDefinedTypeRefPropertiesEditionPart)editingPart;
-			if (TypesLibraryPackage.eINSTANCE.getUserDefinedTypeRef_Type().equals(msg.getFeature()) && userDefinedTypeRefPart != null && isAccessible(TypeslibraryViewsRepository.UserDefinedTypeRef.Properties.type))
-				userDefinedTypeRefPart.setType((EObject)msg.getNewValue());
-			
+	@Override
+	public void updatePart(final Notification msg) {
+		super.updatePart(msg);
+		if (this.editingPart.isVisible()) {
+			final UserDefinedTypeRefPropertiesEditionPart userDefinedTypeRefPart = (UserDefinedTypeRefPropertiesEditionPart) this.editingPart;
+			if (TypesLibraryPackage.eINSTANCE.getUserDefinedTypeRef_Type()
+					.equals(msg.getFeature())
+					&& (userDefinedTypeRefPart != null)
+					&& this.isAccessible(TypeslibraryViewsRepository.UserDefinedTypeRef.Properties.type)) {
+				userDefinedTypeRefPart.setType((EObject) msg.getNewValue());
+			}
+
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		final NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+				TypesLibraryPackage.eINSTANCE.getUserDefinedTypeRef_Type());
+		return new NotificationFilter[] { filter, };
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object,
+	 *      int)
 	 * 
 	 */
-	public boolean isRequired(Object key, int kind) {
+	@Override
+	public boolean isRequired(final Object key, final int kind) {
 		return key == TypeslibraryViewsRepository.UserDefinedTypeRef.Properties.type;
 	}
 
@@ -172,13 +211,14 @@ public class UserDefinedTypeRefPropertiesEditionComponent extends SinglePartProp
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+	@Override
+	public Diagnostic validateValue(final IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-			} catch (IllegalArgumentException iae) {
+			} catch (final IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
+			} catch (final WrappedException we) {
 				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}

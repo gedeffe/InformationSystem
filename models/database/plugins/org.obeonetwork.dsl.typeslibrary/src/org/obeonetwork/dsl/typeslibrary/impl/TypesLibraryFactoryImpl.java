@@ -43,7 +43,7 @@ public class TypesLibraryFactoryImpl extends EFactoryImpl implements TypesLibrar
 	 */
 	public static TypesLibraryFactory init() {
 		try {
-			TypesLibraryFactory theTypesLibraryFactory = (TypesLibraryFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.obeonetwork.org/dsl/typeslibrary/1.0"); 
+			TypesLibraryFactory theTypesLibraryFactory = (TypesLibraryFactory)EPackage.Registry.INSTANCE.getEFactory(TypesLibraryPackage.eNS_URI);
 			if (theTypesLibraryFactory != null) {
 				return theTypesLibraryFactory;
 			}
@@ -72,13 +72,13 @@ public class TypesLibraryFactoryImpl extends EFactoryImpl implements TypesLibrar
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case TypesLibraryPackage.NATIVE_TYPES_LIBRARY: return (EObject)createNativeTypesLibrary();
-			case TypesLibraryPackage.TYPE_INSTANCE: return (EObject)createTypeInstance();
-			case TypesLibraryPackage.NATIVE_TYPE: return (EObject)createNativeType();
-			case TypesLibraryPackage.COMPLEX_NAMED_TYPE: return (EObject)createComplexNamedType();
-			case TypesLibraryPackage.SIMPLE_NAMED_TYPE: return (EObject)createSimpleNamedType();
-			case TypesLibraryPackage.USER_DEFINED_TYPE_REF: return (EObject)createUserDefinedTypeRef();
-			case TypesLibraryPackage.USER_DEFINED_TYPES_LIBRARY: return (EObject)createUserDefinedTypesLibrary();
+			case TypesLibraryPackage.NATIVE_TYPES_LIBRARY: return createNativeTypesLibrary();
+			case TypesLibraryPackage.TYPE_INSTANCE: return createTypeInstance();
+			case TypesLibraryPackage.NATIVE_TYPE: return createNativeType();
+			case TypesLibraryPackage.COMPLEX_NAMED_TYPE: return createComplexNamedType();
+			case TypesLibraryPackage.SIMPLE_NAMED_TYPE: return createSimpleNamedType();
+			case TypesLibraryPackage.USER_DEFINED_TYPE_REF: return createUserDefinedTypeRef();
+			case TypesLibraryPackage.USER_DEFINED_TYPES_LIBRARY: return createUserDefinedTypesLibrary();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

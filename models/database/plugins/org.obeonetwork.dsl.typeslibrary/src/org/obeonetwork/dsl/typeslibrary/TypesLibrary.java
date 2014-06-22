@@ -27,10 +27,9 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.obeonetwork.dsl.typeslibrary.TypesLibraryPackage#getTypesLibrary()
  * @model interface="true" abstract="true"
- * @extends CDOObject
  * @generated
  */
-public interface TypesLibrary extends CDOObject {
+public interface TypesLibrary extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

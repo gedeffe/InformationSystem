@@ -42,7 +42,7 @@ import org.obeonetwork.dsl.typeslibrary.TypesLibraryPackage;
  *
  * @generated
  */
-public class NativeTypesLibraryImpl extends CDOObjectImpl implements NativeTypesLibrary {
+public class NativeTypesLibraryImpl extends EObjectImpl implements NativeTypesLibrary {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60,6 +60,16 @@ public class NativeTypesLibraryImpl extends CDOObjectImpl implements NativeTypes
 	 */
 	protected static final TypesLibraryKind KIND_EDEFAULT = TypesLibraryKind.LOGICAL_TYPES;
 	/**
+	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected TypesLibraryKind kind = KIND_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -68,6 +78,26 @@ public class NativeTypesLibraryImpl extends CDOObjectImpl implements NativeTypes
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getNativeTypes() <em>Native Types</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNativeTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<NativeType> nativeTypes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,18 +123,8 @@ public class NativeTypesLibraryImpl extends CDOObjectImpl implements NativeTypes
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public TypesLibraryKind getKind() {
-		return (TypesLibraryKind)eDynamicGet(TypesLibraryPackage.NATIVE_TYPES_LIBRARY__KIND, TypesLibraryPackage.Literals.TYPES_LIBRARY__KIND, true, true);
+		return kind;
 	}
 
 	/**
@@ -113,7 +133,10 @@ public class NativeTypesLibraryImpl extends CDOObjectImpl implements NativeTypes
 	 * @generated
 	 */
 	public void setKind(TypesLibraryKind newKind) {
-		eDynamicSet(TypesLibraryPackage.NATIVE_TYPES_LIBRARY__KIND, TypesLibraryPackage.Literals.TYPES_LIBRARY__KIND, newKind);
+		TypesLibraryKind oldKind = kind;
+		kind = newKind == null ? KIND_EDEFAULT : newKind;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesLibraryPackage.NATIVE_TYPES_LIBRARY__KIND, oldKind, kind));
 	}
 
 	/**
@@ -122,7 +145,7 @@ public class NativeTypesLibraryImpl extends CDOObjectImpl implements NativeTypes
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eDynamicGet(TypesLibraryPackage.NATIVE_TYPES_LIBRARY__NAME, TypesLibraryPackage.Literals.NATIVE_TYPES_LIBRARY__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -131,7 +154,10 @@ public class NativeTypesLibraryImpl extends CDOObjectImpl implements NativeTypes
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(TypesLibraryPackage.NATIVE_TYPES_LIBRARY__NAME, TypesLibraryPackage.Literals.NATIVE_TYPES_LIBRARY__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesLibraryPackage.NATIVE_TYPES_LIBRARY__NAME, oldName, name));
 	}
 
 	/**
@@ -141,7 +167,10 @@ public class NativeTypesLibraryImpl extends CDOObjectImpl implements NativeTypes
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<NativeType> getNativeTypes() {
-		return (EList<NativeType>)eDynamicGet(TypesLibraryPackage.NATIVE_TYPES_LIBRARY__NATIVE_TYPES, TypesLibraryPackage.Literals.NATIVE_TYPES_LIBRARY__NATIVE_TYPES, true, true);
+		if (nativeTypes == null) {
+			nativeTypes = new EObjectContainmentEList<NativeType>(NativeType.class, this, TypesLibraryPackage.NATIVE_TYPES_LIBRARY__NATIVE_TYPES);
+		}
+		return nativeTypes;
 	}
 
 	/**
@@ -243,13 +272,31 @@ public class NativeTypesLibraryImpl extends CDOObjectImpl implements NativeTypes
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case TypesLibraryPackage.NATIVE_TYPES_LIBRARY__KIND:
-				return getKind() != KIND_EDEFAULT;
+				return kind != KIND_EDEFAULT;
 			case TypesLibraryPackage.NATIVE_TYPES_LIBRARY__NAME:
-				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case TypesLibraryPackage.NATIVE_TYPES_LIBRARY__NATIVE_TYPES:
-				return !getNativeTypes().isEmpty();
+				return nativeTypes != null && !nativeTypes.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (kind: ");
+		result.append(kind);
+		result.append(", name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //NativeTypesLibraryImpl

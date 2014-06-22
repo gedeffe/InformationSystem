@@ -38,13 +38,23 @@ import org.obeonetwork.dsl.typeslibrary.TypesLibraryUser;
  *
  * @generated
  */
-public abstract class TypesLibraryUserImpl extends CDOObjectImpl implements TypesLibraryUser {
+public abstract class TypesLibraryUserImpl extends EObjectImpl implements TypesLibraryUser {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2011 Obeo.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Obeo - initial API and implementation";
+
+	/**
+	 * The cached value of the '{@link #getUsedLibraries() <em>Used Libraries</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUsedLibraries()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TypesLibrary> usedLibraries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -70,19 +80,12 @@ public abstract class TypesLibraryUserImpl extends CDOObjectImpl implements Type
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	public EList<TypesLibrary> getUsedLibraries() {
-		return (EList<TypesLibrary>)eDynamicGet(TypesLibraryPackage.TYPES_LIBRARY_USER__USED_LIBRARIES, TypesLibraryPackage.Literals.TYPES_LIBRARY_USER__USED_LIBRARIES, true, true);
+		if (usedLibraries == null) {
+			usedLibraries = new EObjectResolvingEList<TypesLibrary>(TypesLibrary.class, this, TypesLibraryPackage.TYPES_LIBRARY_USER__USED_LIBRARIES);
+		}
+		return usedLibraries;
 	}
 
 	/**
@@ -140,7 +143,7 @@ public abstract class TypesLibraryUserImpl extends CDOObjectImpl implements Type
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case TypesLibraryPackage.TYPES_LIBRARY_USER__USED_LIBRARIES:
-				return !getUsedLibraries().isEmpty();
+				return usedLibraries != null && !usedLibraries.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

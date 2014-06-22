@@ -27,7 +27,7 @@ import org.obeonetwork.dsl.typeslibrary.TypesLibraryPackage;
  *
  * @generated
  */
-public abstract class TypeImpl extends CDOObjectImpl implements Type {
+public abstract class TypeImpl extends EObjectImpl implements Type {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -52,16 +52,6 @@ public abstract class TypeImpl extends CDOObjectImpl implements Type {
 	@Override
 	protected EClass eStaticClass() {
 		return TypesLibraryPackage.Literals.TYPE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
 	}
 
 } //TypeImpl

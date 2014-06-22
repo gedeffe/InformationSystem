@@ -14,7 +14,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
@@ -33,91 +35,102 @@ import org.obeonetwork.dsl.typeslibrary.UserDefinedType;
 import org.obeonetwork.dsl.typeslibrary.parts.ComplexNamedTypePropertiesEditionPart;
 import org.obeonetwork.dsl.typeslibrary.parts.TypeslibraryViewsRepository;
 
-
 // End of user code
 
 /**
  * 
  * 
  */
-public class ComplexNamedTypePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class ComplexNamedTypePropertiesEditionComponent extends
+		SinglePartPropertiesEditingComponent {
 
-	
 	public static String COMPLEXNAMEDTYPE_PART = "ComplexNamedType"; //$NON-NLS-1$
 
-	
 	/**
 	 * Settings for types ReferencesTable
 	 */
 	protected ReferencesTableSettings typesSettings;
-	
-	
+
 	/**
 	 * Default constructor
 	 * 
 	 */
-	public ComplexNamedTypePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject complexNamedType, String editing_mode) {
+	public ComplexNamedTypePropertiesEditionComponent(
+			final PropertiesEditingContext editingContext,
+			final EObject complexNamedType, final String editing_mode) {
 		super(editingContext, complexNamedType, editing_mode);
-		parts = new String[] { COMPLEXNAMEDTYPE_PART };
-		repositoryKey = TypeslibraryViewsRepository.class;
-		partKey = TypeslibraryViewsRepository.ComplexNamedType.class;
+		this.parts = new String[] { COMPLEXNAMEDTYPE_PART };
+		this.repositoryKey = TypeslibraryViewsRepository.class;
+		this.partKey = TypeslibraryViewsRepository.ComplexNamedType.class;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
+	 *      int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			final ComplexNamedType complexNamedType = (ComplexNamedType)elt;
-			final ComplexNamedTypePropertiesEditionPart complexNamedTypePart = (ComplexNamedTypePropertiesEditionPart)editingPart;
+	@Override
+	public void initPart(final Object key, final int kind, final EObject elt,
+			final ResourceSet allResource) {
+		this.setInitializing(true);
+		if ((this.editingPart != null) && (key == this.partKey)) {
+			this.editingPart.setContext(elt, allResource);
+
+			final ComplexNamedType complexNamedType = (ComplexNamedType) elt;
+			final ComplexNamedTypePropertiesEditionPart complexNamedTypePart = (ComplexNamedTypePropertiesEditionPart) this.editingPart;
 			// init values
-			if (complexNamedType.getName() != null && isAccessible(TypeslibraryViewsRepository.ComplexNamedType.Properties.name))
-				complexNamedTypePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, complexNamedType.getName()));
-			
-			if (isAccessible(TypeslibraryViewsRepository.ComplexNamedType.Properties.types)) {
-				typesSettings = new ReferencesTableSettings(complexNamedType, TypesLibraryPackage.eINSTANCE.getComplexNamedType_Types());
-				complexNamedTypePart.initTypes(typesSettings);
+			if (this.isAccessible(TypeslibraryViewsRepository.ComplexNamedType.Properties.name)) {
+				complexNamedTypePart.setName(EEFConverterUtil.convertToString(
+						EcorePackage.Literals.ESTRING,
+						complexNamedType.getName()));
+			}
+
+			if (this.isAccessible(TypeslibraryViewsRepository.ComplexNamedType.Properties.types)) {
+				this.typesSettings = new ReferencesTableSettings(
+						complexNamedType,
+						TypesLibraryPackage.eINSTANCE
+								.getComplexNamedType_Types());
+				complexNamedTypePart.initTypes(this.typesSettings);
 			}
 			// init filters
-			
-			if (isAccessible(TypeslibraryViewsRepository.ComplexNamedType.Properties.types)) {
+
+			if (this.isAccessible(TypeslibraryViewsRepository.ComplexNamedType.Properties.types)) {
 				complexNamedTypePart.addFilterToTypes(new ViewerFilter() {
 					/**
 					 * {@inheritDoc}
 					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
+					 *      java.lang.Object, java.lang.Object)
 					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof UserDefinedType); //$NON-NLS-1$ 
+					@Override
+					public boolean select(final Viewer viewer,
+							final Object parentElement, final Object element) {
+						return ((element instanceof String) && element
+								.equals("")) || (element instanceof UserDefinedType); //$NON-NLS-1$ 
 					}
-			
+
 				});
 				// Start of user code for additional businessfilters for types
 				// End of user code
 			}
 			// init values for referenced views
-			
+
 			// init filters for referenced views
-			
+
 		}
-		setInitializing(false);
+		this.setInitializing(false);
 	}
-
-
-
-
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	public EStructuralFeature associatedFeature(Object editorKey) {
+	@Override
+	public EStructuralFeature associatedFeature(final Object editorKey) {
 		if (editorKey == TypeslibraryViewsRepository.ComplexNamedType.Properties.name) {
 			return TypesLibraryPackage.eINSTANCE.getUserDefinedType_Name();
 		}
@@ -129,61 +142,104 @@ public class ComplexNamedTypePropertiesEditionComponent extends SinglePartProper
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
+	@Override
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		ComplexNamedType complexNamedType = (ComplexNamedType)semanticObject;
-		if (TypeslibraryViewsRepository.ComplexNamedType.Properties.name == event.getAffectedEditor()) {
-			complexNamedType.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		final ComplexNamedType complexNamedType = (ComplexNamedType) this.semanticObject;
+		if (TypeslibraryViewsRepository.ComplexNamedType.Properties.name == event
+				.getAffectedEditor()) {
+			complexNamedType.setName((java.lang.String) EEFConverterUtil
+					.createFromString(EcorePackage.Literals.ESTRING,
+							(String) event.getNewValue()));
 		}
-		if (TypeslibraryViewsRepository.ComplexNamedType.Properties.types == event.getAffectedEditor()) {
+		if (TypeslibraryViewsRepository.ComplexNamedType.Properties.types == event
+				.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, typesSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				final EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(
+						this.editingContext, this, this.typesSettings,
+						this.editingContext.getAdapterFactory());
+				final PropertiesEditingProvider provider = (PropertiesEditingProvider) this.editingContext
+						.getAdapterFactory().adapt(this.semanticObject,
+								PropertiesEditingProvider.class);
 				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					final PropertiesEditingPolicy policy = provider
+							.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				final EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
+						this.editingContext, this,
+						(EObject) event.getNewValue(),
+						this.editingContext.getAdapterFactory());
+				final PropertiesEditingProvider provider = (PropertiesEditingProvider) this.editingContext
+						.getAdapterFactory().adapt(
+								(EObject) event.getNewValue(),
+								PropertiesEditingProvider.class);
 				if (provider != null) {
-					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					final PropertiesEditingPolicy editionPolicy = provider
+							.getPolicy(context);
 					if (editionPolicy != null) {
 						editionPolicy.execute();
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				typesSettings.removeFromReference((EObject) event.getNewValue());
+				this.typesSettings.removeFromReference((EObject) event
+						.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				typesSettings.move(event.getNewIndex(), (UserDefinedType) event.getNewValue());
+				this.typesSettings.move(event.getNewIndex(),
+						(UserDefinedType) event.getNewValue());
 			}
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
-	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {
-			ComplexNamedTypePropertiesEditionPart complexNamedTypePart = (ComplexNamedTypePropertiesEditionPart)editingPart;
-			if (TypesLibraryPackage.eINSTANCE.getUserDefinedType_Name().equals(msg.getFeature()) && complexNamedTypePart != null && isAccessible(TypeslibraryViewsRepository.ComplexNamedType.Properties.name)) {
+	@Override
+	public void updatePart(final Notification msg) {
+		super.updatePart(msg);
+		if (this.editingPart.isVisible()) {
+			final ComplexNamedTypePropertiesEditionPart complexNamedTypePart = (ComplexNamedTypePropertiesEditionPart) this.editingPart;
+			if (TypesLibraryPackage.eINSTANCE.getUserDefinedType_Name().equals(
+					msg.getFeature())
+					&& msg.getNotifier().equals(this.semanticObject)
+					&& (complexNamedTypePart != null)
+					&& this.isAccessible(TypeslibraryViewsRepository.ComplexNamedType.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					complexNamedTypePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					complexNamedTypePart.setName(EcoreUtil.convertToString(
+							EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					complexNamedTypePart.setName("");
 				}
 			}
-			if (TypesLibraryPackage.eINSTANCE.getComplexNamedType_Types().equals(msg.getFeature()) && isAccessible(TypeslibraryViewsRepository.ComplexNamedType.Properties.types))
+			if (TypesLibraryPackage.eINSTANCE.getComplexNamedType_Types()
+					.equals(msg.getFeature())
+					&& this.isAccessible(TypeslibraryViewsRepository.ComplexNamedType.Properties.types)) {
 				complexNamedTypePart.updateTypes();
-			
+			}
+
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		final NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+				TypesLibraryPackage.eINSTANCE.getUserDefinedType_Name(),
+				TypesLibraryPackage.eINSTANCE.getComplexNamedType_Types());
+		return new NotificationFilter[] { filter, };
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -191,20 +247,28 @@ public class ComplexNamedTypePropertiesEditionComponent extends SinglePartProper
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+	@Override
+	public Diagnostic validateValue(final IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (TypeslibraryViewsRepository.ComplexNamedType.Properties.name == event.getAffectedEditor()) {
+				if (TypeslibraryViewsRepository.ComplexNamedType.Properties.name == event
+						.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(TypesLibraryPackage.eINSTANCE.getUserDefinedType_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil
+								.createFromString(TypesLibraryPackage.eINSTANCE
+										.getUserDefinedType_Name()
+										.getEAttributeType(), (String) newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(TypesLibraryPackage.eINSTANCE.getUserDefinedType_Name().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(
+							TypesLibraryPackage.eINSTANCE
+									.getUserDefinedType_Name()
+									.getEAttributeType(), newValue);
 				}
-			} catch (IllegalArgumentException iae) {
+			} catch (final IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
+			} catch (final WrappedException we) {
 				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}

@@ -44,6 +44,16 @@ public class UserDefinedTypeRefImpl extends TypeImpl implements UserDefinedTypeR
 	public static final String copyright = "Copyright (c) 2011 Obeo.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Obeo - initial API and implementation";
 
 	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected UserDefinedType type;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -68,7 +78,15 @@ public class UserDefinedTypeRefImpl extends TypeImpl implements UserDefinedTypeR
 	 * @generated
 	 */
 	public UserDefinedType getType() {
-		return (UserDefinedType)eDynamicGet(TypesLibraryPackage.USER_DEFINED_TYPE_REF__TYPE, TypesLibraryPackage.Literals.USER_DEFINED_TYPE_REF__TYPE, true, true);
+		if (type != null && type.eIsProxy()) {
+			InternalEObject oldType = (InternalEObject)type;
+			type = (UserDefinedType)eResolveProxy(oldType);
+			if (type != oldType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TypesLibraryPackage.USER_DEFINED_TYPE_REF__TYPE, oldType, type));
+			}
+		}
+		return type;
 	}
 
 	/**
@@ -77,7 +95,7 @@ public class UserDefinedTypeRefImpl extends TypeImpl implements UserDefinedTypeR
 	 * @generated
 	 */
 	public UserDefinedType basicGetType() {
-		return (UserDefinedType)eDynamicGet(TypesLibraryPackage.USER_DEFINED_TYPE_REF__TYPE, TypesLibraryPackage.Literals.USER_DEFINED_TYPE_REF__TYPE, false, true);
+		return type;
 	}
 
 	/**
@@ -86,7 +104,10 @@ public class UserDefinedTypeRefImpl extends TypeImpl implements UserDefinedTypeR
 	 * @generated
 	 */
 	public void setType(UserDefinedType newType) {
-		eDynamicSet(TypesLibraryPackage.USER_DEFINED_TYPE_REF__TYPE, TypesLibraryPackage.Literals.USER_DEFINED_TYPE_REF__TYPE, newType);
+		UserDefinedType oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesLibraryPackage.USER_DEFINED_TYPE_REF__TYPE, oldType, type));
 	}
 
 	/**
@@ -143,7 +164,7 @@ public class UserDefinedTypeRefImpl extends TypeImpl implements UserDefinedTypeR
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case TypesLibraryPackage.USER_DEFINED_TYPE_REF__TYPE:
-				return basicGetType() != null;
+				return type != null;
 		}
 		return super.eIsSet(featureID);
 	}

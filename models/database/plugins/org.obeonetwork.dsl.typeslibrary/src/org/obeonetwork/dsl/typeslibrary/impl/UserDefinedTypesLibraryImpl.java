@@ -47,7 +47,7 @@ import org.obeonetwork.dsl.typeslibrary.UserDefinedTypesLibrary;
  *
  * @generated
  */
-public class UserDefinedTypesLibraryImpl extends CDOObjectImpl implements UserDefinedTypesLibrary {
+public class UserDefinedTypesLibraryImpl extends EObjectImpl implements UserDefinedTypesLibrary {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,6 +65,16 @@ public class UserDefinedTypesLibraryImpl extends CDOObjectImpl implements UserDe
 	 */
 	protected static final TypesLibraryKind KIND_EDEFAULT = TypesLibraryKind.LOGICAL_TYPES;
 	/**
+	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected TypesLibraryKind kind = KIND_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -73,6 +83,26 @@ public class UserDefinedTypesLibraryImpl extends CDOObjectImpl implements UserDe
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getUserDefinedTypes() <em>User Defined Types</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUserDefinedTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<UserDefinedType> userDefinedTypes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -98,18 +128,8 @@ public class UserDefinedTypesLibraryImpl extends CDOObjectImpl implements UserDe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public TypesLibraryKind getKind() {
-		return (TypesLibraryKind)eDynamicGet(TypesLibraryPackage.USER_DEFINED_TYPES_LIBRARY__KIND, TypesLibraryPackage.Literals.TYPES_LIBRARY__KIND, true, true);
+		return kind;
 	}
 
 	/**
@@ -118,7 +138,10 @@ public class UserDefinedTypesLibraryImpl extends CDOObjectImpl implements UserDe
 	 * @generated
 	 */
 	public void setKind(TypesLibraryKind newKind) {
-		eDynamicSet(TypesLibraryPackage.USER_DEFINED_TYPES_LIBRARY__KIND, TypesLibraryPackage.Literals.TYPES_LIBRARY__KIND, newKind);
+		TypesLibraryKind oldKind = kind;
+		kind = newKind == null ? KIND_EDEFAULT : newKind;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesLibraryPackage.USER_DEFINED_TYPES_LIBRARY__KIND, oldKind, kind));
 	}
 
 	/**
@@ -127,7 +150,7 @@ public class UserDefinedTypesLibraryImpl extends CDOObjectImpl implements UserDe
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eDynamicGet(TypesLibraryPackage.USER_DEFINED_TYPES_LIBRARY__NAME, TypesLibraryPackage.Literals.USER_DEFINED_TYPES_LIBRARY__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -136,7 +159,10 @@ public class UserDefinedTypesLibraryImpl extends CDOObjectImpl implements UserDe
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(TypesLibraryPackage.USER_DEFINED_TYPES_LIBRARY__NAME, TypesLibraryPackage.Literals.USER_DEFINED_TYPES_LIBRARY__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesLibraryPackage.USER_DEFINED_TYPES_LIBRARY__NAME, oldName, name));
 	}
 
 	/**
@@ -146,7 +172,10 @@ public class UserDefinedTypesLibraryImpl extends CDOObjectImpl implements UserDe
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<UserDefinedType> getUserDefinedTypes() {
-		return (EList<UserDefinedType>)eDynamicGet(TypesLibraryPackage.USER_DEFINED_TYPES_LIBRARY__USER_DEFINED_TYPES, TypesLibraryPackage.Literals.USER_DEFINED_TYPES_LIBRARY__USER_DEFINED_TYPES, true, true);
+		if (userDefinedTypes == null) {
+			userDefinedTypes = new EObjectContainmentEList<UserDefinedType>(UserDefinedType.class, this, TypesLibraryPackage.USER_DEFINED_TYPES_LIBRARY__USER_DEFINED_TYPES);
+		}
+		return userDefinedTypes;
 	}
 
 	/**
@@ -234,13 +263,31 @@ public class UserDefinedTypesLibraryImpl extends CDOObjectImpl implements UserDe
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case TypesLibraryPackage.USER_DEFINED_TYPES_LIBRARY__KIND:
-				return getKind() != KIND_EDEFAULT;
+				return kind != KIND_EDEFAULT;
 			case TypesLibraryPackage.USER_DEFINED_TYPES_LIBRARY__NAME:
-				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case TypesLibraryPackage.USER_DEFINED_TYPES_LIBRARY__USER_DEFINED_TYPES:
-				return !getUserDefinedTypes().isEmpty();
+				return userDefinedTypes != null && !userDefinedTypes.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (kind: ");
+		result.append(kind);
+		result.append(", name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //UserDefinedTypesLibraryImpl
