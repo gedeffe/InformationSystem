@@ -14,7 +14,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
@@ -33,95 +35,104 @@ import org.obeonetwork.dsl.database.Table;
 import org.obeonetwork.dsl.database.parts.DatabaseViewsRepository;
 import org.obeonetwork.dsl.database.parts.TablePropertiesEditionPart;
 
-
 // End of user code
 
 /**
  * 
  * 
  */
-public class TableTablePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class TableTablePropertiesEditionComponent extends
+		SinglePartPropertiesEditingComponent {
 
-	
 	public static String TABLE_PART = "Table"; //$NON-NLS-1$
 
-	
 	/**
 	 * Settings for columns ReferencesTable
 	 */
 	protected ReferencesTableSettings columnsSettings;
-	
-	
+
 	/**
 	 * Default constructor
 	 * 
 	 */
-	public TableTablePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject table, String editing_mode) {
+	public TableTablePropertiesEditionComponent(
+			final PropertiesEditingContext editingContext, final EObject table,
+			final String editing_mode) {
 		super(editingContext, table, editing_mode);
-		parts = new String[] { TABLE_PART };
-		repositoryKey = DatabaseViewsRepository.class;
-		partKey = DatabaseViewsRepository.Table.class;
+		this.parts = new String[] { TABLE_PART };
+		this.repositoryKey = DatabaseViewsRepository.class;
+		this.partKey = DatabaseViewsRepository.Table.class;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
+	 *      int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			final Table table = (Table)elt;
-			final TablePropertiesEditionPart tablePart = (TablePropertiesEditionPart)editingPart;
+	@Override
+	public void initPart(final Object key, final int kind, final EObject elt,
+			final ResourceSet allResource) {
+		this.setInitializing(true);
+		if ((this.editingPart != null) && (key == this.partKey)) {
+			this.editingPart.setContext(elt, allResource);
+
+			final Table table = (Table) elt;
+			final TablePropertiesEditionPart tablePart = (TablePropertiesEditionPart) this.editingPart;
 			// init values
-			if (table.getName() != null && isAccessible(DatabaseViewsRepository.Table.Properties.name))
-				tablePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, table.getName()));
-			
-			if (isAccessible(DatabaseViewsRepository.Table.Properties.columns)) {
-				columnsSettings = new ReferencesTableSettings(table, DatabasePackage.eINSTANCE.getAbstractTable_Columns());
-				tablePart.initColumns(columnsSettings);
+			if (this.isAccessible(DatabaseViewsRepository.Table.Properties.name)) {
+				tablePart.setName(EEFConverterUtil.convertToString(
+						EcorePackage.Literals.ESTRING, table.getName()));
 			}
-			if (table.getComments() != null && isAccessible(DatabaseViewsRepository.Table.Properties.comments))
-				tablePart.setComments(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, table.getComments()));
-			// init filters
-			
-			if (isAccessible(DatabaseViewsRepository.Table.Properties.columns)) {
+
+			if (this.isAccessible(DatabaseViewsRepository.Table.Properties.columns)) {
+				this.columnsSettings = new ReferencesTableSettings(table,
+						DatabasePackage.eINSTANCE.getAbstractTable_Columns());
+				tablePart.initColumns(this.columnsSettings);
+			}
+			if (this.isAccessible(DatabaseViewsRepository.Table.Properties.comments)) {
+				tablePart.setComments(EcoreUtil.convertToString(
+						EcorePackage.Literals.ESTRING, table.getComments()));
+				// init filters
+			}
+
+			if (this.isAccessible(DatabaseViewsRepository.Table.Properties.columns)) {
 				tablePart.addFilterToColumns(new ViewerFilter() {
 					/**
 					 * {@inheritDoc}
 					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
+					 *      java.lang.Object, java.lang.Object)
 					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Column); //$NON-NLS-1$ 
+					@Override
+					public boolean select(final Viewer viewer,
+							final Object parentElement, final Object element) {
+						return ((element instanceof String) && element
+								.equals("")) || (element instanceof Column); //$NON-NLS-1$ 
 					}
-			
+
 				});
 				// Start of user code for additional businessfilters for columns
 				// End of user code
 			}
-			
+
 			// init values for referenced views
-			
+
 			// init filters for referenced views
-			
+
 		}
-		setInitializing(false);
+		this.setInitializing(false);
 	}
-
-
-
-
-
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	public EStructuralFeature associatedFeature(Object editorKey) {
+	@Override
+	public EStructuralFeature associatedFeature(final Object editorKey) {
 		if (editorKey == DatabaseViewsRepository.Table.Properties.name) {
 			return DatabasePackage.eINSTANCE.getNamedElement_Name();
 		}
@@ -136,80 +147,134 @@ public class TableTablePropertiesEditionComponent extends SinglePartPropertiesEd
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
+	@Override
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		Table table = (Table)semanticObject;
-		if (DatabaseViewsRepository.Table.Properties.name == event.getAffectedEditor()) {
-			table.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		final Table table = (Table) this.semanticObject;
+		if (DatabaseViewsRepository.Table.Properties.name == event
+				.getAffectedEditor()) {
+			table.setName((java.lang.String) EEFConverterUtil.createFromString(
+					EcorePackage.Literals.ESTRING, (String) event.getNewValue()));
 		}
-		if (DatabaseViewsRepository.Table.Properties.columns == event.getAffectedEditor()) {
+		if (DatabaseViewsRepository.Table.Properties.columns == event
+				.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, columnsSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				final EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(
+						this.editingContext, this, this.columnsSettings,
+						this.editingContext.getAdapterFactory());
+				final PropertiesEditingProvider provider = (PropertiesEditingProvider) this.editingContext
+						.getAdapterFactory().adapt(this.semanticObject,
+								PropertiesEditingProvider.class);
 				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					final PropertiesEditingPolicy policy = provider
+							.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				final EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
+						this.editingContext, this,
+						(EObject) event.getNewValue(),
+						this.editingContext.getAdapterFactory());
+				final PropertiesEditingProvider provider = (PropertiesEditingProvider) this.editingContext
+						.getAdapterFactory().adapt(
+								(EObject) event.getNewValue(),
+								PropertiesEditingProvider.class);
 				if (provider != null) {
-					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					final PropertiesEditingPolicy editionPolicy = provider
+							.getPolicy(context);
 					if (editionPolicy != null) {
 						editionPolicy.execute();
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				columnsSettings.removeFromReference((EObject) event.getNewValue());
+				this.columnsSettings.removeFromReference((EObject) event
+						.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				columnsSettings.move(event.getNewIndex(), (Column) event.getNewValue());
+				this.columnsSettings.move(event.getNewIndex(),
+						(Column) event.getNewValue());
 			}
 		}
-		if (DatabaseViewsRepository.Table.Properties.comments == event.getAffectedEditor()) {
-			table.setComments((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		if (DatabaseViewsRepository.Table.Properties.comments == event
+				.getAffectedEditor()) {
+			table.setComments((java.lang.String) EEFConverterUtil
+					.createFromString(EcorePackage.Literals.ESTRING,
+							(String) event.getNewValue()));
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
-	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {
-			TablePropertiesEditionPart tablePart = (TablePropertiesEditionPart)editingPart;
-			if (DatabasePackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && tablePart != null && isAccessible(DatabaseViewsRepository.Table.Properties.name)) {
+	@Override
+	public void updatePart(final Notification msg) {
+		super.updatePart(msg);
+		if (this.editingPart.isVisible()) {
+			final TablePropertiesEditionPart tablePart = (TablePropertiesEditionPart) this.editingPart;
+			if (DatabasePackage.eINSTANCE.getNamedElement_Name().equals(
+					msg.getFeature())
+					&& msg.getNotifier().equals(this.semanticObject)
+					&& (tablePart != null)
+					&& this.isAccessible(DatabaseViewsRepository.Table.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					tablePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					tablePart.setName(EcoreUtil.convertToString(
+							EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					tablePart.setName("");
 				}
 			}
-			if (DatabasePackage.eINSTANCE.getAbstractTable_Columns().equals(msg.getFeature()) && isAccessible(DatabaseViewsRepository.Table.Properties.columns))
+			if (DatabasePackage.eINSTANCE.getAbstractTable_Columns().equals(
+					msg.getFeature())
+					&& this.isAccessible(DatabaseViewsRepository.Table.Properties.columns)) {
 				tablePart.updateColumns();
-			if (DatabasePackage.eINSTANCE.getDatabaseElement_Comments().equals(msg.getFeature()) && tablePart != null && isAccessible(DatabaseViewsRepository.Table.Properties.comments)){
+			}
+			if (DatabasePackage.eINSTANCE.getDatabaseElement_Comments().equals(
+					msg.getFeature())
+					&& msg.getNotifier().equals(this.semanticObject)
+					&& (tablePart != null)
+					&& this.isAccessible(DatabaseViewsRepository.Table.Properties.comments)) {
 				if (msg.getNewValue() != null) {
-					tablePart.setComments(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					tablePart.setComments(EcoreUtil.convertToString(
+							EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					tablePart.setComments("");
 				}
 			}
-			
+
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		final NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+				DatabasePackage.eINSTANCE.getNamedElement_Name(),
+				DatabasePackage.eINSTANCE.getAbstractTable_Columns(),
+				DatabasePackage.eINSTANCE.getDatabaseElement_Comments());
+		return new NotificationFilter[] { filter, };
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object,
+	 *      int)
 	 * 
 	 */
-	public boolean isRequired(Object key, int kind) {
-		return key == DatabaseViewsRepository.Table.Properties.name || key == DatabaseViewsRepository.PrimaryKey.Properties.name;
+	@Override
+	public boolean isRequired(final Object key, final int kind) {
+		return (key == DatabaseViewsRepository.Table.Properties.name)
+				|| (key == DatabaseViewsRepository.PrimaryKey.Properties.name);
 	}
 
 	/**
@@ -218,27 +283,41 @@ public class TableTablePropertiesEditionComponent extends SinglePartPropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+	@Override
+	public Diagnostic validateValue(final IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (DatabaseViewsRepository.Table.Properties.name == event.getAffectedEditor()) {
+				if (DatabaseViewsRepository.Table.Properties.name == event
+						.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(DatabasePackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil
+								.createFromString(DatabasePackage.eINSTANCE
+										.getNamedElement_Name()
+										.getEAttributeType(), (String) newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(DatabasePackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(
+							DatabasePackage.eINSTANCE.getNamedElement_Name()
+									.getEAttributeType(), newValue);
 				}
-				if (DatabaseViewsRepository.Table.Properties.comments == event.getAffectedEditor()) {
+				if (DatabaseViewsRepository.Table.Properties.comments == event
+						.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(DatabasePackage.eINSTANCE.getDatabaseElement_Comments().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil
+								.createFromString(DatabasePackage.eINSTANCE
+										.getDatabaseElement_Comments()
+										.getEAttributeType(), (String) newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(DatabasePackage.eINSTANCE.getDatabaseElement_Comments().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(
+							DatabasePackage.eINSTANCE
+									.getDatabaseElement_Comments()
+									.getEAttributeType(), newValue);
 				}
-			} catch (IllegalArgumentException iae) {
+			} catch (final IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
+			} catch (final WrappedException we) {
 				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
