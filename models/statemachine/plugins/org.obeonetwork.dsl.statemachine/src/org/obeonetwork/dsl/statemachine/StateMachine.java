@@ -38,7 +38,7 @@ public interface StateMachine extends StateMachineDescription, Behaviour {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Regions</em>' containment reference list.
 	 * @see org.obeonetwork.dsl.statemachine.StateMachinePackage#getStateMachine_Regions()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Region> getRegions();

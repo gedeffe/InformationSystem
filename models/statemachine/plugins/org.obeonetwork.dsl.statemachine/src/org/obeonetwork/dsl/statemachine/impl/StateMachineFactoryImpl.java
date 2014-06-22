@@ -31,7 +31,7 @@ public class StateMachineFactoryImpl extends EFactoryImpl implements StateMachin
 	 */
 	public static StateMachineFactory init() {
 		try {
-			StateMachineFactory theStateMachineFactory = (StateMachineFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.obeonetwork.org/dsl/statemachine/1.0.0"); 
+			StateMachineFactory theStateMachineFactory = (StateMachineFactory)EPackage.Registry.INSTANCE.getEFactory(StateMachinePackage.eNS_URI);
 			if (theStateMachineFactory != null) {
 				return theStateMachineFactory;
 			}
@@ -60,12 +60,12 @@ public class StateMachineFactoryImpl extends EFactoryImpl implements StateMachin
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case StateMachinePackage.STATE_MACHINE: return (EObject)createStateMachine();
-			case StateMachinePackage.STATE: return (EObject)createState();
-			case StateMachinePackage.REGION: return (EObject)createRegion();
-			case StateMachinePackage.TRANSITION: return (EObject)createTransition();
-			case StateMachinePackage.INITIAL_STATE: return (EObject)createInitialState();
-			case StateMachinePackage.FINAL_STATE: return (EObject)createFinalState();
+			case StateMachinePackage.STATE_MACHINE: return createStateMachine();
+			case StateMachinePackage.STATE: return createState();
+			case StateMachinePackage.REGION: return createRegion();
+			case StateMachinePackage.TRANSITION: return createTransition();
+			case StateMachinePackage.INITIAL_STATE: return createInitialState();
+			case StateMachinePackage.FINAL_STATE: return createFinalState();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

@@ -11,6 +11,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.obeonetwork.dsl.environment.impl.ObeoDSMObjectImpl;
 import org.obeonetwork.dsl.statemachine.AbstractState;
@@ -32,6 +33,25 @@ import org.obeonetwork.dsl.statemachine.Transition;
  * @generated
  */
 public abstract class AbstractStateImpl extends ObeoDSMObjectImpl implements AbstractState {
+	/**
+	 * The cached value of the '{@link #getIncomingTransitions() <em>Incoming Transitions</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIncomingTransitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Transition> incomingTransitions;
+	/**
+	 * The cached value of the '{@link #getOutcomingTransitions() <em>Outcoming Transitions</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutcomingTransitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Transition> outcomingTransitions;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,7 +78,10 @@ public abstract class AbstractStateImpl extends ObeoDSMObjectImpl implements Abs
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Transition> getIncomingTransitions() {
-		return (EList<Transition>)eDynamicGet(StateMachinePackage.ABSTRACT_STATE__INCOMING_TRANSITIONS, StateMachinePackage.Literals.ABSTRACT_STATE__INCOMING_TRANSITIONS, true, true);
+		if (incomingTransitions == null) {
+			incomingTransitions = new EObjectWithInverseResolvingEList<Transition>(Transition.class, this, StateMachinePackage.ABSTRACT_STATE__INCOMING_TRANSITIONS, StateMachinePackage.TRANSITION__TO);
+		}
+		return incomingTransitions;
 	}
 
 	/**
@@ -68,7 +91,10 @@ public abstract class AbstractStateImpl extends ObeoDSMObjectImpl implements Abs
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Transition> getOutcomingTransitions() {
-		return (EList<Transition>)eDynamicGet(StateMachinePackage.ABSTRACT_STATE__OUTCOMING_TRANSITIONS, StateMachinePackage.Literals.ABSTRACT_STATE__OUTCOMING_TRANSITIONS, true, true);
+		if (outcomingTransitions == null) {
+			outcomingTransitions = new EObjectWithInverseResolvingEList<Transition>(Transition.class, this, StateMachinePackage.ABSTRACT_STATE__OUTCOMING_TRANSITIONS, StateMachinePackage.TRANSITION__FROM);
+		}
+		return outcomingTransitions;
 	}
 
 	/**
@@ -168,9 +194,9 @@ public abstract class AbstractStateImpl extends ObeoDSMObjectImpl implements Abs
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case StateMachinePackage.ABSTRACT_STATE__INCOMING_TRANSITIONS:
-				return !getIncomingTransitions().isEmpty();
+				return incomingTransitions != null && !incomingTransitions.isEmpty();
 			case StateMachinePackage.ABSTRACT_STATE__OUTCOMING_TRANSITIONS:
-				return !getOutcomingTransitions().isEmpty();
+				return outcomingTransitions != null && !outcomingTransitions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

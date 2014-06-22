@@ -39,6 +39,25 @@ import org.obeonetwork.dsl.statemachine.Transition;
  */
 public abstract class StateMachineDescriptionImpl extends NamedElementImpl implements StateMachineDescription {
 	/**
+	 * The cached value of the '{@link #getStates() <em>States</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStates()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AbstractState> states;
+	/**
+	 * The cached value of the '{@link #getTransitions() <em>Transitions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Transition> transitions;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -64,7 +83,10 @@ public abstract class StateMachineDescriptionImpl extends NamedElementImpl imple
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<AbstractState> getStates() {
-		return (EList<AbstractState>)eDynamicGet(StateMachinePackage.STATE_MACHINE_DESCRIPTION__STATES, StateMachinePackage.Literals.STATE_MACHINE_DESCRIPTION__STATES, true, true);
+		if (states == null) {
+			states = new EObjectContainmentEList<AbstractState>(AbstractState.class, this, StateMachinePackage.STATE_MACHINE_DESCRIPTION__STATES);
+		}
+		return states;
 	}
 
 	/**
@@ -74,7 +96,10 @@ public abstract class StateMachineDescriptionImpl extends NamedElementImpl imple
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Transition> getTransitions() {
-		return (EList<Transition>)eDynamicGet(StateMachinePackage.STATE_MACHINE_DESCRIPTION__TRANSITIONS, StateMachinePackage.Literals.STATE_MACHINE_DESCRIPTION__TRANSITIONS, true, true);
+		if (transitions == null) {
+			transitions = new EObjectContainmentEList<Transition>(Transition.class, this, StateMachinePackage.STATE_MACHINE_DESCRIPTION__TRANSITIONS);
+		}
+		return transitions;
 	}
 
 	/**
@@ -157,9 +182,9 @@ public abstract class StateMachineDescriptionImpl extends NamedElementImpl imple
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case StateMachinePackage.STATE_MACHINE_DESCRIPTION__STATES:
-				return !getStates().isEmpty();
+				return states != null && !states.isEmpty();
 			case StateMachinePackage.STATE_MACHINE_DESCRIPTION__TRANSITIONS:
-				return !getTransitions().isEmpty();
+				return transitions != null && !transitions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

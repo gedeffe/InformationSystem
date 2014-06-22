@@ -37,7 +37,7 @@ public interface StateMachineDescription extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>States</em>' containment reference list.
 	 * @see org.obeonetwork.dsl.statemachine.StateMachinePackage#getStateMachineDescription_States()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<AbstractState> getStates();
@@ -53,7 +53,7 @@ public interface StateMachineDescription extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Transitions</em>' containment reference list.
 	 * @see org.obeonetwork.dsl.statemachine.StateMachinePackage#getStateMachineDescription_Transitions()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Transition> getTransitions();

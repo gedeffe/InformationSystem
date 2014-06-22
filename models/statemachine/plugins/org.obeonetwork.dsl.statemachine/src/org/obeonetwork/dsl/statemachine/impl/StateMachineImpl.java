@@ -37,6 +37,16 @@ import org.obeonetwork.dsl.statemachine.StateMachinePackage;
  */
 public class StateMachineImpl extends StateMachineDescriptionImpl implements StateMachine {
 	/**
+	 * The cached value of the '{@link #getRegions() <em>Regions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRegions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Region> regions;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -62,7 +72,10 @@ public class StateMachineImpl extends StateMachineDescriptionImpl implements Sta
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Region> getRegions() {
-		return (EList<Region>)eDynamicGet(StateMachinePackage.STATE_MACHINE__REGIONS, StateMachinePackage.Literals.STATE_MACHINE__REGIONS, true, true);
+		if (regions == null) {
+			regions = new EObjectContainmentEList<Region>(Region.class, this, StateMachinePackage.STATE_MACHINE__REGIONS);
+		}
+		return regions;
 	}
 
 	/**
@@ -134,7 +147,7 @@ public class StateMachineImpl extends StateMachineDescriptionImpl implements Sta
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case StateMachinePackage.STATE_MACHINE__REGIONS:
-				return !getRegions().isEmpty();
+				return regions != null && !regions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

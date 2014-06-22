@@ -6,9 +6,11 @@
  */
 package org.obeonetwork.dsl.statemachine.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.obeonetwork.dsl.environment.impl.ObeoDSMObjectImpl;
 import org.obeonetwork.dsl.statemachine.AbstractState;
 import org.obeonetwork.dsl.statemachine.StateMachinePackage;
@@ -41,6 +43,34 @@ public class TransitionImpl extends ObeoDSMObjectImpl implements Transition {
 	protected static final String GUARD_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGuard()
+	 * @generated
+	 * @ordered
+	 */
+	protected String guard = GUARD_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getFrom() <em>From</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFrom()
+	 * @generated
+	 * @ordered
+	 */
+	protected AbstractState from;
+	/**
+	 * The cached value of the '{@link #getTo() <em>To</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTo()
+	 * @generated
+	 * @ordered
+	 */
+	protected AbstractState to;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -65,7 +95,7 @@ public class TransitionImpl extends ObeoDSMObjectImpl implements Transition {
 	 * @generated
 	 */
 	public String getGuard() {
-		return (String)eDynamicGet(StateMachinePackage.TRANSITION__GUARD, StateMachinePackage.Literals.TRANSITION__GUARD, true, true);
+		return guard;
 	}
 
 	/**
@@ -74,7 +104,10 @@ public class TransitionImpl extends ObeoDSMObjectImpl implements Transition {
 	 * @generated
 	 */
 	public void setGuard(String newGuard) {
-		eDynamicSet(StateMachinePackage.TRANSITION__GUARD, StateMachinePackage.Literals.TRANSITION__GUARD, newGuard);
+		String oldGuard = guard;
+		guard = newGuard;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StateMachinePackage.TRANSITION__GUARD, oldGuard, guard));
 	}
 
 	/**
@@ -83,7 +116,15 @@ public class TransitionImpl extends ObeoDSMObjectImpl implements Transition {
 	 * @generated
 	 */
 	public AbstractState getFrom() {
-		return (AbstractState)eDynamicGet(StateMachinePackage.TRANSITION__FROM, StateMachinePackage.Literals.TRANSITION__FROM, true, true);
+		if (from != null && from.eIsProxy()) {
+			InternalEObject oldFrom = (InternalEObject)from;
+			from = (AbstractState)eResolveProxy(oldFrom);
+			if (from != oldFrom) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StateMachinePackage.TRANSITION__FROM, oldFrom, from));
+			}
+		}
+		return from;
 	}
 
 	/**
@@ -92,7 +133,7 @@ public class TransitionImpl extends ObeoDSMObjectImpl implements Transition {
 	 * @generated
 	 */
 	public AbstractState basicGetFrom() {
-		return (AbstractState)eDynamicGet(StateMachinePackage.TRANSITION__FROM, StateMachinePackage.Literals.TRANSITION__FROM, false, true);
+		return from;
 	}
 
 	/**
@@ -101,7 +142,12 @@ public class TransitionImpl extends ObeoDSMObjectImpl implements Transition {
 	 * @generated
 	 */
 	public NotificationChain basicSetFrom(AbstractState newFrom, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newFrom, StateMachinePackage.TRANSITION__FROM, msgs);
+		AbstractState oldFrom = from;
+		from = newFrom;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, StateMachinePackage.TRANSITION__FROM, oldFrom, newFrom);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
 		return msgs;
 	}
 
@@ -111,7 +157,17 @@ public class TransitionImpl extends ObeoDSMObjectImpl implements Transition {
 	 * @generated
 	 */
 	public void setFrom(AbstractState newFrom) {
-		eDynamicSet(StateMachinePackage.TRANSITION__FROM, StateMachinePackage.Literals.TRANSITION__FROM, newFrom);
+		if (newFrom != from) {
+			NotificationChain msgs = null;
+			if (from != null)
+				msgs = ((InternalEObject)from).eInverseRemove(this, StateMachinePackage.ABSTRACT_STATE__OUTCOMING_TRANSITIONS, AbstractState.class, msgs);
+			if (newFrom != null)
+				msgs = ((InternalEObject)newFrom).eInverseAdd(this, StateMachinePackage.ABSTRACT_STATE__OUTCOMING_TRANSITIONS, AbstractState.class, msgs);
+			msgs = basicSetFrom(newFrom, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StateMachinePackage.TRANSITION__FROM, newFrom, newFrom));
 	}
 
 	/**
@@ -120,7 +176,15 @@ public class TransitionImpl extends ObeoDSMObjectImpl implements Transition {
 	 * @generated
 	 */
 	public AbstractState getTo() {
-		return (AbstractState)eDynamicGet(StateMachinePackage.TRANSITION__TO, StateMachinePackage.Literals.TRANSITION__TO, true, true);
+		if (to != null && to.eIsProxy()) {
+			InternalEObject oldTo = (InternalEObject)to;
+			to = (AbstractState)eResolveProxy(oldTo);
+			if (to != oldTo) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StateMachinePackage.TRANSITION__TO, oldTo, to));
+			}
+		}
+		return to;
 	}
 
 	/**
@@ -129,7 +193,7 @@ public class TransitionImpl extends ObeoDSMObjectImpl implements Transition {
 	 * @generated
 	 */
 	public AbstractState basicGetTo() {
-		return (AbstractState)eDynamicGet(StateMachinePackage.TRANSITION__TO, StateMachinePackage.Literals.TRANSITION__TO, false, true);
+		return to;
 	}
 
 	/**
@@ -138,7 +202,12 @@ public class TransitionImpl extends ObeoDSMObjectImpl implements Transition {
 	 * @generated
 	 */
 	public NotificationChain basicSetTo(AbstractState newTo, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newTo, StateMachinePackage.TRANSITION__TO, msgs);
+		AbstractState oldTo = to;
+		to = newTo;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, StateMachinePackage.TRANSITION__TO, oldTo, newTo);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
 		return msgs;
 	}
 
@@ -148,7 +217,17 @@ public class TransitionImpl extends ObeoDSMObjectImpl implements Transition {
 	 * @generated
 	 */
 	public void setTo(AbstractState newTo) {
-		eDynamicSet(StateMachinePackage.TRANSITION__TO, StateMachinePackage.Literals.TRANSITION__TO, newTo);
+		if (newTo != to) {
+			NotificationChain msgs = null;
+			if (to != null)
+				msgs = ((InternalEObject)to).eInverseRemove(this, StateMachinePackage.ABSTRACT_STATE__INCOMING_TRANSITIONS, AbstractState.class, msgs);
+			if (newTo != null)
+				msgs = ((InternalEObject)newTo).eInverseAdd(this, StateMachinePackage.ABSTRACT_STATE__INCOMING_TRANSITIONS, AbstractState.class, msgs);
+			msgs = basicSetTo(newTo, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StateMachinePackage.TRANSITION__TO, newTo, newTo));
 	}
 
 	/**
@@ -160,12 +239,10 @@ public class TransitionImpl extends ObeoDSMObjectImpl implements Transition {
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case StateMachinePackage.TRANSITION__FROM:
-				AbstractState from = basicGetFrom();
 				if (from != null)
 					msgs = ((InternalEObject)from).eInverseRemove(this, StateMachinePackage.ABSTRACT_STATE__OUTCOMING_TRANSITIONS, AbstractState.class, msgs);
 				return basicSetFrom((AbstractState)otherEnd, msgs);
 			case StateMachinePackage.TRANSITION__TO:
-				AbstractState to = basicGetTo();
 				if (to != null)
 					msgs = ((InternalEObject)to).eInverseRemove(this, StateMachinePackage.ABSTRACT_STATE__INCOMING_TRANSITIONS, AbstractState.class, msgs);
 				return basicSetTo((AbstractState)otherEnd, msgs);
@@ -260,13 +337,29 @@ public class TransitionImpl extends ObeoDSMObjectImpl implements Transition {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case StateMachinePackage.TRANSITION__GUARD:
-				return GUARD_EDEFAULT == null ? getGuard() != null : !GUARD_EDEFAULT.equals(getGuard());
+				return GUARD_EDEFAULT == null ? guard != null : !GUARD_EDEFAULT.equals(guard);
 			case StateMachinePackage.TRANSITION__FROM:
-				return basicGetFrom() != null;
+				return from != null;
 			case StateMachinePackage.TRANSITION__TO:
-				return basicGetTo() != null;
+				return to != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (guard: ");
+		result.append(guard);
+		result.append(')');
+		return result.toString();
 	}
 
 } //TransitionImpl

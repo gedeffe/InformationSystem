@@ -117,6 +117,33 @@ public interface StateMachinePackage extends EPackage {
 	int NAMED_ELEMENT__BINDING_REGISTRIES = EnvironmentPackage.OBEO_DSM_OBJECT__BINDING_REGISTRIES;
 
 	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__VERSION = EnvironmentPackage.OBEO_DSM_OBJECT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__CREATED_ON = EnvironmentPackage.OBEO_DSM_OBJECT__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__MODIFIED_ON = EnvironmentPackage.OBEO_DSM_OBJECT__MODIFIED_ON;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -188,6 +215,33 @@ public interface StateMachinePackage extends EPackage {
 	 * @ordered
 	 */
 	int STATE_MACHINE_DESCRIPTION__BINDING_REGISTRIES = NAMED_ELEMENT__BINDING_REGISTRIES;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE_DESCRIPTION__VERSION = NAMED_ELEMENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE_DESCRIPTION__CREATED_ON = NAMED_ELEMENT__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE_DESCRIPTION__MODIFIED_ON = NAMED_ELEMENT__MODIFIED_ON;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -279,6 +333,33 @@ public interface StateMachinePackage extends EPackage {
 	 * @ordered
 	 */
 	int STATE_MACHINE__BINDING_REGISTRIES = STATE_MACHINE_DESCRIPTION__BINDING_REGISTRIES;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE__VERSION = STATE_MACHINE_DESCRIPTION__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE__CREATED_ON = STATE_MACHINE_DESCRIPTION__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE__MODIFIED_ON = STATE_MACHINE_DESCRIPTION__MODIFIED_ON;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -381,6 +462,33 @@ public interface StateMachinePackage extends EPackage {
 	int ABSTRACT_STATE__BINDING_REGISTRIES = EnvironmentPackage.OBEO_DSM_OBJECT__BINDING_REGISTRIES;
 
 	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STATE__VERSION = EnvironmentPackage.OBEO_DSM_OBJECT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STATE__CREATED_ON = EnvironmentPackage.OBEO_DSM_OBJECT__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STATE__MODIFIED_ON = EnvironmentPackage.OBEO_DSM_OBJECT__MODIFIED_ON;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Transitions</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -461,6 +569,33 @@ public interface StateMachinePackage extends EPackage {
 	 * @ordered
 	 */
 	int STATE__BINDING_REGISTRIES = ABSTRACT_STATE__BINDING_REGISTRIES;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__VERSION = ABSTRACT_STATE__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__CREATED_ON = ABSTRACT_STATE__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__MODIFIED_ON = ABSTRACT_STATE__MODIFIED_ON;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Transitions</b></em>' reference list.
@@ -554,6 +689,33 @@ public interface StateMachinePackage extends EPackage {
 	int REGION__BINDING_REGISTRIES = STATE_MACHINE_DESCRIPTION__BINDING_REGISTRIES;
 
 	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REGION__VERSION = STATE_MACHINE_DESCRIPTION__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REGION__CREATED_ON = STATE_MACHINE_DESCRIPTION__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REGION__MODIFIED_ON = STATE_MACHINE_DESCRIPTION__MODIFIED_ON;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -643,6 +805,33 @@ public interface StateMachinePackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSITION__BINDING_REGISTRIES = EnvironmentPackage.OBEO_DSM_OBJECT__BINDING_REGISTRIES;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__VERSION = EnvironmentPackage.OBEO_DSM_OBJECT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__CREATED_ON = EnvironmentPackage.OBEO_DSM_OBJECT__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__MODIFIED_ON = EnvironmentPackage.OBEO_DSM_OBJECT__MODIFIED_ON;
 
 	/**
 	 * The feature id for the '<em><b>Guard</b></em>' attribute.
@@ -736,6 +925,33 @@ public interface StateMachinePackage extends EPackage {
 	int INITIAL_STATE__BINDING_REGISTRIES = ABSTRACT_STATE__BINDING_REGISTRIES;
 
 	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_STATE__VERSION = ABSTRACT_STATE__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_STATE__CREATED_ON = ABSTRACT_STATE__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_STATE__MODIFIED_ON = ABSTRACT_STATE__MODIFIED_ON;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Transitions</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -816,6 +1032,33 @@ public interface StateMachinePackage extends EPackage {
 	 * @ordered
 	 */
 	int FINAL_STATE__BINDING_REGISTRIES = ABSTRACT_STATE__BINDING_REGISTRIES;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINAL_STATE__VERSION = ABSTRACT_STATE__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Created On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINAL_STATE__CREATED_ON = ABSTRACT_STATE__CREATED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Modified On</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINAL_STATE__MODIFIED_ON = ABSTRACT_STATE__MODIFIED_ON;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Transitions</b></em>' reference list.

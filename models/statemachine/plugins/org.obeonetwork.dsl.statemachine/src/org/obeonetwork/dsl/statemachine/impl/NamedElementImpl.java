@@ -6,7 +6,9 @@
  */
 package org.obeonetwork.dsl.statemachine.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.obeonetwork.dsl.environment.impl.ObeoDSMObjectImpl;
 import org.obeonetwork.dsl.statemachine.NamedElement;
 import org.obeonetwork.dsl.statemachine.StateMachinePackage;
@@ -36,6 +38,16 @@ public abstract class NamedElementImpl extends ObeoDSMObjectImpl implements Name
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -60,7 +72,7 @@ public abstract class NamedElementImpl extends ObeoDSMObjectImpl implements Name
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eDynamicGet(StateMachinePackage.NAMED_ELEMENT__NAME, StateMachinePackage.Literals.NAMED_ELEMENT__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -69,7 +81,10 @@ public abstract class NamedElementImpl extends ObeoDSMObjectImpl implements Name
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(StateMachinePackage.NAMED_ELEMENT__NAME, StateMachinePackage.Literals.NAMED_ELEMENT__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StateMachinePackage.NAMED_ELEMENT__NAME, oldName, name));
 	}
 
 	/**
@@ -125,9 +140,25 @@ public abstract class NamedElementImpl extends ObeoDSMObjectImpl implements Name
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case StateMachinePackage.NAMED_ELEMENT__NAME:
-				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //NamedElementImpl
