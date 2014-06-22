@@ -9,7 +9,10 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.obeonetwork.dsl.environment.components,
  org.obeonetwork.dsl.environment.edit.specific.extensions,
+ org.obeonetwork.dsl.environment.filters,
  org.obeonetwork.dsl.environment.parts,
+ org.obeonetwork.dsl.environment.parts.forms,
+ org.obeonetwork.dsl.environment.parts.impl,
  org.obeonetwork.dsl.environment.provider,
  org.obeonetwork.dsl.environment.providers
 Require-Bundle: org.eclipse.core.runtime,
