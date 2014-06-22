@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.environment.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,284 +54,279 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.TableColumn;
 
-import org.obeonetwork.dsl.environment.Annotation;
 import org.obeonetwork.dsl.environment.parts.EnvironmentViewsRepository;
 import org.obeonetwork.dsl.environment.parts.MetadatasPropertiesEditionPart;
 
 import org.obeonetwork.dsl.environment.providers.EnvironmentMessages;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class MetadatasPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, MetadatasPropertiesEditionPart {
 
 	protected TableViewer metadata;
 	protected List<ViewerFilter> metadataBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> metadataFilters = new ArrayList<ViewerFilter>();
+	protected Button addMetadata;
+	protected Button removeMetadata;
+	protected Button editMetadata;
 
 
 
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public MetadatasPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+    view = new Composite(parent, SWT.NONE);
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(view);
+    return view;
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence metadatasStep = new BindingCompositionSequence(propertiesEditionComponent);
-		metadatasStep
-			.addStep(EnvironmentViewsRepository.Metadatas.Properties.class)
-			.addStep(EnvironmentViewsRepository.Metadatas.Properties.metadata);
-		
-		
-		composer = new PartComposer(metadatasStep) {
+    CompositionSequence metadatasStep = new BindingCompositionSequence(propertiesEditionComponent);
+    metadatasStep
+      .addStep(EnvironmentViewsRepository.Metadatas.Properties.class)
+      .addStep(EnvironmentViewsRepository.Metadatas.Properties.metadata);
+    
+    
+    composer = new PartComposer(metadatasStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == EnvironmentViewsRepository.Metadatas.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == EnvironmentViewsRepository.Metadatas.Properties.metadata) {
-					return createMetadataTableComposition(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == EnvironmentViewsRepository.Metadatas.Properties.class) {
+          return createPropertiesGroup(parent);
+        }
+        if (key == EnvironmentViewsRepository.Metadatas.Properties.metadata) {
+          return createMetadataTableComposition(parent);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(EnvironmentMessages.MetadatasPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    Group propertiesGroup = new Group(parent, SWT.NONE);
+    propertiesGroup.setText(EnvironmentMessages.MetadatasPropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesGroupData.horizontalSpan = 3;
+    propertiesGroup.setLayoutData(propertiesGroupData);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @param container
-	 * 
+	 * @generated
 	 */
 	protected Composite createMetadataTableComposition(Composite container) {
-		Composite tableContainer = new Composite(container, SWT.NONE);
-		GridLayout tableContainerLayout = new GridLayout();
-		GridData tableContainerData = new GridData(GridData.FILL_BOTH);
-		tableContainerData.horizontalSpan = 3;
-		tableContainer.setLayoutData(tableContainerData);
-		tableContainerLayout.numColumns = 2;
-		tableContainer.setLayout(tableContainerLayout);
-		org.eclipse.swt.widgets.Table tableMetadata = new org.eclipse.swt.widgets.Table(tableContainer, SWT.FULL_SELECTION);
-		tableMetadata.setHeaderVisible(true);
-		GridData gdMetadata = new GridData();
-		gdMetadata.grabExcessHorizontalSpace = true;
-		gdMetadata.horizontalAlignment = GridData.FILL;
-		gdMetadata.grabExcessVerticalSpace = true;
-		gdMetadata.verticalAlignment = GridData.FILL;
-		tableMetadata.setLayoutData(gdMetadata);
-		tableMetadata.setLinesVisible(true);
+    Composite tableContainer = new Composite(container, SWT.NONE);
+    GridLayout tableContainerLayout = new GridLayout();
+    GridData tableContainerData = new GridData(GridData.FILL_BOTH);
+    tableContainerData.horizontalSpan = 3;
+    tableContainer.setLayoutData(tableContainerData);
+    tableContainerLayout.numColumns = 2;
+    tableContainer.setLayout(tableContainerLayout);
+    org.eclipse.swt.widgets.Table tableMetadata = new org.eclipse.swt.widgets.Table(tableContainer, SWT.FULL_SELECTION);
+    tableMetadata.setHeaderVisible(true);
+    GridData gdMetadata = new GridData();
+    gdMetadata.grabExcessHorizontalSpace = true;
+    gdMetadata.horizontalAlignment = GridData.FILL;
+    gdMetadata.grabExcessVerticalSpace = true;
+    gdMetadata.verticalAlignment = GridData.FILL;
+    tableMetadata.setLayoutData(gdMetadata);
+    tableMetadata.setLinesVisible(true);
 
-		// Start of user code for columns definition for Metadata
-				TableColumn title = new TableColumn(tableMetadata, SWT.NONE);
-				title.setWidth(120);
-				title.setText("title"); //$NON-NLS-1$
-				TableColumn body = new TableColumn(tableMetadata, SWT.NONE);
-				body.setWidth(300);
-				body.setText("body"); //$NON-NLS-1$
-				// End of user code
+        TableColumn name = new TableColumn(tableMetadata, SWT.NONE);
+        name.setWidth(80);
+        name.setText("Label"); //$NON-NLS-1$
 
-		metadata = new TableViewer(tableMetadata);
-		metadata.setContentProvider(new ArrayContentProvider());
-		metadata.setLabelProvider(new ITableLabelProvider() {
-			//Start of user code for label provider definition for Metadata
-								public String getColumnText(Object object, int columnIndex) {
-									if (object instanceof Annotation) {
-										Annotation annot = (Annotation)object;
-										switch (columnIndex) {
-										case 0:
-											return annot.getTitle();
-										case 1:
-											return annot.getBody();
-										}
-									}
-									return ""; //$NON-NLS-1$
-								}
-					
-								public Image getColumnImage(Object element, int columnIndex) {
-									return null;
-								}
-					
-					//End of user code
+    metadata = new TableViewer(tableMetadata);
+    metadata.setContentProvider(new ArrayContentProvider());
+    metadata.setLabelProvider(new ITableLabelProvider() {
+            public String getColumnText(Object object, int columnIndex) {
+              AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+              if (object instanceof EObject) {
+                switch (columnIndex) {
+                case 0:
+                  return labelProvider.getText(object);
+                }
+              }
+              return ""; //$NON-NLS-1$
+            }
+      
+            public Image getColumnImage(Object element, int columnIndex) {
+              return null;
+            }
+      
 
-			public void addListener(ILabelProviderListener listener) {
-			}
+      public void addListener(ILabelProviderListener listener) {
+      }
 
-			public void dispose() {
-			}
+      public void dispose() {
+      }
 
-			public boolean isLabelProperty(Object element, String property) {
-				return false;
-			}
+      public boolean isLabelProperty(Object element, String property) {
+        return false;
+      }
 
-			public void removeListener(ILabelProviderListener listener) {
-			}
+      public void removeListener(ILabelProviderListener listener) {
+      }
 
-		});
-		metadata.getTable().addListener(SWT.MouseDoubleClick, new Listener(){
+    });
+    metadata.getTable().addListener(SWT.MouseDoubleClick, new Listener(){
 
-			public void handleEvent(Event event) {
-				if (metadata.getSelection() instanceof IStructuredSelection) {
-					IStructuredSelection selection = (IStructuredSelection) metadata.getSelection();
-					if (selection.getFirstElement() instanceof EObject) {
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MetadatasPropertiesEditionPartImpl.this, EnvironmentViewsRepository.Metadatas.Properties.metadata, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, selection.getFirstElement()));
-						metadata.refresh();
-					}
-				}
-			}
+      public void handleEvent(Event event) {
+        if (metadata.getSelection() instanceof IStructuredSelection) {
+          IStructuredSelection selection = (IStructuredSelection) metadata.getSelection();
+          if (selection.getFirstElement() instanceof EObject) {
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MetadatasPropertiesEditionPartImpl.this, EnvironmentViewsRepository.Metadatas.Properties.metadata, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, selection.getFirstElement()));
+            metadata.refresh();
+          }
+        }
+      }
 
-		});
-		GridData metadataData = new GridData(GridData.FILL_HORIZONTAL);
-		metadataData.minimumHeight = 120;
-		metadataData.heightHint = 120;
-		metadata.getTable().setLayoutData(metadataData);
-		for (ViewerFilter filter : this.metadataFilters) {
-			metadata.addFilter(filter);
-		}
-		EditingUtils.setID(metadata.getTable(), EnvironmentViewsRepository.Metadatas.Properties.metadata);
-		EditingUtils.setEEFtype(metadata.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
-		createMetadataPanel(tableContainer);
-		return container;
-	}
+    });
+    GridData metadataData = new GridData(GridData.FILL_HORIZONTAL);
+    metadataData.minimumHeight = 120;
+    metadataData.heightHint = 120;
+    metadata.getTable().setLayoutData(metadataData);
+    for (ViewerFilter filter : this.metadataFilters) {
+      metadata.addFilter(filter);
+    }
+    EditingUtils.setID(metadata.getTable(), EnvironmentViewsRepository.Metadatas.Properties.metadata);
+    EditingUtils.setEEFtype(metadata.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
+    createMetadataPanel(tableContainer);
+    // Start of user code for createMetadataTableComposition
+
+    // End of user code
+    return container;
+  }
 
 	/**
 	 * @param container
-	 * 
+	 * @generated
 	 */
 	protected Composite createMetadataPanel(Composite container) {
-		Composite metadataPanel = new Composite(container, SWT.NONE);
-		GridLayout metadataPanelLayout = new GridLayout();
-		metadataPanelLayout.numColumns = 1;
-		metadataPanel.setLayout(metadataPanelLayout);
-		Button addMetadata = new Button(metadataPanel, SWT.NONE);
-		addMetadata.setText(EnvironmentMessages.PropertiesEditionPart_AddTableViewerLabel);
-		GridData addMetadataData = new GridData(GridData.FILL_HORIZONTAL);
-		addMetadata.setLayoutData(addMetadataData);
-		addMetadata.addSelectionListener(new SelectionAdapter() {
+    Composite metadataPanel = new Composite(container, SWT.NONE);
+    GridLayout metadataPanelLayout = new GridLayout();
+    metadataPanelLayout.numColumns = 1;
+    metadataPanel.setLayout(metadataPanelLayout);
+    addMetadata = new Button(metadataPanel, SWT.NONE);
+    addMetadata.setText(EnvironmentMessages.PropertiesEditionPart_AddTableViewerLabel);
+    GridData addMetadataData = new GridData(GridData.FILL_HORIZONTAL);
+    addMetadata.setLayoutData(addMetadataData);
+    addMetadata.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MetadatasPropertiesEditionPartImpl.this, EnvironmentViewsRepository.Metadatas.Properties.metadata, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				metadata.refresh();
-			}
-		});
-		EditingUtils.setID(addMetadata, EnvironmentViewsRepository.Metadatas.Properties.metadata);
-		EditingUtils.setEEFtype(addMetadata, "eef::TableComposition::addbutton"); //$NON-NLS-1$
-		Button removeMetadata = new Button(metadataPanel, SWT.NONE);
-		removeMetadata.setText(EnvironmentMessages.PropertiesEditionPart_RemoveTableViewerLabel);
-		GridData removeMetadataData = new GridData(GridData.FILL_HORIZONTAL);
-		removeMetadata.setLayoutData(removeMetadataData);
-		removeMetadata.addSelectionListener(new SelectionAdapter() {
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * @generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MetadatasPropertiesEditionPartImpl.this, EnvironmentViewsRepository.Metadatas.Properties.metadata, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+        metadata.refresh();
+      }
+    });
+    EditingUtils.setID(addMetadata, EnvironmentViewsRepository.Metadatas.Properties.metadata);
+    EditingUtils.setEEFtype(addMetadata, "eef::TableComposition::addbutton"); //$NON-NLS-1$
+    removeMetadata = new Button(metadataPanel, SWT.NONE);
+    removeMetadata.setText(EnvironmentMessages.PropertiesEditionPart_RemoveTableViewerLabel);
+    GridData removeMetadataData = new GridData(GridData.FILL_HORIZONTAL);
+    removeMetadata.setLayoutData(removeMetadataData);
+    removeMetadata.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (metadata.getSelection() instanceof IStructuredSelection) {
-					IStructuredSelection selection = (IStructuredSelection) metadata.getSelection();
-					if (selection.getFirstElement() instanceof EObject) {
-						EObject selectedElement = (EObject) selection.getFirstElement();
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MetadatasPropertiesEditionPartImpl.this, EnvironmentViewsRepository.Metadatas.Properties.metadata, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, selectedElement));
-						metadata.refresh();
-					}
-				}
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * @generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (metadata.getSelection() instanceof IStructuredSelection) {
+          IStructuredSelection selection = (IStructuredSelection) metadata.getSelection();
+          if (selection.getFirstElement() instanceof EObject) {
+            EObject selectedElement = (EObject) selection.getFirstElement();
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MetadatasPropertiesEditionPartImpl.this, EnvironmentViewsRepository.Metadatas.Properties.metadata, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, selectedElement));
+            metadata.refresh();
+          }
+        }
+      }
 
-		});
-		EditingUtils.setID(removeMetadata, EnvironmentViewsRepository.Metadatas.Properties.metadata);
-		EditingUtils.setEEFtype(removeMetadata, "eef::TableComposition::removebutton"); //$NON-NLS-1$
-		Button editMetadata = new Button(metadataPanel, SWT.NONE);
-		editMetadata.setText(EnvironmentMessages.PropertiesEditionPart_EditTableViewerLabel);
-		GridData editMetadataData = new GridData(GridData.FILL_HORIZONTAL);
-		editMetadata.setLayoutData(editMetadataData);
-		editMetadata.addSelectionListener(new SelectionAdapter() {
+    });
+    EditingUtils.setID(removeMetadata, EnvironmentViewsRepository.Metadatas.Properties.metadata);
+    EditingUtils.setEEFtype(removeMetadata, "eef::TableComposition::removebutton"); //$NON-NLS-1$
+    editMetadata = new Button(metadataPanel, SWT.NONE);
+    editMetadata.setText(EnvironmentMessages.PropertiesEditionPart_EditTableViewerLabel);
+    GridData editMetadataData = new GridData(GridData.FILL_HORIZONTAL);
+    editMetadata.setLayoutData(editMetadataData);
+    editMetadata.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (metadata.getSelection() instanceof IStructuredSelection) {
-					IStructuredSelection selection = (IStructuredSelection) metadata.getSelection();
-					if (selection.getFirstElement() instanceof EObject) {
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MetadatasPropertiesEditionPartImpl.this, EnvironmentViewsRepository.Metadatas.Properties.metadata, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, selection.getFirstElement()));
-						metadata.refresh();
-					}
-				}
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * @generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (metadata.getSelection() instanceof IStructuredSelection) {
+          IStructuredSelection selection = (IStructuredSelection) metadata.getSelection();
+          if (selection.getFirstElement() instanceof EObject) {
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MetadatasPropertiesEditionPartImpl.this, EnvironmentViewsRepository.Metadatas.Properties.metadata, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, selection.getFirstElement()));
+            metadata.refresh();
+          }
+        }
+      }
 
-		});
-		EditingUtils.setID(editMetadata, EnvironmentViewsRepository.Metadatas.Properties.metadata);
-		EditingUtils.setEEFtype(editMetadata, "eef::TableComposition::editbutton"); //$NON-NLS-1$
-		return metadataPanel;
-	}
+    });
+    EditingUtils.setID(editMetadata, EnvironmentViewsRepository.Metadatas.Properties.metadata);
+    EditingUtils.setEEFtype(editMetadata, "eef::TableComposition::editbutton"); //$NON-NLS-1$
+    // Start of user code for createMetadataPanel
+
+    // End of user code
+    return metadataPanel;
+  }
 
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
-	}
+  }
 
 
 
@@ -347,50 +341,67 @@ public class MetadatasPropertiesEditionPartImpl extends CompositePropertiesEditi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		metadata.setContentProvider(contentProvider);
 		metadata.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EnvironmentViewsRepository.Metadatas.Properties.metadata);
+		if (eefElementEditorReadOnlyState && metadata.getTable().isEnabled()) {
+			metadata.getTable().setEnabled(false);
+			metadata.getTable().setToolTipText(EnvironmentMessages.Metadatas_ReadOnly);
+			addMetadata.setEnabled(false);
+			addMetadata.setToolTipText(EnvironmentMessages.Metadatas_ReadOnly);
+			removeMetadata.setEnabled(false);
+			removeMetadata.setToolTipText(EnvironmentMessages.Metadatas_ReadOnly);
+			editMetadata.setEnabled(false);
+			editMetadata.setToolTipText(EnvironmentMessages.Metadatas_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !metadata.getTable().isEnabled()) {
+			metadata.getTable().setEnabled(true);
+			addMetadata.setEnabled(true);
+			removeMetadata.setEnabled(true);
+			editMetadata.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.environment.parts.MetadatasPropertiesEditionPart#updateMetadata()
-	 * 
+	 * @generated
 	 */
 	public void updateMetadata() {
-	metadata.refresh();
+  metadata.refresh();
 }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.environment.parts.MetadatasPropertiesEditionPart#addFilterMetadata(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToMetadata(ViewerFilter filter) {
-		metadataFilters.add(filter);
-		if (this.metadata != null) {
-			this.metadata.addFilter(filter);
-		}
-	}
+    metadataFilters.add(filter);
+    if (this.metadata != null) {
+      this.metadata.addFilter(filter);
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.environment.parts.MetadatasPropertiesEditionPart#addBusinessFilterMetadata(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToMetadata(ViewerFilter filter) {
-		metadataBusinessFilters.add(filter);
-	}
+    metadataBusinessFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.environment.parts.MetadatasPropertiesEditionPart#isContainedInMetadataTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInMetadataTable(EObject element) {
-		return ((ReferencesTableSettings)metadata.getInput()).contains(element);
-	}
+    return ((ReferencesTableSettings)metadata.getInput()).contains(element);
+  }
 
 
 
@@ -401,15 +412,12 @@ public class MetadatasPropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
-		return EnvironmentMessages.Metadatas_Part_Title;
-	}
+    return EnvironmentMessages.Metadatas_Part_Title;
+  }
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

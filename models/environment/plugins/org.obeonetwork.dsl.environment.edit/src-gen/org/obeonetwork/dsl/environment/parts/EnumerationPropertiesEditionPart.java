@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.environment.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
@@ -11,24 +10,22 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public interface EnumerationPropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
@@ -46,7 +43,7 @@ public interface EnumerationPropertiesEditionPart {
 	/**
 	 * Update the fields
 	 * @param newValue the fields to update
-	 * 
+	 * @generated
 	 */
 	public void updateFields();
 
@@ -56,7 +53,7 @@ public interface EnumerationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToFields(ViewerFilter filter);
 
@@ -66,27 +63,27 @@ public interface EnumerationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToFields(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the fields table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInFieldsTable(EObject element);
 
 
 	/**
 	 * @return the description
-	 * 
+	 * @generated
 	 */
 	public String getDescription();
 
 	/**
 	 * Defines a new description
 	 * @param newValue the new description to set
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue);
 
@@ -98,12 +95,9 @@ public interface EnumerationPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-	
-	// End of user code
 
 }

@@ -3,42 +3,39 @@
  */
 package org.obeonetwork.dsl.environment.parts;
 
-// Start of user code for imports
 
 
-
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public interface AnnotationPropertiesEditionPart {
 
 	/**
 	 * @return the title
-	 * 
+	 * @generated
 	 */
 	public String getTitle_();
 
 	/**
 	 * Defines a new title
 	 * @param newValue the new title to set
-	 * 
+	 * @generated
 	 */
 	public void setTitle_(String newValue);
 
 
 	/**
 	 * @return the body
-	 * 
+	 * @generated
 	 */
 	public String getBody();
 
 	/**
 	 * Defines a new body
 	 * @param newValue the new body to set
-	 * 
+	 * @generated
 	 */
 	public void setBody(String newValue);
 
@@ -50,12 +47,9 @@ public interface AnnotationPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-	
-	// End of user code
 
 }

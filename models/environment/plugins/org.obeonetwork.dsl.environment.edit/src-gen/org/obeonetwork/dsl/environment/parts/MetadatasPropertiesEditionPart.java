@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.environment.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
@@ -11,11 +10,9 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public interface MetadatasPropertiesEditionPart {
 
@@ -32,7 +29,7 @@ public interface MetadatasPropertiesEditionPart {
 	/**
 	 * Update the metadata
 	 * @param newValue the metadata to update
-	 * 
+	 * @generated
 	 */
 	public void updateMetadata();
 
@@ -42,7 +39,7 @@ public interface MetadatasPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToMetadata(ViewerFilter filter);
 
@@ -52,13 +49,13 @@ public interface MetadatasPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToMetadata(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the metadata table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInMetadataTable(EObject element);
 
@@ -70,12 +67,9 @@ public interface MetadatasPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-	
-	// End of user code
 
 }

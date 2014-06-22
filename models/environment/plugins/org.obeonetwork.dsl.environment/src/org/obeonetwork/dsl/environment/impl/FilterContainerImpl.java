@@ -47,6 +47,16 @@ public class FilterContainerImpl extends ObeoDSMObjectImpl implements
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
 
 	/**
+	 * The cached value of the '{@link #getOwnedFilters() <em>Owned Filters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedFilters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Filter> ownedFilters;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -72,10 +82,12 @@ public class FilterContainerImpl extends ObeoDSMObjectImpl implements
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Filter> getOwnedFilters() {
-		return (EList<Filter>) eDynamicGet(
-				EnvironmentPackage.FILTER_CONTAINER__OWNED_FILTERS,
-				EnvironmentPackage.Literals.FILTER_CONTAINER__OWNED_FILTERS,
-				true, true);
+		if (ownedFilters == null) {
+			ownedFilters = new EObjectContainmentEList.Resolving<Filter>(
+					Filter.class, this,
+					EnvironmentPackage.FILTER_CONTAINER__OWNED_FILTERS);
+		}
+		return ownedFilters;
 	}
 
 	/**
@@ -149,7 +161,7 @@ public class FilterContainerImpl extends ObeoDSMObjectImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.FILTER_CONTAINER__OWNED_FILTERS:
-			return !getOwnedFilters().isEmpty();
+			return ownedFilters != null && !ownedFilters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

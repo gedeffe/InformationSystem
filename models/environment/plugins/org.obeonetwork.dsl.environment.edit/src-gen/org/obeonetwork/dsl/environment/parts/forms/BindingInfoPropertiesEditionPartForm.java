@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.environment.parts.forms;
 
-// Start of user code for imports
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -56,11 +55,10 @@ import org.obeonetwork.dsl.environment.parts.EnvironmentViewsRepository;
 
 import org.obeonetwork.dsl.environment.providers.EnvironmentMessages;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class BindingInfoPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, BindingInfoPropertiesEditionPart {
 
@@ -78,218 +76,233 @@ public class BindingInfoPropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public BindingInfoPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+    ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+    Form form = scrolledForm.getForm();
+    view = form.getBody();
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(widgetFactory, view);
+    return scrolledForm;
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence bindingInfoStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = bindingInfoStep.addStep(EnvironmentViewsRepository.BindingInfo.Properties.class);
-		propertiesStep.addStep(EnvironmentViewsRepository.BindingInfo.Properties.left);
-		propertiesStep.addStep(EnvironmentViewsRepository.BindingInfo.Properties.right);
-		propertiesStep.addStep(EnvironmentViewsRepository.BindingInfo.Properties.description);
-		
-		
-		composer = new PartComposer(bindingInfoStep) {
+    CompositionSequence bindingInfoStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = bindingInfoStep.addStep(EnvironmentViewsRepository.BindingInfo.Properties.class);
+    propertiesStep.addStep(EnvironmentViewsRepository.BindingInfo.Properties.left);
+    propertiesStep.addStep(EnvironmentViewsRepository.BindingInfo.Properties.right);
+    propertiesStep.addStep(EnvironmentViewsRepository.BindingInfo.Properties.description);
+    
+    
+    composer = new PartComposer(bindingInfoStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == EnvironmentViewsRepository.BindingInfo.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == EnvironmentViewsRepository.BindingInfo.Properties.left) {
-					return createLeftEMFComboViewer(widgetFactory, parent);
-				}
-				if (key == EnvironmentViewsRepository.BindingInfo.Properties.right) {
-					return createRightEMFComboViewer(widgetFactory, parent);
-				}
-				if (key == EnvironmentViewsRepository.BindingInfo.Properties.description) {
-					return createDescriptionTextarea(widgetFactory, parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == EnvironmentViewsRepository.BindingInfo.Properties.class) {
+          return createPropertiesGroup(widgetFactory, parent);
+        }
+        if (key == EnvironmentViewsRepository.BindingInfo.Properties.left) {
+          return createLeftEMFComboViewer(widgetFactory, parent);
+        }
+        if (key == EnvironmentViewsRepository.BindingInfo.Properties.right) {
+          return createRightEMFComboViewer(widgetFactory, parent);
+        }
+        if (key == EnvironmentViewsRepository.BindingInfo.Properties.description) {
+          return createDescriptionTextarea(widgetFactory, parent);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(EnvironmentMessages.BindingInfoPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
+    Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+    propertiesSection.setText(EnvironmentMessages.BindingInfoPropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesSectionData.horizontalSpan = 3;
+    propertiesSection.setLayoutData(propertiesSectionData);
+    Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    propertiesSection.setClient(propertiesGroup);
+    return propertiesGroup;
+  }
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createLeftEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EnvironmentViewsRepository.BindingInfo.Properties.left, EnvironmentMessages.BindingInfoPropertiesEditionPart_LeftLabel);
-		left = new EMFComboViewer(parent);
-		GridData leftData = new GridData(GridData.FILL_HORIZONTAL);
-		left.getCombo().setLayoutData(leftData);
-		left.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		left.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, EnvironmentViewsRepository.BindingInfo.Properties.left, EnvironmentMessages.BindingInfoPropertiesEditionPart_LeftLabel);
+    left = new EMFComboViewer(parent);
+    GridData leftData = new GridData(GridData.FILL_HORIZONTAL);
+    left.getCombo().setLayoutData(leftData);
+    left.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    left.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BindingInfoPropertiesEditionPartForm.this, EnvironmentViewsRepository.BindingInfo.Properties.left, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getLeft()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BindingInfoPropertiesEditionPartForm.this, EnvironmentViewsRepository.BindingInfo.Properties.left, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getLeft()));
+      }
 
-		});
-		left.setContentProvider(new EMFListContentProvider());
-		EditingUtils.setID(left.getCombo(), EnvironmentViewsRepository.BindingInfo.Properties.left);
-		EditingUtils.setEEFtype(left.getCombo(), "eef::Combo");
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EnvironmentViewsRepository.BindingInfo.Properties.left, EnvironmentViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    left.setContentProvider(new EMFListContentProvider());
+    EditingUtils.setID(left.getCombo(), EnvironmentViewsRepository.BindingInfo.Properties.left);
+    EditingUtils.setEEFtype(left.getCombo(), "eef::Combo");
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EnvironmentViewsRepository.BindingInfo.Properties.left, EnvironmentViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createLeftEMFComboViewer
 
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createRightEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EnvironmentViewsRepository.BindingInfo.Properties.right, EnvironmentMessages.BindingInfoPropertiesEditionPart_RightLabel);
-		right = new EMFComboViewer(parent);
-		GridData rightData = new GridData(GridData.FILL_HORIZONTAL);
-		right.getCombo().setLayoutData(rightData);
-		right.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		right.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, EnvironmentViewsRepository.BindingInfo.Properties.right, EnvironmentMessages.BindingInfoPropertiesEditionPart_RightLabel);
+    right = new EMFComboViewer(parent);
+    GridData rightData = new GridData(GridData.FILL_HORIZONTAL);
+    right.getCombo().setLayoutData(rightData);
+    right.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    right.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BindingInfoPropertiesEditionPartForm.this, EnvironmentViewsRepository.BindingInfo.Properties.right, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getRight()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BindingInfoPropertiesEditionPartForm.this, EnvironmentViewsRepository.BindingInfo.Properties.right, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getRight()));
+      }
 
-		});
-		right.setContentProvider(new EMFListContentProvider());
-		EditingUtils.setID(right.getCombo(), EnvironmentViewsRepository.BindingInfo.Properties.right);
-		EditingUtils.setEEFtype(right.getCombo(), "eef::Combo");
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EnvironmentViewsRepository.BindingInfo.Properties.right, EnvironmentViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    right.setContentProvider(new EMFListContentProvider());
+    EditingUtils.setID(right.getCombo(), EnvironmentViewsRepository.BindingInfo.Properties.right);
+    EditingUtils.setEEFtype(right.getCombo(), "eef::Combo");
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EnvironmentViewsRepository.BindingInfo.Properties.right, EnvironmentViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createRightEMFComboViewer
 
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createDescriptionTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label descriptionLabel = createDescription(parent, EnvironmentViewsRepository.BindingInfo.Properties.description, EnvironmentMessages.BindingInfoPropertiesEditionPart_DescriptionLabel);
-		GridData descriptionLabelData = new GridData(GridData.FILL_HORIZONTAL);
-		descriptionLabelData.horizontalSpan = 3;
-		descriptionLabel.setLayoutData(descriptionLabelData);
-		description = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
-		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
-		descriptionData.horizontalSpan = 2;
-		descriptionData.heightHint = 80;
-		descriptionData.widthHint = 200;
-		description.setLayoutData(descriptionData);
-		description.addFocusListener(new FocusAdapter() {
+    Label descriptionLabel = createDescription(parent, EnvironmentViewsRepository.BindingInfo.Properties.description, EnvironmentMessages.BindingInfoPropertiesEditionPart_DescriptionLabel);
+    GridData descriptionLabelData = new GridData(GridData.FILL_HORIZONTAL);
+    descriptionLabelData.horizontalSpan = 3;
+    descriptionLabel.setLayoutData(descriptionLabelData);
+    description = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
+    GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
+    descriptionData.horizontalSpan = 2;
+    descriptionData.heightHint = 80;
+    descriptionData.widthHint = 200;
+    description.setLayoutData(descriptionData);
+    description.addFocusListener(new FocusAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							BindingInfoPropertiesEditionPartForm.this,
-							EnvironmentViewsRepository.BindingInfo.Properties.description,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									BindingInfoPropertiesEditionPartForm.this,
-									EnvironmentViewsRepository.BindingInfo.Properties.description,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, description.getText()));
-				}
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * @generated
+       */
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+              BindingInfoPropertiesEditionPartForm.this,
+              EnvironmentViewsRepository.BindingInfo.Properties.description,
+              PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  BindingInfoPropertiesEditionPartForm.this,
+                  EnvironmentViewsRepository.BindingInfo.Properties.description,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                  null, description.getText()));
+        }
+      }
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									BindingInfoPropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
-				}
-			}
-		});
-		EditingUtils.setID(description, EnvironmentViewsRepository.BindingInfo.Properties.description);
-		EditingUtils.setEEFtype(description, "eef::Textarea"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EnvironmentViewsRepository.BindingInfo.Properties.description, EnvironmentViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+       */
+      @Override
+      public void focusGained(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  BindingInfoPropertiesEditionPartForm.this,
+                  null,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                  null, null));
+        }
+      }
+    });
+    EditingUtils.setID(description, EnvironmentViewsRepository.BindingInfo.Properties.description);
+    EditingUtils.setEEFtype(description, "eef::Textarea"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EnvironmentViewsRepository.BindingInfo.Properties.description, EnvironmentViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createDescriptionTextArea
+
+    // End of user code
+    return parent;
+  }
 
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.environment.parts.BindingInfoPropertiesEditionPart#getLeft()
-	 * 
+	 * @generated
 	 */
 	public Object getLeft() {
-		if (left.getSelection() instanceof StructuredSelection) {
-			return ((StructuredSelection) left.getSelection()).getFirstElement();
-		}
-		return "";
-	}
+    if (left.getSelection() instanceof StructuredSelection) {
+      return ((StructuredSelection) left.getSelection()).getFirstElement();
+    }
+    return "";
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -307,38 +320,46 @@ public class BindingInfoPropertiesEditionPartForm extends SectionPropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.environment.parts.BindingInfoPropertiesEditionPart#setLeft(Object newValue)
-	 * 
+	 * @generated
 	 */
 	public void setLeft(Object newValue) {
-		if (newValue != null) {
-			left.modelUpdating(new StructuredSelection(newValue));
-		} else {
-			left.modelUpdating(new StructuredSelection("")); //$NON-NLS-1$
-		}
-	}
+    if (newValue != null) {
+      left.modelUpdating(new StructuredSelection(newValue));
+    } else {
+      left.modelUpdating(new StructuredSelection("")); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EnvironmentViewsRepository.BindingInfo.Properties.left);
+    if (eefElementEditorReadOnlyState && left.isEnabled()) {
+      left.setEnabled(false);
+      left.setToolTipText(EnvironmentMessages.BindingInfo_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !left.isEnabled()) {
+      left.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.environment.parts.BindingInfoPropertiesEditionPart#addFilterLeft(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToLeft(ViewerFilter filter) {
-		left.addFilter(filter);
-	}
+    left.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.environment.parts.BindingInfoPropertiesEditionPart#getRight()
-	 * 
+	 * @generated
 	 */
 	public Object getRight() {
-		if (right.getSelection() instanceof StructuredSelection) {
-			return ((StructuredSelection) right.getSelection()).getFirstElement();
-		}
-		return "";
-	}
+    if (right.getSelection() instanceof StructuredSelection) {
+      return ((StructuredSelection) right.getSelection()).getFirstElement();
+    }
+    return "";
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -356,49 +377,66 @@ public class BindingInfoPropertiesEditionPartForm extends SectionPropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.environment.parts.BindingInfoPropertiesEditionPart#setRight(Object newValue)
-	 * 
+	 * @generated
 	 */
 	public void setRight(Object newValue) {
-		if (newValue != null) {
-			right.modelUpdating(new StructuredSelection(newValue));
-		} else {
-			right.modelUpdating(new StructuredSelection("")); //$NON-NLS-1$
-		}
-	}
+    if (newValue != null) {
+      right.modelUpdating(new StructuredSelection(newValue));
+    } else {
+      right.modelUpdating(new StructuredSelection("")); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EnvironmentViewsRepository.BindingInfo.Properties.right);
+    if (eefElementEditorReadOnlyState && right.isEnabled()) {
+      right.setEnabled(false);
+      right.setToolTipText(EnvironmentMessages.BindingInfo_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !right.isEnabled()) {
+      right.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.environment.parts.BindingInfoPropertiesEditionPart#addFilterRight(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRight(ViewerFilter filter) {
-		right.addFilter(filter);
-	}
+    right.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.environment.parts.BindingInfoPropertiesEditionPart#getDescription()
-	 * 
+	 * @generated
 	 */
 	public String getDescription() {
-		return description.getText();
-	}
+    return description.getText();
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.environment.parts.BindingInfoPropertiesEditionPart#setDescription(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue) {
-		if (newValue != null) {
-			description.setText(newValue);
-		} else {
-			description.setText(""); //$NON-NLS-1$
-		}
-	}
+    if (newValue != null) {
+      description.setText(newValue);
+    } else {
+      description.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EnvironmentViewsRepository.BindingInfo.Properties.description);
+    if (eefElementEditorReadOnlyState && description.isEnabled()) {
+      description.setEnabled(false);
+      description.setBackground(description.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+      description.setToolTipText(EnvironmentMessages.BindingInfo_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+      description.setEnabled(true);
+    }	
+    
+  }
 
 
 
@@ -409,15 +447,12 @@ public class BindingInfoPropertiesEditionPartForm extends SectionPropertiesEditi
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
-		return EnvironmentMessages.BindingInfo_Part_Title;
-	}
+    return EnvironmentMessages.BindingInfo_Part_Title;
+  }
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

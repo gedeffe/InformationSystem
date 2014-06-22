@@ -66,7 +66,7 @@ public class EnvironmentFactoryImpl extends EFactoryImpl implements
 	public static EnvironmentFactory init() {
 		try {
 			EnvironmentFactory theEnvironmentFactory = (EnvironmentFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://www.obeonetwork.org/dsl/environment/2.0.0");
+					.getEFactory(EnvironmentPackage.eNS_URI);
 			if (theEnvironmentFactory != null) {
 				return theEnvironmentFactory;
 			}
@@ -95,41 +95,41 @@ public class EnvironmentFactoryImpl extends EFactoryImpl implements
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 		case EnvironmentPackage.ENVIRONMENT:
-			return (EObject) createEnvironment();
+			return createEnvironment();
 		case EnvironmentPackage.PRIMITIVE_TYPE:
-			return (EObject) createPrimitiveType();
+			return createPrimitiveType();
 		case EnvironmentPackage.ENUMERATION:
-			return (EObject) createEnumeration();
+			return createEnumeration();
 		case EnvironmentPackage.FIELD:
-			return (EObject) createField();
+			return createField();
 		case EnvironmentPackage.INTER_DSM_LINK:
-			return (EObject) createInterDSMLink();
+			return createInterDSMLink();
 		case EnvironmentPackage.META_DATA_CONTAINER:
-			return (EObject) createMetaDataContainer();
+			return createMetaDataContainer();
 		case EnvironmentPackage.ANNOTATION:
-			return (EObject) createAnnotation();
+			return createAnnotation();
 		case EnvironmentPackage.PRIORITY_DEFINITION:
-			return (EObject) createPriorityDefinition();
+			return createPriorityDefinition();
 		case EnvironmentPackage.PRIORITY:
-			return (EObject) createPriority();
+			return createPriority();
 		case EnvironmentPackage.TYPES_DEFINITION:
-			return (EObject) createTypesDefinition();
+			return createTypesDefinition();
 		case EnvironmentPackage.FILTER_CONTAINER:
-			return (EObject) createFilterContainer();
+			return createFilterContainer();
 		case EnvironmentPackage.NAMESPACE:
-			return (EObject) createNamespace();
+			return createNamespace();
 		case EnvironmentPackage.ATTRIBUTE:
-			return (EObject) createAttribute();
+			return createAttribute();
 		case EnvironmentPackage.REFERENCE:
-			return (EObject) createReference();
+			return createReference();
 		case EnvironmentPackage.BINDING_INFO:
-			return (EObject) createBindingInfo();
+			return createBindingInfo();
 		case EnvironmentPackage.BINDING_REFERENCE:
-			return (EObject) createBindingReference();
+			return createBindingReference();
 		case EnvironmentPackage.BINDING_ELEMENT:
-			return (EObject) createBindingElement();
+			return createBindingElement();
 		case EnvironmentPackage.BINDING_REGISTRY:
-			return (EObject) createBindingRegistry();
+			return createBindingRegistry();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName()
 					+ "' is not a valid classifier");

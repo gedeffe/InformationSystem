@@ -53,6 +53,26 @@ public class InterDSMLinkImpl extends ObeoDSMObjectImpl implements InterDSMLink 
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected EObject target;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -77,8 +97,7 @@ public class InterDSMLinkImpl extends ObeoDSMObjectImpl implements InterDSMLink 
 	 * @generated
 	 */
 	public String getName() {
-		return (String) eDynamicGet(EnvironmentPackage.INTER_DSM_LINK__NAME,
-				EnvironmentPackage.Literals.INTER_DSM_LINK__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -87,8 +106,11 @@ public class InterDSMLinkImpl extends ObeoDSMObjectImpl implements InterDSMLink 
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(EnvironmentPackage.INTER_DSM_LINK__NAME,
-				EnvironmentPackage.Literals.INTER_DSM_LINK__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.INTER_DSM_LINK__NAME, oldName, name));
 	}
 
 	/**
@@ -97,8 +119,17 @@ public class InterDSMLinkImpl extends ObeoDSMObjectImpl implements InterDSMLink 
 	 * @generated
 	 */
 	public EObject getTarget() {
-		return (EObject) eDynamicGet(EnvironmentPackage.INTER_DSM_LINK__TARGET,
-				EnvironmentPackage.Literals.INTER_DSM_LINK__TARGET, true, true);
+		if (target != null && target.eIsProxy()) {
+			InternalEObject oldTarget = (InternalEObject) target;
+			target = eResolveProxy(oldTarget);
+			if (target != oldTarget) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							EnvironmentPackage.INTER_DSM_LINK__TARGET,
+							oldTarget, target));
+			}
+		}
+		return target;
 	}
 
 	/**
@@ -107,8 +138,7 @@ public class InterDSMLinkImpl extends ObeoDSMObjectImpl implements InterDSMLink 
 	 * @generated
 	 */
 	public EObject basicGetTarget() {
-		return (EObject) eDynamicGet(EnvironmentPackage.INTER_DSM_LINK__TARGET,
-				EnvironmentPackage.Literals.INTER_DSM_LINK__TARGET, false, true);
+		return target;
 	}
 
 	/**
@@ -117,8 +147,12 @@ public class InterDSMLinkImpl extends ObeoDSMObjectImpl implements InterDSMLink 
 	 * @generated
 	 */
 	public void setTarget(EObject newTarget) {
-		eDynamicSet(EnvironmentPackage.INTER_DSM_LINK__TARGET,
-				EnvironmentPackage.Literals.INTER_DSM_LINK__TARGET, newTarget);
+		EObject oldTarget = target;
+		target = newTarget;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.INTER_DSM_LINK__TARGET, oldTarget,
+					target));
 	}
 
 	/**
@@ -184,12 +218,29 @@ public class InterDSMLinkImpl extends ObeoDSMObjectImpl implements InterDSMLink 
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.INTER_DSM_LINK__NAME:
-			return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT
-					.equals(getName());
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
 		case EnvironmentPackage.INTER_DSM_LINK__TARGET:
-			return basicGetTarget() != null;
+			return target != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //InterDSMLinkImpl

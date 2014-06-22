@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList.UnmodifiableEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -58,6 +59,16 @@ public class BindingElementImpl extends ObeoDSMObjectImpl implements
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
 
 	/**
+	 * The cached value of the '{@link #getBoundElement() <em>Bound Element</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBoundElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected BoundableElement boundElement;
+
+	/**
 	 * The default value of the '{@link #getBindingExpression() <em>Binding Expression</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -66,6 +77,46 @@ public class BindingElementImpl extends ObeoDSMObjectImpl implements
 	 * @ordered
 	 */
 	protected static final String BINDING_EXPRESSION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBindingExpression() <em>Binding Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBindingExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected String bindingExpression = BINDING_EXPRESSION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getReferencedByAsLeft() <em>Referenced By As Left</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReferencedByAsLeft()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<BindingReference> referencedByAsLeft;
+
+	/**
+	 * The cached value of the '{@link #getReferencedByAsRight() <em>Referenced By As Right</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReferencedByAsRight()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<BindingReference> referencedByAsRight;
+
+	/**
+	 * The cached value of the '{@link #getPathReferences() <em>Path References</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPathReferences()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<BoundableElement> pathReferences;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -92,10 +143,17 @@ public class BindingElementImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public BoundableElement getBoundElement() {
-		return (BoundableElement) eDynamicGet(
-				EnvironmentPackage.BINDING_ELEMENT__BOUND_ELEMENT,
-				EnvironmentPackage.Literals.BINDING_ELEMENT__BOUND_ELEMENT,
-				true, true);
+		if (boundElement != null && boundElement.eIsProxy()) {
+			InternalEObject oldBoundElement = (InternalEObject) boundElement;
+			boundElement = (BoundableElement) eResolveProxy(oldBoundElement);
+			if (boundElement != oldBoundElement) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							EnvironmentPackage.BINDING_ELEMENT__BOUND_ELEMENT,
+							oldBoundElement, boundElement));
+			}
+		}
+		return boundElement;
 	}
 
 	/**
@@ -104,10 +162,7 @@ public class BindingElementImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public BoundableElement basicGetBoundElement() {
-		return (BoundableElement) eDynamicGet(
-				EnvironmentPackage.BINDING_ELEMENT__BOUND_ELEMENT,
-				EnvironmentPackage.Literals.BINDING_ELEMENT__BOUND_ELEMENT,
-				false, true);
+		return boundElement;
 	}
 
 	/**
@@ -116,9 +171,12 @@ public class BindingElementImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public void setBoundElement(BoundableElement newBoundElement) {
-		eDynamicSet(EnvironmentPackage.BINDING_ELEMENT__BOUND_ELEMENT,
-				EnvironmentPackage.Literals.BINDING_ELEMENT__BOUND_ELEMENT,
-				newBoundElement);
+		BoundableElement oldBoundElement = boundElement;
+		boundElement = newBoundElement;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.BINDING_ELEMENT__BOUND_ELEMENT,
+					oldBoundElement, boundElement));
 	}
 
 	/**
@@ -127,10 +185,7 @@ public class BindingElementImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public String getBindingExpression() {
-		return (String) eDynamicGet(
-				EnvironmentPackage.BINDING_ELEMENT__BINDING_EXPRESSION,
-				EnvironmentPackage.Literals.BINDING_ELEMENT__BINDING_EXPRESSION,
-				true, true);
+		return bindingExpression;
 	}
 
 	/**
@@ -139,10 +194,12 @@ public class BindingElementImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public void setBindingExpression(String newBindingExpression) {
-		eDynamicSet(
-				EnvironmentPackage.BINDING_ELEMENT__BINDING_EXPRESSION,
-				EnvironmentPackage.Literals.BINDING_ELEMENT__BINDING_EXPRESSION,
-				newBindingExpression);
+		String oldBindingExpression = bindingExpression;
+		bindingExpression = newBindingExpression;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.BINDING_ELEMENT__BINDING_EXPRESSION,
+					oldBindingExpression, bindingExpression));
 	}
 
 	/**
@@ -152,10 +209,13 @@ public class BindingElementImpl extends ObeoDSMObjectImpl implements
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<BindingReference> getReferencedByAsLeft() {
-		return (EList<BindingReference>) eDynamicGet(
-				EnvironmentPackage.BINDING_ELEMENT__REFERENCED_BY_AS_LEFT,
-				EnvironmentPackage.Literals.BINDING_ELEMENT__REFERENCED_BY_AS_LEFT,
-				true, true);
+		if (referencedByAsLeft == null) {
+			referencedByAsLeft = new EObjectWithInverseResolvingEList<BindingReference>(
+					BindingReference.class, this,
+					EnvironmentPackage.BINDING_ELEMENT__REFERENCED_BY_AS_LEFT,
+					EnvironmentPackage.BINDING_REFERENCE__LEFT);
+		}
+		return referencedByAsLeft;
 	}
 
 	/**
@@ -165,10 +225,13 @@ public class BindingElementImpl extends ObeoDSMObjectImpl implements
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<BindingReference> getReferencedByAsRight() {
-		return (EList<BindingReference>) eDynamicGet(
-				EnvironmentPackage.BINDING_ELEMENT__REFERENCED_BY_AS_RIGHT,
-				EnvironmentPackage.Literals.BINDING_ELEMENT__REFERENCED_BY_AS_RIGHT,
-				true, true);
+		if (referencedByAsRight == null) {
+			referencedByAsRight = new EObjectWithInverseResolvingEList<BindingReference>(
+					BindingReference.class, this,
+					EnvironmentPackage.BINDING_ELEMENT__REFERENCED_BY_AS_RIGHT,
+					EnvironmentPackage.BINDING_REFERENCE__RIGHT);
+		}
+		return referencedByAsRight;
 	}
 
 	/**
@@ -192,10 +255,12 @@ public class BindingElementImpl extends ObeoDSMObjectImpl implements
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<BoundableElement> getPathReferences() {
-		return (EList<BoundableElement>) eDynamicGet(
-				EnvironmentPackage.BINDING_ELEMENT__PATH_REFERENCES,
-				EnvironmentPackage.Literals.BINDING_ELEMENT__PATH_REFERENCES,
-				true, true);
+		if (pathReferences == null) {
+			pathReferences = new EObjectResolvingEList<BoundableElement>(
+					BoundableElement.class, this,
+					EnvironmentPackage.BINDING_ELEMENT__PATH_REFERENCES);
+		}
+		return pathReferences;
 	}
 
 	/**
@@ -333,21 +398,38 @@ public class BindingElementImpl extends ObeoDSMObjectImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.BINDING_ELEMENT__BOUND_ELEMENT:
-			return basicGetBoundElement() != null;
+			return boundElement != null;
 		case EnvironmentPackage.BINDING_ELEMENT__BINDING_EXPRESSION:
-			return BINDING_EXPRESSION_EDEFAULT == null ? getBindingExpression() != null
-					: !BINDING_EXPRESSION_EDEFAULT
-							.equals(getBindingExpression());
+			return BINDING_EXPRESSION_EDEFAULT == null ? bindingExpression != null
+					: !BINDING_EXPRESSION_EDEFAULT.equals(bindingExpression);
 		case EnvironmentPackage.BINDING_ELEMENT__REFERENCED_BY_AS_LEFT:
-			return !getReferencedByAsLeft().isEmpty();
+			return referencedByAsLeft != null && !referencedByAsLeft.isEmpty();
 		case EnvironmentPackage.BINDING_ELEMENT__REFERENCED_BY_AS_RIGHT:
-			return !getReferencedByAsRight().isEmpty();
+			return referencedByAsRight != null
+					&& !referencedByAsRight.isEmpty();
 		case EnvironmentPackage.BINDING_ELEMENT__REFERENCED_BY:
 			return !getReferencedBy().isEmpty();
 		case EnvironmentPackage.BINDING_ELEMENT__PATH_REFERENCES:
-			return !getPathReferences().isEmpty();
+			return pathReferences != null && !pathReferences.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (bindingExpression: ");
+		result.append(bindingExpression);
+		result.append(')');
+		return result.toString();
 	}
 
 } //BindingElementImpl

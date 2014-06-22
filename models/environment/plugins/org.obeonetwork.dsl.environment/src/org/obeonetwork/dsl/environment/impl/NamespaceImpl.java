@@ -50,6 +50,16 @@ public class NamespaceImpl extends ObeoDSMObjectImpl implements Namespace {
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
 
 	/**
+	 * The cached value of the '{@link #getOwnedNamespaces() <em>Owned Namespaces</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedNamespaces()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Namespace> ownedNamespaces;
+
+	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,6 +68,16 @@ public class NamespaceImpl extends ObeoDSMObjectImpl implements Namespace {
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,10 +105,13 @@ public class NamespaceImpl extends ObeoDSMObjectImpl implements Namespace {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Namespace> getOwnedNamespaces() {
-		return (EList<Namespace>) eDynamicGet(
-				EnvironmentPackage.NAMESPACE__OWNED_NAMESPACES,
-				EnvironmentPackage.Literals.NAMESPACE__OWNED_NAMESPACES, true,
-				true);
+		if (ownedNamespaces == null) {
+			ownedNamespaces = new EObjectContainmentWithInverseEList.Resolving<Namespace>(
+					Namespace.class, this,
+					EnvironmentPackage.NAMESPACE__OWNED_NAMESPACES,
+					EnvironmentPackage.NAMESPACE__OWNER);
+		}
+		return ownedNamespaces;
 	}
 
 	/**
@@ -97,8 +120,9 @@ public class NamespaceImpl extends ObeoDSMObjectImpl implements Namespace {
 	 * @generated
 	 */
 	public Namespace getOwner() {
-		return (Namespace) eDynamicGet(EnvironmentPackage.NAMESPACE__OWNER,
-				EnvironmentPackage.Literals.NAMESPACE__OWNER, true, true);
+		if (eContainerFeatureID() != EnvironmentPackage.NAMESPACE__OWNER)
+			return null;
+		return (Namespace) eContainer();
 	}
 
 	/**
@@ -107,8 +131,9 @@ public class NamespaceImpl extends ObeoDSMObjectImpl implements Namespace {
 	 * @generated
 	 */
 	public Namespace basicGetOwner() {
-		return (Namespace) eDynamicGet(EnvironmentPackage.NAMESPACE__OWNER,
-				EnvironmentPackage.Literals.NAMESPACE__OWNER, false, true);
+		if (eContainerFeatureID() != EnvironmentPackage.NAMESPACE__OWNER)
+			return null;
+		return (Namespace) eInternalContainer();
 	}
 
 	/**
@@ -129,8 +154,24 @@ public class NamespaceImpl extends ObeoDSMObjectImpl implements Namespace {
 	 * @generated
 	 */
 	public void setOwner(Namespace newOwner) {
-		eDynamicSet(EnvironmentPackage.NAMESPACE__OWNER,
-				EnvironmentPackage.Literals.NAMESPACE__OWNER, newOwner);
+		if (newOwner != eInternalContainer()
+				|| (eContainerFeatureID() != EnvironmentPackage.NAMESPACE__OWNER && newOwner != null)) {
+			if (EcoreUtil.isAncestor(this, newOwner))
+				throw new IllegalArgumentException(
+						"Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newOwner != null)
+				msgs = ((InternalEObject) newOwner).eInverseAdd(this,
+						EnvironmentPackage.NAMESPACE__OWNED_NAMESPACES,
+						Namespace.class, msgs);
+			msgs = basicSetOwner(newOwner, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.NAMESPACE__OWNER, newOwner, newOwner));
 	}
 
 	/**
@@ -139,8 +180,7 @@ public class NamespaceImpl extends ObeoDSMObjectImpl implements Namespace {
 	 * @generated
 	 */
 	public String getName() {
-		return (String) eDynamicGet(EnvironmentPackage.NAMESPACE__NAME,
-				EnvironmentPackage.Literals.NAMESPACE__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -149,8 +189,11 @@ public class NamespaceImpl extends ObeoDSMObjectImpl implements Namespace {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(EnvironmentPackage.NAMESPACE__NAME,
-				EnvironmentPackage.Literals.NAMESPACE__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.NAMESPACE__NAME, oldName, name));
 	}
 
 	/**
@@ -283,14 +326,31 @@ public class NamespaceImpl extends ObeoDSMObjectImpl implements Namespace {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.NAMESPACE__OWNED_NAMESPACES:
-			return !getOwnedNamespaces().isEmpty();
+			return ownedNamespaces != null && !ownedNamespaces.isEmpty();
 		case EnvironmentPackage.NAMESPACE__OWNER:
 			return basicGetOwner() != null;
 		case EnvironmentPackage.NAMESPACE__NAME:
-			return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT
-					.equals(getName());
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //NamespaceImpl

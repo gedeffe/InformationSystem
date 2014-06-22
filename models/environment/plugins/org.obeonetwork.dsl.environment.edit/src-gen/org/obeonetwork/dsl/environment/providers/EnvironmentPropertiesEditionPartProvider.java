@@ -49,128 +49,128 @@ import org.obeonetwork.dsl.environment.parts.impl.TypesDefinitionPropertiesEditi
 
 /**
  * 
- * 
+ * @generated
  */
 public class EnvironmentPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
 
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Object)
-	 * 
+	 * @generated
 	 */
 	public boolean provides(Object key) {
-		return key == EnvironmentViewsRepository.class;
-	}
+    return key == EnvironmentViewsRepository.class;
+  }
 
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
-	 * 
+	 * @generated
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component) {
-		if (key == EnvironmentViewsRepository.Environment_.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new EnvironmentPropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new EnvironmentPropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.PrimitiveType.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new PrimitiveTypePropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new PrimitiveTypePropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.Enumeration.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new EnumerationPropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new EnumerationPropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.Field.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new FieldPropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new FieldPropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.InterDSMLink.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new InterDSMLinkPropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new InterDSMLinkPropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.Annotation.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new AnnotationPropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new AnnotationPropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.PriorityDefinition.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new PriorityDefinitionPropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new PriorityDefinitionPropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.Priority.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new PriorityPropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new PriorityPropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.TypesDefinition.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new TypesDefinitionPropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new TypesDefinitionPropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.FilterContainer.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new FilterContainerPropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new FilterContainerPropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.Namespace.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new NamespacePropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new NamespacePropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.Attribute.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new AttributePropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new AttributePropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.Reference.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new ReferencePropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new ReferencePropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.Metadatas.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new MetadatasPropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new MetadatasPropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.BindingInfo.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new BindingInfoPropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new BindingInfoPropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.BindingReference.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new BindingReferencePropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new BindingReferencePropertiesEditionPartForm(component);
-		}
-		if (key == EnvironmentViewsRepository.BindingElement.class) {
-			if (kind == EnvironmentViewsRepository.SWT_KIND)
-				return new BindingElementPropertiesEditionPartImpl(component);
-			if (kind == EnvironmentViewsRepository.FORM_KIND)
-				return new BindingElementPropertiesEditionPartForm(component);
-		}
-		return null;
-	}
+    if (key == EnvironmentViewsRepository.Environment_.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new EnvironmentPropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new EnvironmentPropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.PrimitiveType.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new PrimitiveTypePropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new PrimitiveTypePropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.Enumeration.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new EnumerationPropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new EnumerationPropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.Field.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new FieldPropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new FieldPropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.InterDSMLink.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new InterDSMLinkPropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new InterDSMLinkPropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.Annotation.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new AnnotationPropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new AnnotationPropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.PriorityDefinition.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new PriorityDefinitionPropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new PriorityDefinitionPropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.Priority.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new PriorityPropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new PriorityPropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.TypesDefinition.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new TypesDefinitionPropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new TypesDefinitionPropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.FilterContainer.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new FilterContainerPropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new FilterContainerPropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.Namespace.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new NamespacePropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new NamespacePropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.Attribute.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new AttributePropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new AttributePropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.Reference.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new ReferencePropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new ReferencePropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.Metadatas.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new MetadatasPropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new MetadatasPropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.BindingInfo.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new BindingInfoPropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new BindingInfoPropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.BindingReference.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new BindingReferencePropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new BindingReferencePropertiesEditionPartForm(component);
+    }
+    if (key == EnvironmentViewsRepository.BindingElement.class) {
+      if (kind == EnvironmentViewsRepository.SWT_KIND)
+        return new BindingElementPropertiesEditionPartImpl(component);
+      if (kind == EnvironmentViewsRepository.FORM_KIND)
+        return new BindingElementPropertiesEditionPartForm(component);
+    }
+    return null;
+  }
 
 }

@@ -47,6 +47,16 @@ public class PriorityDefinitionImpl extends ObeoDSMObjectImpl implements
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
 
 	/**
+	 * The cached value of the '{@link #getPriorities() <em>Priorities</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriorities()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Priority> priorities;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -72,10 +82,12 @@ public class PriorityDefinitionImpl extends ObeoDSMObjectImpl implements
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Priority> getPriorities() {
-		return (EList<Priority>) eDynamicGet(
-				EnvironmentPackage.PRIORITY_DEFINITION__PRIORITIES,
-				EnvironmentPackage.Literals.PRIORITY_DEFINITION__PRIORITIES,
-				true, true);
+		if (priorities == null) {
+			priorities = new EObjectContainmentEList.Resolving<Priority>(
+					Priority.class, this,
+					EnvironmentPackage.PRIORITY_DEFINITION__PRIORITIES);
+		}
+		return priorities;
 	}
 
 	/**
@@ -149,7 +161,7 @@ public class PriorityDefinitionImpl extends ObeoDSMObjectImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.PRIORITY_DEFINITION__PRIORITIES:
-			return !getPriorities().isEmpty();
+			return priorities != null && !priorities.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

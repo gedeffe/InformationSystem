@@ -3,44 +3,34 @@
  */
 package org.obeonetwork.dsl.environment.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
-
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public interface AttributePropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
 
 	/**
 	 * @return the type
-	 * 
+	 * @generated
 	 */
 	public Object getType();
 
@@ -54,7 +44,7 @@ public interface AttributePropertiesEditionPart {
 	/**
 	 * Defines a new type
 	 * @param newValue the new type to set
-	 * 
+	 * @generated
 	 */
 	public void setType(Object newValue);
 
@@ -64,14 +54,14 @@ public interface AttributePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToType(ViewerFilter filter);
 
 
 	/**
 	 * @return the multiplicity
-	 * 
+	 * @generated
 	 */
 	public Enumerator getMultiplicity();
 
@@ -85,21 +75,21 @@ public interface AttributePropertiesEditionPart {
 	/**
 	 * Defines a new multiplicity
 	 * @param newValue the new multiplicity to set
-	 * 
+	 * @generated
 	 */
 	public void setMultiplicity(Enumerator newValue);
 
 
 	/**
 	 * @return the description
-	 * 
+	 * @generated
 	 */
 	public String getDescription();
 
 	/**
 	 * Defines a new description
 	 * @param newValue the new description to set
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue);
 
@@ -111,12 +101,9 @@ public interface AttributePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-	
-	// End of user code
 
 }

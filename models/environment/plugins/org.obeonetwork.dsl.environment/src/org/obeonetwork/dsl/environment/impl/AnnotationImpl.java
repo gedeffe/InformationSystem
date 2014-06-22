@@ -50,6 +50,16 @@ public class AnnotationImpl extends MetaDataImpl implements Annotation {
 	 */
 	protected static final String TITLE_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTitle()
+	 * @generated
+	 * @ordered
+	 */
+	protected String title = TITLE_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getBody() <em>Body</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,6 +68,16 @@ public class AnnotationImpl extends MetaDataImpl implements Annotation {
 	 * @ordered
 	 */
 	protected static final String BODY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBody() <em>Body</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBody()
+	 * @generated
+	 * @ordered
+	 */
+	protected String body = BODY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -84,8 +104,7 @@ public class AnnotationImpl extends MetaDataImpl implements Annotation {
 	 * @generated
 	 */
 	public String getTitle() {
-		return (String) eDynamicGet(EnvironmentPackage.ANNOTATION__TITLE,
-				EnvironmentPackage.Literals.ANNOTATION__TITLE, true, true);
+		return title;
 	}
 
 	/**
@@ -94,8 +113,11 @@ public class AnnotationImpl extends MetaDataImpl implements Annotation {
 	 * @generated
 	 */
 	public void setTitle(String newTitle) {
-		eDynamicSet(EnvironmentPackage.ANNOTATION__TITLE,
-				EnvironmentPackage.Literals.ANNOTATION__TITLE, newTitle);
+		String oldTitle = title;
+		title = newTitle;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.ANNOTATION__TITLE, oldTitle, title));
 	}
 
 	/**
@@ -104,8 +126,7 @@ public class AnnotationImpl extends MetaDataImpl implements Annotation {
 	 * @generated
 	 */
 	public String getBody() {
-		return (String) eDynamicGet(EnvironmentPackage.ANNOTATION__BODY,
-				EnvironmentPackage.Literals.ANNOTATION__BODY, true, true);
+		return body;
 	}
 
 	/**
@@ -114,8 +135,11 @@ public class AnnotationImpl extends MetaDataImpl implements Annotation {
 	 * @generated
 	 */
 	public void setBody(String newBody) {
-		eDynamicSet(EnvironmentPackage.ANNOTATION__BODY,
-				EnvironmentPackage.Literals.ANNOTATION__BODY, newBody);
+		String oldBody = body;
+		body = newBody;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.ANNOTATION__BODY, oldBody, body));
 	}
 
 	/**
@@ -179,13 +203,32 @@ public class AnnotationImpl extends MetaDataImpl implements Annotation {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.ANNOTATION__TITLE:
-			return TITLE_EDEFAULT == null ? getTitle() != null
-					: !TITLE_EDEFAULT.equals(getTitle());
+			return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT
+					.equals(title);
 		case EnvironmentPackage.ANNOTATION__BODY:
-			return BODY_EDEFAULT == null ? getBody() != null : !BODY_EDEFAULT
-					.equals(getBody());
+			return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT
+					.equals(body);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (title: ");
+		result.append(title);
+		result.append(", body: ");
+		result.append(body);
+		result.append(')');
+		return result.toString();
 	}
 
 } //AnnotationImpl

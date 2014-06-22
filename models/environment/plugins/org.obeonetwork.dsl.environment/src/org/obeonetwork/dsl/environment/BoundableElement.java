@@ -21,10 +21,9 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.obeonetwork.dsl.environment.EnvironmentPackage#getBoundableElement()
  * @model interface="true" abstract="true"
- * @extends CDOObject
  * @generated
  */
-public interface BoundableElement extends CDOObject {
+public interface BoundableElement extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -47,6 +47,16 @@ public class TypesDefinitionImpl extends ObeoDSMObjectImpl implements
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
 
 	/**
+	 * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Type> types;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -72,9 +82,13 @@ public class TypesDefinitionImpl extends ObeoDSMObjectImpl implements
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Type> getTypes() {
-		return (EList<Type>) eDynamicGet(
-				EnvironmentPackage.TYPES_DEFINITION__TYPES,
-				EnvironmentPackage.Literals.TYPES_DEFINITION__TYPES, true, true);
+		if (types == null) {
+			types = new EObjectContainmentWithInverseEList.Resolving<Type>(
+					Type.class, this,
+					EnvironmentPackage.TYPES_DEFINITION__TYPES,
+					EnvironmentPackage.TYPE__TYPE_DEFINITION);
+		}
+		return types;
 	}
 
 	/**
@@ -164,7 +178,7 @@ public class TypesDefinitionImpl extends ObeoDSMObjectImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.TYPES_DEFINITION__TYPES:
-			return !getTypes().isEmpty();
+			return types != null && !types.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

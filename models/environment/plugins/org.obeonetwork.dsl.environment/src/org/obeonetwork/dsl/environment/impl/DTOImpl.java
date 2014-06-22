@@ -64,6 +64,52 @@ public abstract class DTOImpl extends StructuredTypeImpl implements DTO {
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
 
 	/**
+	 * The cached value of the '{@link #getOwnedContainer() <em>Owned Container</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedContainer()
+	 * @generated
+	 * @ordered
+	 */
+	protected FilterContainer ownedContainer;
+	/**
+	 * The cached value of the '{@link #getAssociatedTypes() <em>Associated Types</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAssociatedTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<StructuredType> associatedTypes;
+	/**
+	 * The cached value of the '{@link #getOwnedReferences() <em>Owned References</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedReferences()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Reference> ownedReferences;
+	/**
+	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attributes</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Attribute> ownedAttributes;
+	/**
+	 * The cached value of the '{@link #getSupertype() <em>Supertype</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSupertype()
+	 * @generated
+	 * @ordered
+	 */
+	protected DTO supertype;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -88,9 +134,30 @@ public abstract class DTOImpl extends StructuredTypeImpl implements DTO {
 	 * @generated
 	 */
 	public FilterContainer getOwnedContainer() {
-		return (FilterContainer) eDynamicGet(
-				EnvironmentPackage.DTO__OWNED_CONTAINER,
-				EnvironmentPackage.Literals.DTO__OWNED_CONTAINER, true, true);
+		if (ownedContainer != null && ownedContainer.eIsProxy()) {
+			InternalEObject oldOwnedContainer = (InternalEObject) ownedContainer;
+			ownedContainer = (FilterContainer) eResolveProxy(oldOwnedContainer);
+			if (ownedContainer != oldOwnedContainer) {
+				InternalEObject newOwnedContainer = (InternalEObject) ownedContainer;
+				NotificationChain msgs = oldOwnedContainer.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+								- EnvironmentPackage.DTO__OWNED_CONTAINER,
+						null, null);
+				if (newOwnedContainer.eInternalContainer() == null) {
+					msgs = newOwnedContainer.eInverseAdd(this,
+							EOPPOSITE_FEATURE_BASE
+									- EnvironmentPackage.DTO__OWNED_CONTAINER,
+							null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							EnvironmentPackage.DTO__OWNED_CONTAINER,
+							oldOwnedContainer, ownedContainer));
+			}
+		}
+		return ownedContainer;
 	}
 
 	/**
@@ -99,9 +166,7 @@ public abstract class DTOImpl extends StructuredTypeImpl implements DTO {
 	 * @generated
 	 */
 	public FilterContainer basicGetOwnedContainer() {
-		return (FilterContainer) eDynamicGet(
-				EnvironmentPackage.DTO__OWNED_CONTAINER,
-				EnvironmentPackage.Literals.DTO__OWNED_CONTAINER, false, true);
+		return ownedContainer;
 	}
 
 	/**
@@ -111,8 +176,17 @@ public abstract class DTOImpl extends StructuredTypeImpl implements DTO {
 	 */
 	public NotificationChain basicSetOwnedContainer(
 			FilterContainer newOwnedContainer, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject) newOwnedContainer,
-				EnvironmentPackage.DTO__OWNED_CONTAINER, msgs);
+		FilterContainer oldOwnedContainer = ownedContainer;
+		ownedContainer = newOwnedContainer;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, EnvironmentPackage.DTO__OWNED_CONTAINER,
+					oldOwnedContainer, newOwnedContainer);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
 		return msgs;
 	}
 
@@ -122,9 +196,25 @@ public abstract class DTOImpl extends StructuredTypeImpl implements DTO {
 	 * @generated
 	 */
 	public void setOwnedContainer(FilterContainer newOwnedContainer) {
-		eDynamicSet(EnvironmentPackage.DTO__OWNED_CONTAINER,
-				EnvironmentPackage.Literals.DTO__OWNED_CONTAINER,
-				newOwnedContainer);
+		if (newOwnedContainer != ownedContainer) {
+			NotificationChain msgs = null;
+			if (ownedContainer != null)
+				msgs = ((InternalEObject) ownedContainer).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+								- EnvironmentPackage.DTO__OWNED_CONTAINER,
+						null, msgs);
+			if (newOwnedContainer != null)
+				msgs = ((InternalEObject) newOwnedContainer).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+								- EnvironmentPackage.DTO__OWNED_CONTAINER,
+						null, msgs);
+			msgs = basicSetOwnedContainer(newOwnedContainer, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.DTO__OWNED_CONTAINER, newOwnedContainer,
+					newOwnedContainer));
 	}
 
 	/**
@@ -134,9 +224,12 @@ public abstract class DTOImpl extends StructuredTypeImpl implements DTO {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<StructuredType> getAssociatedTypes() {
-		return (EList<StructuredType>) eDynamicGet(
-				EnvironmentPackage.DTO__ASSOCIATED_TYPES,
-				EnvironmentPackage.Literals.DTO__ASSOCIATED_TYPES, true, true);
+		if (associatedTypes == null) {
+			associatedTypes = new EObjectResolvingEList<StructuredType>(
+					StructuredType.class, this,
+					EnvironmentPackage.DTO__ASSOCIATED_TYPES);
+		}
+		return associatedTypes;
 	}
 
 	/**
@@ -195,9 +288,13 @@ public abstract class DTOImpl extends StructuredTypeImpl implements DTO {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Reference> getOwnedReferences() {
-		return (EList<Reference>) eDynamicGet(
-				EnvironmentPackage.DTO__OWNED_REFERENCES,
-				EnvironmentPackage.Literals.DTO__OWNED_REFERENCES, true, true);
+		if (ownedReferences == null) {
+			ownedReferences = new EObjectContainmentWithInverseEList.Resolving<Reference>(
+					Reference.class, this,
+					EnvironmentPackage.DTO__OWNED_REFERENCES,
+					EnvironmentPackage.REFERENCE__DTO);
+		}
+		return ownedReferences;
 	}
 
 	/**
@@ -232,9 +329,13 @@ public abstract class DTOImpl extends StructuredTypeImpl implements DTO {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Attribute> getOwnedAttributes() {
-		return (EList<Attribute>) eDynamicGet(
-				EnvironmentPackage.DTO__OWNED_ATTRIBUTES,
-				EnvironmentPackage.Literals.DTO__OWNED_ATTRIBUTES, true, true);
+		if (ownedAttributes == null) {
+			ownedAttributes = new EObjectContainmentWithInverseEList.Resolving<Attribute>(
+					Attribute.class, this,
+					EnvironmentPackage.DTO__OWNED_ATTRIBUTES,
+					EnvironmentPackage.ATTRIBUTE__DTO);
+		}
+		return ownedAttributes;
 	}
 
 	/**
@@ -243,8 +344,17 @@ public abstract class DTOImpl extends StructuredTypeImpl implements DTO {
 	 * @generated
 	 */
 	public DTO getSupertype() {
-		return (DTO) eDynamicGet(EnvironmentPackage.DTO__SUPERTYPE,
-				EnvironmentPackage.Literals.DTO__SUPERTYPE, true, true);
+		if (supertype != null && supertype.eIsProxy()) {
+			InternalEObject oldSupertype = (InternalEObject) supertype;
+			supertype = (DTO) eResolveProxy(oldSupertype);
+			if (supertype != oldSupertype) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							EnvironmentPackage.DTO__SUPERTYPE, oldSupertype,
+							supertype));
+			}
+		}
+		return supertype;
 	}
 
 	/**
@@ -253,8 +363,7 @@ public abstract class DTOImpl extends StructuredTypeImpl implements DTO {
 	 * @generated
 	 */
 	public DTO basicGetSupertype() {
-		return (DTO) eDynamicGet(EnvironmentPackage.DTO__SUPERTYPE,
-				EnvironmentPackage.Literals.DTO__SUPERTYPE, false, true);
+		return supertype;
 	}
 
 	/**
@@ -263,8 +372,11 @@ public abstract class DTOImpl extends StructuredTypeImpl implements DTO {
 	 * @generated
 	 */
 	public void setSupertype(DTO newSupertype) {
-		eDynamicSet(EnvironmentPackage.DTO__SUPERTYPE,
-				EnvironmentPackage.Literals.DTO__SUPERTYPE, newSupertype);
+		DTO oldSupertype = supertype;
+		supertype = newSupertype;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.DTO__SUPERTYPE, oldSupertype, supertype));
 	}
 
 	/**
@@ -424,21 +536,21 @@ public abstract class DTOImpl extends StructuredTypeImpl implements DTO {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.DTO__OWNED_CONTAINER:
-			return basicGetOwnedContainer() != null;
+			return ownedContainer != null;
 		case EnvironmentPackage.DTO__ASSOCIATED_TYPES:
-			return !getAssociatedTypes().isEmpty();
+			return associatedTypes != null && !associatedTypes.isEmpty();
 		case EnvironmentPackage.DTO__PROPERTIES:
 			return !getProperties().isEmpty();
 		case EnvironmentPackage.DTO__REFERENCES:
 			return !getReferences().isEmpty();
 		case EnvironmentPackage.DTO__OWNED_REFERENCES:
-			return !getOwnedReferences().isEmpty();
+			return ownedReferences != null && !ownedReferences.isEmpty();
 		case EnvironmentPackage.DTO__ATTRIBUTES:
 			return !getAttributes().isEmpty();
 		case EnvironmentPackage.DTO__OWNED_ATTRIBUTES:
-			return !getOwnedAttributes().isEmpty();
+			return ownedAttributes != null && !ownedAttributes.isEmpty();
 		case EnvironmentPackage.DTO__SUPERTYPE:
-			return basicGetSupertype() != null;
+			return supertype != null;
 		}
 		return super.eIsSet(featureID);
 	}

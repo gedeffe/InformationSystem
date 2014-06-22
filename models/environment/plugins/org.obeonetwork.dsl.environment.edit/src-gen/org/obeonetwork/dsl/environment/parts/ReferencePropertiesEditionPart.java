@@ -3,10 +3,8 @@
  */
 package org.obeonetwork.dsl.environment.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
 
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
@@ -16,31 +14,29 @@ import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSett
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public interface ReferencePropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
 
 	/**
 	 * @return the type
-	 * 
+	 * @generated
 	 */
 	public EObject getType();
 
@@ -53,14 +49,14 @@ public interface ReferencePropertiesEditionPart {
 	/**
 	 * Defines a new type
 	 * @param newValue the new type to set
-	 * 
+	 * @generated
 	 */
 	public void setType(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setTypeButtonMode(ButtonsModeEnum newValue);
 
@@ -70,7 +66,7 @@ public interface ReferencePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToType(ViewerFilter filter);
 
@@ -80,14 +76,14 @@ public interface ReferencePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToType(ViewerFilter filter);
 
 
 	/**
 	 * @return the multiplicity
-	 * 
+	 * @generated
 	 */
 	public Enumerator getMultiplicity();
 
@@ -101,42 +97,42 @@ public interface ReferencePropertiesEditionPart {
 	/**
 	 * Defines a new multiplicity
 	 * @param newValue the new multiplicity to set
-	 * 
+	 * @generated
 	 */
 	public void setMultiplicity(Enumerator newValue);
 
 
 	/**
 	 * @return the isComposite
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsComposite();
 
 	/**
 	 * Defines a new isComposite
 	 * @param newValue the new isComposite to set
-	 * 
+	 * @generated
 	 */
 	public void setIsComposite(Boolean newValue);
 
 
 	/**
 	 * @return the navigable
-	 * 
+	 * @generated
 	 */
 	public Boolean getNavigable();
 
 	/**
 	 * Defines a new navigable
 	 * @param newValue the new navigable to set
-	 * 
+	 * @generated
 	 */
 	public void setNavigable(Boolean newValue);
 
 
 	/**
 	 * @return the oppositeOf
-	 * 
+	 * @generated
 	 */
 	public EObject getOppositeOf();
 
@@ -149,14 +145,14 @@ public interface ReferencePropertiesEditionPart {
 	/**
 	 * Defines a new oppositeOf
 	 * @param newValue the new oppositeOf to set
-	 * 
+	 * @generated
 	 */
 	public void setOppositeOf(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setOppositeOfButtonMode(ButtonsModeEnum newValue);
 
@@ -166,7 +162,7 @@ public interface ReferencePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOppositeOf(ViewerFilter filter);
 
@@ -176,21 +172,21 @@ public interface ReferencePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOppositeOf(ViewerFilter filter);
 
 
 	/**
 	 * @return the description
-	 * 
+	 * @generated
 	 */
 	public String getDescription();
 
 	/**
 	 * Defines a new description
 	 * @param newValue the new description to set
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue);
 
@@ -202,12 +198,9 @@ public interface ReferencePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-	
-	// End of user code
 
 }

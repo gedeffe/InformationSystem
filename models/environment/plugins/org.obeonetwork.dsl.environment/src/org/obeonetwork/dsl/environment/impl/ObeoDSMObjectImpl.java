@@ -22,6 +22,11 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.obeonetwork.dsl.environment.Behaviour;
@@ -51,7 +56,7 @@ import org.obeonetwork.dsl.environment.util.EnvironmentUtil;
  *
  * @generated
  */
-public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
+public abstract class ObeoDSMObjectImpl extends EObjectImpl implements
 		ObeoDSMObject {
 	/**
 	 * <!-- begin-user-doc -->
@@ -59,6 +64,16 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
+
+	/**
+	 * The cached value of the '{@link #getMetadatas() <em>Metadatas</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetadatas()
+	 * @generated
+	 * @ordered
+	 */
+	protected MetaDataContainer metadatas;
 
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
@@ -71,6 +86,46 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	protected static final String DESCRIPTION_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getKeywords() <em>Keywords</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKeywords()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> keywords;
+
+	/**
+	 * The cached value of the '{@link #getBehaviours() <em>Behaviours</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBehaviours()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Behaviour> behaviours;
+
+	/**
+	 * The cached value of the '{@link #getBindingRegistries() <em>Binding Registries</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBindingRegistries()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<BindingRegistry> bindingRegistries;
+
+	/**
 	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -79,6 +134,16 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 * @ordered
 	 */
 	protected static final int VERSION_EDEFAULT = 1;
+
+	/**
+	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected int version = VERSION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCreatedOn() <em>Created On</em>}' attribute.
@@ -91,6 +156,16 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	protected static final Date CREATED_ON_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getCreatedOn() <em>Created On</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCreatedOn()
+	 * @generated
+	 * @ordered
+	 */
+	protected Date createdOn = CREATED_ON_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getModifiedOn() <em>Modified On</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -99,6 +174,16 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 * @ordered
 	 */
 	protected static final Date MODIFIED_ON_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getModifiedOn() <em>Modified On</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getModifiedOn()
+	 * @generated
+	 * @ordered
+	 */
+	protected Date modifiedOn = MODIFIED_ON_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -127,8 +212,10 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 
 						if (msg != null
 								&& msg.getFeature() != null
-								&& !msg.getFeature().equals(EnvironmentPackage.Literals.OBEO_DSM_OBJECT__MODIFIED_ON)
-								&& !msg.getFeature().equals(EnvironmentPackage.Literals.OBEO_DSM_OBJECT__CREATED_ON)) {
+								&& !msg.getFeature()
+										.equals(EnvironmentPackage.Literals.OBEO_DSM_OBJECT__MODIFIED_ON)
+								&& !msg.getFeature()
+										.equals(EnvironmentPackage.Literals.OBEO_DSM_OBJECT__CREATED_ON)) {
 							switch (msg.getEventType()) {
 							case Notification.MOVE:
 							case Notification.SET:
@@ -156,7 +243,7 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 									}
 								}
 							}
-						}*/
+							}*/
 					}
 				}
 			}
@@ -178,21 +265,35 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public MetaDataContainer getMetadatas() {
-		return (MetaDataContainer) eDynamicGet(
-				EnvironmentPackage.OBEO_DSM_OBJECT__METADATAS,
-				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__METADATAS, true,
-				true);
+		if (metadatas != null && metadatas.eIsProxy()) {
+			InternalEObject oldMetadatas = (InternalEObject) metadatas;
+			metadatas = (MetaDataContainer) eResolveProxy(oldMetadatas);
+			if (metadatas != oldMetadatas) {
+				InternalEObject newMetadatas = (InternalEObject) metadatas;
+				NotificationChain msgs = oldMetadatas
+						.eInverseRemove(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- EnvironmentPackage.OBEO_DSM_OBJECT__METADATAS,
+								null, null);
+				if (newMetadatas.eInternalContainer() == null) {
+					msgs = newMetadatas
+							.eInverseAdd(
+									this,
+									EOPPOSITE_FEATURE_BASE
+											- EnvironmentPackage.OBEO_DSM_OBJECT__METADATAS,
+									null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							EnvironmentPackage.OBEO_DSM_OBJECT__METADATAS,
+							oldMetadatas, metadatas));
+			}
+		}
+		return metadatas;
 	}
 
 	/**
@@ -201,10 +302,7 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 * @generated
 	 */
 	public MetaDataContainer basicGetMetadatas() {
-		return (MetaDataContainer) eDynamicGet(
-				EnvironmentPackage.OBEO_DSM_OBJECT__METADATAS,
-				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__METADATAS, false,
-				true);
+		return metadatas;
 	}
 
 	/**
@@ -214,8 +312,18 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 */
 	public NotificationChain basicSetMetadatas(MetaDataContainer newMetadatas,
 			NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject) newMetadatas,
-				EnvironmentPackage.OBEO_DSM_OBJECT__METADATAS, msgs);
+		MetaDataContainer oldMetadatas = metadatas;
+		metadatas = newMetadatas;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					EnvironmentPackage.OBEO_DSM_OBJECT__METADATAS,
+					oldMetadatas, newMetadatas);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
 		return msgs;
 	}
 
@@ -225,9 +333,29 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 * @generated
 	 */
 	public void setMetadatas(MetaDataContainer newMetadatas) {
-		eDynamicSet(EnvironmentPackage.OBEO_DSM_OBJECT__METADATAS,
-				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__METADATAS,
-				newMetadatas);
+		if (newMetadatas != metadatas) {
+			NotificationChain msgs = null;
+			if (metadatas != null)
+				msgs = ((InternalEObject) metadatas)
+						.eInverseRemove(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- EnvironmentPackage.OBEO_DSM_OBJECT__METADATAS,
+								null, msgs);
+			if (newMetadatas != null)
+				msgs = ((InternalEObject) newMetadatas)
+						.eInverseAdd(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- EnvironmentPackage.OBEO_DSM_OBJECT__METADATAS,
+								null, msgs);
+			msgs = basicSetMetadatas(newMetadatas, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.OBEO_DSM_OBJECT__METADATAS,
+					newMetadatas, newMetadatas));
 	}
 
 	/**
@@ -236,10 +364,7 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 * @generated
 	 */
 	public String getDescription() {
-		return (String) eDynamicGet(
-				EnvironmentPackage.OBEO_DSM_OBJECT__DESCRIPTION,
-				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__DESCRIPTION, true,
-				true);
+		return description;
 	}
 
 	/**
@@ -248,9 +373,12 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 * @generated
 	 */
 	public void setDescription(String newDescription) {
-		eDynamicSet(EnvironmentPackage.OBEO_DSM_OBJECT__DESCRIPTION,
-				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__DESCRIPTION,
-				newDescription);
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.OBEO_DSM_OBJECT__DESCRIPTION,
+					oldDescription, description));
 	}
 
 	/**
@@ -260,10 +388,11 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<String> getKeywords() {
-		return (EList<String>) eDynamicGet(
-				EnvironmentPackage.OBEO_DSM_OBJECT__KEYWORDS,
-				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__KEYWORDS, true,
-				true);
+		if (keywords == null) {
+			keywords = new EDataTypeUniqueEList<String>(String.class, this,
+					EnvironmentPackage.OBEO_DSM_OBJECT__KEYWORDS);
+		}
+		return keywords;
 	}
 
 	/**
@@ -273,10 +402,12 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Behaviour> getBehaviours() {
-		return (EList<Behaviour>) eDynamicGet(
-				EnvironmentPackage.OBEO_DSM_OBJECT__BEHAVIOURS,
-				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__BEHAVIOURS, true,
-				true);
+		if (behaviours == null) {
+			behaviours = new EObjectContainmentEList.Resolving<Behaviour>(
+					Behaviour.class, this,
+					EnvironmentPackage.OBEO_DSM_OBJECT__BEHAVIOURS);
+		}
+		return behaviours;
 	}
 
 	/**
@@ -286,10 +417,12 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<BindingRegistry> getBindingRegistries() {
-		return (EList<BindingRegistry>) eDynamicGet(
-				EnvironmentPackage.OBEO_DSM_OBJECT__BINDING_REGISTRIES,
-				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__BINDING_REGISTRIES,
-				true, true);
+		if (bindingRegistries == null) {
+			bindingRegistries = new EObjectResolvingEList<BindingRegistry>(
+					BindingRegistry.class, this,
+					EnvironmentPackage.OBEO_DSM_OBJECT__BINDING_REGISTRIES);
+		}
+		return bindingRegistries;
 	}
 
 	/**
@@ -298,10 +431,7 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 * @generated
 	 */
 	public int getVersion() {
-		return (Integer) eDynamicGet(
-				EnvironmentPackage.OBEO_DSM_OBJECT__VERSION,
-				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__VERSION, true,
-				true);
+		return version;
 	}
 
 	/**
@@ -310,9 +440,12 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 * @generated
 	 */
 	public void setVersion(int newVersion) {
-		eDynamicSet(EnvironmentPackage.OBEO_DSM_OBJECT__VERSION,
-				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__VERSION,
-				newVersion);
+		int oldVersion = version;
+		version = newVersion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.OBEO_DSM_OBJECT__VERSION, oldVersion,
+					version));
 	}
 
 	/**
@@ -321,10 +454,7 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 * @generated
 	 */
 	public Date getCreatedOn() {
-		return (Date) eDynamicGet(
-				EnvironmentPackage.OBEO_DSM_OBJECT__CREATED_ON,
-				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__CREATED_ON, true,
-				true);
+		return createdOn;
 	}
 
 	/**
@@ -333,9 +463,12 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 * @generated
 	 */
 	public void setCreatedOn(Date newCreatedOn) {
-		eDynamicSet(EnvironmentPackage.OBEO_DSM_OBJECT__CREATED_ON,
-				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__CREATED_ON,
-				newCreatedOn);
+		Date oldCreatedOn = createdOn;
+		createdOn = newCreatedOn;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.OBEO_DSM_OBJECT__CREATED_ON,
+					oldCreatedOn, createdOn));
 	}
 
 	/**
@@ -344,10 +477,7 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 * @generated
 	 */
 	public Date getModifiedOn() {
-		return (Date) eDynamicGet(
-				EnvironmentPackage.OBEO_DSM_OBJECT__MODIFIED_ON,
-				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__MODIFIED_ON, true,
-				true);
+		return modifiedOn;
 	}
 
 	/**
@@ -356,9 +486,12 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	 * @generated
 	 */
 	public void setModifiedOn(Date newModifiedOn) {
-		eDynamicSet(EnvironmentPackage.OBEO_DSM_OBJECT__MODIFIED_ON,
-				EnvironmentPackage.Literals.OBEO_DSM_OBJECT__MODIFIED_ON,
-				newModifiedOn);
+		Date oldModifiedOn = modifiedOn;
+		modifiedOn = newModifiedOn;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.OBEO_DSM_OBJECT__MODIFIED_ON,
+					oldModifiedOn, modifiedOn));
 	}
 
 	/**
@@ -495,26 +628,51 @@ public abstract class ObeoDSMObjectImpl extends CDOObjectImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.OBEO_DSM_OBJECT__METADATAS:
-			return basicGetMetadatas() != null;
+			return metadatas != null;
 		case EnvironmentPackage.OBEO_DSM_OBJECT__DESCRIPTION:
-			return DESCRIPTION_EDEFAULT == null ? getDescription() != null
-					: !DESCRIPTION_EDEFAULT.equals(getDescription());
+			return DESCRIPTION_EDEFAULT == null ? description != null
+					: !DESCRIPTION_EDEFAULT.equals(description);
 		case EnvironmentPackage.OBEO_DSM_OBJECT__KEYWORDS:
-			return !getKeywords().isEmpty();
+			return keywords != null && !keywords.isEmpty();
 		case EnvironmentPackage.OBEO_DSM_OBJECT__BEHAVIOURS:
-			return !getBehaviours().isEmpty();
+			return behaviours != null && !behaviours.isEmpty();
 		case EnvironmentPackage.OBEO_DSM_OBJECT__BINDING_REGISTRIES:
-			return !getBindingRegistries().isEmpty();
+			return bindingRegistries != null && !bindingRegistries.isEmpty();
 		case EnvironmentPackage.OBEO_DSM_OBJECT__VERSION:
-			return getVersion() != VERSION_EDEFAULT;
+			return version != VERSION_EDEFAULT;
 		case EnvironmentPackage.OBEO_DSM_OBJECT__CREATED_ON:
-			return CREATED_ON_EDEFAULT == null ? getCreatedOn() != null
-					: !CREATED_ON_EDEFAULT.equals(getCreatedOn());
+			return CREATED_ON_EDEFAULT == null ? createdOn != null
+					: !CREATED_ON_EDEFAULT.equals(createdOn);
 		case EnvironmentPackage.OBEO_DSM_OBJECT__MODIFIED_ON:
-			return MODIFIED_ON_EDEFAULT == null ? getModifiedOn() != null
-					: !MODIFIED_ON_EDEFAULT.equals(getModifiedOn());
+			return MODIFIED_ON_EDEFAULT == null ? modifiedOn != null
+					: !MODIFIED_ON_EDEFAULT.equals(modifiedOn);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (description: ");
+		result.append(description);
+		result.append(", keywords: ");
+		result.append(keywords);
+		result.append(", version: ");
+		result.append(version);
+		result.append(", createdOn: ");
+		result.append(createdOn);
+		result.append(", modifiedOn: ");
+		result.append(modifiedOn);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ObeoDSMObjectImpl

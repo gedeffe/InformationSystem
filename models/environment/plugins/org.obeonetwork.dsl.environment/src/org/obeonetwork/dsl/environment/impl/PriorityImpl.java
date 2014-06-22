@@ -50,6 +50,16 @@ public class PriorityImpl extends ObeoDSMObjectImpl implements Priority {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -74,8 +84,7 @@ public class PriorityImpl extends ObeoDSMObjectImpl implements Priority {
 	 * @generated
 	 */
 	public String getName() {
-		return (String) eDynamicGet(EnvironmentPackage.PRIORITY__NAME,
-				EnvironmentPackage.Literals.PRIORITY__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -84,8 +93,11 @@ public class PriorityImpl extends ObeoDSMObjectImpl implements Priority {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(EnvironmentPackage.PRIORITY__NAME,
-				EnvironmentPackage.Literals.PRIORITY__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.PRIORITY__NAME, oldName, name));
 	}
 
 	/**
@@ -141,10 +153,27 @@ public class PriorityImpl extends ObeoDSMObjectImpl implements Priority {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.PRIORITY__NAME:
-			return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT
-					.equals(getName());
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //PriorityImpl

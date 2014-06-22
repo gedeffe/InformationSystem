@@ -39,7 +39,7 @@ import org.obeonetwork.dsl.environment.MetaDataContainer;
  *
  * @generated
  */
-public class MetaDataContainerImpl extends CDOObjectImpl implements
+public class MetaDataContainerImpl extends EObjectImpl implements
 		MetaDataContainer {
 	/**
 	 * <!-- begin-user-doc -->
@@ -47,6 +47,16 @@ public class MetaDataContainerImpl extends CDOObjectImpl implements
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
+
+	/**
+	 * The cached value of the '{@link #getMetadatas() <em>Metadatas</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetadatas()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<MetaData> metadatas;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -72,22 +82,14 @@ public class MetaDataContainerImpl extends CDOObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	public EList<MetaData> getMetadatas() {
-		return (EList<MetaData>) eDynamicGet(
-				EnvironmentPackage.META_DATA_CONTAINER__METADATAS,
-				EnvironmentPackage.Literals.META_DATA_CONTAINER__METADATAS,
-				true, true);
+		if (metadatas == null) {
+			metadatas = new EObjectContainmentEList.Resolving<MetaData>(
+					MetaData.class, this,
+					EnvironmentPackage.META_DATA_CONTAINER__METADATAS);
+		}
+		return metadatas;
 	}
 
 	/**
@@ -161,7 +163,7 @@ public class MetaDataContainerImpl extends CDOObjectImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.META_DATA_CONTAINER__METADATAS:
-			return !getMetadatas().isEmpty();
+			return metadatas != null && !metadatas.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

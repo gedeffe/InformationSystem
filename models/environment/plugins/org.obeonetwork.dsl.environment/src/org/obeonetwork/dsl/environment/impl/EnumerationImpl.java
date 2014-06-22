@@ -46,6 +46,16 @@ public class EnumerationImpl extends TypeImpl implements Enumeration {
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
 
 	/**
+	 * The cached value of the '{@link #getFields() <em>Fields</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFields()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Field> fields;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -71,9 +81,11 @@ public class EnumerationImpl extends TypeImpl implements Enumeration {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Field> getFields() {
-		return (EList<Field>) eDynamicGet(
-				EnvironmentPackage.ENUMERATION__FIELDS,
-				EnvironmentPackage.Literals.ENUMERATION__FIELDS, true, true);
+		if (fields == null) {
+			fields = new EObjectContainmentEList.Resolving<Field>(Field.class,
+					this, EnvironmentPackage.ENUMERATION__FIELDS);
+		}
+		return fields;
 	}
 
 	/**
@@ -146,7 +158,7 @@ public class EnumerationImpl extends TypeImpl implements Enumeration {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.ENUMERATION__FIELDS:
-			return !getFields().isEmpty();
+			return fields != null && !fields.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

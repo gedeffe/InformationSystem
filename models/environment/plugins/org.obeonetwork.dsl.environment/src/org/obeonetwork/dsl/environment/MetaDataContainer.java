@@ -30,10 +30,9 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.obeonetwork.dsl.environment.EnvironmentPackage#getMetaDataContainer()
  * @model
- * @extends CDOObject
  * @generated
  */
-public interface MetaDataContainer extends CDOObject {
+public interface MetaDataContainer extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

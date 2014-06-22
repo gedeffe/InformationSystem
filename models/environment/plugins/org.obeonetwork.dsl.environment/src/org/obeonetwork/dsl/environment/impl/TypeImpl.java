@@ -56,6 +56,16 @@ public abstract class TypeImpl extends ObeoDSMObjectImpl implements Type {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -80,8 +90,7 @@ public abstract class TypeImpl extends ObeoDSMObjectImpl implements Type {
 	 * @generated
 	 */
 	public String getName() {
-		return (String) eDynamicGet(EnvironmentPackage.TYPE__NAME,
-				EnvironmentPackage.Literals.TYPE__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -90,8 +99,11 @@ public abstract class TypeImpl extends ObeoDSMObjectImpl implements Type {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(EnvironmentPackage.TYPE__NAME,
-				EnvironmentPackage.Literals.TYPE__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.TYPE__NAME, oldName, name));
 	}
 
 	/**
@@ -100,9 +112,9 @@ public abstract class TypeImpl extends ObeoDSMObjectImpl implements Type {
 	 * @generated
 	 */
 	public TypesDefinition getTypeDefinition() {
-		return (TypesDefinition) eDynamicGet(
-				EnvironmentPackage.TYPE__TYPE_DEFINITION,
-				EnvironmentPackage.Literals.TYPE__TYPE_DEFINITION, true, true);
+		if (eContainerFeatureID() != EnvironmentPackage.TYPE__TYPE_DEFINITION)
+			return null;
+		return (TypesDefinition) eContainer();
 	}
 
 	/**
@@ -111,9 +123,9 @@ public abstract class TypeImpl extends ObeoDSMObjectImpl implements Type {
 	 * @generated
 	 */
 	public TypesDefinition basicGetTypeDefinition() {
-		return (TypesDefinition) eDynamicGet(
-				EnvironmentPackage.TYPE__TYPE_DEFINITION,
-				EnvironmentPackage.Literals.TYPE__TYPE_DEFINITION, false, true);
+		if (eContainerFeatureID() != EnvironmentPackage.TYPE__TYPE_DEFINITION)
+			return null;
+		return (TypesDefinition) eInternalContainer();
 	}
 
 	/**
@@ -134,9 +146,25 @@ public abstract class TypeImpl extends ObeoDSMObjectImpl implements Type {
 	 * @generated
 	 */
 	public void setTypeDefinition(TypesDefinition newTypeDefinition) {
-		eDynamicSet(EnvironmentPackage.TYPE__TYPE_DEFINITION,
-				EnvironmentPackage.Literals.TYPE__TYPE_DEFINITION,
-				newTypeDefinition);
+		if (newTypeDefinition != eInternalContainer()
+				|| (eContainerFeatureID() != EnvironmentPackage.TYPE__TYPE_DEFINITION && newTypeDefinition != null)) {
+			if (EcoreUtil.isAncestor(this, newTypeDefinition))
+				throw new IllegalArgumentException(
+						"Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newTypeDefinition != null)
+				msgs = ((InternalEObject) newTypeDefinition).eInverseAdd(this,
+						EnvironmentPackage.TYPES_DEFINITION__TYPES,
+						TypesDefinition.class, msgs);
+			msgs = basicSetTypeDefinition(newTypeDefinition, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.TYPE__TYPE_DEFINITION,
+					newTypeDefinition, newTypeDefinition));
 	}
 
 	/**
@@ -262,12 +290,29 @@ public abstract class TypeImpl extends ObeoDSMObjectImpl implements Type {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.TYPE__NAME:
-			return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT
-					.equals(getName());
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
 		case EnvironmentPackage.TYPE__TYPE_DEFINITION:
 			return basicGetTypeDefinition() != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //TypeImpl

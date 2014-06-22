@@ -28,7 +28,7 @@ import org.obeonetwork.dsl.environment.components.MetadataCptPropertiesEditionCo
 
 /**
  * 
- * 
+ * @generated
  */
 public class BindingElementPropertiesEditionProvider extends PropertiesEditingProviderImpl {
 
@@ -50,68 +50,68 @@ public class BindingElementPropertiesEditionProvider extends PropertiesEditingPr
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
-	 * 
+	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof BindingElement) 
-					&& (EnvironmentPackage.Literals.BINDING_ELEMENT == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof BindingElement) 
+          && (EnvironmentPackage.Literals.BINDING_ELEMENT == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
-	 * 
+	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof BindingElement) && (BindingElementBindingElementPropertiesEditionComponent.BINDINGELEMENT_PART.equals(part) || MetadataCptPropertiesEditionComponent.METADATAS_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof BindingElement) && (BindingElementBindingElementPropertiesEditionComponent.BINDINGELEMENT_PART.equals(part) || MetadataCptPropertiesEditionComponent.METADATAS_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
-	 * 
+	 * @generated
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof BindingElement) && (refinement == BindingElementBindingElementPropertiesEditionComponent.class || refinement == MetadataCptPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof BindingElement) && (refinement == BindingElementBindingElementPropertiesEditionComponent.class || refinement == MetadataCptPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
-	 * 
+	 * @generated
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof BindingElement) && ((BindingElementBindingElementPropertiesEditionComponent.BINDINGELEMENT_PART.equals(part) && refinement == BindingElementBindingElementPropertiesEditionComponent.class) || (MetadataCptPropertiesEditionComponent.METADATAS_PART.equals(part) && refinement == MetadataCptPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof BindingElement) && ((BindingElementBindingElementPropertiesEditionComponent.BINDINGELEMENT_PART.equals(part) && refinement == BindingElementBindingElementPropertiesEditionComponent.class) || (MetadataCptPropertiesEditionComponent.METADATAS_PART.equals(part) && refinement == MetadataCptPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
-	 * 
+	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof BindingElement) {
-			return new BindingElementPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof BindingElement) {
+      return new BindingElementPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
-	 * 
+	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof BindingElement) {
-			if (BindingElementBindingElementPropertiesEditionComponent.BINDINGELEMENT_PART.equals(part))
-				return new BindingElementBindingElementPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (MetadataCptPropertiesEditionComponent.METADATAS_PART.equals(part))
-				return new MetadataCptPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof BindingElement) {
+      if (BindingElementBindingElementPropertiesEditionComponent.BINDINGELEMENT_PART.equals(part))
+        return new BindingElementBindingElementPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+      if (MetadataCptPropertiesEditionComponent.METADATAS_PART.equals(part))
+        return new MetadataCptPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

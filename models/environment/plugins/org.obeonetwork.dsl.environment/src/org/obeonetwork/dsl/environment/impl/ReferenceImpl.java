@@ -57,6 +57,16 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 */
 	protected static final boolean IS_COMPOSITE_EDEFAULT = false;
 	/**
+	 * The cached value of the '{@link #isIsComposite() <em>Is Composite</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsComposite()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isComposite = IS_COMPOSITE_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #isNavigable() <em>Navigable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,6 +75,36 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @ordered
 	 */
 	protected static final boolean NAVIGABLE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isNavigable() <em>Navigable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNavigable()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean navigable = NAVIGABLE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getOppositeOf() <em>Opposite Of</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOppositeOf()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference oppositeOf;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected DTO type;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,9 +131,7 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public boolean isIsComposite() {
-		return (Boolean) eDynamicGet(
-				EnvironmentPackage.REFERENCE__IS_COMPOSITE,
-				EnvironmentPackage.Literals.REFERENCE__IS_COMPOSITE, true, true);
+		return isComposite;
 	}
 
 	/**
@@ -102,9 +140,12 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public void setIsComposite(boolean newIsComposite) {
-		eDynamicSet(EnvironmentPackage.REFERENCE__IS_COMPOSITE,
-				EnvironmentPackage.Literals.REFERENCE__IS_COMPOSITE,
-				newIsComposite);
+		boolean oldIsComposite = isComposite;
+		isComposite = newIsComposite;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.REFERENCE__IS_COMPOSITE, oldIsComposite,
+					isComposite));
 	}
 
 	/**
@@ -113,8 +154,7 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public boolean isNavigable() {
-		return (Boolean) eDynamicGet(EnvironmentPackage.REFERENCE__NAVIGABLE,
-				EnvironmentPackage.Literals.REFERENCE__NAVIGABLE, true, true);
+		return navigable;
 	}
 
 	/**
@@ -123,8 +163,12 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public void setNavigable(boolean newNavigable) {
-		eDynamicSet(EnvironmentPackage.REFERENCE__NAVIGABLE,
-				EnvironmentPackage.Literals.REFERENCE__NAVIGABLE, newNavigable);
+		boolean oldNavigable = navigable;
+		navigable = newNavigable;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.REFERENCE__NAVIGABLE, oldNavigable,
+					navigable));
 	}
 
 	/**
@@ -133,9 +177,17 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public Reference getOppositeOf() {
-		return (Reference) eDynamicGet(
-				EnvironmentPackage.REFERENCE__OPPOSITE_OF,
-				EnvironmentPackage.Literals.REFERENCE__OPPOSITE_OF, true, true);
+		if (oppositeOf != null && oppositeOf.eIsProxy()) {
+			InternalEObject oldOppositeOf = (InternalEObject) oppositeOf;
+			oppositeOf = (Reference) eResolveProxy(oldOppositeOf);
+			if (oppositeOf != oldOppositeOf) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							EnvironmentPackage.REFERENCE__OPPOSITE_OF,
+							oldOppositeOf, oppositeOf));
+			}
+		}
+		return oppositeOf;
 	}
 
 	/**
@@ -144,9 +196,7 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public Reference basicGetOppositeOf() {
-		return (Reference) eDynamicGet(
-				EnvironmentPackage.REFERENCE__OPPOSITE_OF,
-				EnvironmentPackage.Literals.REFERENCE__OPPOSITE_OF, false, true);
+		return oppositeOf;
 	}
 
 	/**
@@ -155,9 +205,12 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public void setOppositeOf(Reference newOppositeOf) {
-		eDynamicSet(EnvironmentPackage.REFERENCE__OPPOSITE_OF,
-				EnvironmentPackage.Literals.REFERENCE__OPPOSITE_OF,
-				newOppositeOf);
+		Reference oldOppositeOf = oppositeOf;
+		oppositeOf = newOppositeOf;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.REFERENCE__OPPOSITE_OF, oldOppositeOf,
+					oppositeOf));
 	}
 
 	/**
@@ -166,8 +219,16 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public DTO getType() {
-		return (DTO) eDynamicGet(EnvironmentPackage.REFERENCE__TYPE,
-				EnvironmentPackage.Literals.REFERENCE__TYPE, true, true);
+		if (type != null && type.eIsProxy()) {
+			InternalEObject oldType = (InternalEObject) type;
+			type = (DTO) eResolveProxy(oldType);
+			if (type != oldType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							EnvironmentPackage.REFERENCE__TYPE, oldType, type));
+			}
+		}
+		return type;
 	}
 
 	/**
@@ -176,8 +237,7 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public DTO basicGetType() {
-		return (DTO) eDynamicGet(EnvironmentPackage.REFERENCE__TYPE,
-				EnvironmentPackage.Literals.REFERENCE__TYPE, false, true);
+		return type;
 	}
 
 	/**
@@ -186,8 +246,11 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public void setType(DTO newType) {
-		eDynamicSet(EnvironmentPackage.REFERENCE__TYPE,
-				EnvironmentPackage.Literals.REFERENCE__TYPE, newType);
+		DTO oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.REFERENCE__TYPE, oldType, type));
 	}
 
 	/**
@@ -196,8 +259,9 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public DTO getDto() {
-		return (DTO) eDynamicGet(EnvironmentPackage.REFERENCE__DTO,
-				EnvironmentPackage.Literals.REFERENCE__DTO, true, true);
+		if (eContainerFeatureID() != EnvironmentPackage.REFERENCE__DTO)
+			return null;
+		return (DTO) eContainer();
 	}
 
 	/**
@@ -206,8 +270,9 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	 * @generated
 	 */
 	public DTO basicGetDto() {
-		return (DTO) eDynamicGet(EnvironmentPackage.REFERENCE__DTO,
-				EnvironmentPackage.Literals.REFERENCE__DTO, false, true);
+		if (eContainerFeatureID() != EnvironmentPackage.REFERENCE__DTO)
+			return null;
+		return (DTO) eInternalContainer();
 	}
 
 	/**
@@ -406,17 +471,36 @@ public class ReferenceImpl extends PropertyImpl implements Reference {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.REFERENCE__IS_COMPOSITE:
-			return isIsComposite() != IS_COMPOSITE_EDEFAULT;
+			return isComposite != IS_COMPOSITE_EDEFAULT;
 		case EnvironmentPackage.REFERENCE__NAVIGABLE:
-			return isNavigable() != NAVIGABLE_EDEFAULT;
+			return navigable != NAVIGABLE_EDEFAULT;
 		case EnvironmentPackage.REFERENCE__OPPOSITE_OF:
-			return basicGetOppositeOf() != null;
+			return oppositeOf != null;
 		case EnvironmentPackage.REFERENCE__TYPE:
-			return basicGetType() != null;
+			return type != null;
 		case EnvironmentPackage.REFERENCE__DTO:
 			return basicGetDto() != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isComposite: ");
+		result.append(isComposite);
+		result.append(", navigable: ");
+		result.append(navigable);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ReferenceImpl

@@ -66,6 +66,56 @@ public class EnvironmentImpl extends ObeoDSMObjectImpl implements Environment {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Action> actions;
+
+	/**
+	 * The cached value of the '{@link #getLinks() <em>Links</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLinks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<InterDSMLink> links;
+
+	/**
+	 * The cached value of the '{@link #getPriorityDefinitions() <em>Priority Definitions</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriorityDefinitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected PriorityDefinition priorityDefinitions;
+
+	/**
+	 * The cached value of the '{@link #getTypesDefinition() <em>Types Definition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypesDefinition()
+	 * @generated
+	 * @ordered
+	 */
+	protected TypesDefinition typesDefinition;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -90,8 +140,7 @@ public class EnvironmentImpl extends ObeoDSMObjectImpl implements Environment {
 	 * @generated
 	 */
 	public String getName() {
-		return (String) eDynamicGet(EnvironmentPackage.ENVIRONMENT__NAME,
-				EnvironmentPackage.Literals.ENVIRONMENT__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -100,8 +149,11 @@ public class EnvironmentImpl extends ObeoDSMObjectImpl implements Environment {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(EnvironmentPackage.ENVIRONMENT__NAME,
-				EnvironmentPackage.Literals.ENVIRONMENT__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.ENVIRONMENT__NAME, oldName, name));
 	}
 
 	/**
@@ -111,9 +163,11 @@ public class EnvironmentImpl extends ObeoDSMObjectImpl implements Environment {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Action> getActions() {
-		return (EList<Action>) eDynamicGet(
-				EnvironmentPackage.ENVIRONMENT__ACTIONS,
-				EnvironmentPackage.Literals.ENVIRONMENT__ACTIONS, true, true);
+		if (actions == null) {
+			actions = new EObjectContainmentEList.Resolving<Action>(
+					Action.class, this, EnvironmentPackage.ENVIRONMENT__ACTIONS);
+		}
+		return actions;
 	}
 
 	/**
@@ -123,9 +177,12 @@ public class EnvironmentImpl extends ObeoDSMObjectImpl implements Environment {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<InterDSMLink> getLinks() {
-		return (EList<InterDSMLink>) eDynamicGet(
-				EnvironmentPackage.ENVIRONMENT__LINKS,
-				EnvironmentPackage.Literals.ENVIRONMENT__LINKS, true, true);
+		if (links == null) {
+			links = new EObjectContainmentEList.Resolving<InterDSMLink>(
+					InterDSMLink.class, this,
+					EnvironmentPackage.ENVIRONMENT__LINKS);
+		}
+		return links;
 	}
 
 	/**
@@ -134,10 +191,36 @@ public class EnvironmentImpl extends ObeoDSMObjectImpl implements Environment {
 	 * @generated
 	 */
 	public PriorityDefinition getPriorityDefinitions() {
-		return (PriorityDefinition) eDynamicGet(
-				EnvironmentPackage.ENVIRONMENT__PRIORITY_DEFINITIONS,
-				EnvironmentPackage.Literals.ENVIRONMENT__PRIORITY_DEFINITIONS,
-				true, true);
+		if (priorityDefinitions != null && priorityDefinitions.eIsProxy()) {
+			InternalEObject oldPriorityDefinitions = (InternalEObject) priorityDefinitions;
+			priorityDefinitions = (PriorityDefinition) eResolveProxy(oldPriorityDefinitions);
+			if (priorityDefinitions != oldPriorityDefinitions) {
+				InternalEObject newPriorityDefinitions = (InternalEObject) priorityDefinitions;
+				NotificationChain msgs = oldPriorityDefinitions
+						.eInverseRemove(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- EnvironmentPackage.ENVIRONMENT__PRIORITY_DEFINITIONS,
+								null, null);
+				if (newPriorityDefinitions.eInternalContainer() == null) {
+					msgs = newPriorityDefinitions
+							.eInverseAdd(
+									this,
+									EOPPOSITE_FEATURE_BASE
+											- EnvironmentPackage.ENVIRONMENT__PRIORITY_DEFINITIONS,
+									null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(
+							this,
+							Notification.RESOLVE,
+							EnvironmentPackage.ENVIRONMENT__PRIORITY_DEFINITIONS,
+							oldPriorityDefinitions, priorityDefinitions));
+			}
+		}
+		return priorityDefinitions;
 	}
 
 	/**
@@ -146,10 +229,7 @@ public class EnvironmentImpl extends ObeoDSMObjectImpl implements Environment {
 	 * @generated
 	 */
 	public PriorityDefinition basicGetPriorityDefinitions() {
-		return (PriorityDefinition) eDynamicGet(
-				EnvironmentPackage.ENVIRONMENT__PRIORITY_DEFINITIONS,
-				EnvironmentPackage.Literals.ENVIRONMENT__PRIORITY_DEFINITIONS,
-				false, true);
+		return priorityDefinitions;
 	}
 
 	/**
@@ -159,8 +239,18 @@ public class EnvironmentImpl extends ObeoDSMObjectImpl implements Environment {
 	 */
 	public NotificationChain basicSetPriorityDefinitions(
 			PriorityDefinition newPriorityDefinitions, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject) newPriorityDefinitions,
-				EnvironmentPackage.ENVIRONMENT__PRIORITY_DEFINITIONS, msgs);
+		PriorityDefinition oldPriorityDefinitions = priorityDefinitions;
+		priorityDefinitions = newPriorityDefinitions;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					EnvironmentPackage.ENVIRONMENT__PRIORITY_DEFINITIONS,
+					oldPriorityDefinitions, newPriorityDefinitions);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
 		return msgs;
 	}
 
@@ -170,9 +260,29 @@ public class EnvironmentImpl extends ObeoDSMObjectImpl implements Environment {
 	 * @generated
 	 */
 	public void setPriorityDefinitions(PriorityDefinition newPriorityDefinitions) {
-		eDynamicSet(EnvironmentPackage.ENVIRONMENT__PRIORITY_DEFINITIONS,
-				EnvironmentPackage.Literals.ENVIRONMENT__PRIORITY_DEFINITIONS,
-				newPriorityDefinitions);
+		if (newPriorityDefinitions != priorityDefinitions) {
+			NotificationChain msgs = null;
+			if (priorityDefinitions != null)
+				msgs = ((InternalEObject) priorityDefinitions)
+						.eInverseRemove(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- EnvironmentPackage.ENVIRONMENT__PRIORITY_DEFINITIONS,
+								null, msgs);
+			if (newPriorityDefinitions != null)
+				msgs = ((InternalEObject) newPriorityDefinitions)
+						.eInverseAdd(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- EnvironmentPackage.ENVIRONMENT__PRIORITY_DEFINITIONS,
+								null, msgs);
+			msgs = basicSetPriorityDefinitions(newPriorityDefinitions, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.ENVIRONMENT__PRIORITY_DEFINITIONS,
+					newPriorityDefinitions, newPriorityDefinitions));
 	}
 
 	/**
@@ -181,10 +291,34 @@ public class EnvironmentImpl extends ObeoDSMObjectImpl implements Environment {
 	 * @generated
 	 */
 	public TypesDefinition getTypesDefinition() {
-		return (TypesDefinition) eDynamicGet(
-				EnvironmentPackage.ENVIRONMENT__TYPES_DEFINITION,
-				EnvironmentPackage.Literals.ENVIRONMENT__TYPES_DEFINITION,
-				true, true);
+		if (typesDefinition != null && typesDefinition.eIsProxy()) {
+			InternalEObject oldTypesDefinition = (InternalEObject) typesDefinition;
+			typesDefinition = (TypesDefinition) eResolveProxy(oldTypesDefinition);
+			if (typesDefinition != oldTypesDefinition) {
+				InternalEObject newTypesDefinition = (InternalEObject) typesDefinition;
+				NotificationChain msgs = oldTypesDefinition
+						.eInverseRemove(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- EnvironmentPackage.ENVIRONMENT__TYPES_DEFINITION,
+								null, null);
+				if (newTypesDefinition.eInternalContainer() == null) {
+					msgs = newTypesDefinition
+							.eInverseAdd(
+									this,
+									EOPPOSITE_FEATURE_BASE
+											- EnvironmentPackage.ENVIRONMENT__TYPES_DEFINITION,
+									null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							EnvironmentPackage.ENVIRONMENT__TYPES_DEFINITION,
+							oldTypesDefinition, typesDefinition));
+			}
+		}
+		return typesDefinition;
 	}
 
 	/**
@@ -193,10 +327,7 @@ public class EnvironmentImpl extends ObeoDSMObjectImpl implements Environment {
 	 * @generated
 	 */
 	public TypesDefinition basicGetTypesDefinition() {
-		return (TypesDefinition) eDynamicGet(
-				EnvironmentPackage.ENVIRONMENT__TYPES_DEFINITION,
-				EnvironmentPackage.Literals.ENVIRONMENT__TYPES_DEFINITION,
-				false, true);
+		return typesDefinition;
 	}
 
 	/**
@@ -206,8 +337,18 @@ public class EnvironmentImpl extends ObeoDSMObjectImpl implements Environment {
 	 */
 	public NotificationChain basicSetTypesDefinition(
 			TypesDefinition newTypesDefinition, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject) newTypesDefinition,
-				EnvironmentPackage.ENVIRONMENT__TYPES_DEFINITION, msgs);
+		TypesDefinition oldTypesDefinition = typesDefinition;
+		typesDefinition = newTypesDefinition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					EnvironmentPackage.ENVIRONMENT__TYPES_DEFINITION,
+					oldTypesDefinition, newTypesDefinition);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
 		return msgs;
 	}
 
@@ -217,9 +358,29 @@ public class EnvironmentImpl extends ObeoDSMObjectImpl implements Environment {
 	 * @generated
 	 */
 	public void setTypesDefinition(TypesDefinition newTypesDefinition) {
-		eDynamicSet(EnvironmentPackage.ENVIRONMENT__TYPES_DEFINITION,
-				EnvironmentPackage.Literals.ENVIRONMENT__TYPES_DEFINITION,
-				newTypesDefinition);
+		if (newTypesDefinition != typesDefinition) {
+			NotificationChain msgs = null;
+			if (typesDefinition != null)
+				msgs = ((InternalEObject) typesDefinition)
+						.eInverseRemove(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- EnvironmentPackage.ENVIRONMENT__TYPES_DEFINITION,
+								null, msgs);
+			if (newTypesDefinition != null)
+				msgs = ((InternalEObject) newTypesDefinition)
+						.eInverseAdd(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- EnvironmentPackage.ENVIRONMENT__TYPES_DEFINITION,
+								null, msgs);
+			msgs = basicSetTypesDefinition(newTypesDefinition, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.ENVIRONMENT__TYPES_DEFINITION,
+					newTypesDefinition, newTypesDefinition));
 	}
 
 	/**
@@ -336,18 +497,35 @@ public class EnvironmentImpl extends ObeoDSMObjectImpl implements Environment {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.ENVIRONMENT__NAME:
-			return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT
-					.equals(getName());
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
 		case EnvironmentPackage.ENVIRONMENT__ACTIONS:
-			return !getActions().isEmpty();
+			return actions != null && !actions.isEmpty();
 		case EnvironmentPackage.ENVIRONMENT__LINKS:
-			return !getLinks().isEmpty();
+			return links != null && !links.isEmpty();
 		case EnvironmentPackage.ENVIRONMENT__PRIORITY_DEFINITIONS:
-			return basicGetPriorityDefinitions() != null;
+			return priorityDefinitions != null;
 		case EnvironmentPackage.ENVIRONMENT__TYPES_DEFINITION:
-			return basicGetTypesDefinition() != null;
+			return typesDefinition != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //EnvironmentImpl

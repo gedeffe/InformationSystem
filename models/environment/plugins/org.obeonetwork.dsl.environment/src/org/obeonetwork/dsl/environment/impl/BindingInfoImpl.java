@@ -56,6 +56,52 @@ public class BindingInfoImpl extends ObeoDSMObjectImpl implements BindingInfo {
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
 
 	/**
+	 * The cached value of the '{@link #getReferences() <em>References</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReferences()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<BindingReference> references;
+	/**
+	 * The cached value of the '{@link #getLeft() <em>Left</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLeft()
+	 * @generated
+	 * @ordered
+	 */
+	protected BoundableElement left;
+	/**
+	 * The cached value of the '{@link #getRight() <em>Right</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRight()
+	 * @generated
+	 * @ordered
+	 */
+	protected BoundableElement right;
+	/**
+	 * The cached value of the '{@link #getSubBindingInfos() <em>Sub Binding Infos</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubBindingInfos()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<BindingInfo> subBindingInfos;
+	/**
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<BindingElement> elements;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -81,10 +127,12 @@ public class BindingInfoImpl extends ObeoDSMObjectImpl implements BindingInfo {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<BindingReference> getReferences() {
-		return (EList<BindingReference>) eDynamicGet(
-				EnvironmentPackage.BINDING_INFO__REFERENCES,
-				EnvironmentPackage.Literals.BINDING_INFO__REFERENCES, true,
-				true);
+		if (references == null) {
+			references = new EObjectContainmentEList.Resolving<BindingReference>(
+					BindingReference.class, this,
+					EnvironmentPackage.BINDING_INFO__REFERENCES);
+		}
+		return references;
 	}
 
 	/**
@@ -93,9 +141,17 @@ public class BindingInfoImpl extends ObeoDSMObjectImpl implements BindingInfo {
 	 * @generated
 	 */
 	public BoundableElement getLeft() {
-		return (BoundableElement) eDynamicGet(
-				EnvironmentPackage.BINDING_INFO__LEFT,
-				EnvironmentPackage.Literals.BINDING_INFO__LEFT, true, true);
+		if (left != null && left.eIsProxy()) {
+			InternalEObject oldLeft = (InternalEObject) left;
+			left = (BoundableElement) eResolveProxy(oldLeft);
+			if (left != oldLeft) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							EnvironmentPackage.BINDING_INFO__LEFT, oldLeft,
+							left));
+			}
+		}
+		return left;
 	}
 
 	/**
@@ -104,9 +160,7 @@ public class BindingInfoImpl extends ObeoDSMObjectImpl implements BindingInfo {
 	 * @generated
 	 */
 	public BoundableElement basicGetLeft() {
-		return (BoundableElement) eDynamicGet(
-				EnvironmentPackage.BINDING_INFO__LEFT,
-				EnvironmentPackage.Literals.BINDING_INFO__LEFT, false, true);
+		return left;
 	}
 
 	/**
@@ -115,8 +169,11 @@ public class BindingInfoImpl extends ObeoDSMObjectImpl implements BindingInfo {
 	 * @generated
 	 */
 	public void setLeft(BoundableElement newLeft) {
-		eDynamicSet(EnvironmentPackage.BINDING_INFO__LEFT,
-				EnvironmentPackage.Literals.BINDING_INFO__LEFT, newLeft);
+		BoundableElement oldLeft = left;
+		left = newLeft;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.BINDING_INFO__LEFT, oldLeft, left));
 	}
 
 	/**
@@ -125,9 +182,17 @@ public class BindingInfoImpl extends ObeoDSMObjectImpl implements BindingInfo {
 	 * @generated
 	 */
 	public BoundableElement getRight() {
-		return (BoundableElement) eDynamicGet(
-				EnvironmentPackage.BINDING_INFO__RIGHT,
-				EnvironmentPackage.Literals.BINDING_INFO__RIGHT, true, true);
+		if (right != null && right.eIsProxy()) {
+			InternalEObject oldRight = (InternalEObject) right;
+			right = (BoundableElement) eResolveProxy(oldRight);
+			if (right != oldRight) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							EnvironmentPackage.BINDING_INFO__RIGHT, oldRight,
+							right));
+			}
+		}
+		return right;
 	}
 
 	/**
@@ -136,9 +201,7 @@ public class BindingInfoImpl extends ObeoDSMObjectImpl implements BindingInfo {
 	 * @generated
 	 */
 	public BoundableElement basicGetRight() {
-		return (BoundableElement) eDynamicGet(
-				EnvironmentPackage.BINDING_INFO__RIGHT,
-				EnvironmentPackage.Literals.BINDING_INFO__RIGHT, false, true);
+		return right;
 	}
 
 	/**
@@ -147,8 +210,11 @@ public class BindingInfoImpl extends ObeoDSMObjectImpl implements BindingInfo {
 	 * @generated
 	 */
 	public void setRight(BoundableElement newRight) {
-		eDynamicSet(EnvironmentPackage.BINDING_INFO__RIGHT,
-				EnvironmentPackage.Literals.BINDING_INFO__RIGHT, newRight);
+		BoundableElement oldRight = right;
+		right = newRight;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.BINDING_INFO__RIGHT, oldRight, right));
 	}
 
 	/**
@@ -158,10 +224,12 @@ public class BindingInfoImpl extends ObeoDSMObjectImpl implements BindingInfo {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<BindingInfo> getSubBindingInfos() {
-		return (EList<BindingInfo>) eDynamicGet(
-				EnvironmentPackage.BINDING_INFO__SUB_BINDING_INFOS,
-				EnvironmentPackage.Literals.BINDING_INFO__SUB_BINDING_INFOS,
-				true, true);
+		if (subBindingInfos == null) {
+			subBindingInfos = new EObjectResolvingEList<BindingInfo>(
+					BindingInfo.class, this,
+					EnvironmentPackage.BINDING_INFO__SUB_BINDING_INFOS);
+		}
+		return subBindingInfos;
 	}
 
 	/**
@@ -182,9 +250,12 @@ public class BindingInfoImpl extends ObeoDSMObjectImpl implements BindingInfo {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<BindingElement> getElements() {
-		return (EList<BindingElement>) eDynamicGet(
-				EnvironmentPackage.BINDING_INFO__ELEMENTS,
-				EnvironmentPackage.Literals.BINDING_INFO__ELEMENTS, true, true);
+		if (elements == null) {
+			elements = new EObjectContainmentEList.Resolving<BindingElement>(
+					BindingElement.class, this,
+					EnvironmentPackage.BINDING_INFO__ELEMENTS);
+		}
+		return elements;
 	}
 
 	/**
@@ -304,17 +375,17 @@ public class BindingInfoImpl extends ObeoDSMObjectImpl implements BindingInfo {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.BINDING_INFO__REFERENCES:
-			return !getReferences().isEmpty();
+			return references != null && !references.isEmpty();
 		case EnvironmentPackage.BINDING_INFO__LEFT:
-			return basicGetLeft() != null;
+			return left != null;
 		case EnvironmentPackage.BINDING_INFO__RIGHT:
-			return basicGetRight() != null;
+			return right != null;
 		case EnvironmentPackage.BINDING_INFO__SUB_BINDING_INFOS:
-			return !getSubBindingInfos().isEmpty();
+			return subBindingInfos != null && !subBindingInfos.isEmpty();
 		case EnvironmentPackage.BINDING_INFO__TARGETS:
 			return !getTargets().isEmpty();
 		case EnvironmentPackage.BINDING_INFO__ELEMENTS:
-			return !getElements().isEmpty();
+			return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

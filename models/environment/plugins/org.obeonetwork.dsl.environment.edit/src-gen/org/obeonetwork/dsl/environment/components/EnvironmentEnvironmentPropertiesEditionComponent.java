@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.environment.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -19,7 +18,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
@@ -34,14 +35,15 @@ import org.obeonetwork.dsl.environment.parts.EnvironmentPropertiesEditionPart;
 import org.obeonetwork.dsl.environment.parts.EnvironmentViewsRepository;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public class EnvironmentEnvironmentPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String ENVIRONMENT_PART = "Environment"; //$NON-NLS-1$
 
@@ -49,45 +51,46 @@ public class EnvironmentEnvironmentPropertiesEditionComponent extends SinglePart
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public EnvironmentEnvironmentPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject environment, String editing_mode) {
-		super(editingContext, environment, editing_mode);
-		parts = new String[] { ENVIRONMENT_PART };
-		repositoryKey = EnvironmentViewsRepository.class;
-		partKey = EnvironmentViewsRepository.Environment_.class;
-	}
+    super(editingContext, environment, editing_mode);
+    parts = new String[] { ENVIRONMENT_PART };
+    repositoryKey = EnvironmentViewsRepository.class;
+    partKey = EnvironmentViewsRepository.Environment_.class;
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			final Environment environment = (Environment)elt;
-			final EnvironmentPropertiesEditionPart environmentPart = (EnvironmentPropertiesEditionPart)editingPart;
-			// init values
-			if (environment.getName() != null && isAccessible(EnvironmentViewsRepository.Environment_.Properties.name))
-				environmentPart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, environment.getName()));
-			
-			if (environment.getDescription() != null && isAccessible(EnvironmentViewsRepository.Environment_.Properties.description))
-				environmentPart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, environment.getDescription()));
-			
-			// init filters
-			
-			
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final Environment environment = (Environment)elt;
+      final EnvironmentPropertiesEditionPart environmentPart = (EnvironmentPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(EnvironmentViewsRepository.Environment_.Properties.name))
+        environmentPart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, environment.getName()));
+      
+      if (isAccessible(EnvironmentViewsRepository.Environment_.Properties.description))
+        environmentPart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, environment.getDescription()));
+      
+      // init filters
+      
+      
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -110,33 +113,34 @@ public class EnvironmentEnvironmentPropertiesEditionComponent extends SinglePart
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		Environment environment = (Environment)semanticObject;
-		if (EnvironmentViewsRepository.Environment_.Properties.name == event.getAffectedEditor()) {
-			environment.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
-		}
-		if (EnvironmentViewsRepository.Environment_.Properties.description == event.getAffectedEditor()) {
-			environment.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
-		}
-	}
+    Environment environment = (Environment)semanticObject;
+    if (EnvironmentViewsRepository.Environment_.Properties.name == event.getAffectedEditor()) {
+      environment.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+    }
+    if (EnvironmentViewsRepository.Environment_.Properties.description == event.getAffectedEditor()) {
+      environment.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			EnvironmentPropertiesEditionPart environmentPart = (EnvironmentPropertiesEditionPart)editingPart;
-			if (EnvironmentPackage.eINSTANCE.getEnvironment_Name().equals(msg.getFeature()) && environmentPart != null && isAccessible(EnvironmentViewsRepository.Environment_.Properties.name)) {
+			if (EnvironmentPackage.eINSTANCE.getEnvironment_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && environmentPart != null && isAccessible(EnvironmentViewsRepository.Environment_.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					environmentPart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					environmentPart.setName("");
 				}
 			}
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && environmentPart != null && isAccessible(EnvironmentViewsRepository.Environment_.Properties.description)) {
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && environmentPart != null && isAccessible(EnvironmentViewsRepository.Environment_.Properties.description)) {
 				if (msg.getNewValue() != null) {
 					environmentPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -147,48 +151,64 @@ public class EnvironmentEnvironmentPropertiesEditionComponent extends SinglePart
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EnvironmentPackage.eINSTANCE.getEnvironment_Name(),
+			EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
-	 * 
+	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == EnvironmentViewsRepository.Environment_.Properties.name;
-	}
+    return key == EnvironmentViewsRepository.Environment_.Properties.name;
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (EnvironmentViewsRepository.Environment_.Properties.name == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EnvironmentPackage.eINSTANCE.getEnvironment_Name().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getEnvironment_Name().getEAttributeType(), newValue);
-				}
-				if (EnvironmentViewsRepository.Environment_.Properties.description == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (EnvironmentViewsRepository.Environment_.Properties.name == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(EnvironmentPackage.eINSTANCE.getEnvironment_Name().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getEnvironment_Name().getEAttributeType(), newValue);
+        }
+        if (EnvironmentViewsRepository.Environment_.Properties.description == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
+
+
+	
 
 }

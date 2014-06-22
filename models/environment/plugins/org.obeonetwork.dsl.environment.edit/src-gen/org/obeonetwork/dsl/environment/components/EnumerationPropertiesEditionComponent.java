@@ -3,8 +3,6 @@
  */
 package org.obeonetwork.dsl.environment.components;
 
-// Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -19,35 +17,31 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 import org.obeonetwork.dsl.environment.Enumeration;
 
-import org.obeonetwork.dsl.environment.components.EnumerationEnumerationPropertiesEditionComponent;
-import org.obeonetwork.dsl.environment.components.MetadataCptPropertiesEditionComponent;
-
 import org.obeonetwork.dsl.environment.parts.EnumerationPropertiesEditionPart;
 import org.obeonetwork.dsl.environment.parts.EnvironmentViewsRepository;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class EnumerationPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The Enumeration part
-	 * 
+	 * @generated
 	 */
 	private EnumerationPropertiesEditionPart enumerationPart;
 
 	/**
 	 * The EnumerationEnumerationPropertiesEditionComponent sub component
-	 * 
+	 * @generated
 	 */
 	protected EnumerationEnumerationPropertiesEditionComponent enumerationEnumerationPropertiesEditionComponent;
 
 	/**
 	 * The MetadataCptPropertiesEditionComponent sub component
-	 * 
+	 * @generated
 	 */
 	protected MetadataCptPropertiesEditionComponent metadataCptPropertiesEditionComponent;
 
@@ -55,35 +49,35 @@ public class EnumerationPropertiesEditionComponent extends ComposedPropertiesEdi
 	 * Parameterized constructor
 	 * 
 	 * @param enumeration the EObject to edit
-	 * 
+	 * @generated
 	 */
 	public EnumerationPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject enumeration, String editing_mode) {
-		super(editingContext, editing_mode);
-		if (enumeration instanceof Enumeration) {
-			PropertiesEditingProvider provider = null;
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(enumeration, PropertiesEditingProvider.class);
-			enumerationEnumerationPropertiesEditionComponent = (EnumerationEnumerationPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, EnumerationEnumerationPropertiesEditionComponent.ENUMERATION_PART, EnumerationEnumerationPropertiesEditionComponent.class);
-			addSubComponent(enumerationEnumerationPropertiesEditionComponent);
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(enumeration, PropertiesEditingProvider.class);
-			metadataCptPropertiesEditionComponent = (MetadataCptPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, MetadataCptPropertiesEditionComponent.METADATAS_PART, MetadataCptPropertiesEditionComponent.class);
-			addSubComponent(metadataCptPropertiesEditionComponent);
-		}
-	}
+    super(editingContext, editing_mode);
+    if (enumeration instanceof Enumeration) {
+      PropertiesEditingProvider provider = null;
+      provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(enumeration, PropertiesEditingProvider.class);
+      enumerationEnumerationPropertiesEditionComponent = (EnumerationEnumerationPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, EnumerationEnumerationPropertiesEditionComponent.ENUMERATION_PART, EnumerationEnumerationPropertiesEditionComponent.class);
+      addSubComponent(enumerationEnumerationPropertiesEditionComponent);
+      provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(enumeration, PropertiesEditingProvider.class);
+      metadataCptPropertiesEditionComponent = (MetadataCptPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, MetadataCptPropertiesEditionComponent.METADATAS_PART, MetadataCptPropertiesEditionComponent.class);
+      addSubComponent(metadataCptPropertiesEditionComponent);
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      getPropertiesEditionPart(int, java.lang.String)
-	 * 
+	 * @generated
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (EnumerationEnumerationPropertiesEditionComponent.ENUMERATION_PART.equals(key)) {
-			enumerationPart = (EnumerationPropertiesEditionPart)enumerationEnumerationPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)enumerationPart;
-		}
-		return super.getPropertiesEditionPart(kind, key);
-	}
+    if (EnumerationEnumerationPropertiesEditionComponent.ENUMERATION_PART.equals(key)) {
+      enumerationPart = (EnumerationPropertiesEditionPart)enumerationEnumerationPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+      return (IPropertiesEditionPart)enumerationPart;
+    }
+    return super.getPropertiesEditionPart(kind, key);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -91,14 +85,14 @@ public class EnumerationPropertiesEditionComponent extends ComposedPropertiesEdi
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Object, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
+	 * @generated
 	 */
 	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (EnvironmentViewsRepository.Enumeration.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-			enumerationPart = (EnumerationPropertiesEditionPart)propertiesEditionPart;
-		}
-	}
+    if (EnvironmentViewsRepository.Enumeration.class == key) {
+      super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+      enumerationPart = (EnumerationPropertiesEditionPart)propertiesEditionPart;
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -106,14 +100,14 @@ public class EnumerationPropertiesEditionComponent extends ComposedPropertiesEdi
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
-		if (key == EnvironmentViewsRepository.Enumeration.class) {
-			super.initPart(key, kind, element, allResource);
-		}
-		if (key == EnvironmentViewsRepository.Metadatas.class) {
-			super.initPart(key, kind, element, allResource);
-		}
-	}
+    if (key == EnvironmentViewsRepository.Enumeration.class) {
+      super.initPart(key, kind, element, allResource);
+    }
+    if (key == EnvironmentViewsRepository.Metadatas.class) {
+      super.initPart(key, kind, element, allResource);
+    }
+  }
 }

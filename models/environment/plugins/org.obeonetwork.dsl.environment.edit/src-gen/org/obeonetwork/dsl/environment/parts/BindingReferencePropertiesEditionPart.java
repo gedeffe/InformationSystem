@@ -3,21 +3,18 @@
  */
 package org.obeonetwork.dsl.environment.parts;
 
-// Start of user code for imports
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public interface BindingReferencePropertiesEditionPart {
 
 	/**
 	 * @return the left
-	 * 
+	 * @generated
 	 */
 	public Object getLeft();
 
@@ -31,7 +28,7 @@ public interface BindingReferencePropertiesEditionPart {
 	/**
 	 * Defines a new left
 	 * @param newValue the new left to set
-	 * 
+	 * @generated
 	 */
 	public void setLeft(Object newValue);
 
@@ -41,14 +38,14 @@ public interface BindingReferencePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToLeft(ViewerFilter filter);
 
 
 	/**
 	 * @return the right
-	 * 
+	 * @generated
 	 */
 	public Object getRight();
 
@@ -62,7 +59,7 @@ public interface BindingReferencePropertiesEditionPart {
 	/**
 	 * Defines a new right
 	 * @param newValue the new right to set
-	 * 
+	 * @generated
 	 */
 	public void setRight(Object newValue);
 
@@ -72,21 +69,21 @@ public interface BindingReferencePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRight(ViewerFilter filter);
 
 
 	/**
 	 * @return the description
-	 * 
+	 * @generated
 	 */
 	public String getDescription();
 
 	/**
 	 * Defines a new description
 	 * @param newValue the new description to set
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue);
 
@@ -98,12 +95,9 @@ public interface BindingReferencePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-	
-	// End of user code
 
 }

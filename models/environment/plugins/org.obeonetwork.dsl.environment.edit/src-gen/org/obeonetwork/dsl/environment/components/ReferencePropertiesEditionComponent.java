@@ -3,8 +3,6 @@
  */
 package org.obeonetwork.dsl.environment.components;
 
-// Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -19,35 +17,31 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 import org.obeonetwork.dsl.environment.Reference;
 
-import org.obeonetwork.dsl.environment.components.MetadataCptPropertiesEditionComponent;
-import org.obeonetwork.dsl.environment.components.ReferenceReferencePropertiesEditionComponent;
-
 import org.obeonetwork.dsl.environment.parts.EnvironmentViewsRepository;
 import org.obeonetwork.dsl.environment.parts.ReferencePropertiesEditionPart;
 
-// End of user code
 
 /**
  * 
- * 
+ * @generated
  */
 public class ReferencePropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The Reference part
-	 * 
+	 * @generated
 	 */
 	private ReferencePropertiesEditionPart referencePart;
 
 	/**
 	 * The ReferenceReferencePropertiesEditionComponent sub component
-	 * 
+	 * @generated
 	 */
 	protected ReferenceReferencePropertiesEditionComponent referenceReferencePropertiesEditionComponent;
 
 	/**
 	 * The MetadataCptPropertiesEditionComponent sub component
-	 * 
+	 * @generated
 	 */
 	protected MetadataCptPropertiesEditionComponent metadataCptPropertiesEditionComponent;
 
@@ -55,35 +49,35 @@ public class ReferencePropertiesEditionComponent extends ComposedPropertiesEditi
 	 * Parameterized constructor
 	 * 
 	 * @param reference the EObject to edit
-	 * 
+	 * @generated
 	 */
 	public ReferencePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject reference, String editing_mode) {
-		super(editingContext, editing_mode);
-		if (reference instanceof Reference) {
-			PropertiesEditingProvider provider = null;
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(reference, PropertiesEditingProvider.class);
-			referenceReferencePropertiesEditionComponent = (ReferenceReferencePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ReferenceReferencePropertiesEditionComponent.REFERENCE_PART, ReferenceReferencePropertiesEditionComponent.class);
-			addSubComponent(referenceReferencePropertiesEditionComponent);
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(reference, PropertiesEditingProvider.class);
-			metadataCptPropertiesEditionComponent = (MetadataCptPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, MetadataCptPropertiesEditionComponent.METADATAS_PART, MetadataCptPropertiesEditionComponent.class);
-			addSubComponent(metadataCptPropertiesEditionComponent);
-		}
-	}
+    super(editingContext, editing_mode);
+    if (reference instanceof Reference) {
+      PropertiesEditingProvider provider = null;
+      provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(reference, PropertiesEditingProvider.class);
+      referenceReferencePropertiesEditionComponent = (ReferenceReferencePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ReferenceReferencePropertiesEditionComponent.REFERENCE_PART, ReferenceReferencePropertiesEditionComponent.class);
+      addSubComponent(referenceReferencePropertiesEditionComponent);
+      provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(reference, PropertiesEditingProvider.class);
+      metadataCptPropertiesEditionComponent = (MetadataCptPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, MetadataCptPropertiesEditionComponent.METADATAS_PART, MetadataCptPropertiesEditionComponent.class);
+      addSubComponent(metadataCptPropertiesEditionComponent);
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      getPropertiesEditionPart(int, java.lang.String)
-	 * 
+	 * @generated
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (ReferenceReferencePropertiesEditionComponent.REFERENCE_PART.equals(key)) {
-			referencePart = (ReferencePropertiesEditionPart)referenceReferencePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)referencePart;
-		}
-		return super.getPropertiesEditionPart(kind, key);
-	}
+    if (ReferenceReferencePropertiesEditionComponent.REFERENCE_PART.equals(key)) {
+      referencePart = (ReferencePropertiesEditionPart)referenceReferencePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+      return (IPropertiesEditionPart)referencePart;
+    }
+    return super.getPropertiesEditionPart(kind, key);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -91,14 +85,14 @@ public class ReferencePropertiesEditionComponent extends ComposedPropertiesEditi
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Object, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
+	 * @generated
 	 */
 	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (EnvironmentViewsRepository.Reference.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-			referencePart = (ReferencePropertiesEditionPart)propertiesEditionPart;
-		}
-	}
+    if (EnvironmentViewsRepository.Reference.class == key) {
+      super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+      referencePart = (ReferencePropertiesEditionPart)propertiesEditionPart;
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -106,14 +100,14 @@ public class ReferencePropertiesEditionComponent extends ComposedPropertiesEditi
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
-		if (key == EnvironmentViewsRepository.Reference.class) {
-			super.initPart(key, kind, element, allResource);
-		}
-		if (key == EnvironmentViewsRepository.Metadatas.class) {
-			super.initPart(key, kind, element, allResource);
-		}
-	}
+    if (key == EnvironmentViewsRepository.Reference.class) {
+      super.initPart(key, kind, element, allResource);
+    }
+    if (key == EnvironmentViewsRepository.Metadatas.class) {
+      super.initPart(key, kind, element, allResource);
+    }
+  }
 }

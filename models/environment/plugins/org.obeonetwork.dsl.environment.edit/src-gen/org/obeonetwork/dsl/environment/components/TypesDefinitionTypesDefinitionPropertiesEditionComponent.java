@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.environment.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -19,7 +18,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
@@ -34,14 +35,15 @@ import org.obeonetwork.dsl.environment.parts.EnvironmentViewsRepository;
 import org.obeonetwork.dsl.environment.parts.TypesDefinitionPropertiesEditionPart;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public class TypesDefinitionTypesDefinitionPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String TYPESDEFINITION_PART = "TypesDefinition"; //$NON-NLS-1$
 
@@ -49,41 +51,42 @@ public class TypesDefinitionTypesDefinitionPropertiesEditionComponent extends Si
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public TypesDefinitionTypesDefinitionPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject typesDefinition, String editing_mode) {
-		super(editingContext, typesDefinition, editing_mode);
-		parts = new String[] { TYPESDEFINITION_PART };
-		repositoryKey = EnvironmentViewsRepository.class;
-		partKey = EnvironmentViewsRepository.TypesDefinition.class;
-	}
+    super(editingContext, typesDefinition, editing_mode);
+    parts = new String[] { TYPESDEFINITION_PART };
+    repositoryKey = EnvironmentViewsRepository.class;
+    partKey = EnvironmentViewsRepository.TypesDefinition.class;
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			final TypesDefinition typesDefinition = (TypesDefinition)elt;
-			final TypesDefinitionPropertiesEditionPart typesDefinitionPart = (TypesDefinitionPropertiesEditionPart)editingPart;
-			// init values
-			if (typesDefinition.getDescription() != null && isAccessible(EnvironmentViewsRepository.TypesDefinition.Properties.description))
-				typesDefinitionPart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, typesDefinition.getDescription()));
-			
-			// init filters
-			
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final TypesDefinition typesDefinition = (TypesDefinition)elt;
+      final TypesDefinitionPropertiesEditionPart typesDefinitionPart = (TypesDefinitionPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(EnvironmentViewsRepository.TypesDefinition.Properties.description))
+        typesDefinitionPart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, typesDefinition.getDescription()));
+      
+      // init filters
+      
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -102,23 +105,24 @@ public class TypesDefinitionTypesDefinitionPropertiesEditionComponent extends Si
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		TypesDefinition typesDefinition = (TypesDefinition)semanticObject;
-		if (EnvironmentViewsRepository.TypesDefinition.Properties.description == event.getAffectedEditor()) {
-			typesDefinition.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
-		}
-	}
+    TypesDefinition typesDefinition = (TypesDefinition)semanticObject;
+    if (EnvironmentViewsRepository.TypesDefinition.Properties.description == event.getAffectedEditor()) {
+      typesDefinition.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TypesDefinitionPropertiesEditionPart typesDefinitionPart = (TypesDefinitionPropertiesEditionPart)editingPart;
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && typesDefinitionPart != null && isAccessible(EnvironmentViewsRepository.TypesDefinition.Properties.description)) {
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && typesDefinitionPart != null && isAccessible(EnvironmentViewsRepository.TypesDefinition.Properties.description)) {
 				if (msg.getNewValue() != null) {
 					typesDefinitionPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -129,31 +133,46 @@ public class TypesDefinitionTypesDefinitionPropertiesEditionComponent extends Si
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (EnvironmentViewsRepository.TypesDefinition.Properties.description == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (EnvironmentViewsRepository.TypesDefinition.Properties.description == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
+
+
+	
 
 }

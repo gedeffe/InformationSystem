@@ -53,6 +53,16 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 */
 	protected static final String NAME_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getMultiplicity() <em>Multiplicity</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61,6 +71,16 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 * @ordered
 	 */
 	protected static final MultiplicityKind MULTIPLICITY_EDEFAULT = MultiplicityKind.ZERO_ONE_LITERAL;
+
+	/**
+	 * The cached value of the '{@link #getMultiplicity() <em>Multiplicity</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMultiplicity()
+	 * @generated
+	 * @ordered
+	 */
+	protected MultiplicityKind multiplicity = MULTIPLICITY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,8 +107,7 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public String getName() {
-		return (String) eDynamicGet(EnvironmentPackage.PROPERTY__NAME,
-				EnvironmentPackage.Literals.PROPERTY__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -97,8 +116,11 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(EnvironmentPackage.PROPERTY__NAME,
-				EnvironmentPackage.Literals.PROPERTY__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.PROPERTY__NAME, oldName, name));
 	}
 
 	/**
@@ -107,9 +129,7 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public MultiplicityKind getMultiplicity() {
-		return (MultiplicityKind) eDynamicGet(
-				EnvironmentPackage.PROPERTY__MULTIPLICITY,
-				EnvironmentPackage.Literals.PROPERTY__MULTIPLICITY, true, true);
+		return multiplicity;
 	}
 
 	/**
@@ -118,9 +138,13 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	 * @generated
 	 */
 	public void setMultiplicity(MultiplicityKind newMultiplicity) {
-		eDynamicSet(EnvironmentPackage.PROPERTY__MULTIPLICITY,
-				EnvironmentPackage.Literals.PROPERTY__MULTIPLICITY,
-				newMultiplicity);
+		MultiplicityKind oldMultiplicity = multiplicity;
+		multiplicity = newMultiplicity == null ? MULTIPLICITY_EDEFAULT
+				: newMultiplicity;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.PROPERTY__MULTIPLICITY, oldMultiplicity,
+					multiplicity));
 	}
 
 	/**
@@ -195,12 +219,31 @@ public abstract class PropertyImpl extends ObeoDSMObjectImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.PROPERTY__NAME:
-			return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT
-					.equals(getName());
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
 		case EnvironmentPackage.PROPERTY__MULTIPLICITY:
-			return getMultiplicity() != MULTIPLICITY_EDEFAULT;
+			return multiplicity != MULTIPLICITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(", multiplicity: ");
+		result.append(multiplicity);
+		result.append(')');
+		return result.toString();
 	}
 
 } //PropertyImpl

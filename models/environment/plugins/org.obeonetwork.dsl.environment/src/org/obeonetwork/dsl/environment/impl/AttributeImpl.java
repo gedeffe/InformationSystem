@@ -46,6 +46,16 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
 
 	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected PrimitiveType type;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -70,8 +80,16 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	 * @generated
 	 */
 	public PrimitiveType getType() {
-		return (PrimitiveType) eDynamicGet(EnvironmentPackage.ATTRIBUTE__TYPE,
-				EnvironmentPackage.Literals.ATTRIBUTE__TYPE, true, true);
+		if (type != null && type.eIsProxy()) {
+			InternalEObject oldType = (InternalEObject) type;
+			type = (PrimitiveType) eResolveProxy(oldType);
+			if (type != oldType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							EnvironmentPackage.ATTRIBUTE__TYPE, oldType, type));
+			}
+		}
+		return type;
 	}
 
 	/**
@@ -80,8 +98,7 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	 * @generated
 	 */
 	public PrimitiveType basicGetType() {
-		return (PrimitiveType) eDynamicGet(EnvironmentPackage.ATTRIBUTE__TYPE,
-				EnvironmentPackage.Literals.ATTRIBUTE__TYPE, false, true);
+		return type;
 	}
 
 	/**
@@ -90,8 +107,11 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	 * @generated
 	 */
 	public void setType(PrimitiveType newType) {
-		eDynamicSet(EnvironmentPackage.ATTRIBUTE__TYPE,
-				EnvironmentPackage.Literals.ATTRIBUTE__TYPE, newType);
+		PrimitiveType oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.ATTRIBUTE__TYPE, oldType, type));
 	}
 
 	/**
@@ -100,8 +120,9 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	 * @generated
 	 */
 	public DTO getDto() {
-		return (DTO) eDynamicGet(EnvironmentPackage.ATTRIBUTE__DTO,
-				EnvironmentPackage.Literals.ATTRIBUTE__DTO, true, true);
+		if (eContainerFeatureID() != EnvironmentPackage.ATTRIBUTE__DTO)
+			return null;
+		return (DTO) eContainer();
 	}
 
 	/**
@@ -110,8 +131,9 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	 * @generated
 	 */
 	public DTO basicGetDto() {
-		return (DTO) eDynamicGet(EnvironmentPackage.ATTRIBUTE__DTO,
-				EnvironmentPackage.Literals.ATTRIBUTE__DTO, false, true);
+		if (eContainerFeatureID() != EnvironmentPackage.ATTRIBUTE__DTO)
+			return null;
+		return (DTO) eInternalContainer();
 	}
 
 	/**
@@ -131,8 +153,24 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	 * @generated
 	 */
 	public void setDto(DTO newDto) {
-		eDynamicSet(EnvironmentPackage.ATTRIBUTE__DTO,
-				EnvironmentPackage.Literals.ATTRIBUTE__DTO, newDto);
+		if (newDto != eInternalContainer()
+				|| (eContainerFeatureID() != EnvironmentPackage.ATTRIBUTE__DTO && newDto != null)) {
+			if (EcoreUtil.isAncestor(this, newDto))
+				throw new IllegalArgumentException(
+						"Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newDto != null)
+				msgs = ((InternalEObject) newDto).eInverseAdd(this,
+						EnvironmentPackage.DTO__OWNED_ATTRIBUTES, DTO.class,
+						msgs);
+			msgs = basicSetDto(newDto, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					EnvironmentPackage.ATTRIBUTE__DTO, newDto, newDto));
 	}
 
 	/**
@@ -248,7 +286,7 @@ public class AttributeImpl extends PropertyImpl implements Attribute {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.ATTRIBUTE__TYPE:
-			return basicGetType() != null;
+			return type != null;
 		case EnvironmentPackage.ATTRIBUTE__DTO:
 			return basicGetDto() != null;
 		}

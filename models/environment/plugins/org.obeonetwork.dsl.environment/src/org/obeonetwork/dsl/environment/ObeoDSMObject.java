@@ -38,10 +38,9 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.obeonetwork.dsl.environment.EnvironmentPackage#getObeoDSMObject()
  * @model abstract="true"
- * @extends CDOObject
  * @generated
  */
-public interface ObeoDSMObject extends CDOObject {
+public interface ObeoDSMObject extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

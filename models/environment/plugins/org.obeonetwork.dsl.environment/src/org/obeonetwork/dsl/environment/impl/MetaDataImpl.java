@@ -27,7 +27,7 @@ import org.obeonetwork.dsl.environment.MetaData;
  *
  * @generated
  */
-public abstract class MetaDataImpl extends CDOObjectImpl implements MetaData {
+public abstract class MetaDataImpl extends EObjectImpl implements MetaData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -52,16 +52,6 @@ public abstract class MetaDataImpl extends CDOObjectImpl implements MetaData {
 	@Override
 	protected EClass eStaticClass() {
 		return EnvironmentPackage.Literals.META_DATA;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
 	}
 
 } //MetaDataImpl

@@ -23,10 +23,9 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.obeonetwork.dsl.environment.EnvironmentPackage#getMetaData()
  * @model abstract="true"
- * @extends CDOObject
  * @generated
  */
-public interface MetaData extends CDOObject {
+public interface MetaData extends EObject {
 
 	/**
 	 * <!-- begin-user-doc -->

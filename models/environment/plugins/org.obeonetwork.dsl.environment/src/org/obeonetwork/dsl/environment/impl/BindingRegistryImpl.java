@@ -49,6 +49,16 @@ public class BindingRegistryImpl extends ObeoDSMObjectImpl implements
 	public static final String copyright = "Copyright (c) 2008-2009 Obeo.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n    Obeo - initial API and implementation";
 
 	/**
+	 * The cached value of the '{@link #getBindingInfos() <em>Binding Infos</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBindingInfos()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<BindingInfo> bindingInfos;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -74,10 +84,12 @@ public class BindingRegistryImpl extends ObeoDSMObjectImpl implements
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<BindingInfo> getBindingInfos() {
-		return (EList<BindingInfo>) eDynamicGet(
-				EnvironmentPackage.BINDING_REGISTRY__BINDING_INFOS,
-				EnvironmentPackage.Literals.BINDING_REGISTRY__BINDING_INFOS,
-				true, true);
+		if (bindingInfos == null) {
+			bindingInfos = new EObjectContainmentEList.Resolving<BindingInfo>(
+					BindingInfo.class, this,
+					EnvironmentPackage.BINDING_REGISTRY__BINDING_INFOS);
+		}
+		return bindingInfos;
 	}
 
 	/**
@@ -152,7 +164,7 @@ public class BindingRegistryImpl extends ObeoDSMObjectImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EnvironmentPackage.BINDING_REGISTRY__BINDING_INFOS:
-			return !getBindingInfos().isEmpty();
+			return bindingInfos != null && !bindingInfos.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

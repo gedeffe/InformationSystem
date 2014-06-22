@@ -3,7 +3,6 @@
  */
 package org.obeonetwork.dsl.environment.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
@@ -13,31 +12,29 @@ import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSett
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-// End of user code
-
 /**
  * 
- * 
+ * @generated
  */
 public interface InterDSMLinkPropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
 
 	/**
 	 * @return the target
-	 * 
+	 * @generated
 	 */
 	public EObject getTarget();
 
@@ -50,14 +47,14 @@ public interface InterDSMLinkPropertiesEditionPart {
 	/**
 	 * Defines a new target
 	 * @param newValue the new target to set
-	 * 
+	 * @generated
 	 */
 	public void setTarget(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setTargetButtonMode(ButtonsModeEnum newValue);
 
@@ -67,7 +64,7 @@ public interface InterDSMLinkPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToTarget(ViewerFilter filter);
 
@@ -77,21 +74,21 @@ public interface InterDSMLinkPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToTarget(ViewerFilter filter);
 
 
 	/**
 	 * @return the description
-	 * 
+	 * @generated
 	 */
 	public String getDescription();
 
 	/**
 	 * Defines a new description
 	 * @param newValue the new description to set
-	 * 
+	 * @generated
 	 */
 	public void setDescription(String newValue);
 
@@ -103,12 +100,9 @@ public interface InterDSMLinkPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-	
-	// End of user code
 
 }
