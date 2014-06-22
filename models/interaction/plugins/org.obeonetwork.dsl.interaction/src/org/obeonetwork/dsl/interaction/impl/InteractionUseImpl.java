@@ -55,6 +55,34 @@ public class InteractionUseImpl extends InteractionFragmentImpl implements Inter
 	protected static final String TYPE_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected String type = TYPE_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getInteraction() <em>Interaction</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInteraction()
+	 * @generated
+	 * @ordered
+	 */
+	protected Interaction interaction;
+	/**
+	 * The cached value of the '{@link #getCoveredParticipants() <em>Covered Participants</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCoveredParticipants()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Participant> coveredParticipants;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -79,7 +107,7 @@ public class InteractionUseImpl extends InteractionFragmentImpl implements Inter
 	 * @generated
 	 */
 	public String getType() {
-		return (String)eDynamicGet(InteractionPackage.INTERACTION_USE__TYPE, InteractionPackage.Literals.INTERACTION_USE__TYPE, true, true);
+		return type;
 	}
 
 	/**
@@ -88,7 +116,10 @@ public class InteractionUseImpl extends InteractionFragmentImpl implements Inter
 	 * @generated
 	 */
 	public void setType(String newType) {
-		eDynamicSet(InteractionPackage.INTERACTION_USE__TYPE, InteractionPackage.Literals.INTERACTION_USE__TYPE, newType);
+		String oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_USE__TYPE, oldType, type));
 	}
 
 	/**
@@ -97,7 +128,15 @@ public class InteractionUseImpl extends InteractionFragmentImpl implements Inter
 	 * @generated
 	 */
 	public Interaction getInteraction() {
-		return (Interaction)eDynamicGet(InteractionPackage.INTERACTION_USE__INTERACTION, InteractionPackage.Literals.INTERACTION_USE__INTERACTION, true, true);
+		if (interaction != null && interaction.eIsProxy()) {
+			InternalEObject oldInteraction = (InternalEObject)interaction;
+			interaction = (Interaction)eResolveProxy(oldInteraction);
+			if (interaction != oldInteraction) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_USE__INTERACTION, oldInteraction, interaction));
+			}
+		}
+		return interaction;
 	}
 
 	/**
@@ -106,7 +145,7 @@ public class InteractionUseImpl extends InteractionFragmentImpl implements Inter
 	 * @generated
 	 */
 	public Interaction basicGetInteraction() {
-		return (Interaction)eDynamicGet(InteractionPackage.INTERACTION_USE__INTERACTION, InteractionPackage.Literals.INTERACTION_USE__INTERACTION, false, true);
+		return interaction;
 	}
 
 	/**
@@ -115,7 +154,10 @@ public class InteractionUseImpl extends InteractionFragmentImpl implements Inter
 	 * @generated
 	 */
 	public void setInteraction(Interaction newInteraction) {
-		eDynamicSet(InteractionPackage.INTERACTION_USE__INTERACTION, InteractionPackage.Literals.INTERACTION_USE__INTERACTION, newInteraction);
+		Interaction oldInteraction = interaction;
+		interaction = newInteraction;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_USE__INTERACTION, oldInteraction, interaction));
 	}
 
 	/**
@@ -125,7 +167,10 @@ public class InteractionUseImpl extends InteractionFragmentImpl implements Inter
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Participant> getCoveredParticipants() {
-		return (EList<Participant>)eDynamicGet(InteractionPackage.INTERACTION_USE__COVERED_PARTICIPANTS, InteractionPackage.Literals.INTERACTION_USE__COVERED_PARTICIPANTS, true, true);
+		if (coveredParticipants == null) {
+			coveredParticipants = new EObjectResolvingEList<Participant>(Participant.class, this, InteractionPackage.INTERACTION_USE__COVERED_PARTICIPANTS);
+		}
+		return coveredParticipants;
 	}
 
 	/**
@@ -200,13 +245,29 @@ public class InteractionUseImpl extends InteractionFragmentImpl implements Inter
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InteractionPackage.INTERACTION_USE__TYPE:
-				return TYPE_EDEFAULT == null ? getType() != null : !TYPE_EDEFAULT.equals(getType());
+				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 			case InteractionPackage.INTERACTION_USE__INTERACTION:
-				return basicGetInteraction() != null;
+				return interaction != null;
 			case InteractionPackage.INTERACTION_USE__COVERED_PARTICIPANTS:
-				return !getCoveredParticipants().isEmpty();
+				return coveredParticipants != null && !coveredParticipants.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (type: ");
+		result.append(type);
+		result.append(')');
+		return result.toString();
 	}
 
 } //InteractionUseImpl

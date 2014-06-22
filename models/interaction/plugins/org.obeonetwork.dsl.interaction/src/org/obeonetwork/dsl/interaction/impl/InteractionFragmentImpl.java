@@ -37,6 +37,25 @@ import org.obeonetwork.dsl.interaction.InteractionPackage;
  */
 public abstract class InteractionFragmentImpl extends NamedElementImpl implements InteractionFragment {
 	/**
+	 * The cached value of the '{@link #getStartingEnd() <em>Starting End</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStartingEnd()
+	 * @generated
+	 * @ordered
+	 */
+	protected End startingEnd;
+	/**
+	 * The cached value of the '{@link #getFinishingEnd() <em>Finishing End</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFinishingEnd()
+	 * @generated
+	 * @ordered
+	 */
+	protected End finishingEnd;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -61,7 +80,15 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 	public End getStartingEnd() {
-		return (End)eDynamicGet(InteractionPackage.INTERACTION_FRAGMENT__STARTING_END, InteractionPackage.Literals.INTERACTION_FRAGMENT__STARTING_END, true, true);
+		if (startingEnd != null && startingEnd.eIsProxy()) {
+			InternalEObject oldStartingEnd = (InternalEObject)startingEnd;
+			startingEnd = (End)eResolveProxy(oldStartingEnd);
+			if (startingEnd != oldStartingEnd) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_FRAGMENT__STARTING_END, oldStartingEnd, startingEnd));
+			}
+		}
+		return startingEnd;
 	}
 
 	/**
@@ -70,7 +97,7 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 	public End basicGetStartingEnd() {
-		return (End)eDynamicGet(InteractionPackage.INTERACTION_FRAGMENT__STARTING_END, InteractionPackage.Literals.INTERACTION_FRAGMENT__STARTING_END, false, true);
+		return startingEnd;
 	}
 
 	/**
@@ -79,7 +106,10 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 	public void setStartingEnd(End newStartingEnd) {
-		eDynamicSet(InteractionPackage.INTERACTION_FRAGMENT__STARTING_END, InteractionPackage.Literals.INTERACTION_FRAGMENT__STARTING_END, newStartingEnd);
+		End oldStartingEnd = startingEnd;
+		startingEnd = newStartingEnd;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_FRAGMENT__STARTING_END, oldStartingEnd, startingEnd));
 	}
 
 	/**
@@ -88,7 +118,15 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 	public End getFinishingEnd() {
-		return (End)eDynamicGet(InteractionPackage.INTERACTION_FRAGMENT__FINISHING_END, InteractionPackage.Literals.INTERACTION_FRAGMENT__FINISHING_END, true, true);
+		if (finishingEnd != null && finishingEnd.eIsProxy()) {
+			InternalEObject oldFinishingEnd = (InternalEObject)finishingEnd;
+			finishingEnd = (End)eResolveProxy(oldFinishingEnd);
+			if (finishingEnd != oldFinishingEnd) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_FRAGMENT__FINISHING_END, oldFinishingEnd, finishingEnd));
+			}
+		}
+		return finishingEnd;
 	}
 
 	/**
@@ -97,7 +135,7 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 	public End basicGetFinishingEnd() {
-		return (End)eDynamicGet(InteractionPackage.INTERACTION_FRAGMENT__FINISHING_END, InteractionPackage.Literals.INTERACTION_FRAGMENT__FINISHING_END, false, true);
+		return finishingEnd;
 	}
 
 	/**
@@ -106,7 +144,10 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 	public void setFinishingEnd(End newFinishingEnd) {
-		eDynamicSet(InteractionPackage.INTERACTION_FRAGMENT__FINISHING_END, InteractionPackage.Literals.INTERACTION_FRAGMENT__FINISHING_END, newFinishingEnd);
+		End oldFinishingEnd = finishingEnd;
+		finishingEnd = newFinishingEnd;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_FRAGMENT__FINISHING_END, oldFinishingEnd, finishingEnd));
 	}
 
 	/**
@@ -172,9 +213,9 @@ public abstract class InteractionFragmentImpl extends NamedElementImpl implement
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InteractionPackage.INTERACTION_FRAGMENT__STARTING_END:
-				return basicGetStartingEnd() != null;
+				return startingEnd != null;
 			case InteractionPackage.INTERACTION_FRAGMENT__FINISHING_END:
-				return basicGetFinishingEnd() != null;
+				return finishingEnd != null;
 		}
 		return super.eIsSet(featureID);
 	}

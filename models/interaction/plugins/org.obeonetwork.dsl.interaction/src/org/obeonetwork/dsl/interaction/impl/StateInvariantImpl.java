@@ -36,6 +36,16 @@ import org.obeonetwork.dsl.interaction.StateInvariant;
  */
 public class StateInvariantImpl extends InteractionFragmentImpl implements StateInvariant {
 	/**
+	 * The cached value of the '{@link #getOwner() <em>Owner</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwner()
+	 * @generated
+	 * @ordered
+	 */
+	protected Participant owner;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -60,7 +70,15 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * @generated
 	 */
 	public Participant getOwner() {
-		return (Participant)eDynamicGet(InteractionPackage.STATE_INVARIANT__OWNER, InteractionPackage.Literals.STATE_INVARIANT__OWNER, true, true);
+		if (owner != null && owner.eIsProxy()) {
+			InternalEObject oldOwner = (InternalEObject)owner;
+			owner = (Participant)eResolveProxy(oldOwner);
+			if (owner != oldOwner) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.STATE_INVARIANT__OWNER, oldOwner, owner));
+			}
+		}
+		return owner;
 	}
 
 	/**
@@ -69,7 +87,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * @generated
 	 */
 	public Participant basicGetOwner() {
-		return (Participant)eDynamicGet(InteractionPackage.STATE_INVARIANT__OWNER, InteractionPackage.Literals.STATE_INVARIANT__OWNER, false, true);
+		return owner;
 	}
 
 	/**
@@ -78,7 +96,10 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * @generated
 	 */
 	public void setOwner(Participant newOwner) {
-		eDynamicSet(InteractionPackage.STATE_INVARIANT__OWNER, InteractionPackage.Literals.STATE_INVARIANT__OWNER, newOwner);
+		Participant oldOwner = owner;
+		owner = newOwner;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.STATE_INVARIANT__OWNER, oldOwner, owner));
 	}
 
 	/**
@@ -135,7 +156,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InteractionPackage.STATE_INVARIANT__OWNER:
-				return basicGetOwner() != null;
+				return owner != null;
 		}
 		return super.eIsSet(featureID);
 	}

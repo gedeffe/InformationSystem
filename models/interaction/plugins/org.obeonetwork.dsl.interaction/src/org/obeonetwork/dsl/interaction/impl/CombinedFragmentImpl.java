@@ -58,6 +58,34 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	protected static final String OPERATOR_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperator()
+	 * @generated
+	 * @ordered
+	 */
+	protected String operator = OPERATOR_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getCoveredParticipants() <em>Covered Participants</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCoveredParticipants()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Participant> coveredParticipants;
+	/**
+	 * The cached value of the '{@link #getOwnedOperands() <em>Owned Operands</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedOperands()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Operand> ownedOperands;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -82,7 +110,7 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	 * @generated
 	 */
 	public String getOperator() {
-		return (String)eDynamicGet(InteractionPackage.COMBINED_FRAGMENT__OPERATOR, InteractionPackage.Literals.COMBINED_FRAGMENT__OPERATOR, true, true);
+		return operator;
 	}
 
 	/**
@@ -91,7 +119,10 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	 * @generated
 	 */
 	public void setOperator(String newOperator) {
-		eDynamicSet(InteractionPackage.COMBINED_FRAGMENT__OPERATOR, InteractionPackage.Literals.COMBINED_FRAGMENT__OPERATOR, newOperator);
+		String oldOperator = operator;
+		operator = newOperator;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.COMBINED_FRAGMENT__OPERATOR, oldOperator, operator));
 	}
 
 	/**
@@ -101,7 +132,10 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Participant> getCoveredParticipants() {
-		return (EList<Participant>)eDynamicGet(InteractionPackage.COMBINED_FRAGMENT__COVERED_PARTICIPANTS, InteractionPackage.Literals.COMBINED_FRAGMENT__COVERED_PARTICIPANTS, true, true);
+		if (coveredParticipants == null) {
+			coveredParticipants = new EObjectResolvingEList<Participant>(Participant.class, this, InteractionPackage.COMBINED_FRAGMENT__COVERED_PARTICIPANTS);
+		}
+		return coveredParticipants;
 	}
 
 	/**
@@ -111,7 +145,10 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Operand> getOwnedOperands() {
-		return (EList<Operand>)eDynamicGet(InteractionPackage.COMBINED_FRAGMENT__OWNED_OPERANDS, InteractionPackage.Literals.COMBINED_FRAGMENT__OWNED_OPERANDS, true, true);
+		if (ownedOperands == null) {
+			ownedOperands = new EObjectContainmentEList.Resolving<Operand>(Operand.class, this, InteractionPackage.COMBINED_FRAGMENT__OWNED_OPERANDS);
+		}
+		return ownedOperands;
 	}
 
 	/**
@@ -200,13 +237,29 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InteractionPackage.COMBINED_FRAGMENT__OPERATOR:
-				return OPERATOR_EDEFAULT == null ? getOperator() != null : !OPERATOR_EDEFAULT.equals(getOperator());
+				return OPERATOR_EDEFAULT == null ? operator != null : !OPERATOR_EDEFAULT.equals(operator);
 			case InteractionPackage.COMBINED_FRAGMENT__COVERED_PARTICIPANTS:
-				return !getCoveredParticipants().isEmpty();
+				return coveredParticipants != null && !coveredParticipants.isEmpty();
 			case InteractionPackage.COMBINED_FRAGMENT__OWNED_OPERANDS:
-				return !getOwnedOperands().isEmpty();
+				return ownedOperands != null && !ownedOperands.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (operator: ");
+		result.append(operator);
+		result.append(')');
+		return result.toString();
 	}
 
 } //CombinedFragmentImpl

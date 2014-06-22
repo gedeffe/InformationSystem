@@ -36,6 +36,16 @@ import org.obeonetwork.dsl.interaction.ReturnMessage;
  */
 public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
 	/**
+	 * The cached value of the '{@link #getInvocationMessage() <em>Invocation Message</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInvocationMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected Message invocationMessage;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -60,7 +70,15 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
 	 * @generated
 	 */
 	public Message getInvocationMessage() {
-		return (Message)eDynamicGet(InteractionPackage.RETURN_MESSAGE__INVOCATION_MESSAGE, InteractionPackage.Literals.RETURN_MESSAGE__INVOCATION_MESSAGE, true, true);
+		if (invocationMessage != null && invocationMessage.eIsProxy()) {
+			InternalEObject oldInvocationMessage = (InternalEObject)invocationMessage;
+			invocationMessage = (Message)eResolveProxy(oldInvocationMessage);
+			if (invocationMessage != oldInvocationMessage) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.RETURN_MESSAGE__INVOCATION_MESSAGE, oldInvocationMessage, invocationMessage));
+			}
+		}
+		return invocationMessage;
 	}
 
 	/**
@@ -69,7 +87,7 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
 	 * @generated
 	 */
 	public Message basicGetInvocationMessage() {
-		return (Message)eDynamicGet(InteractionPackage.RETURN_MESSAGE__INVOCATION_MESSAGE, InteractionPackage.Literals.RETURN_MESSAGE__INVOCATION_MESSAGE, false, true);
+		return invocationMessage;
 	}
 
 	/**
@@ -78,7 +96,10 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
 	 * @generated
 	 */
 	public void setInvocationMessage(Message newInvocationMessage) {
-		eDynamicSet(InteractionPackage.RETURN_MESSAGE__INVOCATION_MESSAGE, InteractionPackage.Literals.RETURN_MESSAGE__INVOCATION_MESSAGE, newInvocationMessage);
+		Message oldInvocationMessage = invocationMessage;
+		invocationMessage = newInvocationMessage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.RETURN_MESSAGE__INVOCATION_MESSAGE, oldInvocationMessage, invocationMessage));
 	}
 
 	/**
@@ -135,7 +156,7 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InteractionPackage.RETURN_MESSAGE__INVOCATION_MESSAGE:
-				return basicGetInvocationMessage() != null;
+				return invocationMessage != null;
 		}
 		return super.eIsSet(featureID);
 	}

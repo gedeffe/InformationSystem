@@ -41,6 +41,25 @@ import org.obeonetwork.dsl.interaction.StateInvariant;
  */
 public class EndImpl extends NamedElementImpl implements End {
 	/**
+	 * The cached value of the '{@link #getContext() <em>Context</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContext()
+	 * @generated
+	 * @ordered
+	 */
+	protected Participant context;
+	/**
+	 * The cached value of the '{@link #getOwner() <em>Owner</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwner()
+	 * @generated
+	 * @ordered
+	 */
+	protected InteractionFragment owner;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -65,7 +84,15 @@ public class EndImpl extends NamedElementImpl implements End {
 	 * @generated
 	 */
 	public Participant getContext() {
-		return (Participant)eDynamicGet(InteractionPackage.END__CONTEXT, InteractionPackage.Literals.END__CONTEXT, true, true);
+		if (context != null && context.eIsProxy()) {
+			InternalEObject oldContext = (InternalEObject)context;
+			context = (Participant)eResolveProxy(oldContext);
+			if (context != oldContext) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.END__CONTEXT, oldContext, context));
+			}
+		}
+		return context;
 	}
 
 	/**
@@ -74,7 +101,7 @@ public class EndImpl extends NamedElementImpl implements End {
 	 * @generated
 	 */
 	public Participant basicGetContext() {
-		return (Participant)eDynamicGet(InteractionPackage.END__CONTEXT, InteractionPackage.Literals.END__CONTEXT, false, true);
+		return context;
 	}
 
 	/**
@@ -83,7 +110,10 @@ public class EndImpl extends NamedElementImpl implements End {
 	 * @generated
 	 */
 	public void setContext(Participant newContext) {
-		eDynamicSet(InteractionPackage.END__CONTEXT, InteractionPackage.Literals.END__CONTEXT, newContext);
+		Participant oldContext = context;
+		context = newContext;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.END__CONTEXT, oldContext, context));
 	}
 
 	/**
@@ -92,7 +122,15 @@ public class EndImpl extends NamedElementImpl implements End {
 	 * @generated
 	 */
 	public InteractionFragment getOwner() {
-		return (InteractionFragment)eDynamicGet(InteractionPackage.END__OWNER, InteractionPackage.Literals.END__OWNER, true, true);
+		if (owner != null && owner.eIsProxy()) {
+			InternalEObject oldOwner = (InternalEObject)owner;
+			owner = (InteractionFragment)eResolveProxy(oldOwner);
+			if (owner != oldOwner) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.END__OWNER, oldOwner, owner));
+			}
+		}
+		return owner;
 	}
 
 	/**
@@ -101,7 +139,7 @@ public class EndImpl extends NamedElementImpl implements End {
 	 * @generated
 	 */
 	public InteractionFragment basicGetOwner() {
-		return (InteractionFragment)eDynamicGet(InteractionPackage.END__OWNER, InteractionPackage.Literals.END__OWNER, false, true);
+		return owner;
 	}
 
 	/**
@@ -110,7 +148,10 @@ public class EndImpl extends NamedElementImpl implements End {
 	 * @generated
 	 */
 	public void setOwner(InteractionFragment newOwner) {
-		eDynamicSet(InteractionPackage.END__OWNER, InteractionPackage.Literals.END__OWNER, newOwner);
+		InteractionFragment oldOwner = owner;
+		owner = newOwner;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.END__OWNER, oldOwner, owner));
 	}
 
 	/**
@@ -334,9 +375,9 @@ public class EndImpl extends NamedElementImpl implements End {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InteractionPackage.END__CONTEXT:
-				return basicGetContext() != null;
+				return context != null;
 			case InteractionPackage.END__OWNER:
-				return basicGetOwner() != null;
+				return owner != null;
 		}
 		return super.eIsSet(featureID);
 	}

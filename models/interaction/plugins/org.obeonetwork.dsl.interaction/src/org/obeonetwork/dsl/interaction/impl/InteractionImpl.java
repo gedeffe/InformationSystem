@@ -53,6 +53,70 @@ import org.obeonetwork.dsl.interaction.StateInvariant;
  */
 public class InteractionImpl extends NamedElementImpl implements Interaction {
 	/**
+	 * The cached value of the '{@link #getParticipants() <em>Participants</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParticipants()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Participant> participants;
+	/**
+	 * The cached value of the '{@link #getMessages() <em>Messages</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessages()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Message> messages;
+	/**
+	 * The cached value of the '{@link #getExecutions() <em>Executions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExecutions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Execution> executions;
+	/**
+	 * The cached value of the '{@link #getStateInvariants() <em>State Invariants</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStateInvariants()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<StateInvariant> stateInvariants;
+	/**
+	 * The cached value of the '{@link #getInteractionUses() <em>Interaction Uses</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInteractionUses()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<InteractionUse> interactionUses;
+	/**
+	 * The cached value of the '{@link #getEnds() <em>Ends</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnds()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<End> ends;
+	/**
+	 * The cached value of the '{@link #getCombinedFragments() <em>Combined Fragments</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCombinedFragments()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CombinedFragment> combinedFragments;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -78,7 +142,10 @@ public class InteractionImpl extends NamedElementImpl implements Interaction {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Participant> getParticipants() {
-		return (EList<Participant>)eDynamicGet(InteractionPackage.INTERACTION__PARTICIPANTS, InteractionPackage.Literals.INTERACTION__PARTICIPANTS, true, true);
+		if (participants == null) {
+			participants = new EObjectContainmentEList.Resolving<Participant>(Participant.class, this, InteractionPackage.INTERACTION__PARTICIPANTS);
+		}
+		return participants;
 	}
 
 	/**
@@ -88,7 +155,10 @@ public class InteractionImpl extends NamedElementImpl implements Interaction {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Message> getMessages() {
-		return (EList<Message>)eDynamicGet(InteractionPackage.INTERACTION__MESSAGES, InteractionPackage.Literals.INTERACTION__MESSAGES, true, true);
+		if (messages == null) {
+			messages = new EObjectContainmentEList.Resolving<Message>(Message.class, this, InteractionPackage.INTERACTION__MESSAGES);
+		}
+		return messages;
 	}
 
 	/**
@@ -98,7 +168,10 @@ public class InteractionImpl extends NamedElementImpl implements Interaction {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Execution> getExecutions() {
-		return (EList<Execution>)eDynamicGet(InteractionPackage.INTERACTION__EXECUTIONS, InteractionPackage.Literals.INTERACTION__EXECUTIONS, true, true);
+		if (executions == null) {
+			executions = new EObjectContainmentEList.Resolving<Execution>(Execution.class, this, InteractionPackage.INTERACTION__EXECUTIONS);
+		}
+		return executions;
 	}
 
 	/**
@@ -108,7 +181,10 @@ public class InteractionImpl extends NamedElementImpl implements Interaction {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<StateInvariant> getStateInvariants() {
-		return (EList<StateInvariant>)eDynamicGet(InteractionPackage.INTERACTION__STATE_INVARIANTS, InteractionPackage.Literals.INTERACTION__STATE_INVARIANTS, true, true);
+		if (stateInvariants == null) {
+			stateInvariants = new EObjectContainmentEList.Resolving<StateInvariant>(StateInvariant.class, this, InteractionPackage.INTERACTION__STATE_INVARIANTS);
+		}
+		return stateInvariants;
 	}
 
 	/**
@@ -118,7 +194,10 @@ public class InteractionImpl extends NamedElementImpl implements Interaction {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<InteractionUse> getInteractionUses() {
-		return (EList<InteractionUse>)eDynamicGet(InteractionPackage.INTERACTION__INTERACTION_USES, InteractionPackage.Literals.INTERACTION__INTERACTION_USES, true, true);
+		if (interactionUses == null) {
+			interactionUses = new EObjectContainmentEList.Resolving<InteractionUse>(InteractionUse.class, this, InteractionPackage.INTERACTION__INTERACTION_USES);
+		}
+		return interactionUses;
 	}
 
 	/**
@@ -128,7 +207,10 @@ public class InteractionImpl extends NamedElementImpl implements Interaction {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<End> getEnds() {
-		return (EList<End>)eDynamicGet(InteractionPackage.INTERACTION__ENDS, InteractionPackage.Literals.INTERACTION__ENDS, true, true);
+		if (ends == null) {
+			ends = new EObjectContainmentEList.Resolving<End>(End.class, this, InteractionPackage.INTERACTION__ENDS);
+		}
+		return ends;
 	}
 
 	/**
@@ -138,7 +220,10 @@ public class InteractionImpl extends NamedElementImpl implements Interaction {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<CombinedFragment> getCombinedFragments() {
-		return (EList<CombinedFragment>)eDynamicGet(InteractionPackage.INTERACTION__COMBINED_FRAGMENTS, InteractionPackage.Literals.INTERACTION__COMBINED_FRAGMENTS, true, true);
+		if (combinedFragments == null) {
+			combinedFragments = new EObjectContainmentEList.Resolving<CombinedFragment>(CombinedFragment.class, this, InteractionPackage.INTERACTION__COMBINED_FRAGMENTS);
+		}
+		return combinedFragments;
 	}
 
 	/**
@@ -276,19 +361,19 @@ public class InteractionImpl extends NamedElementImpl implements Interaction {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InteractionPackage.INTERACTION__PARTICIPANTS:
-				return !getParticipants().isEmpty();
+				return participants != null && !participants.isEmpty();
 			case InteractionPackage.INTERACTION__MESSAGES:
-				return !getMessages().isEmpty();
+				return messages != null && !messages.isEmpty();
 			case InteractionPackage.INTERACTION__EXECUTIONS:
-				return !getExecutions().isEmpty();
+				return executions != null && !executions.isEmpty();
 			case InteractionPackage.INTERACTION__STATE_INVARIANTS:
-				return !getStateInvariants().isEmpty();
+				return stateInvariants != null && !stateInvariants.isEmpty();
 			case InteractionPackage.INTERACTION__INTERACTION_USES:
-				return !getInteractionUses().isEmpty();
+				return interactionUses != null && !interactionUses.isEmpty();
 			case InteractionPackage.INTERACTION__ENDS:
-				return !getEnds().isEmpty();
+				return ends != null && !ends.isEmpty();
 			case InteractionPackage.INTERACTION__COMBINED_FRAGMENTS:
-				return !getCombinedFragments().isEmpty();
+				return combinedFragments != null && !combinedFragments.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

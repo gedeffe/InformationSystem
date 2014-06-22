@@ -35,7 +35,7 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 */
 	public static InteractionFactory init() {
 		try {
-			InteractionFactory theInteractionFactory = (InteractionFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.obeonetwork.org/dsl/interaction/1.0.0"); 
+			InteractionFactory theInteractionFactory = (InteractionFactory)EPackage.Registry.INSTANCE.getEFactory(InteractionPackage.eNS_URI);
 			if (theInteractionFactory != null) {
 				return theInteractionFactory;
 			}
@@ -64,19 +64,19 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case InteractionPackage.INTERACTION: return (EObject)createInteraction();
-			case InteractionPackage.PARTICIPANT: return (EObject)createParticipant();
-			case InteractionPackage.EXECUTION: return (EObject)createExecution();
-			case InteractionPackage.CREATE_PARTICIPANT_MESSAGE: return (EObject)createCreateParticipantMessage();
-			case InteractionPackage.DESTROY_PARTICIPANT_MESSAGE: return (EObject)createDestroyParticipantMessage();
-			case InteractionPackage.RETURN_MESSAGE: return (EObject)createReturnMessage();
-			case InteractionPackage.STATE_INVARIANT: return (EObject)createStateInvariant();
-			case InteractionPackage.INTERACTION_USE: return (EObject)createInteractionUse();
-			case InteractionPackage.END: return (EObject)createEnd();
-			case InteractionPackage.COMBINED_FRAGMENT: return (EObject)createCombinedFragment();
-			case InteractionPackage.OPERAND: return (EObject)createOperand();
-			case InteractionPackage.CALL_MESSAGE: return (EObject)createCallMessage();
-			case InteractionPackage.COMPOUND_END: return (EObject)createCompoundEnd();
+			case InteractionPackage.INTERACTION: return createInteraction();
+			case InteractionPackage.PARTICIPANT: return createParticipant();
+			case InteractionPackage.EXECUTION: return createExecution();
+			case InteractionPackage.CREATE_PARTICIPANT_MESSAGE: return createCreateParticipantMessage();
+			case InteractionPackage.DESTROY_PARTICIPANT_MESSAGE: return createDestroyParticipantMessage();
+			case InteractionPackage.RETURN_MESSAGE: return createReturnMessage();
+			case InteractionPackage.STATE_INVARIANT: return createStateInvariant();
+			case InteractionPackage.INTERACTION_USE: return createInteractionUse();
+			case InteractionPackage.END: return createEnd();
+			case InteractionPackage.COMBINED_FRAGMENT: return createCombinedFragment();
+			case InteractionPackage.OPERAND: return createOperand();
+			case InteractionPackage.CALL_MESSAGE: return createCallMessage();
+			case InteractionPackage.COMPOUND_END: return createCompoundEnd();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

@@ -33,6 +33,16 @@ import org.obeonetwork.dsl.interaction.Message;
  */
 public class CompoundEndImpl extends EndImpl implements CompoundEnd {
 	/**
+	 * The cached value of the '{@link #getOtherOwner() <em>Other Owner</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOtherOwner()
+	 * @generated
+	 * @ordered
+	 */
+	protected Message otherOwner;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -82,7 +92,15 @@ public class CompoundEndImpl extends EndImpl implements CompoundEnd {
 	 * @generated
 	 */
 	public Message getOtherOwner() {
-		return (Message)eDynamicGet(InteractionPackage.COMPOUND_END__OTHER_OWNER, InteractionPackage.Literals.COMPOUND_END__OTHER_OWNER, true, true);
+		if (otherOwner != null && otherOwner.eIsProxy()) {
+			InternalEObject oldOtherOwner = (InternalEObject)otherOwner;
+			otherOwner = (Message)eResolveProxy(oldOtherOwner);
+			if (otherOwner != oldOtherOwner) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.COMPOUND_END__OTHER_OWNER, oldOtherOwner, otherOwner));
+			}
+		}
+		return otherOwner;
 	}
 
 	/**
@@ -91,7 +109,7 @@ public class CompoundEndImpl extends EndImpl implements CompoundEnd {
 	 * @generated
 	 */
 	public Message basicGetOtherOwner() {
-		return (Message)eDynamicGet(InteractionPackage.COMPOUND_END__OTHER_OWNER, InteractionPackage.Literals.COMPOUND_END__OTHER_OWNER, false, true);
+		return otherOwner;
 	}
 
 	/**
@@ -100,7 +118,10 @@ public class CompoundEndImpl extends EndImpl implements CompoundEnd {
 	 * @generated
 	 */
 	public void setOtherOwner(Message newOtherOwner) {
-		eDynamicSet(InteractionPackage.COMPOUND_END__OTHER_OWNER, InteractionPackage.Literals.COMPOUND_END__OTHER_OWNER, newOtherOwner);
+		Message oldOtherOwner = otherOwner;
+		otherOwner = newOtherOwner;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.COMPOUND_END__OTHER_OWNER, oldOtherOwner, otherOwner));
 	}
 
 	/**
@@ -157,7 +178,7 @@ public class CompoundEndImpl extends EndImpl implements CompoundEnd {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InteractionPackage.COMPOUND_END__OTHER_OWNER:
-				return basicGetOtherOwner() != null;
+				return otherOwner != null;
 		}
 		return super.eIsSet(featureID);
 	}

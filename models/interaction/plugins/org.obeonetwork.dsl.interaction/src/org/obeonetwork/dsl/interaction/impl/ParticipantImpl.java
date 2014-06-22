@@ -37,6 +37,16 @@ import org.obeonetwork.dsl.interaction.Participant;
  */
 public class ParticipantImpl extends NamedElementImpl implements Participant {
 	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected ObeoDSMObject type;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -61,7 +71,15 @@ public class ParticipantImpl extends NamedElementImpl implements Participant {
 	 * @generated
 	 */
 	public ObeoDSMObject getType() {
-		return (ObeoDSMObject)eDynamicGet(InteractionPackage.PARTICIPANT__TYPE, InteractionPackage.Literals.PARTICIPANT__TYPE, true, true);
+		if (type != null && type.eIsProxy()) {
+			InternalEObject oldType = (InternalEObject)type;
+			type = (ObeoDSMObject)eResolveProxy(oldType);
+			if (type != oldType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.PARTICIPANT__TYPE, oldType, type));
+			}
+		}
+		return type;
 	}
 
 	/**
@@ -70,7 +88,7 @@ public class ParticipantImpl extends NamedElementImpl implements Participant {
 	 * @generated
 	 */
 	public ObeoDSMObject basicGetType() {
-		return (ObeoDSMObject)eDynamicGet(InteractionPackage.PARTICIPANT__TYPE, InteractionPackage.Literals.PARTICIPANT__TYPE, false, true);
+		return type;
 	}
 
 	/**
@@ -79,7 +97,10 @@ public class ParticipantImpl extends NamedElementImpl implements Participant {
 	 * @generated
 	 */
 	public void setType(ObeoDSMObject newType) {
-		eDynamicSet(InteractionPackage.PARTICIPANT__TYPE, InteractionPackage.Literals.PARTICIPANT__TYPE, newType);
+		ObeoDSMObject oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.PARTICIPANT__TYPE, oldType, type));
 	}
 
 	/**
@@ -136,7 +157,7 @@ public class ParticipantImpl extends NamedElementImpl implements Participant {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InteractionPackage.PARTICIPANT__TYPE:
-				return basicGetType() != null;
+				return type != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -36,6 +36,16 @@ import org.obeonetwork.dsl.interaction.Participant;
  */
 public class ExecutionImpl extends InteractionFragmentImpl implements Execution {
 	/**
+	 * The cached value of the '{@link #getOwner() <em>Owner</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwner()
+	 * @generated
+	 * @ordered
+	 */
+	protected Participant owner;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -60,7 +70,15 @@ public class ExecutionImpl extends InteractionFragmentImpl implements Execution 
 	 * @generated
 	 */
 	public Participant getOwner() {
-		return (Participant)eDynamicGet(InteractionPackage.EXECUTION__OWNER, InteractionPackage.Literals.EXECUTION__OWNER, true, true);
+		if (owner != null && owner.eIsProxy()) {
+			InternalEObject oldOwner = (InternalEObject)owner;
+			owner = (Participant)eResolveProxy(oldOwner);
+			if (owner != oldOwner) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.EXECUTION__OWNER, oldOwner, owner));
+			}
+		}
+		return owner;
 	}
 
 	/**
@@ -69,7 +87,7 @@ public class ExecutionImpl extends InteractionFragmentImpl implements Execution 
 	 * @generated
 	 */
 	public Participant basicGetOwner() {
-		return (Participant)eDynamicGet(InteractionPackage.EXECUTION__OWNER, InteractionPackage.Literals.EXECUTION__OWNER, false, true);
+		return owner;
 	}
 
 	/**
@@ -78,7 +96,10 @@ public class ExecutionImpl extends InteractionFragmentImpl implements Execution 
 	 * @generated
 	 */
 	public void setOwner(Participant newOwner) {
-		eDynamicSet(InteractionPackage.EXECUTION__OWNER, InteractionPackage.Literals.EXECUTION__OWNER, newOwner);
+		Participant oldOwner = owner;
+		owner = newOwner;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.EXECUTION__OWNER, oldOwner, owner));
 	}
 
 	/**
@@ -135,7 +156,7 @@ public class ExecutionImpl extends InteractionFragmentImpl implements Execution 
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InteractionPackage.EXECUTION__OWNER:
-				return basicGetOwner() != null;
+				return owner != null;
 		}
 		return super.eIsSet(featureID);
 	}
