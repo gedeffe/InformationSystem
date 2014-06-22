@@ -14,6 +14,8 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.obeonetwork.dsl.entity.Block;
 import org.obeonetwork.dsl.entity.Entity;
@@ -38,7 +40,44 @@ import org.obeonetwork.graal.GraalPackage;
  *
  * @generated
  */
-public abstract class DomainModelRegistryImpl extends CDOObjectImpl implements DomainModelRegistry {
+public abstract class DomainModelRegistryImpl extends EObjectImpl implements DomainModelRegistry {
+	/**
+	 * The cached value of the '{@link #getDtoCategories() <em>Dto Categories</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDtoCategories()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Category> dtoCategories;
+	/**
+	 * The cached value of the '{@link #getDtos() <em>Dtos</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDtos()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ServiceDTO> dtos;
+	/**
+	 * The cached value of the '{@link #getEntityBlocks() <em>Entity Blocks</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntityBlocks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Block> entityBlocks;
+	/**
+	 * The cached value of the '{@link #getEntities() <em>Entities</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntities()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Entity> entities;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -63,19 +102,12 @@ public abstract class DomainModelRegistryImpl extends CDOObjectImpl implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	public EList<Category> getDtoCategories() {
-		return (EList<Category>)eDynamicGet(GraalPackage.DOMAIN_MODEL_REGISTRY__DTO_CATEGORIES, GraalPackage.Literals.DOMAIN_MODEL_REGISTRY__DTO_CATEGORIES, true, true);
+		if (dtoCategories == null) {
+			dtoCategories = new EObjectResolvingEList<Category>(Category.class, this, GraalPackage.DOMAIN_MODEL_REGISTRY__DTO_CATEGORIES);
+		}
+		return dtoCategories;
 	}
 
 	/**
@@ -85,7 +117,10 @@ public abstract class DomainModelRegistryImpl extends CDOObjectImpl implements D
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<ServiceDTO> getDtos() {
-		return (EList<ServiceDTO>)eDynamicGet(GraalPackage.DOMAIN_MODEL_REGISTRY__DTOS, GraalPackage.Literals.DOMAIN_MODEL_REGISTRY__DTOS, true, true);
+		if (dtos == null) {
+			dtos = new EObjectResolvingEList<ServiceDTO>(ServiceDTO.class, this, GraalPackage.DOMAIN_MODEL_REGISTRY__DTOS);
+		}
+		return dtos;
 	}
 
 	/**
@@ -95,7 +130,10 @@ public abstract class DomainModelRegistryImpl extends CDOObjectImpl implements D
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Block> getEntityBlocks() {
-		return (EList<Block>)eDynamicGet(GraalPackage.DOMAIN_MODEL_REGISTRY__ENTITY_BLOCKS, GraalPackage.Literals.DOMAIN_MODEL_REGISTRY__ENTITY_BLOCKS, true, true);
+		if (entityBlocks == null) {
+			entityBlocks = new EObjectResolvingEList<Block>(Block.class, this, GraalPackage.DOMAIN_MODEL_REGISTRY__ENTITY_BLOCKS);
+		}
+		return entityBlocks;
 	}
 
 	/**
@@ -105,7 +143,10 @@ public abstract class DomainModelRegistryImpl extends CDOObjectImpl implements D
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Entity> getEntities() {
-		return (EList<Entity>)eDynamicGet(GraalPackage.DOMAIN_MODEL_REGISTRY__ENTITIES, GraalPackage.Literals.DOMAIN_MODEL_REGISTRY__ENTITIES, true, true);
+		if (entities == null) {
+			entities = new EObjectResolvingEList<Entity>(Entity.class, this, GraalPackage.DOMAIN_MODEL_REGISTRY__ENTITIES);
+		}
+		return entities;
 	}
 
 	/**
@@ -190,13 +231,13 @@ public abstract class DomainModelRegistryImpl extends CDOObjectImpl implements D
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.DOMAIN_MODEL_REGISTRY__DTO_CATEGORIES:
-				return !getDtoCategories().isEmpty();
+				return dtoCategories != null && !dtoCategories.isEmpty();
 			case GraalPackage.DOMAIN_MODEL_REGISTRY__DTOS:
-				return !getDtos().isEmpty();
+				return dtos != null && !dtos.isEmpty();
 			case GraalPackage.DOMAIN_MODEL_REGISTRY__ENTITY_BLOCKS:
-				return !getEntityBlocks().isEmpty();
+				return entityBlocks != null && !entityBlocks.isEmpty();
 			case GraalPackage.DOMAIN_MODEL_REGISTRY__ENTITIES:
-				return !getEntities().isEmpty();
+				return entities != null && !entities.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -14,6 +14,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.obeonetwork.graal.GraalPackage;
 import org.obeonetwork.graal.UserStory;
 import org.obeonetwork.graal.UserStoryElement;
@@ -32,6 +33,16 @@ import org.obeonetwork.graal.UserStoryElement;
  * @generated
  */
 public class UserStoryImpl extends NamedElementImpl implements UserStory {
+	/**
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<UserStoryElement> elements;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,7 +69,10 @@ public class UserStoryImpl extends NamedElementImpl implements UserStory {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<UserStoryElement> getElements() {
-		return (EList<UserStoryElement>)eDynamicGet(GraalPackage.USER_STORY__ELEMENTS, GraalPackage.Literals.USER_STORY__ELEMENTS, true, true);
+		if (elements == null) {
+			elements = new EObjectResolvingEList<UserStoryElement>(UserStoryElement.class, this, GraalPackage.USER_STORY__ELEMENTS);
+		}
+		return elements;
 	}
 
 	/**
@@ -116,7 +130,7 @@ public class UserStoryImpl extends NamedElementImpl implements UserStory {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.USER_STORY__ELEMENTS:
-				return !getElements().isEmpty();
+				return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

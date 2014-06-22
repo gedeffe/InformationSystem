@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
@@ -21,7 +22,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.obeonetwork.graal.AbstractTask;
 import org.obeonetwork.graal.Actor;
 import org.obeonetwork.graal.GraalPackage;
@@ -65,6 +68,15 @@ public class TaskImpl extends ActivityImpl implements Task {
 	 */
 	protected static final String NAME_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -73,6 +85,24 @@ public class TaskImpl extends ActivityImpl implements Task {
 	 * @ordered
 	 */
 	protected static final String ID_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getUses() <em>Uses</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUses()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Task> uses;
 	/**
 	 * The default value of the '{@link #getPreconditions() <em>Preconditions</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -83,6 +113,15 @@ public class TaskImpl extends ActivityImpl implements Task {
 	 */
 	protected static final String PRECONDITIONS_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getPreconditions() <em>Preconditions</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPreconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected String preconditions = PRECONDITIONS_EDEFAULT;
+	/**
 	 * The default value of the '{@link #getPostconditions() <em>Postconditions</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -91,6 +130,25 @@ public class TaskImpl extends ActivityImpl implements Task {
 	 * @ordered
 	 */
 	protected static final String POSTCONDITIONS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPostconditions() <em>Postconditions</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPostconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected String postconditions = POSTCONDITIONS_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getActors() <em>Actors</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActors()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Actor> actors;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,7 +175,7 @@ public class TaskImpl extends ActivityImpl implements Task {
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eDynamicGet(GraalPackage.TASK__NAME, GraalPackage.Literals.NAMED_ELEMENT__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -126,7 +184,10 @@ public class TaskImpl extends ActivityImpl implements Task {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(GraalPackage.TASK__NAME, GraalPackage.Literals.NAMED_ELEMENT__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.TASK__NAME, oldName, name));
 	}
 
 	/**
@@ -135,7 +196,7 @@ public class TaskImpl extends ActivityImpl implements Task {
 	 * @generated
 	 */
 	public String getId() {
-		return (String)eDynamicGet(GraalPackage.TASK__ID, GraalPackage.Literals.ABSTRACT_TASK__ID, true, true);
+		return id;
 	}
 
 	/**
@@ -144,7 +205,10 @@ public class TaskImpl extends ActivityImpl implements Task {
 	 * @generated
 	 */
 	public void setId(String newId) {
-		eDynamicSet(GraalPackage.TASK__ID, GraalPackage.Literals.ABSTRACT_TASK__ID, newId);
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.TASK__ID, oldId, id));
 	}
 
 	/**
@@ -154,7 +218,10 @@ public class TaskImpl extends ActivityImpl implements Task {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Task> getUses() {
-		return (EList<Task>)eDynamicGet(GraalPackage.TASK__USES, GraalPackage.Literals.TASK__USES, true, true);
+		if (uses == null) {
+			uses = new EObjectResolvingEList<Task>(Task.class, this, GraalPackage.TASK__USES);
+		}
+		return uses;
 	}
 
 	/**
@@ -163,7 +230,7 @@ public class TaskImpl extends ActivityImpl implements Task {
 	 * @generated
 	 */
 	public String getPreconditions() {
-		return (String)eDynamicGet(GraalPackage.TASK__PRECONDITIONS, GraalPackage.Literals.TASK__PRECONDITIONS, true, true);
+		return preconditions;
 	}
 
 	/**
@@ -172,7 +239,10 @@ public class TaskImpl extends ActivityImpl implements Task {
 	 * @generated
 	 */
 	public void setPreconditions(String newPreconditions) {
-		eDynamicSet(GraalPackage.TASK__PRECONDITIONS, GraalPackage.Literals.TASK__PRECONDITIONS, newPreconditions);
+		String oldPreconditions = preconditions;
+		preconditions = newPreconditions;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.TASK__PRECONDITIONS, oldPreconditions, preconditions));
 	}
 
 	/**
@@ -181,7 +251,7 @@ public class TaskImpl extends ActivityImpl implements Task {
 	 * @generated
 	 */
 	public String getPostconditions() {
-		return (String)eDynamicGet(GraalPackage.TASK__POSTCONDITIONS, GraalPackage.Literals.TASK__POSTCONDITIONS, true, true);
+		return postconditions;
 	}
 
 	/**
@@ -190,7 +260,10 @@ public class TaskImpl extends ActivityImpl implements Task {
 	 * @generated
 	 */
 	public void setPostconditions(String newPostconditions) {
-		eDynamicSet(GraalPackage.TASK__POSTCONDITIONS, GraalPackage.Literals.TASK__POSTCONDITIONS, newPostconditions);
+		String oldPostconditions = postconditions;
+		postconditions = newPostconditions;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.TASK__POSTCONDITIONS, oldPostconditions, postconditions));
 	}
 
 	/**
@@ -200,7 +273,10 @@ public class TaskImpl extends ActivityImpl implements Task {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Actor> getActors() {
-		return (EList<Actor>)eDynamicGet(GraalPackage.TASK__ACTORS, GraalPackage.Literals.TASK__ACTORS, true, true);
+		if (actors == null) {
+			actors = new EObjectResolvingEList<Actor>(Actor.class, this, GraalPackage.TASK__ACTORS);
+		}
+		return actors;
 	}
 
 	/**
@@ -408,17 +484,17 @@ public class TaskImpl extends ActivityImpl implements Task {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.TASK__NAME:
-				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case GraalPackage.TASK__ID:
-				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case GraalPackage.TASK__USES:
-				return !getUses().isEmpty();
+				return uses != null && !uses.isEmpty();
 			case GraalPackage.TASK__PRECONDITIONS:
-				return PRECONDITIONS_EDEFAULT == null ? getPreconditions() != null : !PRECONDITIONS_EDEFAULT.equals(getPreconditions());
+				return PRECONDITIONS_EDEFAULT == null ? preconditions != null : !PRECONDITIONS_EDEFAULT.equals(preconditions);
 			case GraalPackage.TASK__POSTCONDITIONS:
-				return POSTCONDITIONS_EDEFAULT == null ? getPostconditions() != null : !POSTCONDITIONS_EDEFAULT.equals(getPostconditions());
+				return POSTCONDITIONS_EDEFAULT == null ? postconditions != null : !POSTCONDITIONS_EDEFAULT.equals(postconditions);
 			case GraalPackage.TASK__ACTORS:
-				return !getActors().isEmpty();
+				return actors != null && !actors.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -475,6 +551,28 @@ public class TaskImpl extends ActivityImpl implements Task {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(", id: ");
+		result.append(id);
+		result.append(", preconditions: ");
+		result.append(preconditions);
+		result.append(", postconditions: ");
+		result.append(postconditions);
+		result.append(')');
+		return result.toString();
 	}
 
 	@Override

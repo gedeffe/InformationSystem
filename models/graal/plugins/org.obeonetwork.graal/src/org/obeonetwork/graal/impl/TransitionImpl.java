@@ -10,10 +10,12 @@
  */
 package org.obeonetwork.graal.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.obeonetwork.graal.GraalPackage;
 import org.obeonetwork.graal.Node;
 import org.obeonetwork.graal.Task;
@@ -48,6 +50,33 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	 */
 	protected static final String GUARD_EDEFAULT = null;
 	/**
+	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGuard()
+	 * @generated
+	 * @ordered
+	 */
+	protected String guard = GUARD_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSource()
+	 * @generated
+	 * @ordered
+	 */
+	protected Node source;
+	/**
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected Node target;
+	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -56,6 +85,16 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	 * @ordered
 	 */
 	protected static final TransitionKind KIND_EDEFAULT = TransitionKind.NORMAL;
+
+	/**
+	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected TransitionKind kind = KIND_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,7 +121,7 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	 * @generated
 	 */
 	public String getGuard() {
-		return (String)eDynamicGet(GraalPackage.TRANSITION__GUARD, GraalPackage.Literals.TRANSITION__GUARD, true, true);
+		return guard;
 	}
 
 	/**
@@ -91,7 +130,10 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	 * @generated
 	 */
 	public void setGuard(String newGuard) {
-		eDynamicSet(GraalPackage.TRANSITION__GUARD, GraalPackage.Literals.TRANSITION__GUARD, newGuard);
+		String oldGuard = guard;
+		guard = newGuard;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.TRANSITION__GUARD, oldGuard, guard));
 	}
 
 	/**
@@ -100,7 +142,15 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	 * @generated
 	 */
 	public Node getSource() {
-		return (Node)eDynamicGet(GraalPackage.TRANSITION__SOURCE, GraalPackage.Literals.TRANSITION__SOURCE, true, true);
+		if (source != null && source.eIsProxy()) {
+			InternalEObject oldSource = (InternalEObject)source;
+			source = (Node)eResolveProxy(oldSource);
+			if (source != oldSource) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GraalPackage.TRANSITION__SOURCE, oldSource, source));
+			}
+		}
+		return source;
 	}
 
 	/**
@@ -109,7 +159,7 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	 * @generated
 	 */
 	public Node basicGetSource() {
-		return (Node)eDynamicGet(GraalPackage.TRANSITION__SOURCE, GraalPackage.Literals.TRANSITION__SOURCE, false, true);
+		return source;
 	}
 
 	/**
@@ -118,7 +168,12 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	 * @generated
 	 */
 	public NotificationChain basicSetSource(Node newSource, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newSource, GraalPackage.TRANSITION__SOURCE, msgs);
+		Node oldSource = source;
+		source = newSource;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GraalPackage.TRANSITION__SOURCE, oldSource, newSource);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
 		return msgs;
 	}
 
@@ -128,7 +183,17 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	 * @generated
 	 */
 	public void setSource(Node newSource) {
-		eDynamicSet(GraalPackage.TRANSITION__SOURCE, GraalPackage.Literals.TRANSITION__SOURCE, newSource);
+		if (newSource != source) {
+			NotificationChain msgs = null;
+			if (source != null)
+				msgs = ((InternalEObject)source).eInverseRemove(this, GraalPackage.NODE__OUTGOING_TRANSITIONS, Node.class, msgs);
+			if (newSource != null)
+				msgs = ((InternalEObject)newSource).eInverseAdd(this, GraalPackage.NODE__OUTGOING_TRANSITIONS, Node.class, msgs);
+			msgs = basicSetSource(newSource, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.TRANSITION__SOURCE, newSource, newSource));
 	}
 
 	/**
@@ -137,7 +202,15 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	 * @generated
 	 */
 	public Node getTarget() {
-		return (Node)eDynamicGet(GraalPackage.TRANSITION__TARGET, GraalPackage.Literals.TRANSITION__TARGET, true, true);
+		if (target != null && target.eIsProxy()) {
+			InternalEObject oldTarget = (InternalEObject)target;
+			target = (Node)eResolveProxy(oldTarget);
+			if (target != oldTarget) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GraalPackage.TRANSITION__TARGET, oldTarget, target));
+			}
+		}
+		return target;
 	}
 
 	/**
@@ -146,7 +219,7 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	 * @generated
 	 */
 	public Node basicGetTarget() {
-		return (Node)eDynamicGet(GraalPackage.TRANSITION__TARGET, GraalPackage.Literals.TRANSITION__TARGET, false, true);
+		return target;
 	}
 
 	/**
@@ -155,7 +228,12 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	 * @generated
 	 */
 	public NotificationChain basicSetTarget(Node newTarget, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newTarget, GraalPackage.TRANSITION__TARGET, msgs);
+		Node oldTarget = target;
+		target = newTarget;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GraalPackage.TRANSITION__TARGET, oldTarget, newTarget);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
 		return msgs;
 	}
 
@@ -165,7 +243,17 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	 * @generated
 	 */
 	public void setTarget(Node newTarget) {
-		eDynamicSet(GraalPackage.TRANSITION__TARGET, GraalPackage.Literals.TRANSITION__TARGET, newTarget);
+		if (newTarget != target) {
+			NotificationChain msgs = null;
+			if (target != null)
+				msgs = ((InternalEObject)target).eInverseRemove(this, GraalPackage.NODE__INCOMING_TRANSITIONS, Node.class, msgs);
+			if (newTarget != null)
+				msgs = ((InternalEObject)newTarget).eInverseAdd(this, GraalPackage.NODE__INCOMING_TRANSITIONS, Node.class, msgs);
+			msgs = basicSetTarget(newTarget, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.TRANSITION__TARGET, newTarget, newTarget));
 	}
 
 	/**
@@ -174,7 +262,7 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	 * @generated
 	 */
 	public TransitionKind getKind() {
-		return (TransitionKind)eDynamicGet(GraalPackage.TRANSITION__KIND, GraalPackage.Literals.TRANSITION__KIND, true, true);
+		return kind;
 	}
 
 	/**
@@ -183,7 +271,10 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	 * @generated
 	 */
 	public void setKind(TransitionKind newKind) {
-		eDynamicSet(GraalPackage.TRANSITION__KIND, GraalPackage.Literals.TRANSITION__KIND, newKind);
+		TransitionKind oldKind = kind;
+		kind = newKind == null ? KIND_EDEFAULT : newKind;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.TRANSITION__KIND, oldKind, kind));
 	}
 
 	/**
@@ -211,12 +302,10 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GraalPackage.TRANSITION__SOURCE:
-				Node source = basicGetSource();
 				if (source != null)
 					msgs = ((InternalEObject)source).eInverseRemove(this, GraalPackage.NODE__OUTGOING_TRANSITIONS, Node.class, msgs);
 				return basicSetSource((Node)otherEnd, msgs);
 			case GraalPackage.TRANSITION__TARGET:
-				Node target = basicGetTarget();
 				if (target != null)
 					msgs = ((InternalEObject)target).eInverseRemove(this, GraalPackage.NODE__INCOMING_TRANSITIONS, Node.class, msgs);
 				return basicSetTarget((Node)otherEnd, msgs);
@@ -319,15 +408,33 @@ public class TransitionImpl extends GraalObjectImpl implements Transition {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.TRANSITION__GUARD:
-				return GUARD_EDEFAULT == null ? getGuard() != null : !GUARD_EDEFAULT.equals(getGuard());
+				return GUARD_EDEFAULT == null ? guard != null : !GUARD_EDEFAULT.equals(guard);
 			case GraalPackage.TRANSITION__SOURCE:
-				return basicGetSource() != null;
+				return source != null;
 			case GraalPackage.TRANSITION__TARGET:
-				return basicGetTarget() != null;
+				return target != null;
 			case GraalPackage.TRANSITION__KIND:
-				return getKind() != KIND_EDEFAULT;
+				return kind != KIND_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (guard: ");
+		result.append(guard);
+		result.append(", kind: ");
+		result.append(kind);
+		result.append(')');
+		return result.toString();
 	}
 
 	@Override

@@ -10,7 +10,9 @@
  */
 package org.obeonetwork.graal.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.obeonetwork.graal.GraalPackage;
 import org.obeonetwork.graal.Operator;
 import org.obeonetwork.graal.OperatorKind;
@@ -40,6 +42,16 @@ public class OperatorImpl extends NodeImpl implements Operator {
 	protected static final OperatorKind KIND_EDEFAULT = OperatorKind.AND;
 
 	/**
+	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected OperatorKind kind = KIND_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -64,7 +76,7 @@ public class OperatorImpl extends NodeImpl implements Operator {
 	 * @generated
 	 */
 	public OperatorKind getKind() {
-		return (OperatorKind)eDynamicGet(GraalPackage.OPERATOR__KIND, GraalPackage.Literals.OPERATOR__KIND, true, true);
+		return kind;
 	}
 
 	/**
@@ -73,7 +85,10 @@ public class OperatorImpl extends NodeImpl implements Operator {
 	 * @generated
 	 */
 	public void setKind(OperatorKind newKind) {
-		eDynamicSet(GraalPackage.OPERATOR__KIND, GraalPackage.Literals.OPERATOR__KIND, newKind);
+		OperatorKind oldKind = kind;
+		kind = newKind == null ? KIND_EDEFAULT : newKind;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.OPERATOR__KIND, oldKind, kind));
 	}
 
 	/**
@@ -129,9 +144,25 @@ public class OperatorImpl extends NodeImpl implements Operator {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.OPERATOR__KIND:
-				return getKind() != KIND_EDEFAULT;
+				return kind != KIND_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (kind: ");
+		result.append(kind);
+		result.append(')');
+		return result.toString();
 	}
 
 } //OperatorImpl

@@ -35,10 +35,9 @@ import org.obeonetwork.dsl.soa.ServiceDTO;
  *
  * @see org.obeonetwork.graal.GraalPackage#getDomainModelRegistry()
  * @model abstract="true"
- * @extends CDOObject
  * @generated
  */
-public interface DomainModelRegistry extends CDOObject {
+public interface DomainModelRegistry extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Dto Categories</b></em>' reference list.
 	 * The list contents are of type {@link org.obeonetwork.dsl.soa.Category}.

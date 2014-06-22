@@ -16,6 +16,8 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -41,7 +43,17 @@ import org.obeonetwork.graal.TasksGroup;
  *
  * @generated
  */
-public abstract class TasksContainerImpl extends CDOObjectImpl implements TasksContainer {
+public abstract class TasksContainerImpl extends EObjectImpl implements TasksContainer {
+	/**
+	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTasks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AbstractTask> tasks;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -66,19 +78,12 @@ public abstract class TasksContainerImpl extends CDOObjectImpl implements TasksC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	public EList<AbstractTask> getTasks() {
-		return (EList<AbstractTask>)eDynamicGet(GraalPackage.TASKS_CONTAINER__TASKS, GraalPackage.Literals.TASKS_CONTAINER__TASKS, true, true);
+		if (tasks == null) {
+			tasks = new EObjectContainmentEList.Resolving<AbstractTask>(AbstractTask.class, this, GraalPackage.TASKS_CONTAINER__TASKS);
+		}
+		return tasks;
 	}
 
 	/**
@@ -180,7 +185,7 @@ public abstract class TasksContainerImpl extends CDOObjectImpl implements TasksC
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.TASKS_CONTAINER__TASKS:
-				return !getTasks().isEmpty();
+				return tasks != null && !tasks.isEmpty();
 			case GraalPackage.TASKS_CONTAINER__OWNED_TASKS:
 				return !getOwnedTasks().isEmpty();
 			case GraalPackage.TASKS_CONTAINER__OWNED_GROUPS:

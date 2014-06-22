@@ -10,7 +10,9 @@
  */
 package org.obeonetwork.graal.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.obeonetwork.graal.GraalPackage;
 import org.obeonetwork.graal.Loop;
 
@@ -39,6 +41,15 @@ public class LoopImpl extends ActivityImpl implements Loop {
 	 */
 	protected static final int LOWER_BOUND_EDEFAULT = 0;
 	/**
+	 * The cached value of the '{@link #getLowerBound() <em>Lower Bound</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLowerBound()
+	 * @generated
+	 * @ordered
+	 */
+	protected int lowerBound = LOWER_BOUND_EDEFAULT;
+	/**
 	 * The default value of the '{@link #getUpperBound() <em>Upper Bound</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -47,6 +58,16 @@ public class LoopImpl extends ActivityImpl implements Loop {
 	 * @ordered
 	 */
 	protected static final int UPPER_BOUND_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getUpperBound() <em>Upper Bound</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperBound()
+	 * @generated
+	 * @ordered
+	 */
+	protected int upperBound = UPPER_BOUND_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,7 +94,7 @@ public class LoopImpl extends ActivityImpl implements Loop {
 	 * @generated
 	 */
 	public int getLowerBound() {
-		return (Integer)eDynamicGet(GraalPackage.LOOP__LOWER_BOUND, GraalPackage.Literals.LOOP__LOWER_BOUND, true, true);
+		return lowerBound;
 	}
 
 	/**
@@ -82,7 +103,10 @@ public class LoopImpl extends ActivityImpl implements Loop {
 	 * @generated
 	 */
 	public void setLowerBound(int newLowerBound) {
-		eDynamicSet(GraalPackage.LOOP__LOWER_BOUND, GraalPackage.Literals.LOOP__LOWER_BOUND, newLowerBound);
+		int oldLowerBound = lowerBound;
+		lowerBound = newLowerBound;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.LOOP__LOWER_BOUND, oldLowerBound, lowerBound));
 	}
 
 	/**
@@ -91,7 +115,7 @@ public class LoopImpl extends ActivityImpl implements Loop {
 	 * @generated
 	 */
 	public int getUpperBound() {
-		return (Integer)eDynamicGet(GraalPackage.LOOP__UPPER_BOUND, GraalPackage.Literals.LOOP__UPPER_BOUND, true, true);
+		return upperBound;
 	}
 
 	/**
@@ -100,7 +124,10 @@ public class LoopImpl extends ActivityImpl implements Loop {
 	 * @generated
 	 */
 	public void setUpperBound(int newUpperBound) {
-		eDynamicSet(GraalPackage.LOOP__UPPER_BOUND, GraalPackage.Literals.LOOP__UPPER_BOUND, newUpperBound);
+		int oldUpperBound = upperBound;
+		upperBound = newUpperBound;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.LOOP__UPPER_BOUND, oldUpperBound, upperBound));
 	}
 
 	/**
@@ -164,11 +191,29 @@ public class LoopImpl extends ActivityImpl implements Loop {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.LOOP__LOWER_BOUND:
-				return getLowerBound() != LOWER_BOUND_EDEFAULT;
+				return lowerBound != LOWER_BOUND_EDEFAULT;
 			case GraalPackage.LOOP__UPPER_BOUND:
-				return getUpperBound() != UPPER_BOUND_EDEFAULT;
+				return upperBound != UPPER_BOUND_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (lowerBound: ");
+		result.append(lowerBound);
+		result.append(", upperBound: ");
+		result.append(upperBound);
+		result.append(')');
+		return result.toString();
 	}
 
 } //LoopImpl

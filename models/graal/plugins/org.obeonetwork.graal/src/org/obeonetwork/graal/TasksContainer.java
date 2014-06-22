@@ -30,10 +30,9 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.obeonetwork.graal.GraalPackage#getTasksContainer()
  * @model abstract="true"
- * @extends CDOObject
  * @generated
  */
-public interface TasksContainer extends CDOObject {
+public interface TasksContainer extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Tasks</b></em>' containment reference list.
 	 * The list contents are of type {@link org.obeonetwork.graal.AbstractTask}.

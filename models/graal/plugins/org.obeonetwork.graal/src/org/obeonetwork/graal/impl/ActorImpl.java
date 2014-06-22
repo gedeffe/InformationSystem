@@ -12,10 +12,13 @@ package org.obeonetwork.graal.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.obeonetwork.graal.Actor;
 import org.obeonetwork.graal.GraalPackage;
@@ -35,6 +38,25 @@ import org.obeonetwork.graal.GraalPackage;
  * @generated
  */
 public class ActorImpl extends NamedElementImpl implements Actor {
+	/**
+	 * The cached value of the '{@link #getSubActors() <em>Sub Actors</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubActors()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Actor> subActors;
+	/**
+	 * The cached value of the '{@link #getSuperActor() <em>Super Actor</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuperActor()
+	 * @generated
+	 * @ordered
+	 */
+	protected Actor superActor;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61,7 +83,10 @@ public class ActorImpl extends NamedElementImpl implements Actor {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Actor> getSubActors() {
-		return (EList<Actor>)eDynamicGet(GraalPackage.ACTOR__SUB_ACTORS, GraalPackage.Literals.ACTOR__SUB_ACTORS, true, true);
+		if (subActors == null) {
+			subActors = new EObjectWithInverseResolvingEList<Actor>(Actor.class, this, GraalPackage.ACTOR__SUB_ACTORS, GraalPackage.ACTOR__SUPER_ACTOR);
+		}
+		return subActors;
 	}
 
 	/**
@@ -70,7 +95,15 @@ public class ActorImpl extends NamedElementImpl implements Actor {
 	 * @generated
 	 */
 	public Actor getSuperActor() {
-		return (Actor)eDynamicGet(GraalPackage.ACTOR__SUPER_ACTOR, GraalPackage.Literals.ACTOR__SUPER_ACTOR, true, true);
+		if (superActor != null && superActor.eIsProxy()) {
+			InternalEObject oldSuperActor = (InternalEObject)superActor;
+			superActor = (Actor)eResolveProxy(oldSuperActor);
+			if (superActor != oldSuperActor) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GraalPackage.ACTOR__SUPER_ACTOR, oldSuperActor, superActor));
+			}
+		}
+		return superActor;
 	}
 
 	/**
@@ -79,7 +112,7 @@ public class ActorImpl extends NamedElementImpl implements Actor {
 	 * @generated
 	 */
 	public Actor basicGetSuperActor() {
-		return (Actor)eDynamicGet(GraalPackage.ACTOR__SUPER_ACTOR, GraalPackage.Literals.ACTOR__SUPER_ACTOR, false, true);
+		return superActor;
 	}
 
 	/**
@@ -88,7 +121,12 @@ public class ActorImpl extends NamedElementImpl implements Actor {
 	 * @generated
 	 */
 	public NotificationChain basicSetSuperActor(Actor newSuperActor, NotificationChain msgs) {
-		msgs = eDynamicInverseAdd((InternalEObject)newSuperActor, GraalPackage.ACTOR__SUPER_ACTOR, msgs);
+		Actor oldSuperActor = superActor;
+		superActor = newSuperActor;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GraalPackage.ACTOR__SUPER_ACTOR, oldSuperActor, newSuperActor);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
 		return msgs;
 	}
 
@@ -98,7 +136,17 @@ public class ActorImpl extends NamedElementImpl implements Actor {
 	 * @generated
 	 */
 	public void setSuperActor(Actor newSuperActor) {
-		eDynamicSet(GraalPackage.ACTOR__SUPER_ACTOR, GraalPackage.Literals.ACTOR__SUPER_ACTOR, newSuperActor);
+		if (newSuperActor != superActor) {
+			NotificationChain msgs = null;
+			if (superActor != null)
+				msgs = ((InternalEObject)superActor).eInverseRemove(this, GraalPackage.ACTOR__SUB_ACTORS, Actor.class, msgs);
+			if (newSuperActor != null)
+				msgs = ((InternalEObject)newSuperActor).eInverseAdd(this, GraalPackage.ACTOR__SUB_ACTORS, Actor.class, msgs);
+			msgs = basicSetSuperActor(newSuperActor, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.ACTOR__SUPER_ACTOR, newSuperActor, newSuperActor));
 	}
 
 	/**
@@ -113,7 +161,6 @@ public class ActorImpl extends NamedElementImpl implements Actor {
 			case GraalPackage.ACTOR__SUB_ACTORS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSubActors()).basicAdd(otherEnd, msgs);
 			case GraalPackage.ACTOR__SUPER_ACTOR:
-				Actor superActor = basicGetSuperActor();
 				if (superActor != null)
 					msgs = ((InternalEObject)superActor).eInverseRemove(this, GraalPackage.ACTOR__SUB_ACTORS, Actor.class, msgs);
 				return basicSetSuperActor((Actor)otherEnd, msgs);
@@ -201,9 +248,9 @@ public class ActorImpl extends NamedElementImpl implements Actor {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.ACTOR__SUB_ACTORS:
-				return !getSubActors().isEmpty();
+				return subActors != null && !subActors.isEmpty();
 			case GraalPackage.ACTOR__SUPER_ACTOR:
-				return basicGetSuperActor() != null;
+				return superActor != null;
 		}
 		return super.eIsSet(featureID);
 	}

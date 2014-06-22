@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.obeonetwork.graal.GraalPackage;
 import org.obeonetwork.graal.Node;
@@ -39,6 +40,25 @@ import org.obeonetwork.graal.UserStory;
  * @generated
  */
 public abstract class NodeImpl extends GraalObjectImpl implements Node {
+	/**
+	 * The cached value of the '{@link #getOutgoingTransitions() <em>Outgoing Transitions</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutgoingTransitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Transition> outgoingTransitions;
+	/**
+	 * The cached value of the '{@link #getIncomingTransitions() <em>Incoming Transitions</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIncomingTransitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Transition> incomingTransitions;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,7 +85,10 @@ public abstract class NodeImpl extends GraalObjectImpl implements Node {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Transition> getOutgoingTransitions() {
-		return (EList<Transition>)eDynamicGet(GraalPackage.NODE__OUTGOING_TRANSITIONS, GraalPackage.Literals.NODE__OUTGOING_TRANSITIONS, true, true);
+		if (outgoingTransitions == null) {
+			outgoingTransitions = new EObjectWithInverseResolvingEList<Transition>(Transition.class, this, GraalPackage.NODE__OUTGOING_TRANSITIONS, GraalPackage.TRANSITION__SOURCE);
+		}
+		return outgoingTransitions;
 	}
 
 	/**
@@ -75,7 +98,10 @@ public abstract class NodeImpl extends GraalObjectImpl implements Node {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Transition> getIncomingTransitions() {
-		return (EList<Transition>)eDynamicGet(GraalPackage.NODE__INCOMING_TRANSITIONS, GraalPackage.Literals.NODE__INCOMING_TRANSITIONS, true, true);
+		if (incomingTransitions == null) {
+			incomingTransitions = new EObjectWithInverseResolvingEList<Transition>(Transition.class, this, GraalPackage.NODE__INCOMING_TRANSITIONS, GraalPackage.TRANSITION__TARGET);
+		}
+		return incomingTransitions;
 	}
 
 	/**
@@ -191,9 +217,9 @@ public abstract class NodeImpl extends GraalObjectImpl implements Node {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.NODE__OUTGOING_TRANSITIONS:
-				return !getOutgoingTransitions().isEmpty();
+				return outgoingTransitions != null && !outgoingTransitions.isEmpty();
 			case GraalPackage.NODE__INCOMING_TRANSITIONS:
-				return !getIncomingTransitions().isEmpty();
+				return incomingTransitions != null && !incomingTransitions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

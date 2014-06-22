@@ -21,8 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.obeonetwork.graal.GraalPackage#getUserStoryElement()
  * @model interface="true" abstract="true"
- * @extends CDOObject
  * @generated
  */
-public interface UserStoryElement extends CDOObject {
+public interface UserStoryElement extends EObject {
 } // UserStoryElement

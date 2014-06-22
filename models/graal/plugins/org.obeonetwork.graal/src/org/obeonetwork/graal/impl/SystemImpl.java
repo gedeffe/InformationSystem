@@ -16,6 +16,8 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -58,6 +60,88 @@ import org.obeonetwork.graal.UserStory;
  */
 public class SystemImpl extends NamedElementImpl implements org.obeonetwork.graal.System {
 	/**
+	 * The cached value of the '{@link #getDtoCategories() <em>Dto Categories</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDtoCategories()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Category> dtoCategories;
+	/**
+	 * The cached value of the '{@link #getDtos() <em>Dtos</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDtos()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ServiceDTO> dtos;
+	/**
+	 * The cached value of the '{@link #getEntityBlocks() <em>Entity Blocks</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntityBlocks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Block> entityBlocks;
+	/**
+	 * The cached value of the '{@link #getEntities() <em>Entities</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntities()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Entity> entities;
+	/**
+	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTasks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AbstractTask> tasks;
+	/**
+	 * The cached value of the '{@link #getSubSystems() <em>Sub Systems</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubSystems()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<org.obeonetwork.graal.System> subSystems;
+	/**
+	 * The cached value of the '{@link #getActors() <em>Actors</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActors()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Actor> actors;
+	/**
+	 * The cached value of the '{@link #getUseCases() <em>Use Cases</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUseCases()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<UseCase> useCases;
+	/**
+	 * The cached value of the '{@link #getUserStories() <em>User Stories</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUserStories()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<UserStory> userStories;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -83,7 +167,10 @@ public class SystemImpl extends NamedElementImpl implements org.obeonetwork.graa
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Category> getDtoCategories() {
-		return (EList<Category>)eDynamicGet(GraalPackage.SYSTEM__DTO_CATEGORIES, GraalPackage.Literals.DOMAIN_MODEL_REGISTRY__DTO_CATEGORIES, true, true);
+		if (dtoCategories == null) {
+			dtoCategories = new EObjectResolvingEList<Category>(Category.class, this, GraalPackage.SYSTEM__DTO_CATEGORIES);
+		}
+		return dtoCategories;
 	}
 
 	/**
@@ -93,7 +180,10 @@ public class SystemImpl extends NamedElementImpl implements org.obeonetwork.graa
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<ServiceDTO> getDtos() {
-		return (EList<ServiceDTO>)eDynamicGet(GraalPackage.SYSTEM__DTOS, GraalPackage.Literals.DOMAIN_MODEL_REGISTRY__DTOS, true, true);
+		if (dtos == null) {
+			dtos = new EObjectResolvingEList<ServiceDTO>(ServiceDTO.class, this, GraalPackage.SYSTEM__DTOS);
+		}
+		return dtos;
 	}
 
 	/**
@@ -103,7 +193,10 @@ public class SystemImpl extends NamedElementImpl implements org.obeonetwork.graa
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Block> getEntityBlocks() {
-		return (EList<Block>)eDynamicGet(GraalPackage.SYSTEM__ENTITY_BLOCKS, GraalPackage.Literals.DOMAIN_MODEL_REGISTRY__ENTITY_BLOCKS, true, true);
+		if (entityBlocks == null) {
+			entityBlocks = new EObjectResolvingEList<Block>(Block.class, this, GraalPackage.SYSTEM__ENTITY_BLOCKS);
+		}
+		return entityBlocks;
 	}
 
 	/**
@@ -113,7 +206,10 @@ public class SystemImpl extends NamedElementImpl implements org.obeonetwork.graa
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Entity> getEntities() {
-		return (EList<Entity>)eDynamicGet(GraalPackage.SYSTEM__ENTITIES, GraalPackage.Literals.DOMAIN_MODEL_REGISTRY__ENTITIES, true, true);
+		if (entities == null) {
+			entities = new EObjectResolvingEList<Entity>(Entity.class, this, GraalPackage.SYSTEM__ENTITIES);
+		}
+		return entities;
 	}
 
 	/**
@@ -123,7 +219,10 @@ public class SystemImpl extends NamedElementImpl implements org.obeonetwork.graa
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<AbstractTask> getTasks() {
-		return (EList<AbstractTask>)eDynamicGet(GraalPackage.SYSTEM__TASKS, GraalPackage.Literals.TASKS_CONTAINER__TASKS, true, true);
+		if (tasks == null) {
+			tasks = new EObjectContainmentEList.Resolving<AbstractTask>(AbstractTask.class, this, GraalPackage.SYSTEM__TASKS);
+		}
+		return tasks;
 	}
 
 	/**
@@ -159,7 +258,10 @@ public class SystemImpl extends NamedElementImpl implements org.obeonetwork.graa
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Actor> getActors() {
-		return (EList<Actor>)eDynamicGet(GraalPackage.SYSTEM__ACTORS, GraalPackage.Literals.SYSTEM__ACTORS, true, true);
+		if (actors == null) {
+			actors = new EObjectContainmentEList.Resolving<Actor>(Actor.class, this, GraalPackage.SYSTEM__ACTORS);
+		}
+		return actors;
 	}
 
 	/**
@@ -169,7 +271,10 @@ public class SystemImpl extends NamedElementImpl implements org.obeonetwork.graa
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<UseCase> getUseCases() {
-		return (EList<UseCase>)eDynamicGet(GraalPackage.SYSTEM__USE_CASES, GraalPackage.Literals.SYSTEM__USE_CASES, true, true);
+		if (useCases == null) {
+			useCases = new EObjectContainmentEList.Resolving<UseCase>(UseCase.class, this, GraalPackage.SYSTEM__USE_CASES);
+		}
+		return useCases;
 	}
 
 	/**
@@ -179,7 +284,10 @@ public class SystemImpl extends NamedElementImpl implements org.obeonetwork.graa
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<UserStory> getUserStories() {
-		return (EList<UserStory>)eDynamicGet(GraalPackage.SYSTEM__USER_STORIES, GraalPackage.Literals.SYSTEM__USER_STORIES, true, true);
+		if (userStories == null) {
+			userStories = new EObjectContainmentEList.Resolving<UserStory>(UserStory.class, this, GraalPackage.SYSTEM__USER_STORIES);
+		}
+		return userStories;
 	}
 
 	/**
@@ -335,27 +443,27 @@ public class SystemImpl extends NamedElementImpl implements org.obeonetwork.graa
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.SYSTEM__DTO_CATEGORIES:
-				return !getDtoCategories().isEmpty();
+				return dtoCategories != null && !dtoCategories.isEmpty();
 			case GraalPackage.SYSTEM__DTOS:
-				return !getDtos().isEmpty();
+				return dtos != null && !dtos.isEmpty();
 			case GraalPackage.SYSTEM__ENTITY_BLOCKS:
-				return !getEntityBlocks().isEmpty();
+				return entityBlocks != null && !entityBlocks.isEmpty();
 			case GraalPackage.SYSTEM__ENTITIES:
-				return !getEntities().isEmpty();
+				return entities != null && !entities.isEmpty();
 			case GraalPackage.SYSTEM__TASKS:
-				return !getTasks().isEmpty();
+				return tasks != null && !tasks.isEmpty();
 			case GraalPackage.SYSTEM__OWNED_TASKS:
 				return !getOwnedTasks().isEmpty();
 			case GraalPackage.SYSTEM__OWNED_GROUPS:
 				return !getOwnedGroups().isEmpty();
 			case GraalPackage.SYSTEM__SUB_SYSTEMS:
-				return !getSubSystems().isEmpty();
+				return subSystems != null && !subSystems.isEmpty();
 			case GraalPackage.SYSTEM__ACTORS:
-				return !getActors().isEmpty();
+				return actors != null && !actors.isEmpty();
 			case GraalPackage.SYSTEM__USE_CASES:
-				return !getUseCases().isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case GraalPackage.SYSTEM__USER_STORIES:
-				return !getUserStories().isEmpty();
+				return userStories != null && !userStories.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -367,7 +475,10 @@ public class SystemImpl extends NamedElementImpl implements org.obeonetwork.graa
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<org.obeonetwork.graal.System> getSubSystems() {
-		return (EList<org.obeonetwork.graal.System>)eDynamicGet(GraalPackage.SYSTEM__SUB_SYSTEMS, GraalPackage.Literals.SYSTEM__SUB_SYSTEMS, true, true);
+		if (subSystems == null) {
+			subSystems = new EObjectContainmentEList.Resolving<org.obeonetwork.graal.System>(org.obeonetwork.graal.System.class, this, GraalPackage.SYSTEM__SUB_SYSTEMS);
+		}
+		return subSystems;
 	}
 
 	/**

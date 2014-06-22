@@ -52,7 +52,7 @@ public class GraalFactoryImpl extends EFactoryImpl implements GraalFactory {
 	 */
 	public static GraalFactory init() {
 		try {
-			GraalFactory theGraalFactory = (GraalFactory)EPackage.Registry.INSTANCE.getEFactory("http://org.obeonetwork.graal/1.0"); 
+			GraalFactory theGraalFactory = (GraalFactory)EPackage.Registry.INSTANCE.getEFactory(GraalPackage.eNS_URI);
 			if (theGraalFactory != null) {
 				return theGraalFactory;
 			}
@@ -81,23 +81,23 @@ public class GraalFactoryImpl extends EFactoryImpl implements GraalFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case GraalPackage.TASK: return (EObject)createTask();
-			case GraalPackage.SYSTEM: return (EObject)createSystem();
-			case GraalPackage.OPERATOR: return (EObject)createOperator();
-			case GraalPackage.TRANSITION: return (EObject)createTransition();
-			case GraalPackage.TASK_REFERENCE: return (EObject)createTaskReference();
-			case GraalPackage.USER_VIEW: return (EObject)createUserView();
-			case GraalPackage.USER_ACTION: return (EObject)createUserAction();
-			case GraalPackage.APPLI_EVENT: return (EObject)createAppliEvent();
-			case GraalPackage.APPLI_ACTION: return (EObject)createAppliAction();
-			case GraalPackage.INITIAL_NODE: return (EObject)createInitialNode();
-			case GraalPackage.FINAL_NODE: return (EObject)createFinalNode();
-			case GraalPackage.ABORT_NODE: return (EObject)createAbortNode();
-			case GraalPackage.LOOP: return (EObject)createLoop();
-			case GraalPackage.ACTOR: return (EObject)createActor();
-			case GraalPackage.TASKS_GROUP: return (EObject)createTasksGroup();
-			case GraalPackage.USE_CASE: return (EObject)createUseCase();
-			case GraalPackage.USER_STORY: return (EObject)createUserStory();
+			case GraalPackage.TASK: return createTask();
+			case GraalPackage.SYSTEM: return createSystem();
+			case GraalPackage.OPERATOR: return createOperator();
+			case GraalPackage.TRANSITION: return createTransition();
+			case GraalPackage.TASK_REFERENCE: return createTaskReference();
+			case GraalPackage.USER_VIEW: return createUserView();
+			case GraalPackage.USER_ACTION: return createUserAction();
+			case GraalPackage.APPLI_EVENT: return createAppliEvent();
+			case GraalPackage.APPLI_ACTION: return createAppliAction();
+			case GraalPackage.INITIAL_NODE: return createInitialNode();
+			case GraalPackage.FINAL_NODE: return createFinalNode();
+			case GraalPackage.ABORT_NODE: return createAbortNode();
+			case GraalPackage.LOOP: return createLoop();
+			case GraalPackage.ACTOR: return createActor();
+			case GraalPackage.TASKS_GROUP: return createTasksGroup();
+			case GraalPackage.USE_CASE: return createUseCase();
+			case GraalPackage.USER_STORY: return createUserStory();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

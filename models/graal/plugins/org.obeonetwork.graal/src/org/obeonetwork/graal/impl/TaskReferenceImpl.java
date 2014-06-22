@@ -10,7 +10,10 @@
  */
 package org.obeonetwork.graal.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.obeonetwork.graal.GraalPackage;
 import org.obeonetwork.graal.Task;
 import org.obeonetwork.graal.TaskReference;
@@ -30,6 +33,16 @@ import org.obeonetwork.graal.UserStory;
  * @generated
  */
 public class TaskReferenceImpl extends NodeImpl implements TaskReference {
+	/**
+	 * The cached value of the '{@link #getTask() <em>Task</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTask()
+	 * @generated
+	 * @ordered
+	 */
+	protected Task task;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -55,7 +68,15 @@ public class TaskReferenceImpl extends NodeImpl implements TaskReference {
 	 * @generated
 	 */
 	public Task getTask() {
-		return (Task)eDynamicGet(GraalPackage.TASK_REFERENCE__TASK, GraalPackage.Literals.TASK_REFERENCE__TASK, true, true);
+		if (task != null && task.eIsProxy()) {
+			InternalEObject oldTask = (InternalEObject)task;
+			task = (Task)eResolveProxy(oldTask);
+			if (task != oldTask) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GraalPackage.TASK_REFERENCE__TASK, oldTask, task));
+			}
+		}
+		return task;
 	}
 
 	/**
@@ -64,7 +85,7 @@ public class TaskReferenceImpl extends NodeImpl implements TaskReference {
 	 * @generated
 	 */
 	public Task basicGetTask() {
-		return (Task)eDynamicGet(GraalPackage.TASK_REFERENCE__TASK, GraalPackage.Literals.TASK_REFERENCE__TASK, false, true);
+		return task;
 	}
 
 	/**
@@ -73,7 +94,10 @@ public class TaskReferenceImpl extends NodeImpl implements TaskReference {
 	 * @generated
 	 */
 	public void setTask(Task newTask) {
-		eDynamicSet(GraalPackage.TASK_REFERENCE__TASK, GraalPackage.Literals.TASK_REFERENCE__TASK, newTask);
+		Task oldTask = task;
+		task = newTask;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.TASK_REFERENCE__TASK, oldTask, task));
 	}
 
 	/**
@@ -130,7 +154,7 @@ public class TaskReferenceImpl extends NodeImpl implements TaskReference {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.TASK_REFERENCE__TASK:
-				return basicGetTask() != null;
+				return task != null;
 		}
 		return super.eIsSet(featureID);
 	}

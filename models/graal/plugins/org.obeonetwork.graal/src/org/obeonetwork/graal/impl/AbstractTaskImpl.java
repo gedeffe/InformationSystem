@@ -12,10 +12,12 @@ package org.obeonetwork.graal.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.obeonetwork.graal.AbstractTask;
 import org.obeonetwork.graal.GraalPackage;
@@ -49,6 +51,16 @@ public abstract class AbstractTaskImpl extends NamedElementImpl implements Abstr
 	protected static final String ID_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -73,7 +85,7 @@ public abstract class AbstractTaskImpl extends NamedElementImpl implements Abstr
 	 * @generated
 	 */
 	public String getId() {
-		return (String)eDynamicGet(GraalPackage.ABSTRACT_TASK__ID, GraalPackage.Literals.ABSTRACT_TASK__ID, true, true);
+		return id;
 	}
 
 	/**
@@ -82,7 +94,10 @@ public abstract class AbstractTaskImpl extends NamedElementImpl implements Abstr
 	 * @generated
 	 */
 	public void setId(String newId) {
-		eDynamicSet(GraalPackage.ABSTRACT_TASK__ID, GraalPackage.Literals.ABSTRACT_TASK__ID, newId);
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.ABSTRACT_TASK__ID, oldId, id));
 	}
 
 	/**
@@ -187,9 +202,25 @@ public abstract class AbstractTaskImpl extends NamedElementImpl implements Abstr
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.ABSTRACT_TASK__ID:
-				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (id: ");
+		result.append(id);
+		result.append(')');
+		return result.toString();
 	}
 
 } //AbstractTaskImpl

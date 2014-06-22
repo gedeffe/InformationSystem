@@ -14,6 +14,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.obeonetwork.dsl.entity.Block;
 import org.obeonetwork.dsl.entity.Entity;
 import org.obeonetwork.dsl.soa.Category;
@@ -46,6 +47,79 @@ import org.obeonetwork.graal.UseCase;
  */
 public class UseCaseImpl extends NamedElementImpl implements UseCase {
 	/**
+	 * The cached value of the '{@link #getDtoCategories() <em>Dto Categories</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDtoCategories()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Category> dtoCategories;
+	/**
+	 * The cached value of the '{@link #getDtos() <em>Dtos</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDtos()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ServiceDTO> dtos;
+	/**
+	 * The cached value of the '{@link #getEntityBlocks() <em>Entity Blocks</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntityBlocks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Block> entityBlocks;
+	/**
+	 * The cached value of the '{@link #getEntities() <em>Entities</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntities()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Entity> entities;
+	/**
+	 * The cached value of the '{@link #getActors() <em>Actors</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActors()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Actor> actors;
+	/**
+	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTasks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AbstractTask> tasks;
+	/**
+	 * The cached value of the '{@link #getIncludes() <em>Includes</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIncludes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<UseCase> includes;
+	/**
+	 * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtends()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<UseCase> extends_;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -71,7 +145,10 @@ public class UseCaseImpl extends NamedElementImpl implements UseCase {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Category> getDtoCategories() {
-		return (EList<Category>)eDynamicGet(GraalPackage.USE_CASE__DTO_CATEGORIES, GraalPackage.Literals.DOMAIN_MODEL_REGISTRY__DTO_CATEGORIES, true, true);
+		if (dtoCategories == null) {
+			dtoCategories = new EObjectResolvingEList<Category>(Category.class, this, GraalPackage.USE_CASE__DTO_CATEGORIES);
+		}
+		return dtoCategories;
 	}
 
 	/**
@@ -81,7 +158,10 @@ public class UseCaseImpl extends NamedElementImpl implements UseCase {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<ServiceDTO> getDtos() {
-		return (EList<ServiceDTO>)eDynamicGet(GraalPackage.USE_CASE__DTOS, GraalPackage.Literals.DOMAIN_MODEL_REGISTRY__DTOS, true, true);
+		if (dtos == null) {
+			dtos = new EObjectResolvingEList<ServiceDTO>(ServiceDTO.class, this, GraalPackage.USE_CASE__DTOS);
+		}
+		return dtos;
 	}
 
 	/**
@@ -91,7 +171,10 @@ public class UseCaseImpl extends NamedElementImpl implements UseCase {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Block> getEntityBlocks() {
-		return (EList<Block>)eDynamicGet(GraalPackage.USE_CASE__ENTITY_BLOCKS, GraalPackage.Literals.DOMAIN_MODEL_REGISTRY__ENTITY_BLOCKS, true, true);
+		if (entityBlocks == null) {
+			entityBlocks = new EObjectResolvingEList<Block>(Block.class, this, GraalPackage.USE_CASE__ENTITY_BLOCKS);
+		}
+		return entityBlocks;
 	}
 
 	/**
@@ -101,7 +184,10 @@ public class UseCaseImpl extends NamedElementImpl implements UseCase {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Entity> getEntities() {
-		return (EList<Entity>)eDynamicGet(GraalPackage.USE_CASE__ENTITIES, GraalPackage.Literals.DOMAIN_MODEL_REGISTRY__ENTITIES, true, true);
+		if (entities == null) {
+			entities = new EObjectResolvingEList<Entity>(Entity.class, this, GraalPackage.USE_CASE__ENTITIES);
+		}
+		return entities;
 	}
 
 	/**
@@ -111,7 +197,10 @@ public class UseCaseImpl extends NamedElementImpl implements UseCase {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Actor> getActors() {
-		return (EList<Actor>)eDynamicGet(GraalPackage.USE_CASE__ACTORS, GraalPackage.Literals.USE_CASE__ACTORS, true, true);
+		if (actors == null) {
+			actors = new EObjectResolvingEList<Actor>(Actor.class, this, GraalPackage.USE_CASE__ACTORS);
+		}
+		return actors;
 	}
 
 	/**
@@ -121,7 +210,10 @@ public class UseCaseImpl extends NamedElementImpl implements UseCase {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<AbstractTask> getTasks() {
-		return (EList<AbstractTask>)eDynamicGet(GraalPackage.USE_CASE__TASKS, GraalPackage.Literals.USE_CASE__TASKS, true, true);
+		if (tasks == null) {
+			tasks = new EObjectResolvingEList<AbstractTask>(AbstractTask.class, this, GraalPackage.USE_CASE__TASKS);
+		}
+		return tasks;
 	}
 
 	/**
@@ -131,7 +223,10 @@ public class UseCaseImpl extends NamedElementImpl implements UseCase {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<UseCase> getIncludes() {
-		return (EList<UseCase>)eDynamicGet(GraalPackage.USE_CASE__INCLUDES, GraalPackage.Literals.USE_CASE__INCLUDES, true, true);
+		if (includes == null) {
+			includes = new EObjectResolvingEList<UseCase>(UseCase.class, this, GraalPackage.USE_CASE__INCLUDES);
+		}
+		return includes;
 	}
 
 	/**
@@ -141,7 +236,10 @@ public class UseCaseImpl extends NamedElementImpl implements UseCase {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<UseCase> getExtends() {
-		return (EList<UseCase>)eDynamicGet(GraalPackage.USE_CASE__EXTENDS, GraalPackage.Literals.USE_CASE__EXTENDS, true, true);
+		if (extends_ == null) {
+			extends_ = new EObjectResolvingEList<UseCase>(UseCase.class, this, GraalPackage.USE_CASE__EXTENDS);
+		}
+		return extends_;
 	}
 
 	/**
@@ -262,21 +360,21 @@ public class UseCaseImpl extends NamedElementImpl implements UseCase {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.USE_CASE__DTO_CATEGORIES:
-				return !getDtoCategories().isEmpty();
+				return dtoCategories != null && !dtoCategories.isEmpty();
 			case GraalPackage.USE_CASE__DTOS:
-				return !getDtos().isEmpty();
+				return dtos != null && !dtos.isEmpty();
 			case GraalPackage.USE_CASE__ENTITY_BLOCKS:
-				return !getEntityBlocks().isEmpty();
+				return entityBlocks != null && !entityBlocks.isEmpty();
 			case GraalPackage.USE_CASE__ENTITIES:
-				return !getEntities().isEmpty();
+				return entities != null && !entities.isEmpty();
 			case GraalPackage.USE_CASE__ACTORS:
-				return !getActors().isEmpty();
+				return actors != null && !actors.isEmpty();
 			case GraalPackage.USE_CASE__TASKS:
-				return !getTasks().isEmpty();
+				return tasks != null && !tasks.isEmpty();
 			case GraalPackage.USE_CASE__INCLUDES:
-				return !getIncludes().isEmpty();
+				return includes != null && !includes.isEmpty();
 			case GraalPackage.USE_CASE__EXTENDS:
-				return !getExtends().isEmpty();
+				return extends_ != null && !extends_.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

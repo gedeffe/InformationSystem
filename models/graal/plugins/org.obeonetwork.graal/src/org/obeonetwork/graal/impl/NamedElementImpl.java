@@ -10,7 +10,9 @@
  */
 package org.obeonetwork.graal.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.obeonetwork.graal.GraalPackage;
 import org.obeonetwork.graal.NamedElement;
 
@@ -39,6 +41,16 @@ public abstract class NamedElementImpl extends GraalObjectImpl implements NamedE
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -63,7 +75,7 @@ public abstract class NamedElementImpl extends GraalObjectImpl implements NamedE
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eDynamicGet(GraalPackage.NAMED_ELEMENT__NAME, GraalPackage.Literals.NAMED_ELEMENT__NAME, true, true);
+		return name;
 	}
 
 	/**
@@ -72,7 +84,10 @@ public abstract class NamedElementImpl extends GraalObjectImpl implements NamedE
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eDynamicSet(GraalPackage.NAMED_ELEMENT__NAME, GraalPackage.Literals.NAMED_ELEMENT__NAME, newName);
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraalPackage.NAMED_ELEMENT__NAME, oldName, name));
 	}
 
 	/**
@@ -128,9 +143,25 @@ public abstract class NamedElementImpl extends GraalObjectImpl implements NamedE
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.NAMED_ELEMENT__NAME:
-				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //NamedElementImpl

@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.obeonetwork.graal.Activity;
 import org.obeonetwork.graal.GraalPackage;
@@ -43,6 +44,34 @@ import org.obeonetwork.graal.UserStory;
  */
 public abstract class ActivityImpl extends GraalObjectImpl implements Activity {
 	/**
+	 * The cached value of the '{@link #getNodes() <em>Nodes</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Node> nodes;
+	/**
+	 * The cached value of the '{@link #getTransitions() <em>Transitions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Transition> transitions;
+	/**
+	 * The cached value of the '{@link #getSubActivities() <em>Sub Activities</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubActivities()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Activity> subActivities;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -68,7 +97,10 @@ public abstract class ActivityImpl extends GraalObjectImpl implements Activity {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Node> getNodes() {
-		return (EList<Node>)eDynamicGet(GraalPackage.ACTIVITY__NODES, GraalPackage.Literals.ACTIVITY__NODES, true, true);
+		if (nodes == null) {
+			nodes = new EObjectContainmentEList.Resolving<Node>(Node.class, this, GraalPackage.ACTIVITY__NODES);
+		}
+		return nodes;
 	}
 
 	/**
@@ -78,7 +110,10 @@ public abstract class ActivityImpl extends GraalObjectImpl implements Activity {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Transition> getTransitions() {
-		return (EList<Transition>)eDynamicGet(GraalPackage.ACTIVITY__TRANSITIONS, GraalPackage.Literals.ACTIVITY__TRANSITIONS, true, true);
+		if (transitions == null) {
+			transitions = new EObjectContainmentEList.Resolving<Transition>(Transition.class, this, GraalPackage.ACTIVITY__TRANSITIONS);
+		}
+		return transitions;
 	}
 
 	/**
@@ -88,7 +123,10 @@ public abstract class ActivityImpl extends GraalObjectImpl implements Activity {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Activity> getSubActivities() {
-		return (EList<Activity>)eDynamicGet(GraalPackage.ACTIVITY__SUB_ACTIVITIES, GraalPackage.Literals.ACTIVITY__SUB_ACTIVITIES, true, true);
+		if (subActivities == null) {
+			subActivities = new EObjectContainmentEList.Resolving<Activity>(Activity.class, this, GraalPackage.ACTIVITY__SUB_ACTIVITIES);
+		}
+		return subActivities;
 	}
 
 	/**
@@ -227,11 +265,11 @@ public abstract class ActivityImpl extends GraalObjectImpl implements Activity {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraalPackage.ACTIVITY__NODES:
-				return !getNodes().isEmpty();
+				return nodes != null && !nodes.isEmpty();
 			case GraalPackage.ACTIVITY__TRANSITIONS:
-				return !getTransitions().isEmpty();
+				return transitions != null && !transitions.isEmpty();
 			case GraalPackage.ACTIVITY__SUB_ACTIVITIES:
-				return !getSubActivities().isEmpty();
+				return subActivities != null && !subActivities.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

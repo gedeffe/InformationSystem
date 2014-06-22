@@ -14,7 +14,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -24,75 +26,79 @@ import org.obeonetwork.graal.TasksGroup;
 import org.obeonetwork.graal.parts.GraalViewsRepository;
 import org.obeonetwork.graal.parts.TasksGroupPropertiesEditionPart;
 
-
 // End of user code
 
 /**
  * 
  * 
  */
-public class TasksGroupTasksGroupPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class TasksGroupTasksGroupPropertiesEditionComponent extends
+		SinglePartPropertiesEditingComponent {
 
-	
 	public static String TASKSGROUP_PART = "TasksGroup"; //$NON-NLS-1$
 
-	
-	
 	/**
 	 * Default constructor
 	 * 
 	 */
-	public TasksGroupTasksGroupPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject tasksGroup, String editing_mode) {
+	public TasksGroupTasksGroupPropertiesEditionComponent(
+			final PropertiesEditingContext editingContext,
+			final EObject tasksGroup, final String editing_mode) {
 		super(editingContext, tasksGroup, editing_mode);
-		parts = new String[] { TASKSGROUP_PART };
-		repositoryKey = GraalViewsRepository.class;
-		partKey = GraalViewsRepository.TasksGroup.class;
+		this.parts = new String[] { TASKSGROUP_PART };
+		this.repositoryKey = GraalViewsRepository.class;
+		this.partKey = GraalViewsRepository.TasksGroup.class;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
+	 *      int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			final TasksGroup tasksGroup = (TasksGroup)elt;
-			final TasksGroupPropertiesEditionPart tasksGroupPart = (TasksGroupPropertiesEditionPart)editingPart;
+	public void initPart(final Object key, final int kind, final EObject elt,
+			final ResourceSet allResource) {
+		this.setInitializing(true);
+		if ((this.editingPart != null) && (key == this.partKey)) {
+			this.editingPart.setContext(elt, allResource);
+
+			final TasksGroup tasksGroup = (TasksGroup) elt;
+			final TasksGroupPropertiesEditionPart tasksGroupPart = (TasksGroupPropertiesEditionPart) this.editingPart;
 			// init values
-			if (tasksGroup.getDescription() != null && isAccessible(GraalViewsRepository.TasksGroup.Properties.description))
-				tasksGroupPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, tasksGroup.getDescription()));
-			if (tasksGroup.getId() != null && isAccessible(GraalViewsRepository.TasksGroup.Properties.id))
-				tasksGroupPart.setId(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, tasksGroup.getId()));
-			
-			if (tasksGroup.getName() != null && isAccessible(GraalViewsRepository.TasksGroup.Properties.name))
-				tasksGroupPart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, tasksGroup.getName()));
-			
+			if (this.isAccessible(GraalViewsRepository.TasksGroup.Properties.description)) {
+				tasksGroupPart.setDescription(EcoreUtil.convertToString(
+						EcorePackage.Literals.ESTRING,
+						tasksGroup.getDescription()));
+			}
+			if (this.isAccessible(GraalViewsRepository.TasksGroup.Properties.id)) {
+				tasksGroupPart.setId(EEFConverterUtil.convertToString(
+						EcorePackage.Literals.ESTRING, tasksGroup.getId()));
+			}
+
+			if (this.isAccessible(GraalViewsRepository.TasksGroup.Properties.name)) {
+				tasksGroupPart.setName(EEFConverterUtil.convertToString(
+						EcorePackage.Literals.ESTRING, tasksGroup.getName()));
+			}
+
 			// init filters
-			
-			
-			
+
 			// init values for referenced views
-			
+
 			// init filters for referenced views
-			
+
 		}
-		setInitializing(false);
+		this.setInitializing(false);
 	}
-
-
-
-
-
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	public EStructuralFeature associatedFeature(Object editorKey) {
+	@Override
+	public EStructuralFeature associatedFeature(final Object editorKey) {
 		if (editorKey == GraalViewsRepository.TasksGroup.Properties.description) {
 			return EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description();
 		}
@@ -107,54 +113,96 @@ public class TasksGroupTasksGroupPropertiesEditionComponent extends SinglePartPr
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
+	@Override
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		TasksGroup tasksGroup = (TasksGroup)semanticObject;
-		if (GraalViewsRepository.TasksGroup.Properties.description == event.getAffectedEditor()) {
-			tasksGroup.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		final TasksGroup tasksGroup = (TasksGroup) this.semanticObject;
+		if (GraalViewsRepository.TasksGroup.Properties.description == event
+				.getAffectedEditor()) {
+			tasksGroup.setDescription((java.lang.String) EEFConverterUtil
+					.createFromString(EcorePackage.Literals.ESTRING,
+							(String) event.getNewValue()));
 		}
-		if (GraalViewsRepository.TasksGroup.Properties.id == event.getAffectedEditor()) {
-			tasksGroup.setId((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		if (GraalViewsRepository.TasksGroup.Properties.id == event
+				.getAffectedEditor()) {
+			tasksGroup.setId((java.lang.String) EEFConverterUtil
+					.createFromString(EcorePackage.Literals.ESTRING,
+							(String) event.getNewValue()));
 		}
-		if (GraalViewsRepository.TasksGroup.Properties.name == event.getAffectedEditor()) {
-			tasksGroup.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		if (GraalViewsRepository.TasksGroup.Properties.name == event
+				.getAffectedEditor()) {
+			tasksGroup.setName((java.lang.String) EEFConverterUtil
+					.createFromString(EcorePackage.Literals.ESTRING,
+							(String) event.getNewValue()));
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
-	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {
-			TasksGroupPropertiesEditionPart tasksGroupPart = (TasksGroupPropertiesEditionPart)editingPart;
-			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().equals(msg.getFeature()) && tasksGroupPart != null && isAccessible(GraalViewsRepository.TasksGroup.Properties.description)){
+	@Override
+	public void updatePart(final Notification msg) {
+		super.updatePart(msg);
+		if (this.editingPart.isVisible()) {
+			final TasksGroupPropertiesEditionPart tasksGroupPart = (TasksGroupPropertiesEditionPart) this.editingPart;
+			if (EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description()
+					.equals(msg.getFeature())
+					&& msg.getNotifier().equals(this.semanticObject)
+					&& (tasksGroupPart != null)
+					&& this.isAccessible(GraalViewsRepository.TasksGroup.Properties.description)) {
 				if (msg.getNewValue() != null) {
-					tasksGroupPart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					tasksGroupPart.setDescription(EcoreUtil.convertToString(
+							EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					tasksGroupPart.setDescription("");
 				}
 			}
-			if (GraalPackage.eINSTANCE.getAbstractTask_Id().equals(msg.getFeature()) && tasksGroupPart != null && isAccessible(GraalViewsRepository.TasksGroup.Properties.id)) {
+			if (GraalPackage.eINSTANCE.getAbstractTask_Id().equals(
+					msg.getFeature())
+					&& msg.getNotifier().equals(this.semanticObject)
+					&& (tasksGroupPart != null)
+					&& this.isAccessible(GraalViewsRepository.TasksGroup.Properties.id)) {
 				if (msg.getNewValue() != null) {
-					tasksGroupPart.setId(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					tasksGroupPart.setId(EcoreUtil.convertToString(
+							EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					tasksGroupPart.setId("");
 				}
 			}
-			if (GraalPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && tasksGroupPart != null && isAccessible(GraalViewsRepository.TasksGroup.Properties.name)) {
+			if (GraalPackage.eINSTANCE.getNamedElement_Name().equals(
+					msg.getFeature())
+					&& msg.getNotifier().equals(this.semanticObject)
+					&& (tasksGroupPart != null)
+					&& this.isAccessible(GraalViewsRepository.TasksGroup.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					tasksGroupPart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					tasksGroupPart.setName(EcoreUtil.convertToString(
+							EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					tasksGroupPart.setName("");
 				}
 			}
-			
+
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		final NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+				EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description(),
+				GraalPackage.eINSTANCE.getAbstractTask_Id(),
+				GraalPackage.eINSTANCE.getNamedElement_Name());
+		return new NotificationFilter[] { filter, };
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -162,34 +210,53 @@ public class TasksGroupTasksGroupPropertiesEditionComponent extends SinglePartPr
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+	public Diagnostic validateValue(final IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (GraalViewsRepository.TasksGroup.Properties.description == event.getAffectedEditor()) {
+				if (GraalViewsRepository.TasksGroup.Properties.description == event
+						.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil
+								.createFromString(EnvironmentPackage.eINSTANCE
+										.getObeoDSMObject_Description()
+										.getEAttributeType(), (String) newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(EnvironmentPackage.eINSTANCE.getObeoDSMObject_Description().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(
+							EnvironmentPackage.eINSTANCE
+									.getObeoDSMObject_Description()
+									.getEAttributeType(), newValue);
 				}
-				if (GraalViewsRepository.TasksGroup.Properties.id == event.getAffectedEditor()) {
+				if (GraalViewsRepository.TasksGroup.Properties.id == event
+						.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(GraalPackage.eINSTANCE.getAbstractTask_Id().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil
+								.createFromString(GraalPackage.eINSTANCE
+										.getAbstractTask_Id()
+										.getEAttributeType(), (String) newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(GraalPackage.eINSTANCE.getAbstractTask_Id().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(
+							GraalPackage.eINSTANCE.getAbstractTask_Id()
+									.getEAttributeType(), newValue);
 				}
-				if (GraalViewsRepository.TasksGroup.Properties.name == event.getAffectedEditor()) {
+				if (GraalViewsRepository.TasksGroup.Properties.name == event
+						.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(GraalPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil
+								.createFromString(GraalPackage.eINSTANCE
+										.getNamedElement_Name()
+										.getEAttributeType(), (String) newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(GraalPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(
+							GraalPackage.eINSTANCE.getNamedElement_Name()
+									.getEAttributeType(), newValue);
 				}
-			} catch (IllegalArgumentException iae) {
+			} catch (final IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
+			} catch (final WrappedException we) {
 				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
