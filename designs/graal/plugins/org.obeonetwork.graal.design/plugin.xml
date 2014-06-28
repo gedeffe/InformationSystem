@@ -1,24 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <plugin>
-  <extension point="fr.obeo.dsl.viewpoint.componentization">
-    <component class="org.obeonetwork.graal.design.Activator"
-               id="org.obeonetwork.graal.design"
-	       name="graal">
-    </component>
-  </extension>
 
    <extension
          point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
       <decoratorProvider class="org.obeonetwork.graal.design.ui.decoration.UserStoryDecoratorProvider">
          <Priority name="Lowest"></Priority>
       </decoratorProvider>
-   </extension>
-   <extension
-         point="fr.obeo.dsl.viewpoint.featureExtensions">
-      <feature
-            class="org.obeonetwork.graal.design.extension.GraalFeatureExtension">
-         </feature>
    </extension>
    <extension
          point="org.eclipse.ui.views">
@@ -201,5 +189,19 @@
                tab="UserStory">
          </propertySection>
       </propertySections>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.componentization">
+      <component
+            class="org.obeonetwork.graal.design.Activator"
+            id="org.obeonetwork.graal.design"
+            name="graal">
+      </component>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.featureExtensions">
+      <feature
+            class="org.obeonetwork.graal.design.extension.GraalFeatureExtension">
+      </feature>
    </extension>
 </plugin>

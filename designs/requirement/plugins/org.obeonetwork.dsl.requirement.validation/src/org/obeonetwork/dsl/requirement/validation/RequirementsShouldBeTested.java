@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.obeonetwork.dsl.requirement.Category;
@@ -22,46 +24,49 @@ import org.obeonetwork.dsl.requirement.Repository;
 import org.obeonetwork.dsl.requirement.Requirement;
 import org.obeonetwork.dsl.requirement.presentation.EnhancedRequirementEditor;
 
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.ui.business.api.session.SessionEditorInput;
-
 public class RequirementsShouldBeTested extends PropertyTester {
 
 	public RequirementsShouldBeTested() {
 	}
 
-	public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
+	public boolean test(final Object receiver, final String property,
+			final Object[] args, final Object expectedValue) {
 		if (receiver instanceof IEditorPart) {
 			if (receiver instanceof EnhancedRequirementEditor) {
 				return true;
 			}
-			IEditorInput editorInput = ((IEditorPart)receiver).getEditorInput();
+			final IEditorInput editorInput = ((IEditorPart) receiver)
+					.getEditorInput();
 			if (editorInput instanceof SessionEditorInput) {
-				SessionEditorInput sessionEditorInput = (SessionEditorInput)editorInput;
-				Session session = sessionEditorInput.getSession();
+				final SessionEditorInput sessionEditorInput = (SessionEditorInput) editorInput;
+				final Session session = sessionEditorInput.getSession();
 				if (session != null) {
-					TransactionalEditingDomain ted = session.getTransactionalEditingDomain();
+					final TransactionalEditingDomain ted = session
+							.getTransactionalEditingDomain();
 					if (ted != null) {
-						return containsRequirementsModel(ted.getResourceSet());
+						return this.containsRequirementsModel(ted
+								.getResourceSet());
 					}
 				}
 			}
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Tests if the resource set contains at least one Requirements model
-	 * @param set ResourceSet to be tested
+	 * 
+	 * @param set
+	 *            ResourceSet to be tested
 	 * @return boolean
 	 */
-	private boolean containsRequirementsModel(ResourceSet set) {
+	private boolean containsRequirementsModel(final ResourceSet set) {
 		if (set != null) {
-			for (Resource resource : set.getResources()) {
-				for (EObject eObject : resource.getContents()) {
-					if (eObject instanceof Repository
-						|| eObject instanceof Category
-						|| eObject instanceof Requirement) {
+			for (final Resource resource : set.getResources()) {
+				for (final EObject eObject : resource.getContents()) {
+					if ((eObject instanceof Repository)
+							|| (eObject instanceof Category)
+							|| (eObject instanceof Requirement)) {
 						return true;
 					}
 				}

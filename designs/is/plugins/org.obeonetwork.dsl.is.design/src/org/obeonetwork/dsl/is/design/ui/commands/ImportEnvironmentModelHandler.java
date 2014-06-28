@@ -16,11 +16,15 @@ import java.util.Collection;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
@@ -28,58 +32,65 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.obeonetwork.dsl.environment.Environment;
 import org.obeonetwork.dsl.is.design.service.ProvidedModelsService;
 
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.tools.api.command.semantic.AddSemanticResourceCommand;
-import fr.obeo.dsl.viewpoint.ui.business.api.session.SessionEditorInput;
-
 public class ImportEnvironmentModelHandler extends AbstractHandler {
 
-	public Object execute(ExecutionEvent event) throws ExecutionException {
-		Session session = getSession(event);
+	public Object execute(final ExecutionEvent event) throws ExecutionException {
+		final Session session = this.getSession(event);
 		if (session == null) {
 			return null;
 		}
-		
-		Collection<URI> semanticURIs = new ArrayList<URI>();
-		for (Resource semanticResource : session.getSemanticResources()) {
+
+		final Collection<URI> semanticURIs = new ArrayList<URI>();
+		for (final Resource semanticResource : session.getSemanticResources()) {
 			semanticURIs.add(semanticResource.getURI());
 		}
-		
-		Shell shell = HandlerUtil.getActiveShell(event);
-		Collection<Environment> environments = ProvidedModelsService.getProvidedEnvironmentModels(semanticURIs);
-		Environment selectedEnvironment = getSelectedEnvironment(shell, environments);
+
+		final Shell shell = HandlerUtil.getActiveShell(event);
+		final Collection<Environment> environments = ProvidedModelsService
+				.getProvidedEnvironmentModels(semanticURIs);
+		final Environment selectedEnvironment = this.getSelectedEnvironment(
+				shell, environments);
 		if (selectedEnvironment != null) {
-			TransactionalEditingDomain ted = session.getTransactionalEditingDomain();
+			final TransactionalEditingDomain ted = session
+					.getTransactionalEditingDomain();
 			if (ted != null) {
-				ted.getCommandStack().execute(new AddSemanticResourceCommand(session, selectedEnvironment.eResource().getURI()));
-				MessageDialog.openInformation(shell, "Import Environment model", "The model has been added as a semantic ressource");
+				ted.getCommandStack().execute(
+						new AddSemanticResourceCommand(session,
+								selectedEnvironment.eResource().getURI(),
+								new NullProgressMonitor()));
+				MessageDialog.openInformation(shell,
+						"Import Environment model",
+						"The model has been added as a semantic ressource");
 			}
 		}
 		return null;
 	}
-	
-	private Session getSession(ExecutionEvent event) {
-		IEditorInput editorInput = HandlerUtil.getActiveEditorInput(event);
+
+	private Session getSession(final ExecutionEvent event) {
+		final IEditorInput editorInput = HandlerUtil
+				.getActiveEditorInput(event);
 		if (editorInput instanceof SessionEditorInput) {
-			SessionEditorInput sessionEditorInput = (SessionEditorInput)editorInput;
+			final SessionEditorInput sessionEditorInput = (SessionEditorInput) editorInput;
 			return sessionEditorInput.getSession();
 		}
 		return null;
 	}
-	
-	private Environment getSelectedEnvironment(Shell shell, Collection<Environment> environments) {
-		ElementListSelectionDialog dialog = new ElementListSelectionDialog(shell,
-				new LabelProvider() {
+
+	private Environment getSelectedEnvironment(final Shell shell,
+			final Collection<Environment> environments) {
+		final ElementListSelectionDialog dialog = new ElementListSelectionDialog(
+				shell, new LabelProvider() {
 
 					@Override
-					public String getText(Object element) {
+					public String getText(final Object element) {
 						if (element instanceof Environment) {
-							Environment environment = (Environment) element;
-							return environment.getName() + " - " + environment.eResource().getURI();
+							final Environment environment = (Environment) element;
+							return environment.getName() + " - "
+									+ environment.eResource().getURI();
 						}
 						return super.getText(element);
 					}
-					
+
 				});
 		dialog.setTitle("Import Environment model");
 		dialog.setMessage("Select an environment model");
@@ -87,12 +98,12 @@ public class ImportEnvironmentModelHandler extends AbstractHandler {
 		dialog.setMultipleSelection(false);
 		dialog.setElements(environments.toArray());
 		dialog.open();
-		Object[] results = dialog.getResult();
+		final Object[] results = dialog.getResult();
 		dialog.close();
-		if (results != null && results.length == 1) {
-			Object selected = results[0];
+		if ((results != null) && (results.length == 1)) {
+			final Object selected = results[0];
 			if (selected instanceof Environment) {
-				return (Environment)selected;
+				return (Environment) selected;
 			}
 		}
 		return null;

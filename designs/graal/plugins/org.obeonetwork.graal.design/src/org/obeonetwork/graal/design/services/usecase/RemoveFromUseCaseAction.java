@@ -13,82 +13,97 @@ package org.obeonetwork.graal.design.services.usecase;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.AbstractDNode;
 import org.obeonetwork.graal.AbstractTask;
 import org.obeonetwork.graal.Task;
 import org.obeonetwork.graal.TasksGroup;
 import org.obeonetwork.graal.UseCase;
 
-import fr.obeo.dsl.viewpoint.AbstractDNode;
-
 /**
  * Class used to remove a task or a group from a Use case
+ * 
  * @author Stephane Thibaudeau <stephane.thibaudeau@obeo.fr>
- *
+ * 
  */
 public class RemoveFromUseCaseAction {
-	
+
 	/**
 	 * Checks if the action can be done
-	 * @param context EObject needed so the method can be called by Acceleo
-	 * @param selections Graphical elements selected by the user before invoking the action
-	 * @return True if at least one Task or TasksGroup instance has been selected
+	 * 
+	 * @param context
+	 *            EObject needed so the method can be called by Acceleo
+	 * @param selections
+	 *            Graphical elements selected by the user before invoking the
+	 *            action
+	 * @return True if at least one Task or TasksGroup instance has been
+	 *         selected
 	 */
-	public boolean canExecuteRemoveFromUseCaseAction(EObject context, Collection<? extends EObject> selections) {
-		// The action can be executed only if at least one Task or TasksGroup has been selected
-		for (EObject selection : selections) {
+	public boolean canExecuteRemoveFromUseCaseAction(final EObject context,
+			final Collection<? extends EObject> selections) {
+		// The action can be executed only if at least one Task or TasksGroup
+		// has been selected
+		for (final EObject selection : selections) {
 			if (selection instanceof AbstractDNode) {
-				EObject target = ((AbstractDNode)selection).getTarget();
+				final EObject target = ((AbstractDNode) selection).getTarget();
 				if (target instanceof AbstractTask) {
 					return true;
 				}
 			}
 		}
-		return false; 
+		return false;
 	}
 
 	/**
 	 * creates a new use case from selected Task and TasksGroup instances
-	 * @param context EObject needed so the method can be called by Acceleo
-	 * @param selections Graphical elements selected by the user before invoking the action
+	 * 
+	 * @param context
+	 *            EObject needed so the method can be called by Acceleo
+	 * @param selections
+	 *            Graphical elements selected by the user before invoking the
+	 *            action
 	 * @return unmodified "context" parameter
 	 */
-	public EObject executeRemoveFromUseCaseAction(EObject context, Collection<? extends EObject> selections) {
+	public EObject executeRemoveFromUseCaseAction(final EObject context,
+			final Collection<? extends EObject> selections) {
 		if (context instanceof UseCase) {
-			UseCase useCase = (UseCase)context;
-			for (EObject selection : selections) {
+			final UseCase useCase = (UseCase) context;
+			for (final EObject selection : selections) {
 				if (selection instanceof AbstractDNode) {
-					EObject target = ((AbstractDNode)selection).getTarget();
+					final EObject target = ((AbstractDNode) selection)
+							.getTarget();
 					if (target instanceof Task) {
-						removeFromUseCase(useCase, (Task)target);
+						this.removeFromUseCase(useCase, (Task) target);
 					} else if (target instanceof TasksGroup) {
-						removeFromUseCase(useCase, (TasksGroup)target);
+						this.removeFromUseCase(useCase, (TasksGroup) target);
 					}
 				}
 			}
 		}
 		return context;
 	}
-	
+
 	/**
 	 * Removes a task from a use case
+	 * 
 	 * @param useCase
 	 * @param task
 	 */
-	private void removeFromUseCase(UseCase useCase, Task task) {
+	private void removeFromUseCase(final UseCase useCase, final Task task) {
 		useCase.getTasks().remove(task);
 	}
-	
+
 	/**
 	 * Removes a whole group from a use case
+	 * 
 	 * @param useCase
 	 * @param group
 	 */
-	private void removeFromUseCase(UseCase useCase, TasksGroup group) {
-		for (Task task : group.getOwnedTasks()) {
-			removeFromUseCase(useCase, task);
+	private void removeFromUseCase(final UseCase useCase, final TasksGroup group) {
+		for (final Task task : group.getOwnedTasks()) {
+			this.removeFromUseCase(useCase, task);
 		}
-		for (TasksGroup subGroup : group.getOwnedGroups()) {
-			removeFromUseCase(useCase, subGroup);
+		for (final TasksGroup subGroup : group.getOwnedGroups()) {
+			this.removeFromUseCase(useCase, subGroup);
 		}
 		useCase.getTasks().remove(group);
 	}

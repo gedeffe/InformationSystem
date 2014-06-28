@@ -3,14 +3,13 @@ Bundle-Name: Obeo Designer Modeling Project
 Bundle-SymbolicName: org.obeonetwork.dsl.statemachine.design;singleton=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.statemachine.design.Activator
-Require-Bundle: fr.obeo.acceleo.gen,
- org.eclipse.ui,
+Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- fr.obeo.dsl.viewpoint,
  org.obeonetwork.dsl.statemachine,
  org.eclipse.emf.eef.runtime,
- fr.obeo.dsl.viewpoint.ui,
- fr.obeo.dsl.common,
- org.eclipse.emf.transaction
+ org.eclipse.emf.transaction,
+ org.eclipse.sirius,
+ org.eclipse.sirius.ui,
+ org.eclipse.sirius.common
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

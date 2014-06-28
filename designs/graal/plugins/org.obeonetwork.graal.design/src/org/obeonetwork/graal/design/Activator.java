@@ -13,11 +13,10 @@ package org.obeonetwork.graal.design;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-
-import fr.obeo.dsl.viewpoint.business.api.componentization.ViewpointRegistry;
-import fr.obeo.dsl.viewpoint.description.Viewpoint;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -37,32 +36,40 @@ public class Activator extends AbstractUIPlugin {
 	public Activator() {
 	}
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
-     */
-    public void start(BundleContext context) throws Exception {
-      super.start(context);
-	  plugin = this;
-	  viewpoints = new HashSet<Viewpoint>();
-	  viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/graal.odesign")); 
-	  viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/requirements.odesign"));
-    }
-    
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
+	 * )
 	 */
-	public void stop(BundleContext context) throws Exception {
+	@Override
+	public void start(final BundleContext context) throws Exception {
+		super.start(context);
+		plugin = this;
+		viewpoints = new HashSet<Viewpoint>();
+		viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(
+				PLUGIN_ID + "/description/graal.odesign"));
+		viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(
+				PLUGIN_ID + "/description/requirements.odesign"));
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
+	 * )
+	 */
+	@Override
+	public void stop(final BundleContext context) throws Exception {
 		plugin = null;
 		if (viewpoints != null) {
-			for (final Viewpoint viewpoint: viewpoints) {
+			for (final Viewpoint viewpoint : viewpoints) {
 				ViewpointRegistry.getInstance().disposeFromPlugin(viewpoint);
 			}
 			viewpoints.clear();
-			viewpoints = null; 
+			viewpoints = null;
 		}
 		super.stop(context);
 	}

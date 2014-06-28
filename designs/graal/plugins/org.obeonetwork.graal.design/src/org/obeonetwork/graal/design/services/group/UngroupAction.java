@@ -14,34 +14,40 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.obeonetwork.graal.AbstractTask;
 import org.obeonetwork.graal.TasksContainer;
 import org.obeonetwork.graal.TasksGroup;
 import org.obeonetwork.graal.UseCase;
 
-import fr.obeo.dsl.viewpoint.AbstractDNode;
-import fr.obeo.dsl.viewpoint.DDiagramElement;
-
 /**
- * Class used to ungroup a group i.e. extract all the tasks in a group and remove the group
+ * Class used to ungroup a group i.e. extract all the tasks in a group and
+ * remove the group
+ * 
  * @author Stephane Thibaudeau <stephane.thibaudeau@obeo.fr>
- *
+ * 
  */
 public class UngroupAction {
-	
+
 	/**
 	 * Checks if the ungroup action can be executed
-	 * @param context Object needed so the method can be called by Acceleo
-	 * @param selections Graphical elements selected by the user before launching the action
+	 * 
+	 * @param context
+	 *            Object needed so the method can be called by Acceleo
+	 * @param selections
+	 *            Graphical elements selected by the user before launching the
+	 *            action
 	 * @return true if one and only one TasksGroup has been selected
 	 */
-	public boolean canExecuteUngroupAction(EObject context, Collection<? extends EObject> selections) {
-		// The action can be executed only if one and only one 
+	public boolean canExecuteUngroupAction(final EObject context,
+			final Collection<? extends EObject> selections) {
+		// The action can be executed only if one and only one
 		// TasksGroup has been selected
 		int nbOfGroups = 0;
-		for (EObject selection : selections) {
+		for (final EObject selection : selections) {
 			if (selection instanceof AbstractDNode) {
-				EObject target = ((AbstractDNode)selection).getTarget();
+				final EObject target = ((AbstractDNode) selection).getTarget();
 				if (target instanceof TasksGroup) {
 					if (nbOfGroups >= 1) {
 						return false;
@@ -50,46 +56,58 @@ public class UngroupAction {
 				}
 			}
 		}
-		return (nbOfGroups == 1); 
+		return (nbOfGroups == 1);
 	}
 
 	/**
 	 * Executes the ungrouping action
-	 * @param context Object needed so the method can be called by Acceleo. It is returned unchanged
-	 * @param selections Graphical elements selected by the user before launching the action
+	 * 
+	 * @param context
+	 *            Object needed so the method can be called by Acceleo. It is
+	 *            returned unchanged
+	 * @param selections
+	 *            Graphical elements selected by the user before launching the
+	 *            action
 	 * @return The first parameter without any change
 	 */
-	public EObject executeUngroupAction(EObject context, Collection<? extends EObject> selections) {
-		
-		TasksGroup group = extractTasksGroup(selections);
-		
+	public EObject executeUngroupAction(final EObject context,
+			final Collection<? extends EObject> selections) {
+
+		final TasksGroup group = this.extractTasksGroup(selections);
+
 		// Keep attachment to use case
-		UseCase useCase = group.getUseCase();
+		final UseCase useCase = group.getUseCase();
 		if (useCase != null) {
-			for (AbstractTask abstractTask : group.getTasks()) {
+			for (final AbstractTask abstractTask : group.getTasks()) {
 				useCase.getTasks().add(abstractTask);
 			}
 		}
-		
-		TasksContainer container = (TasksContainer)group.eContainer();
+
+		final TasksContainer container = (TasksContainer) group.eContainer();
 		container.getTasks().addAll(group.getTasks());
-		
+
 		EcoreUtil.delete(group);
-		
+
 		return context;
 	}
 
 	/**
-	 * Extracts the first TasksGroup instance from a list of selected graphical elements
-	 * @param selections Graphical elements selected by the user before launching the action
+	 * Extracts the first TasksGroup instance from a list of selected graphical
+	 * elements
+	 * 
+	 * @param selections
+	 *            Graphical elements selected by the user before launching the
+	 *            action
 	 * @return The first TasksGroup instance pointed by the graphical elements
 	 */
-	private TasksGroup extractTasksGroup(Collection<? extends EObject> selections) {
-		for (EObject selection : selections) {
+	private TasksGroup extractTasksGroup(
+			final Collection<? extends EObject> selections) {
+		for (final EObject selection : selections) {
 			if (selection instanceof DDiagramElement) {
-				EObject target = ((DDiagramElement)selection).getTarget();
+				final EObject target = ((DDiagramElement) selection)
+						.getTarget();
 				if (target instanceof TasksGroup) {
-					return (TasksGroup)target;
+					return (TasksGroup) target;
 				}
 			}
 		}

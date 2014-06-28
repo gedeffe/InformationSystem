@@ -13,21 +13,19 @@ package org.obeonetwork.graal.design.ui.eef;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.jface.viewers.IFilter;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.obeonetwork.graal.UserStory;
-
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
 
 public class UserStoryTabPropertiesEditionSection implements IFilter {
 
-	 
-	public boolean select(Object toTest) {
+	public boolean select(final Object toTest) {
 		if (toTest instanceof DSemanticDecorator) {
-			EObject target = ((DSemanticDecorator)toTest).getTarget();
-			if (target != null && target instanceof UserStory) {
+			final EObject target = ((DSemanticDecorator) toTest).getTarget();
+			if ((target != null) && (target instanceof UserStory)) {
 				return true;
 			}
 		}
-		EObject eObj = EEFUtils.resolveSemanticObject(toTest);
-		return (eObj != null && eObj instanceof UserStory);
+		final EObject eObj = EEFUtils.resolveSemanticObject(toTest);
+		return ((eObj != null) && (eObj instanceof UserStory));
 	}
 }

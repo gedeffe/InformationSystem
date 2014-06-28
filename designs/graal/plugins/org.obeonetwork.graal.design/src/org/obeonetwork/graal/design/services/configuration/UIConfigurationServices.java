@@ -17,38 +17,40 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.sirius.business.api.featureextensions.FeatureExtensionsManager;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
+import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.obeonetwork.graal.design.extension.GraalFeatureExtension;
 import org.obeonetwork.graal.design.graalfeatureextensions.GraalfeatureextensionsFactory;
 import org.obeonetwork.graal.design.graalfeatureextensions.UIConfiguration;
 
-import fr.obeo.dsl.viewpoint.DAnalysis;
-import fr.obeo.dsl.viewpoint.DAnalysisSessionEObject;
-import fr.obeo.dsl.viewpoint.DFeatureExtension;
-import fr.obeo.dsl.viewpoint.business.api.featureextensions.FeatureExtensionsManager;
-import fr.obeo.dsl.viewpoint.business.api.query.EObjectQuery;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-
 /**
- * Services to handle user preferences about Graal UI 
+ * Services to handle user preferences about Graal UI
  * 
  * @author <a href="mailto:stephane.thibaudeau@obeo.fr">Stephane Thibaudeau</a>
  */
 public class UIConfigurationServices {
 
 	/**
-	 * Get an existing UI configuration on the specified analysis
-	 * or null if none already exists
-	 * @param analysis Viewpoint analysis used to store the configuration
-	 * @return existing UIConfiguration or null 
+	 * Get an existing UI configuration on the specified analysis or null if
+	 * none already exists
+	 * 
+	 * @param analysis
+	 *            Viewpoint analysis used to store the configuration
+	 * @return existing UIConfiguration or null
 	 */
-	public static UIConfiguration getUIConfigurationOnlyIfExisting(DAnalysis analysis) {
+	public static UIConfiguration getUIConfigurationOnlyIfExisting(
+			final DAnalysis analysis) {
 		if (analysis != null) {
 			// Get all Graal Feature Extensions
-			Session session = getSessionFromAnalysis(analysis);
-			Collection<UIConfiguration> uiConfigurations = getAllGraalUIConfigurations(session);
+			final Session session = getSessionFromAnalysis(analysis);
+			final Collection<UIConfiguration> uiConfigurations = getAllGraalUIConfigurations(session);
 			if (uiConfigurations != null) {
-				for (UIConfiguration configuration : uiConfigurations) {
+				for (final UIConfiguration configuration : uiConfigurations) {
 					// Filter on the analysis
 					if (analysis.equals(configuration.getViewpointAnalysis())) {
 						return configuration;
@@ -58,85 +60,100 @@ public class UIConfigurationServices {
 		}
 		return null;
 	}
-	
+
 	/**
-	 * Get an existing UI configuration on the specified analysis
-	 * or create a new one if none already exists
-	 * @param analysis Viewpoint analysis used to store the configuration
+	 * Get an existing UI configuration on the specified analysis or create a
+	 * new one if none already exists
+	 * 
+	 * @param analysis
+	 *            Viewpoint analysis used to store the configuration
 	 * @return existing or new UIConfiguration
 	 */
-	public static UIConfiguration getUIConfiguration(DAnalysis analysis) {
+	public static UIConfiguration getUIConfiguration(final DAnalysis analysis) {
 		UIConfiguration configuration = getUIConfigurationOnlyIfExisting(analysis);
 		if (configuration == null) {
 			// No existing configuration found, we have to create a new one
-			configuration = GraalfeatureextensionsFactory.eINSTANCE.createUIConfiguration();
+			configuration = GraalfeatureextensionsFactory.eINSTANCE
+					.createUIConfiguration();
 			configuration.setViewpointAnalysis(analysis);
 		}
-		return configuration;			
+		return configuration;
 	}
-	
-	
+
 	/**
 	 * Save the configuration on the specified viewpoint analysis
-	 * @param configuration Configuration to be saved
-	 * @param analysis Viewpoint analysis concerned by the configuration
+	 * 
+	 * @param configuration
+	 *            Configuration to be saved
+	 * @param analysis
+	 *            Viewpoint analysis concerned by the configuration
 	 */
-	public static void saveUIConfiguration(final UIConfiguration configuration, final DAnalysis analysis) {
+	public static void saveUIConfiguration(final UIConfiguration configuration,
+			final DAnalysis analysis) {
 		if (!analysis.equals(configuration.getViewpointAnalysis())) {
 			configuration.setViewpointAnalysis(analysis);
 		}
-		
+
 		final Session session = getSessionFromAnalysis(analysis);
 		if (session != null) {
-			final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(analysis); 
+			final TransactionalEditingDomain domain = TransactionUtil
+					.getEditingDomain(analysis);
 			final Command cmd = new RecordingCommand(domain) {
 				@Override
 				protected void doExecute() {
 					FeatureExtensionsManager.INSTANCE.saveFeatureExtensionData(
 							GraalFeatureExtension.FEATURE_EXTENSION_NAME,
-							session,
-							analysis,
-							configuration);
+							session, analysis, configuration);
 				}
 			};
 			domain.getCommandStack().execute(cmd);
 		}
-		
+
 	}
-	
+
 	/**
 	 * Get all UI configurations stored in session
-	 * @param session Viewpoint session
+	 * 
+	 * @param session
+	 *            Viewpoint session
 	 * @return Collection of UIConfiguration instances
 	 */
 	@SuppressWarnings("unchecked")
-	private static Collection<UIConfiguration> getAllGraalUIConfigurations(Session session) {
+	private static Collection<UIConfiguration> getAllGraalUIConfigurations(
+			final Session session) {
 		if (session != null) {
-			Collection<? extends DFeatureExtension> data = FeatureExtensionsManager.INSTANCE.retrieveFeatureExtensionData(GraalFeatureExtension.FEATURE_EXTENSION_NAME, session);
+			final Collection<? extends DFeatureExtension> data = FeatureExtensionsManager.INSTANCE
+					.retrieveFeatureExtensionData(
+							GraalFeatureExtension.FEATURE_EXTENSION_NAME,
+							session);
 			if (data != null) {
-				return (Collection<UIConfiguration>)data;
+				return (Collection<UIConfiguration>) data;
 			}
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Retrieves the session corresponding to the specified viewpoint analysis
-	 * @param analysis Viewpoint analysis
-	 * @return Viewpoint session or null if no corresponding session has been found 
+	 * 
+	 * @param analysis
+	 *            Viewpoint analysis
+	 * @return Viewpoint session or null if no corresponding session has been
+	 *         found
 	 */
-	private static Session getSessionFromAnalysis(DAnalysis analysis) {
+	private static Session getSessionFromAnalysis(final DAnalysis analysis) {
 		// Retrieve the session using EObjectQuery
-		EObjectQuery query = new EObjectQuery(analysis);
-		Session existingSession = query.getSession();
+		final EObjectQuery query = new EObjectQuery(analysis);
+		final Session existingSession = query.getSession();
 		if (existingSession != null) {
 			return existingSession;
 		}
 		// If it did not work, let's inspect the existing sessions
-		for (Session session : SessionManager.INSTANCE.getSessions()) {
+		for (final Session session : SessionManager.INSTANCE.getSessions()) {
 			if (session instanceof DAnalysisSessionEObject) {
-				DAnalysisSessionEObject analysisSession = (DAnalysisSessionEObject)session;
-				for (DAnalysis sessionAnalysis : analysisSession.getAnalyses()) {
+				final DAnalysisSessionEObject analysisSession = (DAnalysisSessionEObject) session;
+				for (final DAnalysis sessionAnalysis : analysisSession
+						.getAnalyses()) {
 					if (EcoreUtil.equals(analysis, sessionAnalysis)) {
 						return session;
 					}

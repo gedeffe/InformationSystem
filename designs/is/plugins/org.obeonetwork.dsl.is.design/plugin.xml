@@ -2,10 +2,6 @@
 <?eclipse version="3.0"?>
 
 <plugin>
-		<extension point="fr.obeo.dsl.viewpoint.componentization">
-			<component class="org.obeonetwork.dsl.is.design.Activator" id="org.obeonetwork.dsl.is.design" name="is">
-			</component>
-		</extension>
 		
 		<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
 	      <editpartProvider class="org.obeonetwork.dsl.is.design.ui.providers.EntityEditPartProvider">
@@ -64,5 +60,13 @@
             properties="containsISModel"
             type="java.lang.Object">
       </propertyTester>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.componentization">
+      <component
+            class="org.obeonetwork.dsl.is.design.Activator"
+            id="org.obeonetwork.dsl.is.design"
+            name="is">
+      </component>
    </extension>
 </plugin>

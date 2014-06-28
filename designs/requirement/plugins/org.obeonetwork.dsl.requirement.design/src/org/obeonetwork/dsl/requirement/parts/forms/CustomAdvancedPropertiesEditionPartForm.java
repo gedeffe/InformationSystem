@@ -12,32 +12,30 @@ package org.obeonetwork.dsl.requirement.parts.forms;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
-
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Specific class to override resolveSemanticElement() so it works with tables
  * 
  */
-public class CustomAdvancedPropertiesEditionPartForm extends AdvancedPropertiesEditionPartForm {
+public class CustomAdvancedPropertiesEditionPartForm extends
+		AdvancedPropertiesEditionPartForm {
 
-	
-	
 	public CustomAdvancedPropertiesEditionPartForm() {
 		super();
 	}
 
-	public CustomAdvancedPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+	public CustomAdvancedPropertiesEditionPartForm(
+			final IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	@Override
-	protected EObject resolveSemanticObject(Object object) {
+	protected EObject resolveSemanticObject(final Object object) {
 		if (object instanceof DSemanticDecorator) {
-			return((DSemanticDecorator) object).getTarget();
+			return ((DSemanticDecorator) object).getTarget();
 		}
 		return super.resolveSemanticObject(object);
 	}
-	
+
 }

@@ -10,6 +10,14 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryService;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Shell;
 import org.obeonetwork.dsl.environment.ObeoDSMObject;
 import org.obeonetwork.dsl.interaction.Interaction;
@@ -17,28 +25,20 @@ import org.obeonetwork.dsl.interaction.InteractionFactory;
 import org.obeonetwork.dsl.interaction.design.Activator;
 import org.obeonetwork.dsl.interaction.design.ui.extension.providers.InteractionAnalysisContextMenuActionProvider;
 
-import fr.obeo.dsl.common.tools.api.editing.EditingDomainFactoryService;
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
-import fr.obeo.dsl.viewpoint.description.Viewpoint;
-import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIManager;
-
 public class CreateSequenceDiagramAction extends Action {
 
 	private static ImageDescriptor image;
 	static {
-		URL url = Activator.getDefault().getBundle().getEntry("images/createSequenceDiagram.gif");
+		final URL url = Activator.getDefault().getBundle()
+				.getEntry("images/createSequenceDiagram.gif");
 		image = ImageDescriptor.createFromURL(url);
 	}
-	
-	private ObeoDSMObject context;
-	
-	public CreateSequenceDiagramAction(ObeoDSMObject context) {
+
+	private final ObeoDSMObject context;
+
+	public CreateSequenceDiagramAction(final ObeoDSMObject context) {
 		this.context = context;
-	}	
+	}
 
 	@Override
 	public String getId() {
@@ -57,47 +57,72 @@ public class CreateSequenceDiagramAction extends Action {
 
 	@Override
 	public void run() {
-		if (context == null) {
+		if (this.context == null) {
 			return;
 		}
-		
-		final Shell shell = Activator.getDefault().getWorkbench().getActiveWorkbenchWindow().getShell();
-		
-//		TransactionalEditingDomain editingDomain = EditingDomainService.getInstance().getEditingDomainProvider().getEditingDomain();
-		Session session = SessionManager.INSTANCE.getSession(context);
-		if (session == null || session.getSessionResource() == null || session.getSessionResource().getResourceSet() == null) {
+
+		final Shell shell = Activator.getDefault().getWorkbench()
+				.getActiveWorkbenchWindow().getShell();
+
+		// TransactionalEditingDomain editingDomain =
+		// EditingDomainService.getInstance().getEditingDomainProvider().getEditingDomain();
+		final Session session = SessionManager.INSTANCE
+				.getSession(this.context);
+		if ((session == null) || (session.getSessionResource() == null)
+				|| (session.getSessionResource().getResourceSet() == null)) {
 			return;
 		}
-		ResourceSet resourceSet = session.getSessionResource().getResourceSet();
-		TransactionalEditingDomain editingDomain = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory().getEditingDomain(resourceSet);
-		
-		RecordingCommand cmd = new RecordingCommand(editingDomain, "Create Sequence diagram") {
+		final ResourceSet resourceSet = session.getSessionResource()
+				.getResourceSet();
+		final TransactionalEditingDomain editingDomain = EditingDomainFactoryService.INSTANCE
+				.getEditingDomainFactory().getEditingDomain(resourceSet);
+
+		final RecordingCommand cmd = new RecordingCommand(editingDomain,
+				"Create Sequence diagram") {
+			@Override
 			protected void doExecute() {
 				// Get Session
-				Session session = SessionManager.INSTANCE.getSession(context);
-				
+				final Session session = SessionManager.INSTANCE
+						.getSession(CreateSequenceDiagramAction.this.context);
+
 				if (session != null) {
 					// Ask the user to provide a name for the diagram
-					InputDialog dialog = new InputDialog(shell, "New representation", "New representation name", "new Sequence diagram", null);
-					int buttonPressed = dialog.open();
+					final InputDialog dialog = new InputDialog(shell,
+							"New representation", "New representation name",
+							"new Sequence diagram", null);
+					final int buttonPressed = dialog.open();
 					if (buttonPressed == InputDialog.OK) {
-						String diagramName = dialog.getValue();
-						
+						final String diagramName = dialog.getValue();
+
 						// Create a new interaction instance
-						Interaction interaction = InteractionFactory.eINSTANCE.createInteraction();
-						context.getBehaviours().add(interaction);
-						
-						Collection<RepresentationDescription> descs = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(), interaction);
-						for (RepresentationDescription desc : descs) {
-							Viewpoint viewpoint = (Viewpoint)desc.eContainer();
-							
-							if (InteractionAnalysisContextMenuActionProvider.isInteractionViewpoint(viewpoint)
-									&& "Sequence Diagram".equals(desc.getName())) {
+						final Interaction interaction = InteractionFactory.eINSTANCE
+								.createInteraction();
+						CreateSequenceDiagramAction.this.context
+								.getBehaviours().add(interaction);
+
+						final Collection<RepresentationDescription> descs = DialectManager.INSTANCE
+								.getAvailableRepresentationDescriptions(
+										session.getSelectedViewpoints(false),
+										interaction);
+						for (final RepresentationDescription desc : descs) {
+							final Viewpoint viewpoint = (Viewpoint) desc
+									.eContainer();
+
+							if (InteractionAnalysisContextMenuActionProvider
+									.isInteractionViewpoint(viewpoint)
+									&& "Sequence Diagram"
+											.equals(desc.getName())) {
 								// Create the new diagram
-								if (DialectManager.INSTANCE.canCreate(interaction, desc)) {
-									DRepresentation sequenceDiagram = DialectManager.INSTANCE.createRepresentation(diagramName, interaction, desc, session, new NullProgressMonitor());
+								if (DialectManager.INSTANCE.canCreate(
+										interaction, desc)) {
+									final DRepresentation sequenceDiagram = DialectManager.INSTANCE
+											.createRepresentation(diagramName,
+													interaction, desc, session,
+													new NullProgressMonitor());
 									if (sequenceDiagram != null) {
-										DialectUIManager.INSTANCE.openEditor(session, sequenceDiagram);
+										DialectUIManager.INSTANCE.openEditor(
+												session, sequenceDiagram,
+												new NullProgressMonitor());
 									}
 								}
 							}

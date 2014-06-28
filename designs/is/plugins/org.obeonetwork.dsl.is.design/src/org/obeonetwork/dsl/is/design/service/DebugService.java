@@ -10,85 +10,86 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.is.design.service;
 
+import java.util.Collection;
+
 import org.eclipse.emf.ecore.EObject;
-
-import fr.obeo.acceleo.gen.template.eval.ENode;
-import fr.obeo.acceleo.gen.template.eval.ENodeCastException;
-import fr.obeo.dsl.common.tools.api.interpreter.IInterpreter;
-import fr.obeo.dsl.viewpoint.tools.api.interpreter.InterpreterUtil;
-
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 
 /**
  * Class used to debug
- * @author Stéphane Thibaudeau <stephane.thibaudeau@obeo.fr>
- *
+ * 
+ * @author Stï¿½phane Thibaudeau <stephane.thibaudeau@obeo.fr>
+ * 
  */
 public class DebugService {
 
 	/**
 	 * Outputs information on the parameter and acceleo variables available
-	 * @param context Object we wish to debug
+	 * 
+	 * @param context
+	 *            Object we wish to debug
 	 * @return The unmodified parameter
 	 */
-	public ENode traceWithVariables(ENode context) {
-		return traceWithVariables(context, null);
+	public Object traceWithVariables(final Object context) {
+		return this.traceWithVariables(context, null);
 	}
-	
-	public ENode traceWithVariables(ENode context, String title) {
-		StringBuilder sb = new StringBuilder();
-		
+
+	public Object traceWithVariables(final Object context, final String title) {
+		final StringBuilder sb = new StringBuilder();
+
 		sb.append("--------------------").append("\n");
 		if (title != null) {
 			sb.append("Trace : " + title).append("\n");
 			sb.append("--------------------").append("\n");
 		}
 		sb.append("$self : " + context).append("\n");
-		EObject interpreterContext = getAnEObjectFrom(context);
+		final EObject interpreterContext = this.getAnEObjectFrom(context);
 		if (interpreterContext != null) {
-			IInterpreter interpreter = InterpreterUtil.getInterpreter(interpreterContext);
-			for (String variableName : interpreter.getVariables().keySet()) {
-				sb.append("$" + variableName + " : " + interpreter.getVariables().get(variableName)).append("\n");
+			final IInterpreter interpreter = InterpreterUtil
+					.getInterpreter(interpreterContext);
+			for (final String variableName : interpreter.getVariables()
+					.keySet()) {
+				sb.append(
+						"$" + variableName + " : "
+								+ interpreter.getVariables().get(variableName))
+						.append("\n");
 			}
 		}
 		sb.append("--------------------");
 		System.out.println(sb.toString());
 		return context;
 	}
-	
+
 	/**
-	 * Extracts an EObject from an ENode instance
-	 * @param context ENode instance
+	 * Extracts an EObject from an Object instance
+	 * 
+	 * @param context
+	 *            Object instance
 	 * @return an EObject if one has been found
 	 */
-	private EObject getAnEObjectFrom(ENode context) {
-		EObject result = null;
-		try {
-			if (context.isEObject()) {
-				return context.getEObject();
-			} else if (context.isList() && context.getList().size() > 0) {
-				// We search into the list elements
-				for (Object elem : context.getList().asList()) {
-					if (elem instanceof ENode) {
-						ENode enode = (ENode)elem;
-						if (enode.isEObject()) {
-							return enode.getEObject();
-						}
-					}
+	private EObject getAnEObjectFrom(final Object context) {
+		final EObject result = null;
+		if (context instanceof EObject) {
+			return (EObject) context;
+		} else if ((context instanceof Collection)
+				&& (((Collection<?>) context).size() > 0)) {
+			// We search into the list elements
+			for (final Object elem : (Collection<?>) context) {
+				if (elem instanceof EObject) {
+					return (EObject) elem;
 				}
-				// If we have found nothing, we search if some elements of the list are a list themselves
-				for (Object elem : context.getList().asList()) {
-					if (elem instanceof ENode) {
-						ENode enode = (ENode)elem;
-						if (enode.isList()) {
-							EObject tempResult = getAnEObjectFrom(enode);
-							if (tempResult != null) {
-								return tempResult;
-							}
-						}
+			}
+			// If we have found nothing, we search if some elements of the
+			// list are a list themselves
+			for (final Object elem : (Collection<?>) context) {
+				if (elem instanceof Collection) {
+					final EObject tempResult = this.getAnEObjectFrom(elem);
+					if (tempResult != null) {
+						return tempResult;
 					}
 				}
 			}
-		} catch (ENodeCastException e) {
 		}
 		return result;
 	}

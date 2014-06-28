@@ -3,15 +3,14 @@ Bundle-Name: Obeo Designer Viewpoint Project
 Bundle-SymbolicName: org.obeonetwork.dsl.interaction.design;singleton=true
 Bundle-Version: 3.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.interaction.design.Activator
-Require-Bundle: fr.obeo.acceleo.gen,
- org.eclipse.ui,
+Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- fr.obeo.dsl.viewpoint,
- fr.obeo.dsl.viewpoint.diagram.sequence,
- fr.obeo.dsl.common,
  org.obeonetwork.dsl.interaction,
  org.eclipse.core.resources,
  org.eclipse.emf.transaction,
- fr.obeo.dsl.common.ui
+ org.eclipse.sirius,
+ org.eclipse.sirius.ui,
+ org.eclipse.sirius.common,
+ org.eclipse.sirius.diagram.sequence
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

@@ -3,22 +3,23 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.obeonetwork.dsl.is.design;singleton:=true
 Bundle-Version: 3.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.is.design.Activator
-Require-Bundle: fr.obeo.acceleo.gen,
- org.eclipse.ui,
+Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- fr.obeo.dsl.viewpoint,
  org.obeonetwork.dsl.cinematic;resolution:=optional,
  org.obeonetwork.dsl.entity;resolution:=optional,
  org.obeonetwork.dsl.environment,
  org.obeonetwork.dsl.soa;resolution:=optional,
- fr.obeo.dsl.common,
  org.eclipse.emf.eef.runtime,
  org.eclipse.gmf.runtime.diagram.ui,
- fr.obeo.dsl.viewpoint.diagram,
  org.obeonetwork.dsl.environment.binding.dialect,
  org.obeonetwork.dsl.overview,
  org.obeonetwork.dsl.cinematic.design,
- org.eclipse.core.expressions
+ org.eclipse.core.expressions,
+ org.eclipse.sirius,
+ org.eclipse.sirius.ui,
+ org.eclipse.sirius.common,
+ org.eclipse.sirius.diagram,
+ org.eclipse.sirius.diagram.ui
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

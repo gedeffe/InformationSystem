@@ -12,24 +12,24 @@ import org.eclipse.gmf.runtime.diagram.ui.services.editpart.AbstractEditPartProv
 import org.eclipse.gmf.runtime.diagram.ui.services.editpart.CreateGraphicEditPartOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpart.IEditPartOperation;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.obeonetwork.dsl.environment.MultiplicityKind;
 import org.obeonetwork.dsl.environment.Reference;
 import org.obeonetwork.dsl.is.design.service.EnvironmentService;
 
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
-import fr.obeo.dsl.viewpoint.diagram.internal.edit.parts.DEdgeBeginNameEditPart;
-import fr.obeo.dsl.viewpoint.diagram.internal.edit.parts.DEdgeEndNameEditPart;
-import fr.obeo.dsl.viewpoint.diagram.part.ViewpointVisualIDRegistry;
-import fr.obeo.dsl.viewpoint.diagram.tools.api.command.GMFCommandWrapper;
+public class EnvironmentEditPartProvider extends AbstractEditPartProvider {
 
-public class EnvironmentEditPartProvider  extends AbstractEditPartProvider {
-	
 	@Override
-	public IGraphicalEditPart createGraphicEditPart(View view) {
-		switch (ViewpointVisualIDRegistry.getVisualID(view)) {
+	public IGraphicalEditPart createGraphicEditPart(final View view) {
+		switch (SiriusVisualIDRegistry.getVisualID(view)) {
 
 		case DEdgeBeginNameEditPart.VISUAL_ID:
-			DEdgeBeginNameEditPart dEdgePart = new DEdgeBeginNameEditPart(view) {
+			final DEdgeBeginNameEditPart dEdgePart = new DEdgeBeginNameEditPart(
+					view) {
 
 				@Override
 				protected boolean isDirectEditEnabled() {
@@ -37,36 +37,41 @@ public class EnvironmentEditPartProvider  extends AbstractEditPartProvider {
 				}
 
 			};
-			dEdgePart.installEditPolicy(org.eclipse.gef.RequestConstants.REQ_DIRECT_EDIT, new EnvironmentDirectEditForBeginRole());
+			dEdgePart.installEditPolicy(
+					org.eclipse.gef.RequestConstants.REQ_DIRECT_EDIT,
+					new EnvironmentDirectEditForBeginRole());
 			return dEdgePart;
 
 		case DEdgeEndNameEditPart.VISUAL_ID:
-			DEdgeEndNameEditPart dEdgeEndPart = new DEdgeEndNameEditPart(view) {
+			final DEdgeEndNameEditPart dEdgeEndPart = new DEdgeEndNameEditPart(
+					view) {
 				@Override
 				protected boolean isDirectEditEnabled() {
 					return true;
 				}
 
 			};
-			dEdgeEndPart.installEditPolicy(org.eclipse.gef.RequestConstants.REQ_DIRECT_EDIT, new EnvironmentDirectEditForEndRole());
+			dEdgeEndPart.installEditPolicy(
+					org.eclipse.gef.RequestConstants.REQ_DIRECT_EDIT,
+					new EnvironmentDirectEditForEndRole());
 			return dEdgeEndPart;
 		}
 		return null;
 	}
 
 	@Override
-	public boolean provides(IOperation operation) {
+	public boolean provides(final IOperation operation) {
 		if (operation instanceof CreateGraphicEditPartOperation) {
-			View view = ((IEditPartOperation)operation).getView();
+			final View view = ((IEditPartOperation) operation).getView();
 			if (view.getElement() instanceof DSemanticDecorator) {
-				if (((DSemanticDecorator)view.getElement()).getTarget() instanceof Reference) {
-					switch (ViewpointVisualIDRegistry.getVisualID(view)) {
+				if (((DSemanticDecorator) view.getElement()).getTarget() instanceof Reference) {
+					switch (SiriusVisualIDRegistry.getVisualID(view)) {
 
-						case DEdgeBeginNameEditPart.VISUAL_ID:
-							return true;
+					case DEdgeBeginNameEditPart.VISUAL_ID:
+						return true;
 
-						case DEdgeEndNameEditPart.VISUAL_ID:
-							return true;
+					case DEdgeEndNameEditPart.VISUAL_ID:
+						return true;
 					}
 				}
 			}
@@ -74,25 +79,35 @@ public class EnvironmentEditPartProvider  extends AbstractEditPartProvider {
 		}
 		return false;
 	}
-	
+
 	class EnvironmentDirectEditForBeginRole extends LabelDirectEditPolicy {
 
-		protected org.eclipse.gef.commands.Command getDirectEditCommand(org.eclipse.gef.requests.DirectEditRequest edit) {
-			final EObject element = ((org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart)getHost()).resolveSemanticElement();
-			final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(element);
-			final String labelText = (String)edit.getCellEditor().getValue();
-			RecordingCommand cmd = new RecordingCommand(domain) {
+		@Override
+		protected org.eclipse.gef.commands.Command getDirectEditCommand(
+				final org.eclipse.gef.requests.DirectEditRequest edit) {
+			final EObject element = ((org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart) this
+					.getHost()).resolveSemanticElement();
+			final TransactionalEditingDomain domain = TransactionUtil
+					.getEditingDomain(element);
+			final String labelText = (String) edit.getCellEditor().getValue();
+			final RecordingCommand cmd = new RecordingCommand(domain) {
 
 				@Override
 				protected void doExecute() {
 					if (element instanceof DSemanticDecorator) {
-						EObject target = ((DSemanticDecorator)element).getTarget();
+						final EObject target = ((DSemanticDecorator) element)
+								.getTarget();
 						if (target instanceof Reference) {
-							Reference reference = (Reference)target;
-							Reference oppositeReference = reference.getOppositeOf();
+							final Reference reference = (Reference) target;
+							final Reference oppositeReference = reference
+									.getOppositeOf();
 							if (oppositeReference != null) {
-								String name = EnvironmentService.getRefNameFromString(oppositeReference, labelText);
-								MultiplicityKind multiplicity = EnvironmentService.getMultKindFromString(oppositeReference, labelText);
+								final String name = EnvironmentService
+										.getRefNameFromString(
+												oppositeReference, labelText);
+								final MultiplicityKind multiplicity = EnvironmentService
+										.getMultKindFromString(
+												oppositeReference, labelText);
 								oppositeReference.setName(name);
 								oppositeReference.setMultiplicity(multiplicity);
 							}
@@ -105,23 +120,30 @@ public class EnvironmentEditPartProvider  extends AbstractEditPartProvider {
 		};
 
 	}
-	
+
 	class EnvironmentDirectEditForEndRole extends LabelDirectEditPolicy {
 
-		protected org.eclipse.gef.commands.Command getDirectEditCommand(org.eclipse.gef.requests.DirectEditRequest edit) {
-			final EObject element = ((org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart)getHost()).resolveSemanticElement();
-			final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(element);
-			final String labelText = (String)edit.getCellEditor().getValue();
-			RecordingCommand cmd = new RecordingCommand(domain) {
+		@Override
+		protected org.eclipse.gef.commands.Command getDirectEditCommand(
+				final org.eclipse.gef.requests.DirectEditRequest edit) {
+			final EObject element = ((org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart) this
+					.getHost()).resolveSemanticElement();
+			final TransactionalEditingDomain domain = TransactionUtil
+					.getEditingDomain(element);
+			final String labelText = (String) edit.getCellEditor().getValue();
+			final RecordingCommand cmd = new RecordingCommand(domain) {
 
 				@Override
 				protected void doExecute() {
 					if (element instanceof DSemanticDecorator) {
-						EObject target = ((DSemanticDecorator)element).getTarget();
+						final EObject target = ((DSemanticDecorator) element)
+								.getTarget();
 						if (target instanceof Reference) {
-							Reference reference = (Reference)target;
-							String name = EnvironmentService.getRefNameFromString(reference, labelText);
-							MultiplicityKind multiplicity = EnvironmentService.getMultKindFromString(reference, labelText);
+							final Reference reference = (Reference) target;
+							final String name = EnvironmentService
+									.getRefNameFromString(reference, labelText);
+							final MultiplicityKind multiplicity = EnvironmentService
+									.getMultKindFromString(reference, labelText);
 							reference.setName(name);
 							reference.setMultiplicity(multiplicity);
 						}

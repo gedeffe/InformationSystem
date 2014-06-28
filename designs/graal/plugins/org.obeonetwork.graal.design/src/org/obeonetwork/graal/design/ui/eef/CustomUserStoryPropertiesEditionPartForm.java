@@ -12,30 +12,29 @@ package org.obeonetwork.graal.design.ui.eef;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.obeonetwork.graal.parts.forms.UserStoryPropertiesEditionPartForm;
-
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
-
-
 
 /**
  * Specific class to override resolveSemanticElement() so it works with tables
  * 
  */
-public class CustomUserStoryPropertiesEditionPartForm extends UserStoryPropertiesEditionPartForm {
+public class CustomUserStoryPropertiesEditionPartForm extends
+		UserStoryPropertiesEditionPartForm {
 
 	public CustomUserStoryPropertiesEditionPartForm() {
 		super();
 	}
 
-	public CustomUserStoryPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+	public CustomUserStoryPropertiesEditionPartForm(
+			final IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	@Override
-	protected EObject resolveSemanticObject(Object object) {
+	protected EObject resolveSemanticObject(final Object object) {
 		if (object instanceof DSemanticDecorator) {
-			return((DSemanticDecorator) object).getTarget();
+			return ((DSemanticDecorator) object).getTarget();
 		}
 		return super.resolveSemanticObject(object);
 	}

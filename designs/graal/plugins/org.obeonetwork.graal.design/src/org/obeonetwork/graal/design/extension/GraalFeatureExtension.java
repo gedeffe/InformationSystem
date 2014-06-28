@@ -10,13 +10,14 @@
  *******************************************************************************/
 package org.obeonetwork.graal.design.extension;
 
-import fr.obeo.dsl.viewpoint.business.api.featureextensions.FeatureExtension;
-import fr.obeo.dsl.viewpoint.business.api.featureextensions.FeatureExtensionServices;
+import org.eclipse.sirius.business.api.featureextensions.FeatureExtension;
+import org.eclipse.sirius.business.api.featureextensions.FeatureExtensionServices;
 
 /**
  * Graal feature extension used to store UI preferences in the aird resource
+ * 
  * @author <a href="mailto:stephane.thibaudeau@obeo.fr">Stephane Thibaudeau</a>
- *
+ * 
  */
 public class GraalFeatureExtension implements FeatureExtension {
 
@@ -25,7 +26,7 @@ public class GraalFeatureExtension implements FeatureExtension {
 	 */
 	private FeatureExtensionServices services;
 	public static String FEATURE_EXTENSION_NAME = "GRAAL_UI_FEATURE_EXTENSION";
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -41,10 +42,10 @@ public class GraalFeatureExtension implements FeatureExtension {
 	 * @see fr.obeo.dsl.viewpoint.business.api.featureextensions.FeatureExtension#getServices()
 	 */
 	public FeatureExtensionServices getServices() {
-		if (services == null) {
-			services = new GraalFeatureExtensionServices();
+		if (this.services == null) {
+			this.services = new GraalFeatureExtensionServices();
 		}
-		return services;
+		return this.services;
 	}
 
 }

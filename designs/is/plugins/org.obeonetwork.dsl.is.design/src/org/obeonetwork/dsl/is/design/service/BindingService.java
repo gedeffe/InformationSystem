@@ -13,6 +13,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ui.business.api.session.UserSession;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.obeonetwork.dsl.entity.Block;
 import org.obeonetwork.dsl.entity.Entity;
 import org.obeonetwork.dsl.entity.Root;
@@ -28,211 +35,243 @@ import org.obeonetwork.dsl.soa.DTORegistry;
 import org.obeonetwork.dsl.soa.ServiceDTO;
 import org.obeonetwork.dsl.soa.System;
 
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
-import fr.obeo.dsl.viewpoint.description.Viewpoint;
-import fr.obeo.dsl.viewpoint.ui.business.api.session.UserSession;
-
 public class BindingService {
-	
+
 	private static final String BINDING_EDITOR_DESCRIPTION_NAME = "Binding Details";
 
-	public BindingInfo openBindingEditor(BindingInfo bindingInfo) {
+	public BindingInfo openBindingEditor(final BindingInfo bindingInfo) {
 		DBindingEditor editor = null;
-		
+
 		final Session session = SessionManager.INSTANCE.getSession(bindingInfo);
-		
+
 		// Find an editor to open
-		Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(bindingInfo, session);
-		for (DRepresentation representation : representations) {
+		final Collection<DRepresentation> representations = DialectManager.INSTANCE
+				.getRepresentations(bindingInfo, session);
+		for (final DRepresentation representation : representations) {
 			if (representation instanceof DBindingEditor) {
-				editor = (DBindingEditor)representation;
+				editor = (DBindingEditor) representation;
 				break;
 			}
 		}
 
 		// Create an editor if needed
 		if (editor == null) {
-			RepresentationDescription representationDescription = getBindingEditorRepresentation(session);
+			final RepresentationDescription representationDescription = this
+					.getBindingEditorRepresentation(session);
 			if (representationDescription != null) {
-				DRepresentation representation = DialectManager.INSTANCE.createRepresentation(computeBindingEditorName(bindingInfo), bindingInfo, representationDescription, session, new NullProgressMonitor());
-				if (representation != null && representation instanceof DBindingEditor) {
-					editor = (DBindingEditor)representation;
+				final DRepresentation representation = DialectManager.INSTANCE
+						.createRepresentation(
+								this.computeBindingEditorName(bindingInfo),
+								bindingInfo, representationDescription,
+								session, new NullProgressMonitor());
+				if ((representation != null)
+						&& (representation instanceof DBindingEditor)) {
+					editor = (DBindingEditor) representation;
 				}
 			}
 		}
 		// Open the editor
 		if (editor != null) {
-			UserSession.from(session).openRepresentation(new StructuredSelection(editor));
+			UserSession.from(session).openRepresentation(
+					new StructuredSelection(editor));
 		}
-		
+
 		return bindingInfo;
 	}
-	
-	public String computeBindingEditorName(BindingInfo bindingInfo) {
+
+	public String computeBindingEditorName(final BindingInfo bindingInfo) {
 		String name = "Binding ";
-		name += getBoundElementName(bindingInfo.getLeft());
+		name += this.getBoundElementName(bindingInfo.getLeft());
 		name += " - ";
-		name += getBoundElementName(bindingInfo.getRight());
+		name += this.getBoundElementName(bindingInfo.getRight());
 		return name;
 	}
-	
-	private String getBoundElementName(EObject object) {
-		if (object != null && object instanceof StructuredType) {
-			return ((StructuredType)object).getName();
+
+	private String getBoundElementName(final EObject object) {
+		if ((object != null) && (object instanceof StructuredType)) {
+			return ((StructuredType) object).getName();
 		}
 		return null;
 	}
-	
-	private RepresentationDescription getBindingEditorRepresentation(Session session) {
-		for (Viewpoint vp : session.getSelectedViewpoints(true)) {
-			for (RepresentationDescription representationDescription : vp.getOwnedRepresentations()) {
-				if (representationDescription.getName().equals(BINDING_EDITOR_DESCRIPTION_NAME)) {
+
+	private RepresentationDescription getBindingEditorRepresentation(
+			final Session session) {
+		for (final Viewpoint vp : session.getSelectedViewpoints(true)) {
+			for (final RepresentationDescription representationDescription : vp
+					.getOwnedRepresentations()) {
+				if (representationDescription.getName().equals(
+						BINDING_EDITOR_DESCRIPTION_NAME)) {
 					return representationDescription;
 				}
 			}
 		}
 		return null;
 	}
-	
-	public BindingInfo reconnectBindingTarget(BindingInfo bindingInfo, BoundableElement oldTarget, BoundableElement newTarget) {
+
+	public BindingInfo reconnectBindingTarget(final BindingInfo bindingInfo,
+			final BoundableElement oldTarget, final BoundableElement newTarget) {
 		if (bindingInfo.getLeft().equals(oldTarget)) {
 			bindingInfo.setLeft(newTarget);
 		} else if (bindingInfo.getRight().equals(oldTarget)) {
 			bindingInfo.setRight(newTarget);
 		}
-		
+
 		return bindingInfo;
-	}	
-	
-	public boolean checkIfReconnectBindingIsPossible(Category category, BindingInfo bindingInfo, EObject firstElement, EObject secondElement) {
+	}
+
+	public boolean checkIfReconnectBindingIsPossible(final Category category,
+			final BindingInfo bindingInfo, final EObject firstElement,
+			final EObject secondElement) {
 		// Get opposite side
-		EObject opposite = getBindingOpposite(bindingInfo, firstElement);
-		
-		Collection<StructuredType> dtos = getDTOAndChildrenDTOs(category);
+		final EObject opposite = this.getBindingOpposite(bindingInfo,
+				firstElement);
+
+		final Collection<StructuredType> dtos = this
+				.getDTOAndChildrenDTOs(category);
 		if (dtos.contains(opposite)) {
 			// Reconnection is possible on any dto or entity (not yet bound)
-			return !getBoundElementsWithTarget(category, opposite).contains(secondElement);
+			return !this.getBoundElementsWithTarget(category, opposite)
+					.contains(secondElement);
 		} else {
 			// Reconnection is possible only on main dtos (not yet bound)
 			return dtos.contains(secondElement)
-					&& !getBoundElementsWithTarget(category, opposite).contains(secondElement);
+					&& !this.getBoundElementsWithTarget(category, opposite)
+							.contains(secondElement);
 		}
 	}
-	
-	public BindingInfo changeBindingTarget(BindingInfo bindingInfo, BoundableElement firstElement, BoundableElement secondElement) {
+
+	public BindingInfo changeBindingTarget(final BindingInfo bindingInfo,
+			final BoundableElement firstElement,
+			final BoundableElement secondElement) {
 		if (bindingInfo.getLeft().equals(firstElement)) {
 			bindingInfo.setRight(secondElement);
 		} else if (bindingInfo.getRight().equals(firstElement)) {
 			bindingInfo.setLeft(secondElement);
 		}
-		
+
 		return bindingInfo;
 	}
-	
-	public Collection<StructuredType> getAllBindableElementsFor(Category category, EObject target) {
+
+	public Collection<StructuredType> getAllBindableElementsFor(
+			final Category category, final EObject target) {
 		if (target instanceof ServiceDTO) {
-			return internalGetAllBindableElementsFor(category, (ServiceDTO)target);
+			return this.internalGetAllBindableElementsFor(category,
+					(ServiceDTO) target);
 		} else if (target instanceof Entity) {
-			return internalGetAllBindableElementsFor(category, (Entity)target);
+			return this.internalGetAllBindableElementsFor(category,
+					(Entity) target);
 		}
 		return Collections.emptyList();
 	}
-	
-	public Collection<StructuredType> internalGetAllBindableElementsFor(Category category, ServiceDTO dto) {
+
+	public Collection<StructuredType> internalGetAllBindableElementsFor(
+			final Category category, final ServiceDTO dto) {
 		// Get all DTOs in category and direct sub categories
-		Collection<StructuredType> dtos = getDTOAndChildrenDTOs(category);
-		
+		final Collection<StructuredType> dtos = this
+				.getDTOAndChildrenDTOs(category);
+
 		if (dtos.contains(dto)) {
-			return getAllBindableElements(dto);
+			return this.getAllBindableElements(dto);
 		} else {
 			return dtos;
 		}
 	}
-	
-	public Collection<StructuredType> internalGetAllBindableElementsFor(Category category, Entity entity) {
-		return getDTOAndChildrenDTOs(category);
+
+	public Collection<StructuredType> internalGetAllBindableElementsFor(
+			final Category category, final Entity entity) {
+		return this.getDTOAndChildrenDTOs(category);
 	}
-	
-	public Collection<StructuredType> getAllBindableElements(ServiceDTO dto) {
+
+	public Collection<StructuredType> getAllBindableElements(
+			final ServiceDTO dto) {
 		// Collect all entities and dtos
-		Collection<StructuredType> bindableElements = new ArrayList<StructuredType>();
-		
+		final Collection<StructuredType> bindableElements = new ArrayList<StructuredType>();
+
 		// First, get all semantic resources in session
-		Collection<Resource> semanticResources = EcoreService.getAllSemanticResourcesInSession(dto);
-		
-		for (Resource resource : semanticResources) {
-			TreeIterator<EObject> iterator = EcoreUtil.getAllContents(resource, true);
+		final Collection<Resource> semanticResources = EcoreService
+				.getAllSemanticResourcesInSession(dto);
+
+		for (final Resource resource : semanticResources) {
+			final TreeIterator<EObject> iterator = EcoreUtil.getAllContents(
+					resource, true);
 			while (iterator.hasNext()) {
-				EObject eObject = (EObject) iterator.next();
-				if (eObject instanceof ServiceDTO || eObject instanceof Entity) {
+				final EObject eObject = iterator.next();
+				if ((eObject instanceof ServiceDTO)
+						|| (eObject instanceof Entity)) {
 					if (!eObject.equals(dto)) {
-						bindableElements.add((StructuredType)eObject);
+						bindableElements.add((StructuredType) eObject);
 					}
-				} else if (!(eObject instanceof Root || eObject instanceof Block || eObject instanceof org.obeonetwork.dsl.overview.Root
-						|| eObject instanceof System || eObject instanceof DTORegistry || eObject instanceof Category)) {
+				} else if (!((eObject instanceof Root)
+						|| (eObject instanceof Block)
+						|| (eObject instanceof org.obeonetwork.dsl.overview.Root)
+						|| (eObject instanceof System)
+						|| (eObject instanceof DTORegistry) || (eObject instanceof Category))) {
 					iterator.prune();
 				}
 			}
 		}
-		
+
 		return bindableElements;
 	}
-	
-	public EObject getBindingOpposite(BindingInfo bindingInfo, EObject opposite) {
+
+	public EObject getBindingOpposite(final BindingInfo bindingInfo,
+			final EObject opposite) {
 		if (bindingInfo.getLeft().equals(opposite)) {
-			return bindingInfo.getRight(); 
+			return bindingInfo.getRight();
 		} else if (bindingInfo.getRight().equals(opposite)) {
-			return bindingInfo.getLeft(); 
+			return bindingInfo.getLeft();
 		}
 		return null;
 	}
-	
-	public Collection<BindingInfo> getRelatedBindingInfos(Category category) {
-		List<BindingInfo> results = new ArrayList<BindingInfo>();
-		
+
+	public Collection<BindingInfo> getRelatedBindingInfos(
+			final Category category) {
+		final List<BindingInfo> results = new ArrayList<BindingInfo>();
+
 		// Collect all DTOs in this category and its direct sub-categories
-		Collection<StructuredType> dtos = getDTOAndChildrenDTOs(category);
-		
+		final Collection<StructuredType> dtos = this
+				.getDTOAndChildrenDTOs(category);
+
 		// Check every BindingInfo instance
-		BindingRegistry registry = getGlobalBindingRegistry(category);
-		for (BindingInfo bindingInfo : registry.getBindingInfos()) {
-			if (dtos.contains(bindingInfo.getLeft()) || dtos.contains(bindingInfo.getRight())) {
+		final BindingRegistry registry = this
+				.getGlobalBindingRegistry(category);
+		for (final BindingInfo bindingInfo : registry.getBindingInfos()) {
+			if (dtos.contains(bindingInfo.getLeft())
+					|| dtos.contains(bindingInfo.getRight())) {
 				results.add(bindingInfo);
 			}
 		}
-		
+
 		return results;
 	}
-	
-	public Collection<ServiceDTO> getBoundExternalDTOs(Category category) {
-		List<ServiceDTO> results = new ArrayList<ServiceDTO>();
-		
+
+	public Collection<ServiceDTO> getBoundExternalDTOs(final Category category) {
+		final List<ServiceDTO> results = new ArrayList<ServiceDTO>();
+
 		// Collect all DTOs in this category and its direct sub-categories
-		Collection<StructuredType> dtos = getDTOAndChildrenDTOs(category);
-		
-		
-		for(BindingInfo bi : getGlobalBindingRegistry(category).getBindingInfos()) {
-			if (dtos.contains(bi.getLeft())
-					&& !dtos.contains(bi.getRight())
-					&& bi.getRight() instanceof ServiceDTO) {
-				results.add((ServiceDTO)bi.getRight());
+		final Collection<StructuredType> dtos = this
+				.getDTOAndChildrenDTOs(category);
+
+		for (final BindingInfo bi : this.getGlobalBindingRegistry(category)
+				.getBindingInfos()) {
+			if (dtos.contains(bi.getLeft()) && !dtos.contains(bi.getRight())
+					&& (bi.getRight() instanceof ServiceDTO)) {
+				results.add((ServiceDTO) bi.getRight());
 			} else if (dtos.contains(bi.getRight())
 					&& !dtos.contains(bi.getLeft())
-					&& bi.getLeft() instanceof ServiceDTO) {
-				results.add((ServiceDTO)bi.getLeft());
+					&& (bi.getLeft() instanceof ServiceDTO)) {
+				results.add((ServiceDTO) bi.getLeft());
 			}
 		}
-		
+
 		return results;
 	}
-	
-	public Collection<EObject> getBoundElementsWithTarget(Category category, EObject target) {
-		Collection<EObject> results = new HashSet<EObject>();
-		for (BindingInfo bindingInfo : getRelatedBindingInfos(category)) {
+
+	public Collection<EObject> getBoundElementsWithTarget(
+			final Category category, final EObject target) {
+		final Collection<EObject> results = new HashSet<EObject>();
+		for (final BindingInfo bindingInfo : this
+				.getRelatedBindingInfos(category)) {
 			if (bindingInfo.getLeft().equals(target)) {
 				results.add(bindingInfo.getRight());
 			} else if (bindingInfo.getRight().equals(target)) {
@@ -241,77 +280,81 @@ public class BindingService {
 		}
 		return results;
 	}
-	
-	public Collection<Entity> getBoundEntities(Category category) {
-		List<Entity> results = new ArrayList<Entity>();
-		
+
+	public Collection<Entity> getBoundEntities(final Category category) {
+		final List<Entity> results = new ArrayList<Entity>();
+
 		// Get the binding infos to consider
-		Collection<BindingInfo> bindingInfos = getRelatedBindingInfos(category);
-		
-		for (BindingInfo bindingInfo : bindingInfos) {
+		final Collection<BindingInfo> bindingInfos = this
+				.getRelatedBindingInfos(category);
+
+		for (final BindingInfo bindingInfo : bindingInfos) {
 			if (bindingInfo.getLeft() instanceof Entity) {
-				results.add((Entity)bindingInfo.getLeft());
+				results.add((Entity) bindingInfo.getLeft());
 			}
 			if (bindingInfo.getRight() instanceof Entity) {
-				results.add((Entity)bindingInfo.getRight());
+				results.add((Entity) bindingInfo.getRight());
 			}
 		}
-		
+
 		return results;
 	}
-	
-	public Collection<ServiceDTO> getBoundOwnDTOs(Category category) {
-		List<ServiceDTO> results = new ArrayList<ServiceDTO>();
-		
-		for (ServiceDTO serviceDTO : getBoundDTO(getGlobalBindingRegistry(category))) {
+
+	public Collection<ServiceDTO> getBoundOwnDTOs(final Category category) {
+		final List<ServiceDTO> results = new ArrayList<ServiceDTO>();
+
+		for (final ServiceDTO serviceDTO : this.getBoundDTO(this
+				.getGlobalBindingRegistry(category))) {
 			if (category.getTypes().contains(serviceDTO)) {
 				results.add(serviceDTO);
 			}
 		}
-		
+
 		return results;
 	}
-	
-	private Collection<ServiceDTO> getBoundDTO(BindingRegistry registry) {
-		Set<ServiceDTO> dtos = new HashSet<ServiceDTO>();
-		for (BindingInfo bindingInfo : registry.getBindingInfos()) {
+
+	private Collection<ServiceDTO> getBoundDTO(final BindingRegistry registry) {
+		final Set<ServiceDTO> dtos = new HashSet<ServiceDTO>();
+		for (final BindingInfo bindingInfo : registry.getBindingInfos()) {
 			if (bindingInfo.getLeft() instanceof ServiceDTO) {
-				dtos.add((ServiceDTO)bindingInfo.getLeft());
+				dtos.add((ServiceDTO) bindingInfo.getLeft());
 			}
 			if (bindingInfo.getRight() instanceof ServiceDTO) {
-				dtos.add((ServiceDTO)bindingInfo.getRight());
+				dtos.add((ServiceDTO) bindingInfo.getRight());
 			}
 		}
 		return dtos;
 	}
-	
-	public Collection<StructuredType> getDTOAndChildrenDTOs(Category category) { 
-		List<StructuredType> dtos = new ArrayList<StructuredType>();
-		dtos.addAll(getDTOs(category));
-		for (Category subCategory : category.getOwnedCategories()) {
-			dtos.addAll(getDTOs(subCategory));
+
+	public Collection<StructuredType> getDTOAndChildrenDTOs(
+			final Category category) {
+		final List<StructuredType> dtos = new ArrayList<StructuredType>();
+		dtos.addAll(this.getDTOs(category));
+		for (final Category subCategory : category.getOwnedCategories()) {
+			dtos.addAll(this.getDTOs(subCategory));
 		}
 		return dtos;
 	}
-	
-	private Collection<ServiceDTO> getDTOs(Category category) {
-		List<ServiceDTO> dtos = new ArrayList<ServiceDTO>();
-		for (Type type : category.getTypes()) {
+
+	private Collection<ServiceDTO> getDTOs(final Category category) {
+		final List<ServiceDTO> dtos = new ArrayList<ServiceDTO>();
+		for (final Type type : category.getTypes()) {
 			if (type instanceof ServiceDTO) {
-				dtos.add((ServiceDTO)type);
+				dtos.add((ServiceDTO) type);
 			}
 		}
 		return dtos;
 	}
-	
-	public BindingRegistry getGlobalBindingRegistry(ServiceDTO dto) {
-		return getGlobalBindingRegistry((Category)dto.eContainer());
+
+	public BindingRegistry getGlobalBindingRegistry(final ServiceDTO dto) {
+		return this.getGlobalBindingRegistry((Category) dto.eContainer());
 	}
-	
-	public BindingRegistry getGlobalBindingRegistry(Category category) {
-		System system = getContainingSystem(category);
+
+	public BindingRegistry getGlobalBindingRegistry(final Category category) {
+		final System system = this.getContainingSystem(category);
 		if (system.getBindingRegistries().isEmpty()) {
-			BindingRegistry bindingRegistry = EnvironmentFactory.eINSTANCE.createBindingRegistry();
+			final BindingRegistry bindingRegistry = EnvironmentFactory.eINSTANCE
+					.createBindingRegistry();
 			system.getBindingRegistries().add(bindingRegistry);
 			system.eResource().getContents().add(bindingRegistry);
 			return bindingRegistry;
@@ -319,14 +362,14 @@ public class BindingService {
 			return system.getBindingRegistries().get(0);
 		}
 	}
-	
-	private System getContainingSystem(EObject object) {
-		EObject container = object.eContainer();
+
+	private System getContainingSystem(final EObject object) {
+		final EObject container = object.eContainer();
 		if (container != null) {
 			if (container instanceof System) {
-				return (System)container;
+				return (System) container;
 			} else {
-				return getContainingSystem(container);
+				return this.getContainingSystem(container);
 			}
 		}
 		return null;

@@ -21,6 +21,15 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.AbstractDecorator;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 import org.obeonetwork.graal.GraalObject;
@@ -30,16 +39,6 @@ import org.obeonetwork.graal.UserStory;
 import org.obeonetwork.graal.design.graalfeatureextensions.GraalfeatureextensionsPackage;
 import org.obeonetwork.graal.design.graalfeatureextensions.UIConfiguration;
 import org.obeonetwork.graal.design.services.configuration.UIConfigurationServices;
-
-import fr.obeo.dsl.viewpoint.DAnalysis;
-import fr.obeo.dsl.viewpoint.DDiagramElement;
-import fr.obeo.dsl.viewpoint.DDiagramElementContainer;
-import fr.obeo.dsl.viewpoint.DEdge;
-import fr.obeo.dsl.viewpoint.DNode;
-import fr.obeo.dsl.viewpoint.EdgeTarget;
-import fr.obeo.dsl.viewpoint.business.api.query.EObjectQuery;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.diagram.edit.api.part.IDiagramElementEditPart;
 
 /**
  * User story decorators' superclass
@@ -53,262 +52,294 @@ public abstract class AbstractUserStoryDecorator extends AbstractDecorator {
 	private UIConfiguration uiConfiguration = null;
 	private Adapter airdAdapter = null;
 	private Adapter configurationAdapter = null;
-	private List<UserStory> activeUserStories = new ArrayList<UserStory>();
-	private List<Adapter> activeUserStoriesAdapters = new ArrayList<Adapter>();
+	private final List<UserStory> activeUserStories = new ArrayList<UserStory>();
+	private final List<Adapter> activeUserStoriesAdapters = new ArrayList<Adapter>();
 	private static final int[][] colorsRgbValues = new int[][] {
-		new int[]{255, 140, 42},
-		new int[]{186, 89, 210},
-		new int[]{87, 157, 80},
-		new int[]{195, 52, 89},
-		new int[]{255, 178, 0},
-		new int[]{0, 69, 134}
-	};
-	private Map<Integer,Color> createdColors = new HashMap<Integer, Color>();
+			new int[] { 255, 140, 42 }, new int[] { 186, 89, 210 },
+			new int[] { 87, 157, 80 }, new int[] { 195, 52, 89 },
+			new int[] { 255, 178, 0 }, new int[] { 0, 69, 134 } };
+	private final Map<Integer, Color> createdColors = new HashMap<Integer, Color>();
 	private static final String USE_EDGE_MAPPING_NAME = "TG_Use";
-	
-	protected AbstractUserStoryDecorator(IDecoratorTarget target) {
+
+	protected AbstractUserStoryDecorator(final IDecoratorTarget target) {
 		super(target);
-		EObject semanticElement = getTargetEditPart().resolveTargetSemanticElement();
-		
+		final EObject semanticElement = this.getTargetEditPart()
+				.resolveTargetSemanticElement();
+
 		// Use relationships must be handle in a special way
 		// because 2 semantic elements must be taken into account
-		String mappingName = getTargetEditPart().resolveDiagramElement().getDiagramElementMapping().getName();
+		final String mappingName = this.getTargetEditPart()
+				.resolveDiagramElement().getDiagramElementMapping().getName();
 		if (USE_EDGE_MAPPING_NAME.equals(mappingName)) {
-			DDiagramElement diagramElement = getTargetEditPart().resolveDiagramElement();
+			final DDiagramElement diagramElement = this.getTargetEditPart()
+					.resolveDiagramElement();
 			if (diagramElement instanceof DEdge) {
-				this.graalObject = getGraalObjectForEdgeTarget(((DEdge)diagramElement).getSourceNode());
-				this.graalObject2  = getGraalObjectForEdgeTarget(((DEdge)diagramElement).getTargetNode());
+				this.graalObject = this
+						.getGraalObjectForEdgeTarget(((DEdge) diagramElement)
+								.getSourceNode());
+				this.graalObject2 = this
+						.getGraalObjectForEdgeTarget(((DEdge) diagramElement)
+								.getTargetNode());
 			}
 		} else {
 			if (semanticElement instanceof GraalObject) {
-				this.graalObject = (GraalObject)semanticElement;
+				this.graalObject = (GraalObject) semanticElement;
 			}
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param edgeTarget
 	 * @return
 	 */
-	protected GraalObject getGraalObjectForEdgeTarget(EdgeTarget edgeTarget) {
+	protected GraalObject getGraalObjectForEdgeTarget(
+			final EdgeTarget edgeTarget) {
 		EObject semantic = null;
 		if (edgeTarget instanceof DNode) {
 			semantic = ((DNode) edgeTarget).getTarget();
 		} else if (edgeTarget instanceof DDiagramElementContainer) {
 			semantic = ((DDiagramElementContainer) edgeTarget).getTarget();
 		}
-		if (semantic != null && semantic instanceof GraalObject) {
-			return (GraalObject)semantic;
+		if ((semantic != null) && (semantic instanceof GraalObject)) {
+			return (GraalObject) semantic;
 		}
 		return null;
 	}
 
 	/**
 	 * Gets the DiagramElementEditPart corresponding to the decorated element
+	 * 
 	 * @return DiagramElementEditPart instance
 	 */
 	protected IDiagramElementEditPart getTargetEditPart() {
-		return (IDiagramElementEditPart)getDecoratorTarget().getAdapter(IDiagramElementEditPart.class);
+		return (IDiagramElementEditPart) this.getDecoratorTarget().getAdapter(
+				IDiagramElementEditPart.class);
 	}
-	
+
 	/**
 	 * Gets the list of active user stories
+	 * 
 	 * @return List of active user stories
 	 */
 	protected List<UserStory> getActiveUserStories() {
-		return activeUserStories;
+		return this.activeUserStories;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator#activate()
 	 */
 	public void activate() {
-		analysis = getAnalysis(getTargetEditPart());
-		if (analysis != null) {
-			UIConfiguration configuration = UIConfigurationServices.getUIConfigurationOnlyIfExisting(analysis);
+		this.analysis = getAnalysis(this.getTargetEditPart());
+		if (this.analysis != null) {
+			final UIConfiguration configuration = UIConfigurationServices
+					.getUIConfigurationOnlyIfExisting(this.analysis);
 			if (configuration != null) {
 				this.uiConfiguration = configuration;
-				attachConfigurationAdapter();
+				this.attachConfigurationAdapter();
 			} else {
-				attachAirdAdapter();
+				this.attachAirdAdapter();
 			}
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator#deactivate()
 	 */
+	@Override
 	public void deactivate() {
-		detachAirdAdapter();
-		detachConfigurationAdapter();
-		detachUserStoriesAdapters();
+		this.detachAirdAdapter();
+		this.detachConfigurationAdapter();
+		this.detachUserStoriesAdapters();
 		// release color resources
-		for (Color createdColor : createdColors.values()) {
+		for (final Color createdColor : this.createdColors.values()) {
 			createdColor.dispose();
 		}
 		super.deactivate();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator#refresh()
 	 */
 	public void refresh() {
-		if (activeUserStoriesChanged() == true) {
-			detachUserStoriesAdapters();
-			attachUserStoriesAdapters();
-			doRefresh();
+		if (this.activeUserStoriesChanged() == true) {
+			this.detachUserStoriesAdapters();
+			this.attachUserStoriesAdapters();
+			this.doRefresh();
 		}
 	}
-	
+
 	/**
 	 * Abstract method used to implement the specific refresh behaviour
 	 */
 	abstract protected void doRefresh();
-	
+
 	/**
-	 * Attaches adapters on the active user stories to refresh the decorator when an user story changes
+	 * Attaches adapters on the active user stories to refresh the decorator
+	 * when an user story changes
 	 */
 	private void attachUserStoriesAdapters() {
-		for (UserStory activeUserStory : activeUserStories) {
-			Adapter adapter = new AdapterImpl() {
-				public void notifyChanged(Notification msg) {
-					if(GraalPackage.Literals.USER_STORY__ELEMENTS.equals(msg.getFeature())) {
-						doRefresh();
+		for (final UserStory activeUserStory : this.activeUserStories) {
+			final Adapter adapter = new AdapterImpl() {
+				@Override
+				public void notifyChanged(final Notification msg) {
+					if (GraalPackage.Literals.USER_STORY__ELEMENTS.equals(msg
+							.getFeature())) {
+						AbstractUserStoryDecorator.this.doRefresh();
 					}
 				}
 			};
 			activeUserStory.eAdapters().add(adapter);
-			activeUserStoriesAdapters.add(adapter);
+			this.activeUserStoriesAdapters.add(adapter);
 		}
 	}
-	
+
 	/**
 	 * Detaches all adapters from user stories
 	 */
 	private void detachUserStoriesAdapters() {
-		for (Adapter adapter : activeUserStoriesAdapters) {
+		for (final Adapter adapter : this.activeUserStoriesAdapters) {
 			adapter.getTarget().eAdapters().remove(adapter);
 		}
-		activeUserStoriesAdapters.clear();
+		this.activeUserStoriesAdapters.clear();
 	}
-	
+
 	/**
-	 * Attaches an adapter on the aird resource
-	 * This adapter is used to know when an UIConfiguration has been created
-	 * so we can attach a listener on the UIConfiguration itself
-	 * The adapter on the aird will be detached as soon as we have been able
-	 * to attach the adapter on the UIConfiguration
+	 * Attaches an adapter on the aird resource This adapter is used to know
+	 * when an UIConfiguration has been created so we can attach a listener on
+	 * the UIConfiguration itself The adapter on the aird will be detached as
+	 * soon as we have been able to attach the adapter on the UIConfiguration
 	 */
 	private void attachAirdAdapter() {
-		airdAdapter = new AdapterImpl() {
-			public void notifyChanged(Notification msg) {
-				UIConfiguration configuration = UIConfigurationServices.getUIConfigurationOnlyIfExisting(analysis);
-				if (configuration != null && uiConfiguration == null) {
-					uiConfiguration = configuration;
-					detachAirdAdapter();
-					attachConfigurationAdapter();
-					refresh();
+		this.airdAdapter = new AdapterImpl() {
+			@Override
+			public void notifyChanged(final Notification msg) {
+				final UIConfiguration configuration = UIConfigurationServices
+						.getUIConfigurationOnlyIfExisting(AbstractUserStoryDecorator.this.analysis);
+				if ((configuration != null)
+						&& (AbstractUserStoryDecorator.this.uiConfiguration == null)) {
+					AbstractUserStoryDecorator.this.uiConfiguration = configuration;
+					AbstractUserStoryDecorator.this.detachAirdAdapter();
+					AbstractUserStoryDecorator.this
+							.attachConfigurationAdapter();
+					AbstractUserStoryDecorator.this.refresh();
 				}
 			}
 		};
-		analysis.eResource().eAdapters().add(airdAdapter);
+		this.analysis.eResource().eAdapters().add(this.airdAdapter);
 	}
-	
+
 	/**
 	 * Detaches the adapter from the aird resource
 	 */
 	private void detachAirdAdapter() {
-		if (airdAdapter != null) {
-			airdAdapter.getTarget().eAdapters().remove(airdAdapter);
-			airdAdapter = null;
+		if (this.airdAdapter != null) {
+			this.airdAdapter.getTarget().eAdapters().remove(this.airdAdapter);
+			this.airdAdapter = null;
 		}
 	}
-	
+
 	/**
-	 * Attaches an adapter on the UI configuration
-	 * This adapter is used to know when the active user stories change
-	 * and to refresh the decorator
+	 * Attaches an adapter on the UI configuration This adapter is used to know
+	 * when the active user stories change and to refresh the decorator
 	 */
 	private void attachConfigurationAdapter() {
-		configurationAdapter = new AdapterImpl() {
-			public void notifyChanged(Notification msg) {
-				if(GraalfeatureextensionsPackage.Literals.UI_CONFIGURATION__ACTIVE_USER_STORIES.equals(msg.getFeature())) {
-					refresh();
+		this.configurationAdapter = new AdapterImpl() {
+			@Override
+			public void notifyChanged(final Notification msg) {
+				if (GraalfeatureextensionsPackage.Literals.UI_CONFIGURATION__ACTIVE_USER_STORIES
+						.equals(msg.getFeature())) {
+					AbstractUserStoryDecorator.this.refresh();
 				}
 			}
 		};
-		uiConfiguration.eAdapters().add(configurationAdapter);
+		this.uiConfiguration.eAdapters().add(this.configurationAdapter);
 	}
-	
+
 	/**
 	 * Detaches the adapter from the UIConfiguration
 	 */
 	private void detachConfigurationAdapter() {
-		if (configurationAdapter != null) {
-			if (configurationAdapter.getTarget() != null && configurationAdapter.getTarget().eAdapters() != null) {
-				configurationAdapter.getTarget().eAdapters().remove(configurationAdapter);
+		if (this.configurationAdapter != null) {
+			if ((this.configurationAdapter.getTarget() != null)
+					&& (this.configurationAdapter.getTarget().eAdapters() != null)) {
+				this.configurationAdapter.getTarget().eAdapters()
+						.remove(this.configurationAdapter);
 			}
-			configurationAdapter = null;
+			this.configurationAdapter = null;
 		}
 	}
-	
+
 	/**
 	 * Retrieves the DAnalysis instance from a diagram edit part
-	 * @param diagramEditPart Diagram edit part corresponding to an element on a viewpoint diagram
+	 * 
+	 * @param diagramEditPart
+	 *            Diagram edit part corresponding to an element on a viewpoint
+	 *            diagram
 	 * @return the DAnalysis instance
 	 */
-	private static DAnalysis getAnalysis(IDiagramElementEditPart diagramEditPart) {
-		EObject viewpointNode = diagramEditPart.resolveSemanticElement();
-//		EObject container = EcoreUtil.getRootContainer(viewpointNode);
-		Session session = (new EObjectQuery(viewpointNode)).getSession();
-		EObject analysisEObject = session.getSessionResource().getContents().get(0);
+	private static DAnalysis getAnalysis(
+			final IDiagramElementEditPart diagramEditPart) {
+		final EObject viewpointNode = diagramEditPart.resolveSemanticElement();
+		// EObject container = EcoreUtil.getRootContainer(viewpointNode);
+		final Session session = (new EObjectQuery(viewpointNode)).getSession();
+		final EObject analysisEObject = session.getSessionResource()
+				.getContents().get(0);
 		if (analysisEObject instanceof DAnalysis) {
-			return (DAnalysis)analysisEObject;
+			return (DAnalysis) analysisEObject;
 		}
-//		if (container != null && container instanceof DAnalysis) {
-//			return (DAnalysis)container;
-//		}
+		// if (container != null && container instanceof DAnalysis) {
+		// return (DAnalysis)container;
+		// }
 		return null;
 	}
-	
+
 	/**
-	 * Checks if the targetted semantic element is referenced by the active user story
-	 * Up to now, only one user story can be activated even if an UIConfiguration can store
-	 * a list of active user stories.
-	 * This method considers the first user story from this list to be the active user story
+	 * Checks if the targetted semantic element is referenced by the active user
+	 * story Up to now, only one user story can be activated even if an
+	 * UIConfiguration can store a list of active user stories. This method
+	 * considers the first user story from this list to be the active user story
+	 * 
 	 * @return true if the active user story references the semantic element
 	 */
 	protected boolean isConcernedByActiveUserStory() {
-		if (activeUserStories.isEmpty() == false && graalObject != null) {
-			if (graalObject2 == null) {
-				return graalObject.isConcernedByUserStory(activeUserStories.get(0));
+		if ((this.activeUserStories.isEmpty() == false)
+				&& (this.graalObject != null)) {
+			if (this.graalObject2 == null) {
+				return this.graalObject
+						.isConcernedByUserStory(this.activeUserStories.get(0));
 			} else {
-				return graalObject.isConcernedByUserStory(activeUserStories.get(0))
-					&& graalObject2.isConcernedByUserStory(activeUserStories.get(0));
+				return this.graalObject
+						.isConcernedByUserStory(this.activeUserStories.get(0))
+						&& this.graalObject2
+								.isConcernedByUserStory(this.activeUserStories
+										.get(0));
 			}
 		}
 		return false;
 	}
-	
+
 	/**
-	 * Checks if the active user stories 
+	 * Checks if the active user stories
+	 * 
 	 * @return
 	 */
 	protected boolean activeUserStoriesChanged() {
-		if (uiConfiguration == null) {
+		if (this.uiConfiguration == null) {
 			return false;
 		}
 		// Retrieve active user stories
-		List<UserStory> savedActiveUserStories = uiConfiguration.getActiveUserStories();
+		final List<UserStory> savedActiveUserStories = this.uiConfiguration
+				.getActiveUserStories();
 		// Empty now
-		if (savedActiveUserStories == null || savedActiveUserStories.isEmpty()) {
+		if ((savedActiveUserStories == null)
+				|| savedActiveUserStories.isEmpty()) {
 			if (this.activeUserStories.isEmpty()) {
 				return false;
 			} else {
@@ -317,8 +348,9 @@ public abstract class AbstractUserStoryDecorator extends AbstractDecorator {
 			}
 		} else {
 			// Not empty now
-			if (savedActiveUserStories.containsAll(this.activeUserStories) &&
-					this.activeUserStories.containsAll(savedActiveUserStories)) {
+			if (savedActiveUserStories.containsAll(this.activeUserStories)
+					&& this.activeUserStories
+							.containsAll(savedActiveUserStories)) {
 				return false;
 			} else {
 				this.activeUserStories.clear();
@@ -327,53 +359,65 @@ public abstract class AbstractUserStoryDecorator extends AbstractDecorator {
 			}
 		}
 	}
-	
+
 	/**
 	 * Picks a color to be used to display a user story
-	 * @param userStory user story to be displayed
+	 * 
+	 * @param userStory
+	 *            user story to be displayed
 	 * @return a color instance
 	 */
-	protected Color pickColor(UserStory userStory) {
-		int index = getUserStoryIndex(userStory);
-		Color color = createdColors.get(index);
-		
+	protected Color pickColor(final UserStory userStory) {
+		final int index = this.getUserStoryIndex(userStory);
+		Color color = this.createdColors.get(index);
+
 		if (color == null) {
-			int startingColorIndex = index % colorsRgbValues.length;
-			
-			int red = translateColorValue(colorsRgbValues[startingColorIndex][0], index, 20);
-			int green = translateColorValue(colorsRgbValues[startingColorIndex][1], index, -20);
-			int blue = translateColorValue(colorsRgbValues[startingColorIndex][2], index, 10);
-			
+			final int startingColorIndex = index % colorsRgbValues.length;
+
+			final int red = this.translateColorValue(
+					colorsRgbValues[startingColorIndex][0], index, 20);
+			final int green = this.translateColorValue(
+					colorsRgbValues[startingColorIndex][1], index, -20);
+			final int blue = this.translateColorValue(
+					colorsRgbValues[startingColorIndex][2], index, 10);
+
 			color = new Color(Display.getCurrent(), red, green, blue);
-			createdColors.put(index, color);
+			this.createdColors.put(index, color);
 		}
 		return color;
 	}
-	
+
 	/**
-	 * Translates one of a color RGB values.
-	 * This method is used to always get different colors
-	 * @param initialValue Red, Green or Blue value
-	 * @param index Index of the color to be picked
-	 * @param translation value used to translate the value
+	 * Translates one of a color RGB values. This method is used to always get
+	 * different colors
+	 * 
+	 * @param initialValue
+	 *            Red, Green or Blue value
+	 * @param index
+	 *            Index of the color to be picked
+	 * @param translation
+	 *            value used to translate the value
 	 * @return
 	 */
-	private int translateColorValue(int initialValue, int index, int translation) {
-		int value = (initialValue + (index / colorsRgbValues.length) * translation) % 256;
+	private int translateColorValue(final int initialValue, final int index,
+			final int translation) {
+		int value = (initialValue + ((index / colorsRgbValues.length) * translation)) % 256;
 		if (value < 0) {
 			value = value + 256;
 		}
 		return value;
 	}
-	
+
 	/**
-	 * Returns the index of the specified user story from the whole user stories list
+	 * Returns the index of the specified user story from the whole user stories
+	 * list
+	 * 
 	 * @param userStory
 	 * @return index from list
 	 */
-	private int getUserStoryIndex(UserStory userStory) {
+	private int getUserStoryIndex(final UserStory userStory) {
 		// Get System containing the user story
-		System system = (System)userStory.eContainer();
+		final System system = (System) userStory.eContainer();
 		return system.getUserStories().indexOf(userStory);
 	}
 }

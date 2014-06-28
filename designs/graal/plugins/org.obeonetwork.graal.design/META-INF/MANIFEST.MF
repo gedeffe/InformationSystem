@@ -3,22 +3,22 @@ Bundle-Name: Graal Viewpoint
 Bundle-SymbolicName: org.obeonetwork.graal.design;singleton=true
 Bundle-Version: 1.1.0.qualifier
 Bundle-Activator: org.obeonetwork.graal.design.Activator
-Require-Bundle: fr.obeo.acceleo.gen,
- org.eclipse.ui,
+Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- fr.obeo.dsl.viewpoint,
  org.eclipse.emf.eef.runtime;reprovide=true,
- fr.obeo.dsl.common,
  org.obeonetwork.dsl.requirement,
  org.eclipse.gmf.runtime.common.core,
  org.eclipse.gmf.runtime.notation,
  org.eclipse.gmf.runtime.diagram.ui,
- fr.obeo.dsl.viewpoint.diagram,
- fr.obeo.dsl.common.ui,
  org.eclipse.core.expressions,
  org.obeonetwork.graal,
  org.obeonetwork.graal.edit,
- fr.obeo.dsl.viewpoint.table
+ org.eclipse.sirius,
+ org.eclipse.sirius.common,
+ org.eclipse.sirius.diagram,
+ org.eclipse.sirius.table,
+ org.eclipse.sirius.diagram.ui,
+ org.eclipse.sirius.ext.draw2d
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: www.obeo.fr

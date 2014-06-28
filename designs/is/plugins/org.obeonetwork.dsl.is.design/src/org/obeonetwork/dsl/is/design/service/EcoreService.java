@@ -16,28 +16,28 @@ import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 
 public class EcoreService {
 
-	public Collection<EObject> allRoots(EObject any) {
-		Collection<EObject> roots = new ArrayList<EObject>();
-		
-		Session session = SessionManager.INSTANCE.getSession(any);
-		
+	public Collection<EObject> allRoots(final EObject any) {
+		final Collection<EObject> roots = new ArrayList<EObject>();
+
+		final Session session = SessionManager.INSTANCE.getSession(any);
+
 		if (session != null) {
-			for (Resource childRes : session.getSemanticResources()) {
+			for (final Resource childRes : session.getSemanticResources()) {
 				roots.addAll(childRes.getContents());
 			}
 		}
-		
+
 		return roots;
 	}
-	
-	static public Collection<Resource> getAllSemanticResourcesInSession(EObject any) {
-		Session session = SessionManager.INSTANCE.getSession(any);
+
+	static public Collection<Resource> getAllSemanticResourcesInSession(
+			final EObject any) {
+		final Session session = SessionManager.INSTANCE.getSession(any);
 		if (session != null) {
 			return session.getSemanticResources();
 		}
