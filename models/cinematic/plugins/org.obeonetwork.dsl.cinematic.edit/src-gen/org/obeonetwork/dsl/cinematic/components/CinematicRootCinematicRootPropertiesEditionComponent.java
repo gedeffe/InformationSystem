@@ -49,7 +49,6 @@ public class CinematicRootCinematicRootPropertiesEditionComponent extends
 	/**
 	 * @generated
 	 */
-
 	public static String CINEMATICROOT_PART = "CinematicRoot"; //$NON-NLS-1$
 
 	/**
