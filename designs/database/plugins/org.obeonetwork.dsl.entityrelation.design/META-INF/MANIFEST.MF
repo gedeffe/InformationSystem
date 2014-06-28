@@ -11,4 +11,4 @@ Require-Bundle: fr.obeo.acceleo.gen,
  org.eclipse.sirius,
  org.eclipse.sirius.common
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

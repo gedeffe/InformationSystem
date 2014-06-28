@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.obeonetwork.dsl.is.design;singleton:=true
-Bundle-Version: 2.3.0.qualifier
+Bundle-Version: 3.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.is.design.Activator
 Require-Bundle: fr.obeo.acceleo.gen,
  org.eclipse.ui,
@@ -21,6 +21,6 @@ Require-Bundle: fr.obeo.acceleo.gen,
  org.eclipse.core.expressions
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ManifestVersion: 2
 Bundle-Localization: plugin

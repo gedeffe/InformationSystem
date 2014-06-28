@@ -10,5 +10,5 @@ Require-Bundle: fr.obeo.acceleo.gen,
  org.obeonetwork.dsl.requirement.edit,
  fr.obeo.dsl.viewpoint.table
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: Obeo.fr

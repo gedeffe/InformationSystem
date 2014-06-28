@@ -13,4 +13,4 @@ Require-Bundle: fr.obeo.acceleo.gen,
  org.eclipse.emf.eef.runtime,
  org.obeonetwork.dsl.database.edit
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
