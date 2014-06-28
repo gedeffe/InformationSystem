@@ -10,74 +10,95 @@
 	<parent>
 		<groupId>org.obeonetwork</groupId>
 		<artifactId>parent</artifactId>
-		<version>2.3.0-SNAPSHOT</version>
+		<version>3.0.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 
 	<groupId>org.obeonetwork</groupId>
 	<artifactId>generators.parent</artifactId>
-	<version>2.3.0-SNAPSHOT</version>
+	<version>3.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Generators Parent</name>
-	
+
 	<repositories>
-     <repository>
-       <id>Indigo Release</id>
-       <url>http://www.obeo.fr/download/acceleo/maven/releases/indigo</url>
-     </repository>
-     <repository>
-       <id>Snapshots</id>
-       <url>http://www.obeo.fr/download/acceleo/maven/snapshots</url>
-     </repository>
-   </repositories>
-	
+		<repository>
+			<id>Eclipse - Acceleo Snapshots</id>
+			<url>https://repo.eclipse.org/content/repositories/acceleo-snapshots</url>
+		</repository>
+		<repository>
+			<id>Eclipse - Acceleo Release</id>
+			<url>https://repo.eclipse.org/content/repositories/acceleo-releases</url>
+		</repository>
+	</repositories>
+
 	<pluginRepositories>
-     <pluginRepository>
-       <id>Indigo Release</id>
-       <url>http://www.obeo.fr/download/acceleo/maven/releases/indigo</url>
-     </pluginRepository>
-     <pluginRepository>
-       <id>Snapshots</id>
-       <url>http://www.obeo.fr/download/acceleo/maven/snapshots</url>
-     </pluginRepository>
-   </pluginRepositories>
-	
-	
+		<pluginRepository>
+			<id>codehaus.snapshots</id>
+			<url>http://snapshots.repository.codehaus.org/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>Eclipse - Acceleo Snapshots</id>
+			<url>https://repo.eclipse.org/content/repositories/acceleo-snapshots</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>Eclipse - Acceleo Release</id>
+			<url>https://repo.eclipse.org/content/repositories/acceleo-releases</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<dependencies>
-     <dependency>
-       <groupId>org.eclipse.acceleo</groupId>
-       <artifactId>maven</artifactId>
-       <version>3.2.1</version>
-     </dependency>
-     <dependency>
-       <groupId>org.slf4j</groupId>
-       <artifactId>slf4j-simple</artifactId>
-       <version>1.6.4</version>
-     </dependency>
-   </dependencies>
-   
-   <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.eclipse.acceleo</groupId>
-         <artifactId>maven</artifactId>
-         <version>3.2.1</version>
-          <executions>
-            <execution>
-              <id>acceleo-compile</id>
-              <phase>compile</phase>
-              <goals>
-                <goal>acceleo-compile</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+		<dependency>
+			<groupId>org.eclipse.acceleo</groupId>
+			<artifactId>org.eclipse.acceleo.maven</artifactId>
+			<version>3.5.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.acceleo</groupId>
+			<artifactId>org.eclipse.acceleo.engine</artifactId>
+			<version>3.5.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.acceleo</groupId>
+					<artifactId>org.eclipse.acceleo.maven</artifactId>
+					<version>3.5.0-SNAPSHOT</version>
+					<executions>
+						<execution>
+							<id>acceleo-compile</id>
+							<phase>compile</phase>
+							<goals>
+								<goal>acceleo-compile</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<useBinaryResources>false</useBinaryResources>
+						<usePlatformResourcePath>true</usePlatformResourcePath>
+						<acceleoProject>
+							<root>${project.basedir}</root>
+							<entries>
+								<entry>
+									<input>src/main/java</input>
+									<output>target/classes</output>
+								</entry>
+							</entries>
+						</acceleoProject>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
 
 </project>
