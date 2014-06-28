@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: IS Feature
 Bundle-SymbolicName: org.obeonetwork.dsl.is;singleton:=true
-Bundle-Version: 2.3.0.qualifier
+Bundle-Version: 3.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.is.Activator
 Bundle-Vendor: Obeo.fr
 Require-Bundle: org.eclipse.ui,
@@ -25,5 +25,5 @@ Export-Package: org.obeonetwork.dsl.is,
  org.obeonetwork.dsl.is.overview,
  org.obeonetwork.dsl.is.ui.editor,
  org.obeonetwork.dsl.is.ui.wizards
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
