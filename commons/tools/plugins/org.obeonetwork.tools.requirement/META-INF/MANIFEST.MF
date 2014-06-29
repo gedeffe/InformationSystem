@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.ui,
  org.obeonetwork.dsl.requirement,
  org.eclipse.emf.eef.runtime,
  org.eclipse.emf.workspace,
- org.eclipse.sirius;bundle-version="0.9.0",
+ org.eclipse.sirius,
  org.eclipse.sirius.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
