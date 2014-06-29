@@ -18,7 +18,7 @@
   <properties>
     <tycho-version>0.20.0</tycho-version>
     <platform-version-name>kepler</platform-version-name>
-    <sirius-site>http://download.eclipse.org/sirius/updates/releases/0.9.0/kepler</sirius-site>
+    <sirius-site>http://download.eclipse.org/sirius/updates/releases/1.0.0/kepler</sirius-site>
     <eef-site>http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3</eef-site>
     <acceleo-site>http://download.eclipse.org/acceleo/updates/releases/3.4</acceleo-site>
     <eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
