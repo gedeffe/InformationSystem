@@ -10,17 +10,12 @@
  */
 package org.obeonetwork.dsl.environment.bindingdialect.impl;
 
-import fr.obeo.dsl.viewpoint.impl.DRepresentationElementImpl;
-import fr.obeo.dsl.viewpoint.impl.DSemanticDecoratorImpl;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
+import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
 import org.obeonetwork.dsl.environment.bindingdialect.BindingdialectPackage;
 import org.obeonetwork.dsl.environment.bindingdialect.DBindingEdge;
 import org.obeonetwork.dsl.environment.bindingdialect.DBoundElement;

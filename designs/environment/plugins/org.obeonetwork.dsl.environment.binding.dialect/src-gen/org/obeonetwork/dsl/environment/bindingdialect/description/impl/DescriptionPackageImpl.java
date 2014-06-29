@@ -14,6 +14,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.obeonetwork.dsl.environment.bindingdialect.BindingdialectPackage;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DBindingEditorCreationDescription;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DBindingEditorDescription;
@@ -21,47 +23,45 @@ import org.obeonetwork.dsl.environment.bindingdialect.description.DescriptionFac
 import org.obeonetwork.dsl.environment.bindingdialect.description.DescriptionPackage;
 import org.obeonetwork.dsl.environment.bindingdialect.impl.BindingdialectPackageImpl;
 
-import fr.obeo.dsl.viewpoint.ViewpointPackage;
-import fr.obeo.dsl.viewpoint.description.tool.ToolPackage;
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Package</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
+ * end-user-doc -->
+ * 
  * @generated
  */
-public class DescriptionPackageImpl extends EPackageImpl implements DescriptionPackage {
+public class DescriptionPackageImpl extends EPackageImpl implements
+		DescriptionPackage {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2011 Obeo.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Obeo - initial API and implementation";
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass dBindingEditorDescriptionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass dBindingEditorCreationDescriptionEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
+	 * package package URI value.
+	 * <p>
+	 * Note: the correct way to create the package is via the static factory
+	 * method {@link #init init()}, which also performs initialization of the
+	 * package, or returns the registered package, if one already exists. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.obeonetwork.dsl.environment.bindingdialect.description.DescriptionPackage#eNS_URI
 	 * @see #init()
@@ -72,29 +72,37 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * Creates, registers, and initializes the <b>Package</b> for this model,
+	 * and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link DescriptionPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <p>
+	 * This method is used to initialize {@link DescriptionPackage#eINSTANCE}
+	 * when that field is accessed. Clients should not invoke it directly.
+	 * Instead, they should simply access that field to obtain the package. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
 	public static DescriptionPackage init() {
-		if (isInited) return (DescriptionPackage)EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
+		if (isInited) {
+			return (DescriptionPackage) EPackage.Registry.INSTANCE
+					.getEPackage(DescriptionPackage.eNS_URI);
+		}
 
 		// Obtain or create and register package
-		DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new DescriptionPackageImpl());
+		final DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE
+				.get(eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE
+				.get(eNS_URI) : new DescriptionPackageImpl());
 
 		isInited = true;
 
@@ -102,7 +110,10 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 		ViewpointPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		BindingdialectPackageImpl theBindingdialectPackage = (BindingdialectPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(BindingdialectPackage.eNS_URI) instanceof BindingdialectPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(BindingdialectPackage.eNS_URI) : BindingdialectPackage.eINSTANCE);
+		final BindingdialectPackageImpl theBindingdialectPackage = (BindingdialectPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(BindingdialectPackage.eNS_URI) instanceof BindingdialectPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(BindingdialectPackage.eNS_URI)
+				: BindingdialectPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theDescriptionPackage.createPackageContents();
@@ -115,113 +126,139 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 		// Mark meta-data to indicate it can't be changed
 		theDescriptionPackage.freeze();
 
-  
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(DescriptionPackage.eNS_URI, theDescriptionPackage);
+		EPackage.Registry.INSTANCE.put(DescriptionPackage.eNS_URI,
+				theDescriptionPackage);
 		return theDescriptionPackage;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
+	@Override
 	public EClass getDBindingEditorDescription() {
-		return dBindingEditorDescriptionEClass;
+		return this.dBindingEditorDescriptionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
+	@Override
 	public EClass getDBindingEditorCreationDescription() {
-		return dBindingEditorCreationDescriptionEClass;
+		return this.dBindingEditorCreationDescriptionEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
+	@Override
 	public EReference getDBindingEditorCreationDescription_Description() {
-		return (EReference)dBindingEditorCreationDescriptionEClass.getEStructuralFeatures().get(0);
+		return (EReference) this.dBindingEditorCreationDescriptionEClass
+				.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
+	@Override
 	public DescriptionFactory getDescriptionFactory() {
-		return (DescriptionFactory)getEFactoryInstance();
+		return (DescriptionFactory) this.getEFactoryInstance();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isCreated = false;
 
 	/**
-	 * Creates the meta-model objects for the package.  This method is
-	 * guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
+	 * Creates the meta-model objects for the package. This method is guarded to
+	 * have no affect on any invocation but its first. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated) return;
-		isCreated = true;
+		if (this.isCreated) {
+			return;
+		}
+		this.isCreated = true;
 
 		// Create classes and their features
-		dBindingEditorDescriptionEClass = createEClass(DBINDING_EDITOR_DESCRIPTION);
+		this.dBindingEditorDescriptionEClass = this
+				.createEClass(DBINDING_EDITOR_DESCRIPTION);
 
-		dBindingEditorCreationDescriptionEClass = createEClass(DBINDING_EDITOR_CREATION_DESCRIPTION);
-		createEReference(dBindingEditorCreationDescriptionEClass, DBINDING_EDITOR_CREATION_DESCRIPTION__DESCRIPTION);
+		this.dBindingEditorCreationDescriptionEClass = this
+				.createEClass(DBINDING_EDITOR_CREATION_DESCRIPTION);
+		this.createEReference(this.dBindingEditorCreationDescriptionEClass,
+				DBINDING_EDITOR_CREATION_DESCRIPTION__DESCRIPTION);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isInitialized = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Complete the initialization of the package and its meta-model. This
+	 * method is guarded to have no affect on any invocation but its first. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized) return;
-		isInitialized = true;
+		if (this.isInitialized) {
+			return;
+		}
+		this.isInitialized = true;
 
 		// Initialize package
-		setName(eNAME);
-		setNsPrefix(eNS_PREFIX);
-		setNsURI(eNS_URI);
+		this.setName(eNAME);
+		this.setNsPrefix(eNS_PREFIX);
+		this.setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		fr.obeo.dsl.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (fr.obeo.dsl.viewpoint.description.DescriptionPackage)EPackage.Registry.INSTANCE.getEPackage(fr.obeo.dsl.viewpoint.description.DescriptionPackage.eNS_URI);
-		ToolPackage theToolPackage = (ToolPackage)EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
+		final org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
+				.getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI);
+		final ToolPackage theToolPackage = (ToolPackage) EPackage.Registry.INSTANCE
+				.getEPackage(ToolPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		dBindingEditorDescriptionEClass.getESuperTypes().add(theDescriptionPackage_1.getRepresentationDescription());
-		dBindingEditorCreationDescriptionEClass.getESuperTypes().add(theToolPackage.getRepresentationCreationDescription());
+		this.dBindingEditorDescriptionEClass.getESuperTypes().add(
+				theDescriptionPackage_1.getRepresentationDescription());
+		this.dBindingEditorCreationDescriptionEClass.getESuperTypes().add(
+				theToolPackage.getRepresentationCreationDescription());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(dBindingEditorDescriptionEClass, DBindingEditorDescription.class, "DBindingEditorDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		this.initEClass(this.dBindingEditorDescriptionEClass,
+				DBindingEditorDescription.class, "DBindingEditorDescription",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(dBindingEditorCreationDescriptionEClass, DBindingEditorCreationDescription.class, "DBindingEditorCreationDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDBindingEditorCreationDescription_Description(), this.getDBindingEditorDescription(), null, "description", null, 1, 1, DBindingEditorCreationDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		this.initEClass(this.dBindingEditorCreationDescriptionEClass,
+				DBindingEditorCreationDescription.class,
+				"DBindingEditorCreationDescription", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		this.initEReference(
+				this.getDBindingEditorCreationDescription_Description(),
+				this.getDBindingEditorDescription(), null, "description", null,
+				1, 1, DBindingEditorCreationDescription.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}
 
-} //DescriptionPackageImpl
+} // DescriptionPackageImpl

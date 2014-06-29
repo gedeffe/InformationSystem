@@ -4,20 +4,20 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.obeonetwork.dsl.environment.BindingElement;
 import org.obeonetwork.dsl.environment.BindingReference;
 import org.obeonetwork.dsl.environment.bindingdialect.DBindingEdge;
 
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-import fr.obeo.mda.ecore.extender.business.api.accessor.ModelAccessor;
-
 public class DeleteMappingCommand extends RecordingCommand {
 
 	private DBindingEdge bindingEdge = null;
-	private ModelAccessor accessor;
-	
-	public DeleteMappingCommand(TransactionalEditingDomain domain, ModelAccessor accessor, DBindingEdge bindingEdge) {
+	private final ModelAccessor accessor;
+
+	public DeleteMappingCommand(final TransactionalEditingDomain domain,
+			final ModelAccessor accessor, final DBindingEdge bindingEdge) {
 		super(domain, "Delete mapping");
 		this.bindingEdge = bindingEdge;
 		this.accessor = accessor;
@@ -25,33 +25,36 @@ public class DeleteMappingCommand extends RecordingCommand {
 
 	@Override
 	protected void doExecute() {
-		if (bindingEdge.getTarget() != null && bindingEdge.getTarget() instanceof BindingReference) {
-			
-			BindingReference bindingReference = (BindingReference)bindingEdge.getTarget();
-			Session session = SessionManager.INSTANCE.getSession(bindingReference);
-			ECrossReferenceAdapter crossReferencer = session.getSemanticCrossReferencer();
-			
-			BindingElement left = bindingReference.getLeft();
-			BindingElement right = bindingReference.getRight();
-			if (hasNoOtherReference(left)) {
+		if ((this.bindingEdge.getTarget() != null)
+				&& (this.bindingEdge.getTarget() instanceof BindingReference)) {
+
+			final BindingReference bindingReference = (BindingReference) this.bindingEdge
+					.getTarget();
+			final Session session = SessionManager.INSTANCE
+					.getSession(bindingReference);
+			final ECrossReferenceAdapter crossReferencer = session
+					.getSemanticCrossReferencer();
+
+			final BindingElement left = bindingReference.getLeft();
+			final BindingElement right = bindingReference.getRight();
+			if (this.hasNoOtherReference(left)) {
 				// Delete the useless element
-				accessor.eDelete(left, crossReferencer);
+				this.accessor.eDelete(left, crossReferencer);
 			}
-			if (hasNoOtherReference(right)) {
+			if (this.hasNoOtherReference(right)) {
 				// Delete the useless element
-				accessor.eDelete(right, crossReferencer);
+				this.accessor.eDelete(right, crossReferencer);
 			} else {
-				
+
 			}
-			accessor.eDelete(bindingReference, crossReferencer);
+			this.accessor.eDelete(bindingReference, crossReferencer);
 		}
-		bindingEdge.setLeft(null);
-		bindingEdge.setRight(null);
-		EcoreUtil.delete(bindingEdge);
+		this.bindingEdge.setLeft(null);
+		this.bindingEdge.setRight(null);
+		EcoreUtil.delete(this.bindingEdge);
 	}
-	
-	
-	private boolean hasNoOtherReference(BindingElement bindingElement) {
+
+	private boolean hasNoOtherReference(final BindingElement bindingElement) {
 		return bindingElement.getReferencedBy().size() <= 1;
 	}
 }

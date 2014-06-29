@@ -10,23 +10,19 @@
  */
 package org.obeonetwork.dsl.environment.bindingdialect.description.util;
 
-import fr.obeo.dsl.viewpoint.description.DocumentedElement;
-import fr.obeo.dsl.viewpoint.description.EndUserDocumentedElement;
-import fr.obeo.dsl.viewpoint.description.IdentifiedElement;
-import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
-
-import fr.obeo.dsl.viewpoint.description.tool.AbstractToolDescription;
-import fr.obeo.dsl.viewpoint.description.tool.RepresentationCreationDescription;
-import fr.obeo.dsl.viewpoint.description.tool.ToolEntry;
-
-import java.util.List;
-
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.obeonetwork.dsl.environment.bindingdialect.description.*;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
+import org.obeonetwork.dsl.environment.bindingdialect.description.DBindingEditorCreationDescription;
+import org.obeonetwork.dsl.environment.bindingdialect.description.DBindingEditorDescription;
+import org.obeonetwork.dsl.environment.bindingdialect.description.DescriptionPackage;
 
 /**
  * <!-- begin-user-doc -->

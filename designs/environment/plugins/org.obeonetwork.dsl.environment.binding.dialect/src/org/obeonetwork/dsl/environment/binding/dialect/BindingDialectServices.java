@@ -13,23 +13,24 @@ package org.obeonetwork.dsl.environment.binding.dialect;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices;
+import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.obeonetwork.dsl.environment.bindingdialect.BindingdialectFactory;
 import org.obeonetwork.dsl.environment.bindingdialect.DBindingEditor;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DBindingEditorDescription;
 
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.business.api.dialect.AbstractRepresentationDialectServices;
-import fr.obeo.dsl.viewpoint.business.api.dialect.description.IInterpretedExpressionQuery;
-import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
-import fr.obeo.dsl.viewpoint.description.Viewpoint;
-
 /**
  * Class to provide Binding dialect services
+ * 
  * @author Stephane Thibaudeau <stephane.thibaudeau@obeo.fr>
- *
+ * 
  */
-public class BindingDialectServices extends AbstractRepresentationDialectServices {
-
+public class BindingDialectServices extends
+		AbstractRepresentationDialectServices {
 
 	/**
 	 * {@inheritDoc}
@@ -37,7 +38,7 @@ public class BindingDialectServices extends AbstractRepresentationDialectService
 	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.AbstractRepresentationDialectServices#isSupported(fr.obeo.dsl.viewpoint.DRepresentation)
 	 */
 	@Override
-	protected boolean isSupported(DRepresentation representation) {
+	protected boolean isSupported(final DRepresentation representation) {
 		return representation instanceof DBindingEditor;
 	}
 
@@ -47,32 +48,39 @@ public class BindingDialectServices extends AbstractRepresentationDialectService
 	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.AbstractRepresentationDialectServices#isSupported(fr.obeo.dsl.viewpoint.description.RepresentationDescription)
 	 */
 	@Override
-	protected boolean isSupported(RepresentationDescription representationDesc) {
+	protected boolean isSupported(
+			final RepresentationDescription representationDesc) {
 		return representationDesc instanceof DBindingEditorDescription;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.DialectServices#getDescription(fr.obeo.dsl.viewpoint.DRepresentation)
 	 */
-	public RepresentationDescription getDescription(DRepresentation representation) {
-        if (isSupported(representation)) {
-            return ((DBindingEditor) representation).getDescription();
-        } else {
-            return null;
-        }
+	@Override
+	public RepresentationDescription getDescription(
+			final DRepresentation representation) {
+		if (this.isSupported(representation)) {
+			return ((DBindingEditor) representation).getDescription();
+		} else {
+			return null;
+		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.DialectServices#canCreate(org.eclipse.emf.ecore.EObject, fr.obeo.dsl.viewpoint.description.RepresentationDescription)
+	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.DialectServices#canCreate(org.eclipse.emf.ecore.EObject,
+	 *      fr.obeo.dsl.viewpoint.description.RepresentationDescription)
 	 */
-	public boolean canCreate(EObject semantic, RepresentationDescription representationDesc) {
+	@Override
+	public boolean canCreate(final EObject semantic,
+			final RepresentationDescription representationDesc) {
 		boolean result = false;
-		if (semantic != null && isSupported(representationDesc)) {
-			// TODO Check the domain class when it will be possible to specify it as a parameter in odesign
+		if ((semantic != null) && this.isSupported(representationDesc)) {
+			// TODO Check the domain class when it will be possible to specify
+			// it as a parameter in odesign
 			// TODO Check preconditions too and so on
 			result = "BindingInfo".equals(semantic.eClass().getName());
 		}
@@ -82,59 +90,84 @@ public class BindingDialectServices extends AbstractRepresentationDialectService
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.DialectServices#createRepresentation(java.lang.String, org.eclipse.emf.ecore.EObject, fr.obeo.dsl.viewpoint.description.RepresentationDescription, org.eclipse.core.runtime.IProgressMonitor)
+	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.DialectServices#createRepresentation(java.lang.String,
+	 *      org.eclipse.emf.ecore.EObject,
+	 *      fr.obeo.dsl.viewpoint.description.RepresentationDescription,
+	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public DRepresentation createRepresentation(String name, EObject semantic, RepresentationDescription description, IProgressMonitor monitor) {
-//		ensureDescriptionResourceInMainResourceSet(description);
-		
-		DBindingEditor editor = BindingdialectFactory.eINSTANCE.createDBindingEditor();
+	@Override
+	public DRepresentation createRepresentation(final String name,
+			final EObject semantic,
+			final RepresentationDescription description,
+			final IProgressMonitor monitor) {
+		// ensureDescriptionResourceInMainResourceSet(description);
+
+		final DBindingEditor editor = BindingdialectFactory.eINSTANCE
+				.createDBindingEditor();
 		editor.setName(name);
-		editor.setDescription((DBindingEditorDescription)description);
+		editor.setDescription((DBindingEditorDescription) description);
 		editor.setTarget(semantic);
-		
-		refresh(editor, monitor);
-		
+
+		this.refresh(editor, monitor);
+
 		return editor;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.DialectServices#refresh(fr.obeo.dsl.viewpoint.DRepresentation, org.eclipse.core.runtime.IProgressMonitor)
+	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.DialectServices#refresh(fr.obeo.dsl.viewpoint.DRepresentation,
+	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public void refresh(DRepresentation representation, IProgressMonitor monitor) {
-		if (canRefresh(representation)) {
-			refreshEditor((DBindingEditor)representation, monitor);
+	@Override
+	public void refresh(final DRepresentation representation,
+			final IProgressMonitor monitor) {
+		if (this.canRefresh(representation)) {
+			this.refreshEditor((DBindingEditor) representation, monitor);
 		}
 	}
-	
+
 	/**
 	 * Refreshes an editor
-	 * @param editor Editor to refresh
-	 * @param monitor Progress monitor
+	 * 
+	 * @param editor
+	 *            Editor to refresh
+	 * @param monitor
+	 *            Progress monitor
 	 */
-	private void refreshEditor(DBindingEditor editor, IProgressMonitor monitor) {
+	private void refreshEditor(final DBindingEditor editor,
+			final IProgressMonitor monitor) {
 		// TODO implement refresh
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see fr.obeo.dsl.viewpoint.business.api.dialect.DialectServices#initRepresentations(fr.obeo.dsl.viewpoint.description.Viewpoint, org.eclipse.emf.ecore.EObject)
-	 */
-	public void initRepresentations(Viewpoint viewpoint, EObject semantic) {
-	}
-	
-	protected <T extends RepresentationDescription> void initRepresentationForElement(T representationDescription, EObject semanticElement) {
-		
+	@Override
+	public void initRepresentations(final Viewpoint viewpoint,
+			final EObject semantic, final IProgressMonitor monitor) {
 	}
 
-	public IInterpretedExpressionQuery createInterpretedExpressionQuery(EObject arg0, EStructuralFeature arg1) {
+	@Override
+	protected <T extends RepresentationDescription> void initRepresentationForElement(
+			final T representationDescription, final EObject semanticElement,
+			final IProgressMonitor monitor) {
+
+	}
+
+	@Override
+	public IInterpretedExpressionQuery createInterpretedExpressionQuery(
+			final EObject arg0, final EStructuralFeature arg1) {
 		return null;
 	}
 
-	public boolean handles(RepresentationDescription description) {
-		return isSupported(description);
+	@Override
+	public boolean handles(final RepresentationDescription description) {
+		return this.isSupported(description);
 	}
-	
+
+	@Override
+	public boolean handles(
+			final RepresentationExtensionDescription representationExtensionDescription) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

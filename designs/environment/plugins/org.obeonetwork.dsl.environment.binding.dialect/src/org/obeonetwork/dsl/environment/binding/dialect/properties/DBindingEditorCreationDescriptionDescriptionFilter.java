@@ -11,29 +11,32 @@
 package org.obeonetwork.dsl.environment.binding.dialect.properties;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DBindingEditorCreationDescription;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DescriptionPackage;
 
-import fr.obeo.dsl.viewpoint.editor.properties.filters.common.ViewpointPropertyFilter;
-
 /**
  * @author sthibaudeau
- *
+ * 
  */
-public class DBindingEditorCreationDescriptionDescriptionFilter extends ViewpointPropertyFilter {
+public class DBindingEditorCreationDescriptionDescriptionFilter extends
+		ViewpointPropertyFilter {
 
-    /**
-     * {@inheritDoc}
-     */
-    protected EStructuralFeature getFeature() {
-        return DescriptionPackage.eINSTANCE.getDBindingEditorCreationDescription_Description();
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected EStructuralFeature getFeature() {
+		return DescriptionPackage.eINSTANCE
+				.getDBindingEditorCreationDescription_Description();
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof DBindingEditorCreationDescription;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected boolean isRightInputType(final Object arg0) {
+		return arg0 instanceof DBindingEditorCreationDescription;
+	}
 
 }

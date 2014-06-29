@@ -24,39 +24,41 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DBindingEditorCreationDescription;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DBindingEditorDescription;
 import org.obeonetwork.dsl.environment.bindingdialect.description.DescriptionPackage;
 
-import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
-import fr.obeo.dsl.viewpoint.description.RepresentationElementMapping;
-import fr.obeo.dsl.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl;
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>DBinding Editor Creation Description</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>DBinding Editor Creation Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.obeonetwork.dsl.environment.bindingdialect.description.impl.DBindingEditorCreationDescriptionImpl#getDescription <em>Description</em>}</li>
+ * <li>
+ * {@link org.obeonetwork.dsl.environment.bindingdialect.description.impl.DBindingEditorCreationDescriptionImpl#getDescription
+ * <em>Description</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class DBindingEditorCreationDescriptionImpl extends RepresentationCreationDescriptionImpl implements DBindingEditorCreationDescription {
+public class DBindingEditorCreationDescriptionImpl extends
+		RepresentationCreationDescriptionImpl implements
+		DBindingEditorCreationDescription {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2011 Obeo.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Obeo - initial API and implementation";
 
 	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
@@ -64,8 +66,8 @@ public class DBindingEditorCreationDescriptionImpl extends RepresentationCreatio
 	protected DBindingEditorDescription description;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DBindingEditorCreationDescriptionImpl() {
@@ -73,8 +75,8 @@ public class DBindingEditorCreationDescriptionImpl extends RepresentationCreatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -83,98 +85,114 @@ public class DBindingEditorCreationDescriptionImpl extends RepresentationCreatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DBindingEditorDescription getDescription() {
-		if (description != null && description.eIsProxy()) {
-			InternalEObject oldDescription = (InternalEObject)description;
-			description = (DBindingEditorDescription)eResolveProxy(oldDescription);
-			if (description != oldDescription) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DBINDING_EDITOR_CREATION_DESCRIPTION__DESCRIPTION, oldDescription, description));
-			}
-		}
-		return description;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DBindingEditorDescription basicGetDescription() {
-		return description;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDescription(DBindingEditorDescription newDescription) {
-		DBindingEditorDescription oldDescription = description;
-		description = newDescription;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DBINDING_EDITOR_CREATION_DESCRIPTION__DESCRIPTION, oldDescription, description));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	public DBindingEditorDescription getDescription() {
+		if ((this.description != null) && this.description.eIsProxy()) {
+			final InternalEObject oldDescription = (InternalEObject) this.description;
+			this.description = (DBindingEditorDescription) this
+					.eResolveProxy(oldDescription);
+			if (this.description != oldDescription) {
+				if (this.eNotificationRequired()) {
+					this.eNotify(new ENotificationImpl(
+							this,
+							Notification.RESOLVE,
+							DescriptionPackage.DBINDING_EDITOR_CREATION_DESCRIPTION__DESCRIPTION,
+							oldDescription, this.description));
+				}
+			}
+		}
+		return this.description;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public DBindingEditorDescription basicGetDescription() {
+		return this.description;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public void setDescription(final DBindingEditorDescription newDescription) {
+		final DBindingEditorDescription oldDescription = this.description;
+		this.description = newDescription;
+		if (this.eNotificationRequired()) {
+			this.eNotify(new ENotificationImpl(
+					this,
+					Notification.SET,
+					DescriptionPackage.DBINDING_EDITOR_CREATION_DESCRIPTION__DESCRIPTION,
+					oldDescription, this.description));
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public Object eGet(final int featureID, final boolean resolve,
+			final boolean coreType) {
 		switch (featureID) {
-			case DescriptionPackage.DBINDING_EDITOR_CREATION_DESCRIPTION__DESCRIPTION:
-				if (resolve) return getDescription();
-				return basicGetDescription();
+		case DescriptionPackage.DBINDING_EDITOR_CREATION_DESCRIPTION__DESCRIPTION:
+			if (resolve) {
+				return this.getDescription();
+			}
+			return this.basicGetDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public void eSet(int featureID, Object newValue) {
+	public void eSet(final int featureID, final Object newValue) {
 		switch (featureID) {
-			case DescriptionPackage.DBINDING_EDITOR_CREATION_DESCRIPTION__DESCRIPTION:
-				setDescription((DBindingEditorDescription)newValue);
-				return;
+		case DescriptionPackage.DBINDING_EDITOR_CREATION_DESCRIPTION__DESCRIPTION:
+			this.setDescription((DBindingEditorDescription) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public void eUnset(int featureID) {
+	public void eUnset(final int featureID) {
 		switch (featureID) {
-			case DescriptionPackage.DBINDING_EDITOR_CREATION_DESCRIPTION__DESCRIPTION:
-				setDescription((DBindingEditorDescription)null);
-				return;
+		case DescriptionPackage.DBINDING_EDITOR_CREATION_DESCRIPTION__DESCRIPTION:
+			this.setDescription((DBindingEditorDescription) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public boolean eIsSet(int featureID) {
+	public boolean eIsSet(final int featureID) {
 		switch (featureID) {
-			case DescriptionPackage.DBINDING_EDITOR_CREATION_DESCRIPTION__DESCRIPTION:
-				return description != null;
+		case DescriptionPackage.DBINDING_EDITOR_CREATION_DESCRIPTION__DESCRIPTION:
+			return this.description != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -190,24 +208,27 @@ public class DBindingEditorCreationDescriptionImpl extends RepresentationCreatio
 		if (this.eResource() == null) {
 			throw new UnsupportedOperationException();
 		}
-		ECrossReferenceAdapter crossReferencer = ECrossReferenceAdapter.getCrossReferenceAdapter(this.eResource().getResourceSet());
+		final ECrossReferenceAdapter crossReferencer = ECrossReferenceAdapter
+				.getCrossReferenceAdapter(this.eResource().getResourceSet());
 		if (crossReferencer == null) {
 			throw new UnsupportedOperationException();
 		}
 		final List<RepresentationElementMapping> mappings = new LinkedList<RepresentationElementMapping>();
-		final Collection<Setting> settings = crossReferencer.getInverseReferences(this, true);
+		final Collection<Setting> settings = crossReferencer
+				.getInverseReferences(this, true);
 		for (final Setting setting : settings) {
 			final EObject eReferencer = setting.getEObject();
 			final EStructuralFeature eFeature = setting.getEStructuralFeature();
-			if (eReferencer instanceof RepresentationElementMapping
-					&& eFeature.equals(fr.obeo.dsl.viewpoint.description.DescriptionPackage.eINSTANCE
-							.getRepresentationElementMapping_DetailDescriptions())) {
-				mappings.add((RepresentationElementMapping)eReferencer);
+			if ((eReferencer instanceof RepresentationElementMapping)
+					&& eFeature
+							.equals(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE
+									.getRepresentationElementMapping_DetailDescriptions())) {
+				mappings.add((RepresentationElementMapping) eReferencer);
 			}
 		}
 		return new BasicEList<RepresentationElementMapping>(mappings);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -216,9 +237,9 @@ public class DBindingEditorCreationDescriptionImpl extends RepresentationCreatio
 	 */
 	@Override
 	public RepresentationDescription basicGetRepresentationDescription() {
-		return getDescription();
+		return this.getDescription();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -227,7 +248,7 @@ public class DBindingEditorCreationDescriptionImpl extends RepresentationCreatio
 	 */
 	@Override
 	public DBindingEditorDescription getRepresentationDescription() {
-		return getDescription();
+		return this.getDescription();
 	}
 
-} //DBindingEditorCreationDescriptionImpl
+} // DBindingEditorCreationDescriptionImpl

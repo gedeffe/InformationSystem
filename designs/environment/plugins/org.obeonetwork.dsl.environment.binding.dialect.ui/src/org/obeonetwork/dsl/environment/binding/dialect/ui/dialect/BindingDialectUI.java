@@ -10,21 +10,23 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.environment.binding.dialect.ui.dialect;
 
-import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUI;
-import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIServices;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUI;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIServices;
 
 /**
  * Extension to provide Binding dialect UI
+ * 
  * @author Stephane Thibaudeau <stephane.thibaudeau@obeo.fr>
- *
+ * 
  */
-public class BindingDialectUI implements DialectUI{
+public class BindingDialectUI implements DialectUI {
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUI#getName()
 	 */
+	@Override
 	public String getName() {
 		return "Binding Editor Dialect";
 	}
@@ -34,6 +36,7 @@ public class BindingDialectUI implements DialectUI{
 	 * 
 	 * @see fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUI#getServices()
 	 */
+	@Override
 	public DialectUIServices getServices() {
 		return new BindingDialectUIServices();
 	}

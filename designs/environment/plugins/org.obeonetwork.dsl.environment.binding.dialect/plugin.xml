@@ -33,12 +33,6 @@
             class="org.obeonetwork.dsl.environment.bindingdialect.description.DescriptionPackage"
             genModel="model/bindingdialect.genmodel"/>
    </extension>
-   <extension
-         point="fr.obeo.dsl.viewpoint.dialect">
-      <dialect
-            class="org.obeonetwork.dsl.environment.binding.dialect.BindingDialect">
-      </dialect>
-   </extension>
    
      <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="fr.obeo.dsl.viewpoint.editor.editorPlugin.ViewpointEditorContributor">
@@ -51,5 +45,11 @@
       </propertySection>
      </propertySections>
     </extension>
+     <extension
+           point="org.eclipse.sirius.dialect">
+        <dialect
+              class="org.obeonetwork.dsl.environment.binding.dialect.BindingDialect">
+        </dialect>
+     </extension>
 
 </plugin>

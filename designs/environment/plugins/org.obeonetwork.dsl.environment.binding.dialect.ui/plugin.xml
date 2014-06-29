@@ -38,12 +38,6 @@
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
    <extension
-         point="fr.obeo.dsl.viewpoint.ui.dialectui">
-      <dialectUI
-            class="org.obeonetwork.dsl.environment.binding.dialect.ui.dialect.BindingDialectUI">
-      </dialectUI>
-   </extension>
-   <extension
          point="org.eclipse.ui.editors">
       <editor
             class="org.obeonetwork.dsl.environment.binding.dialect.ui.editor.BindingTreeEditor"
@@ -51,6 +45,12 @@
             id="org.obeonetwork.dsl.environment.binding.dialect.ui.editor.BindingTreeEditor"
             name="Binding Tree Editor">
       </editor>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.ui.dialectui">
+      <dialectUI
+            class="org.obeonetwork.dsl.environment.binding.dialect.ui.dialect.BindingDialectUI">
+      </dialectUI>
    </extension>
 
 </plugin>

@@ -10,43 +10,47 @@
  */
 package org.obeonetwork.dsl.environment.bindingdialect;
 
-import fr.obeo.dsl.viewpoint.DRepresentationElement;
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>DBinding Edge</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>DBinding Edge</b></em>'. <!-- end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.obeonetwork.dsl.environment.bindingdialect.DBindingEdge#getLeft <em>Left</em>}</li>
- *   <li>{@link org.obeonetwork.dsl.environment.bindingdialect.DBindingEdge#getRight <em>Right</em>}</li>
+ * <li>
+ * {@link org.obeonetwork.dsl.environment.bindingdialect.DBindingEdge#getLeft
+ * <em>Left</em>}</li>
+ * <li>
+ * {@link org.obeonetwork.dsl.environment.bindingdialect.DBindingEdge#getRight
+ * <em>Right</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.obeonetwork.dsl.environment.bindingdialect.BindingdialectPackage#getDBindingEdge()
  * @model
  * @generated
  */
 public interface DBindingEdge extends DRepresentationElement {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	String copyright = "Copyright (c) 2011 Obeo.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Obeo - initial API and implementation";
 
 	/**
-	 * Returns the value of the '<em><b>Left</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.obeonetwork.dsl.environment.bindingdialect.DBoundElement#getEdgesAsLeft <em>Edges As Left</em>}'.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Left</b></em>' reference. It is
+	 * bidirectional and its opposite is '
+	 * {@link org.obeonetwork.dsl.environment.bindingdialect.DBoundElement#getEdgesAsLeft
+	 * <em>Edges As Left</em>}'. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Left</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Left</em>' reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Left</em>' reference.
 	 * @see #setLeft(DBoundElement)
 	 * @see org.obeonetwork.dsl.environment.bindingdialect.BindingdialectPackage#getDBindingEdge_Left()
@@ -57,24 +61,28 @@ public interface DBindingEdge extends DRepresentationElement {
 	DBoundElement getLeft();
 
 	/**
-	 * Sets the value of the '{@link org.obeonetwork.dsl.environment.bindingdialect.DBindingEdge#getLeft <em>Left</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Left</em>' reference.
+	 * Sets the value of the '
+	 * {@link org.obeonetwork.dsl.environment.bindingdialect.DBindingEdge#getLeft
+	 * <em>Left</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Left</em>' reference.
 	 * @see #getLeft()
 	 * @generated
 	 */
 	void setLeft(DBoundElement value);
 
 	/**
-	 * Returns the value of the '<em><b>Right</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.obeonetwork.dsl.environment.bindingdialect.DBoundElement#getEdgesAsRight <em>Edges As Right</em>}'.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Right</b></em>' reference. It is
+	 * bidirectional and its opposite is '
+	 * {@link org.obeonetwork.dsl.environment.bindingdialect.DBoundElement#getEdgesAsRight
+	 * <em>Edges As Right</em>}'. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Right</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Right</em>' reference isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Right</em>' reference.
 	 * @see #setRight(DBoundElement)
 	 * @see org.obeonetwork.dsl.environment.bindingdialect.BindingdialectPackage#getDBindingEdge_Right()
@@ -85,10 +93,12 @@ public interface DBindingEdge extends DRepresentationElement {
 	DBoundElement getRight();
 
 	/**
-	 * Sets the value of the '{@link org.obeonetwork.dsl.environment.bindingdialect.DBindingEdge#getRight <em>Right</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Right</em>' reference.
+	 * Sets the value of the '
+	 * {@link org.obeonetwork.dsl.environment.bindingdialect.DBindingEdge#getRight
+	 * <em>Right</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Right</em>' reference.
 	 * @see #getRight()
 	 * @generated
 	 */
