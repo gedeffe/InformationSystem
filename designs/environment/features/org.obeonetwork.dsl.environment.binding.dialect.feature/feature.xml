@@ -215,21 +215,39 @@ Agreement more than one year after the cause of action arose.
 Each party waives its rights to a jury trial in any resulting
 litigation.
    </license>
+
    <requires>
-      <import feature="fr.obeo.dsl.feature.designer.architect" version="6.0.0" match="greaterOrEqual"/>
-      <import feature="fr.obeo.dsl.viewpoint.runtime" version="6.4.0" match="greaterOrEqual"/>
-      <import feature="fr.obeo.dsl.viewpoint.runtime.acceleo" version="6.4.0" match="greaterOrEqual"/>
-      <import feature="fr.obeo.dsl.viewpoint.runtime.acceleo2" version="6.4.0" match="greaterOrEqual"/>
-      <import feature="fr.obeo.dsl.viewpoint.runtime.ide.ui" version="6.4.0" match="greaterOrEqual"/>
-      <import feature="fr.obeo.dsl.viewpoint.runtime.ide.ui.acceleo" version="6.4.0" match="greaterOrEqual"/>
-      <import feature="fr.obeo.dsl.viewpoint.runtime.ocl" version="6.4.0" match="greaterOrEqual"/>
-      <import feature="fr.obeo.dsl.viewpoint.specifier.ide.ui" version="6.4.0" match="greaterOrEqual"/>
-      <import feature="fr.obeo.dsl.viewpoint.specifier.ide.ui.acceleo" version="6.4.0" match="greaterOrEqual"/>
-      <import feature="fr.obeo.mda.license" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ui.views.properties.tabbed"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.sirius"/>
+      <import plugin="org.eclipse.sirius.ext.base"/>
+      <import plugin="org.eclipse.sirius.ecore.extender"/>
+      <import plugin="org.eclipse.emf.ecore.edit"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.core.commands"/>
+      <import plugin="org.eclipse.swt"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.emf.common.ui"/>
+      <import plugin="org.eclipse.emf.transaction"/>
+      <import plugin="org.eclipse.emf.workspace"/>
+      <import plugin="org.eclipse.nebula.treemapper"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.obeonetwork.dsl.entity"/>
+      <import plugin="org.obeonetwork.dsl.soa"/>
+      <import plugin="org.obeonetwork.dsl.environment.common"/>
+      <import plugin="org.eclipse.draw2d"/>
+      <import plugin="org.eclipse.sirius.ui"/>
       <import feature="org.eclipse.nebula.treemapper.feature" version="0.1.0" match="greaterOrEqual"/>
       <import feature="org.obeonetwork.dsl.feature.soa" version="2.3.0" match="greaterOrEqual"/>
       <import feature="org.obeonetwork.dsl.feature.entity" version="2.3.0" match="greaterOrEqual"/>
       <import feature="org.obeonetwork.dsl.feature.environment" version="2.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius.editor"/>
+      <import plugin="org.eclipse.sirius.common.ui"/>
    </requires>
 
    <plugin
